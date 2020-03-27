@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="webapp/images/favicon.png">
     <title>FinSpetsel - Финансовый учет</title>
     <!-- Custom CSS -->
+    <link href="webapp/css/normalize.css" rel="stylesheet"> 
     <link href="webapp/css/style.css" rel="stylesheet">
     <link href="webapp/css/main.css" rel="stylesheet">
     <script src="webapp/js/jquery-1.9.1.min.js"></script><!--Подцепляем jquery-->
@@ -53,7 +54,7 @@
                     <!-- Кнопка СОЗДАТЬ НОВЫЙ ПРОЕКТ  -->
                     <li class="nav-item d-none d-md-block">
                         <a class="nav-link" href="javascript:void(0)">
-                            <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal"
+                            <button type="button" class="btn btn-outline-secondary btn-rounded" data-toggle="modal"
                                     data-target="#fill-primary-modal">Создать проект</button>
                         </a>
                     </li>
@@ -61,7 +62,6 @@
 
                 <!-- Меню в шапке для разделов  -->
                 <nav class="nav_modify">
-                    <!--<a href="#" class="nav-item_modify" active-color="blue">Контрагенты</a>-->
                     <form th:action="@{/Contragents}" method="post">
                         <button type="submit" class="nav-item_modify">Контрагенты</button>
                     </form>
@@ -119,9 +119,11 @@
 
                     <!-- Заголовок раздела -->
                     <li class="nav-small-cap"><span class="hide-menu">Бизнес отчеты</span></li>
+                    
                     <!-- Заголовок раздела -->
-                    <li class="left-menu-item left-menu-selected-link"> <a class="left-menu-link" href="dashboard.html" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">Аналитика</span></a></li>
-
+                    <li id="2rowid" class="left-menu-item left-menu-selected-link">
+                        <input type="button" class="left-menu-link finsproject_list_row" projnum="1" value="Аналитика"><!--класс finsproject_list_row дял скрипта-->
+                    </li>
                     <!-- Разделитель между разделами -->
                     <li class="list-divider"></li>
 
@@ -768,34 +770,6 @@
         });
     }
 </script>
-
-<!-- Скрпит для меню в header-->
-<!--
-<script>
-    const indicator = document.querySelector('.nav-indicator_modify');
-    const items = document.querySelectorAll('.nav-item_modify');
-
-    function handleIndicator(el) {
-        items.forEach(item => {
-            item.classList.remove('is-active_modify');
-        item.removeAttribute('style');
-    });
-
-        indicator.style.width = `${el.offsetWidth}px`;
-        indicator.style.left = `${el.offsetLeft}px`;
-        indicator.style.backgroundColor = el.getAttribute('active-color');
-
-        el.classList.add('is-active_modify');
-        el.style.color = el.getAttribute('active-color');
-    }
-
-
-    items.forEach((item, index) => {
-        item.addEventListener('click', e => {handleIndicator(e.target);});
-    item.classList.contains('is-active_modify') && handleIndicator(item);
-    });
-</script>
--->
 
 <!--JQury обработки нажатия по записи таблицы-->
 <script src = "webapp/js/js_financedatatable.js"></script>
