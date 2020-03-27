@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="webapp/images/favicon.png">
+    <title>FinSPETSEL</title>
+    <!-- Custom CSS -->
+
+    <!-- Custom CSS -->
+    <link href="webapp/css/style.css" rel="stylesheet">
+    <link href="webapp/css/main.css" rel="stylesheet">
+    <script src="webapp/js/jquery-1.9.1.min.js"></script><!--Подцепляем jquery-->
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header class="topbar">
+
+        <nav class="navbar top-navbar navbar-expand-md">
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    <!-- Logo icon -->
+                    <a href="index.html">
+                        <b class="logo-icon">
+                            <!-- Dark Logo icon -->
+                            <img src="webapp/images/logo-icon.png" alt="homepage1" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <img src="webapp/images/logo-text.png" alt="homepage2" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+                    <!-- Кнопка СОЗДАТЬ НОВЫЙ ПРОЕКТ  -->
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal"
+                                    data-target="#fill-primary-modal">Создать проект</button>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Меню  -->
+                <nav class="nav_modify">
+                    <a href="#" class="nav-item_modify" active-color="blue">Контрагенты</a>
+                    <a href="#" class="nav-item_modify" active-color="blue">Проекты</a>
+                    <a href="#" class="nav-item_modify" active-color="blue">Отчеты</a>
+                    <span class="nav-indicator_modify"></span>
+                </nav>
+            </div>
+        </nav>
+
+
+        <!-- Primary Filled Modal -->
+        <div id="fill-primary-modal" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="fill-primary-modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-filled bg-primary">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="fill-primary-modalLabel">Создать новый проект</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="pl-3 pr-3" action="#">
+
+
+                            <input class="form-control" name="createProject" type="text"placeholder="Например: Продажа мебели">
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light"
+                                data-dismiss="modal">Отмена</button>
+                        <button type="button" class="btn btn-outline-light">Сохранить</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+    </header>
+
+
+
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section class="left-menu">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="left-menu-nav">
+                <ul id="left-menunav">
+
+
+                    <!-- Заголовок раздела -->
+                    <li class="nav-small-cap"><span class="hide-menu">Бизнес отчеты</span></li>
+                    <!-- Заголовок раздела -->
+                    <li class="left-menu-item"> <a class="left-menu-link" href="dashboard.html" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">Аналитика</span></a></li>
+
+                    <!-- Разделитель между разделами -->
+                    <li class="list-divider"></li>
+
+                    <!-- Заголовок раздела -->
+                    <li class="nav-small-cap"><span class="hide-menu">Ваши проекты</span></li>
+
+                    <!-- Ссылка на проект -->
+                    <li class="left-menu-item left-menu-selected-link"> <a class="left-menu-link" href="index.html" aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span class="hide-menu">Продажа дерева</span>
+                    </a></li>
+
+                    <!-- Ссылка на проект -->
+                    <li class="left-menu-item "> <a class="left-menu-link" href="index.html" aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span class="hide-menu">Продажа камня</span>
+                    </a></li>
+
+                    <!-- Разделитель между разделами -->
+                    <li class="list-divider"></li>
+
+
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </section>
+
+
+
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Контрагенты</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-2 p-0">
+                                <li class="breadcrumb-item text-muted active" aria-current="page"><a href="index.html">Контрагенты с которыми вы работаете</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+
+            <!-- *************************************************************** -->
+            <!-- Карточка с формой -->
+            <!-- *************************************************************** -->
+
+            <div class="row">
+                <div class="col-sm-12 col-md-7">
+                    <div class="card"> <!-- модуль c формой -->
+                        <div class="card-body">
+                            <!-- Форма с полями Контрагент-->
+                            <form id="id_contragentform" action="#" th:action="@{/Contragentaction}" th:object="${contragentform}" method="post">
+                                <div class="form-body">
+                                    <!-- Поле ввода -->
+                                    <div class="form-group mb-3">
+                                        <h4 class="text-dark w-100 text-truncate font-weight-medium">Добавить контрагента</h4>
+                                    </div>
+
+                                    <!-- Скрытое Поле ввода Действия new/update/delete -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Действия</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_action" class="form-control" th:field="*{Contragentaction}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Скрытое Поле Id  -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Id</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_id" class="form-control" th:field="*{Contragentid}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Название-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Название</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_name" class="form-control" th:field="*{Contragentname}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Описание-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Описание</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_desqription" class="form-control" th:field="*{Contragentdescription}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Почта-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Почта</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_mail" class="form-control" th:field="*{Contragentemail}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Телефон-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Телефон</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_phone" class="form-control" th:field="*{Contragentphone}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Кнопки для записи в БД -->
+                                <div class="form-actions">
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-info">Сохранить</button>
+                                        <button type="reset" class="btn btn-dark">Отменить</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div> <!-- модуль c формой .end -->
+
+
+                </div>
+
+                <!--Форма реквизита-->
+                <div class="col-sm-12 col-md-5">
+                    <div class="card"> <!-- модуль c формой -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <h4 class="text-muted font-weight-light mb-0 w-100 text-truncate">Реквизиты</h4>
+                                </div>
+                                <div class="col-md-6 align-self-center">
+                                    <div class="text-right">
+                                        <button class="btn btn-outline-secondary ml-1" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                                            Открыть форму
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Форма реквизитов-->
+                            <div class="collapse hide mt-3" id="collapseExample" style="">
+                                <!-- Форма с полями -->
+                                <form id="id_requisits_form" th:action="@{/Requisitaction}" th:object="${requisitform}" method="post">
+                                    <div class="form-body">
+                                        <!-- Поле ввода -->
+                                        <div class="form-group">
+                                            <h4 class="text-dark w-100 text-truncate font-weight-medium mb-0">Добавить реквизиты</h4>
+                                        </div>
+
+                                        <!-- Скрытое Поле ввода Действия new/update/delete -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Действия</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_action" class="form-control" th:field="*{Reqaction}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Скрытое Поле Id  -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Id</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_id" class="form-control" th:field="*{ReqId}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Название-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Название</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_name" class="form-control" th:field="*{ReqName}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Описание-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Описание</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqDescription" class="form-control" th:field="*{ReqDescription}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group mt-5">
+                                            <h5 class="text-dark w-100 text-truncate font-weight-medium mb-0">Реквизиты контрагента</h5>
+                                            <small>Нужны для выставления счета</small>
+                                        </div>
+
+                                        <!-- Поле ввода ИНН-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">ИНН</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqINN" class="form-control" th:field="*{ReqINN}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода КПП-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">КПП</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqKPP" class="form-control" th:field="*{ReqKPP}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group mt-5">
+                                            <h6 class="text-dark w-100 text-truncate font-weight-medium mb-0">Реквизиты</h6>
+                                        </div>
+
+                                        <!-- Поле ввода Счет-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Счет</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqFinsAcc" class="form-control" th:field="*{ReqFinsAcc}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода БИК-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">БИК</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqBIK" class="form-control" th:field="*{ReqBIK}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Банк-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Банк</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqBankName" class="form-control" th:field="*{ReqBankName}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Корр. счет-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Корр. счет</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqCrspAcc" class="form-control" th:field="*{ReqCrspAcc}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group mt-5">
+                                            <h6 class="text-dark w-100 text-truncate font-weight-medium mb-0">Юридический адрес</h6>
+                                        </div>
+
+                                        <!-- Поле ввода Индекс-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Индекс</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqAddrIndex" class="form-control" th:field="*{ReqAddrIndex}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Город-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Город</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqAddrCity" class="form-control" th:field="*{ReqAddrCity}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Адрес-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Адрес</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqAddrString" class="form-control" th:field="*{ReqAddrString}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group mt-5">
+                                            <h6 class="text-dark w-100 text-truncate font-weight-medium mb-0">Контактная информация</h6>
+                                        </div>
+
+                                        <!-- Поле ввода Телефон-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Телефон</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqPhoneNum" class="form-control" th:field="*{ReqPhoneNum}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Почта-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Почта</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqEmail" class="form-control" th:field="*{ReqEmail}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Сайт</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqWebSite" class="form-control" th:field="*{ReqWebSite}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Кнопки для записи в БД -->
+                                    <div class="form-actions">
+                                        <div class="text-right">
+                                            <button type="submit" class="btn btn-outline-secondary">Добавить</button>
+                                            <button type="reset" class="btn btn-dark">Отменить</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> <!-- модуль c формой .end -->
+                </div>
+
+            </div>
+
+
+
+
+            <!-- *************************************************************** -->
+            <!-- Таблица - Список контрагентов -->
+            <!-- *************************************************************** -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Все контрагенты</h4>
+                            <h6 class="card-subtitle">Все контрагенты</h6>
+                            <div class="text-right">
+                                <button id="id_CreateContragent" class="btn btn-outline-secondary">Создать</button>
+                                <button id="id_DellContragent" class="btn btn-dark">Удалить</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tb_contragentlist" class="table table-striped table-bordered no-wrap table-hover tabel-modif">
+                                    <thead> <!-- Заголовок таблицы -->
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Имя</th>
+                                        <th>Описание</th>
+                                        <th>Телефон</th>
+                                        <th>Почта</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="c: ${contragentlist}" th:row_num="${c.id}" class="fincrowlink contragentlist_row">
+                                        <th th:text="${c.id}" th:value="${c.id}" class="cntr_id"></th><!--id-->
+                                        <th th:text="${c.name}" th:value="${c.name}" class="cntr_name"></th><!--имя-->
+                                        <th th:text="${c.description}" th:value="${c.description}" class="cntr_description"></th><!--Описание-->
+                                        <th th:text="${c.phone_num}" th:value="${c.phone_num}" class="cntr_phone_num"></th><!--Телефон-->
+                                        <th th:text="${c.email_addr}" th:value="${c.email_addr}" class="cntr_email_addr"></th><!--Почта-->
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="hidden-element">
+                <!--Скрытая Форма сабмита нажатия на контрагента (все поля, чтобы контекст формы сохранялся после обновления)-->
+                <form id="id_selected_contragent_form" th:action="@{/SelectContragent}" th:object="${contragentform}" method="post">
+                    <input id="field_selected_contragent_num" class="form-control" type="text"  th:field="*{Contragentid}">
+                    <input type="text" id="selected_cntragnt_name" class="form-control" th:field="*{Contragentname}">
+                    <input type="text" id="selected_cntragnt_desqription" class="form-control" th:field="*{Contragentdescription}">
+                    <input type="text" id="selected_cntragnt_mail" class="form-control" th:field="*{Contragentemail}">
+                    <input type="text" id="selected_cntragnt_phone" class="form-control" th:field="*{Contragentphone}">
+                </form>
+            </div>
+
+            <!-- *************************************************************** -->
+            <!-- Таблица - Список реквизитов -->
+            <!-- *************************************************************** -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Реквизиты контрагента</h4>
+                            <h6 class="card-subtitle">Реквизиты контрагента</h6>
+                            <div class="text-right">
+                                <button id="id_CreateRequisit" class="btn btn-outline-secondary">Создать</button>
+                                <button id="id_DellRequisit" class="btn btn-dark">Удалить</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tb_cntragnt_requisits" class="table table-striped table-bordered no-wrap table-hover tabel-modif">
+                                    <thead> <!-- Заголовок таблицы -->
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Имя</th>
+                                        <th>Описание</th>
+                                        <th>ИНН</th>
+                                        <th>КПП</th>
+                                        <th>Счет</th>
+                                        <th>БИК</th>
+                                        <th>БАНК</th>
+                                        <th>Кор. счет</th>
+                                        <th>Адрес индекс</th>
+                                        <th>Город</th>
+                                        <th>Адрес</th>
+                                        <th>Телефон</th>
+                                        <th>Мыло</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="r: ${requisitslist}" th:row_num="${r.id}" class="fincrowlink requisitslist_row">
+                                        <th th:text="${r.id}" th:value="${r.id}" class="cntr_req_id"></th><!--id-->
+                                        <th th:text="${r.name}" th:value="${r.name}" class="cntr_req_name"></th><!--Имя-->
+                                        <th th:text="${r.description}" th:value="${r.description}" class="cntr_req_description"></th><!--Описание-->
+                                        <th th:text="${r.inn}" th:value="${r.inn}" class="cntr_req_inn"></th><!--ИНН-->
+                                        <th th:text="${r.kpp}" th:value="${r.kpp}" class="cntr_req_kpp"></th><!--КПП-->
+                                        <th th:text="${r.fins_acc}" th:value="${r.fins_acc}" class="cntr_req_acc"></th><!--Счет-->
+                                        <th th:text="${r.bik}" th:value="${r.bik}" class="cntr_req_bik"></th><!--БИК-->
+                                        <th th:text="${r.bank_name}" th:value="${r.bank_name}" class="cntr_req_bank_name"></th><!--БАНК-->
+                                        <th th:text="${r.crsp_acc}" th:value="${r.crsp_acc}" class="cntr_req_crsp_acc"></th><!--Кор. счет-->
+                                        <th th:text="${r.addr_index}" th:value="${r.addr_index}" class="cntr_req_addr_index"></th><!--Адрес индекс-->
+                                        <th th:text="${r.addr_city}" th:value="${r.addr_city}" class="cntr_req_addr_city"></th><!--Город-->
+                                        <th th:text="${r.addr_string}" th:value="${r.addr_string}" class="cntr_req_addr_string"></th><!--Адрес-->
+                                        <th th:text="${r.phone_num}" th:value="${r.phone_num}" class="cntr_req_phone_num"></th><!--Телефон-->
+                                        <th th:text="${r.email_addr}" th:value="${r.email_addr}" class="cntr_req_email_addr"></th><!--Мыло-->
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- *************************************************************** -->
+            <!-- Таблица - Список проектов -->
+            <!-- *************************************************************** -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Список проектов</h4>
+                            <h6 class="card-subtitle">Полный список всех проектов. Вы можете изменить или удалить нужный проект, достаточно кликнув по нему.</h6>
+                            <div class="table-responsive">
+                                <table id="zero_config" class="table table-striped table-bordered no-wrap table-hover tabel-modif">
+                                    <thead> <!-- Заголовок таблицы -->
+                                    <tr>
+                                        <th>Контрагент</th>
+                                        <th>Контакт</th>
+                                        <th>Почта</th>
+                                        <th>Телефон</th>
+                                        <th>Сейчас на счете</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody> <!-- сюда вываливаються данные из в карточки создать проект -->
+                                    <tr th:each="c: ${financedata}">
+                                        <th th:text="${c.lockflg}">1</th><!--Контрагент-->
+                                        <th th:text="${c.operdate}">2</th><!--Контакт-->
+                                        <th th:text="${c.amount}">3</th><!--Почта-->
+                                        <th th:text="${c.detail}">4</th><!--Телефон-->
+                                        <th th:text="${c.strattr1}">5</th><!--На счете-->
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- *************************************************************** -->
+            <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+            <!-- *************************************************************** -->
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+<!-----------IVRIBIN User Script----------------------------->
+
+<script type="text/javascript">
+    function doAjax() {
+        var inputText = $("#input_str").val();
+        $.ajax({
+            url : 'Method_1',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data : ({
+                text: inputText
+            }),
+            success: function (data) {
+
+                var result = '"'+data.text+'", '+data.count+' characters';
+                $("#result_text").text(result);
+            }
+        });
+    }
+</script>
+
+<!------------JQury страницы-->
+<script src = "webapp/js/js_contragentspage.js"></script>
+
+<!------------FRAMEWORK Script----------------------------->
+<!-- Bootstrap core JavaScript-->
+<script src="/framework/vendor/jquery/jquery.min.js"></script>
+<script src="/framework/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/framework/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/framework/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="/framework/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/framework/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="/framework/js/demo/datatables-demo.js"></script>
+
+</html>
