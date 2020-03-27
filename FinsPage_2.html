@@ -143,7 +143,7 @@
                     <li class="list-divider"></li>
 
                     <!--Скрытая Форма сабмита нажатия на проект в списке, сабмит в скрипте на событие нажатия списка-->
-                    <form class = "hidden-element" id="id_setfinsproject" action="#" th:action="@{/SetFinsProj}" th:object="${finsprojectform}" method="post">
+                    <form class="hidden-element" id="id_setfinsproject" action="#" th:action="@{/SetFinsProj}" th:object="${finsprojectform}" method="post">
                         <input id="field_selected_fproj_num" class="form-control" type="text"  th:field="*{Finsprojectid}">
                     </form>
 
