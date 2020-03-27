@@ -131,7 +131,7 @@
                     <li class="nav-small-cap"><span class="hide-menu">Ваши проекты</span></li>
 
                     <!-- Ссылка на проект -->
-                    <li th:each="fproj: ${finsproject}" th:id="${fproj.id}+rowid" class="left-menu-item">
+                    <li th:each="fproj: ${finsproject}" th:id="${fproj.id}+rowid" class="left-menu-item finsproject_list_row">
                         <!--<a class="left-menu-link finsproject_list_row" href="index.html" aria-expanded="false" th:projnum="${fproj.id}">
                             <i data-feather="edit-3" class="feather-icon"></i>
                             <span th:text="${fproj.name}" class="hide-menu"></span>
