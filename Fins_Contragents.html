@@ -14,6 +14,7 @@
     <!-- Custom CSS -->
 
     <!-- Custom CSS -->
+    <link href="webapp/css/normalize.css" rel="stylesheet">
     <link href="webapp/css/style.css" rel="stylesheet">
     <link href="webapp/css/main.css" rel="stylesheet">
     <script src="webapp/js/jquery-1.9.1.min.js"></script><!--Подцепляем jquery-->
@@ -54,7 +55,7 @@
                     <!-- Кнопка СОЗДАТЬ НОВЫЙ ПРОЕКТ  -->
                     <li class="nav-item d-none d-md-block">
                         <a class="nav-link" href="javascript:void(0)">
-                            <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal"
+                            <button type="button" class="btn btn-outline-secondary btn-rounded" data-toggle="modal"
                                     data-target="#fill-primary-modal">Создать проект</button>
                         </a>
                     </li>
@@ -62,9 +63,15 @@
 
                 <!-- Меню  -->
                 <nav class="nav_modify">
-                    <a href="#" class="nav-item_modify" active-color="blue">Контрагенты</a>
-                    <a href="#" class="nav-item_modify" active-color="blue">Проекты</a>
-                    <a href="#" class="nav-item_modify" active-color="blue">Отчеты</a>
+                    <form action="/Contragents" method="post">
+                        <button type="submit" class="nav-item_modify">Контрагенты</button>
+                    </form>
+                    <form action="/Projects" method="post">
+                        <button type="submit" class="nav-item_modify">Проекты</button>
+                    </form>
+                    <form action="/Reports" method="post">
+                        <button type="submit" class="nav-item_modify">Отчеты</button>
+                    </form>
                     <span class="nav-indicator_modify"></span>
                 </nav>
             </div>
@@ -117,26 +124,34 @@
 
 
                     <!-- Заголовок раздела -->
-                    <li class="nav-small-cap"><span class="hide-menu">Бизнес отчеты</span></li>
+                    <li class="nav-small-cap"><span class="hide-menu">Бизнес отчеты</span></li> 
                     <!-- Заголовок раздела -->
-                    <li class="left-menu-item"> <a class="left-menu-link" href="dashboard.html" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">Аналитика</span></a></li>
-
+                    <li id="2rowid" class="left-menu-item left-menu-selected-link">
+                        <input type="button" class="left-menu-link finsproject_list_row" projnum="1" value="Аналитика"><!--класс finsproject_list_row дял скрипта-->
+                    </li>
+                    
                     <!-- Разделитель между разделами -->
-                    <li class="list-divider"></li>
+                    <li class="list-divider"></li> 
 
                     <!-- Заголовок раздела -->
-                    <li class="nav-small-cap"><span class="hide-menu">Ваши проекты</span></li>
+                    <li class="nav-small-cap"><span class="hide-menu">Ваши проекты</span></li> 
 
                     <!-- Ссылка на проект -->
-                    <li class="left-menu-item left-menu-selected-link"> <a class="left-menu-link" href="index.html" aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span class="hide-menu">Продажа дерева</span>
-                    </a></li>
+                    <li id="2rowid" class="left-menu-item">
+                        <input type="button" class="left-menu-link finsproject_list_row" projnum="2" value="TestProject 1"><!--класс finsproject_list_row дял скрипта-->
+                    </li>
 
                     <!-- Ссылка на проект -->
-                    <li class="left-menu-item "> <a class="left-menu-link" href="index.html" aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span class="hide-menu">Продажа камня</span>
-                    </a></li>
+                    <li id="2rowid" class="left-menu-item">
+                        <input type="button" class="left-menu-link finsproject_list_row" projnum="3" value="TestProject 2"><!--класс finsproject_list_row дял скрипта-->
+                    </li>
+
+                    <li id="2rowid" class="left-menu-item">
+                        <input type="button" class="left-menu-link finsproject_list_row" projnum="4" value="TestProject 3"><!--класс finsproject_list_row дял скрипта-->
+                    </li>
 
                     <!-- Разделитель между разделами -->
-                    <li class="list-divider"></li>
+                    <li class="list-divider"></li> 
 
 
                 </ul>
