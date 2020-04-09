@@ -112,6 +112,15 @@ $(".finsproject_list_row").on('click', function(){
 
 });
 
+//Выбор значения выпадающего списка контрагента в финс форме
+/*
+Вынес на основную страницу к Ajax функции
+$("#contr_agent_select_field").change( function(){
+    $('#finscontragentid').attr('value',$('#contr_agent_select_field').val());
+
+});
+*/
+
 function ClearFinsForm (){
     $('#recordid').attr('value','');
     $('#fieldlockflgid').attr('value','');
@@ -139,4 +148,6 @@ function ClearFinsForm (){
     $('#finscontragentid').val('');
     $('#requisitesid').val('');
 };
+
+
 
