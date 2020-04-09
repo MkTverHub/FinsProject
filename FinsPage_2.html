@@ -231,59 +231,33 @@
                                 <div class="form-body">
 
                                     <!-- Поле хранящее тип редактирования записи, скрытое (1-Изменить, 2-создать, 3-удалить)-->
-                                    <div class="form-group hidden-element">
-                                        <div class="row">
-                                            <label class="col-lg-4 align-self-center">EditTypeCode</label>
-                                            <div class="col-lg-8 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <input type="text" class="form-control" id="finsedittypeid" th:field="*{finsedittype}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        EditType: <input type="text" class="form-control" id="finsedittypeid" th:field="*{finsedittype}">
                                     </div>
 
                                     <!-- Поле тип финансовой операции 1 - приход, 2 - расход, 3 - перевод-->
-                                    <div class="form-group hidden-element">
-                                        <div class="row">
-                                            <label class="col-lg-4 align-self-center">Транзакция</label>
-                                            <div class="col-lg-8 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <input type="text" class="form-control" id="finsopertypeid" th:field="*{FinsOperType}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        Transaction: <input type="text" class="form-control" id="finsopertypeid" th:field="*{FinsOperType}">
                                     </div>
 
                                     <!-- Поле ввода ID-->
-                                    <div class="form-group hidden-element">
-                                        <div class="row">
-                                            <label class="col-lg-4 align-self-center">ID</label>
-                                            <div class="col-lg-8 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <input type="text" class="form-control" id="recordid" th:field="*{finsrecordid}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        Record Id: <input type="text" class="form-control" id="recordid" th:field="*{finsrecordid}">
                                     </div>
 
                                     <!-- Поле ввода Признак блокировки-->
                                     <div class="form-group hidden-element">
-                                        <div class="row">
-                                            <label class="col-lg-4 align-self-center">BlockFlg</label>
-                                            <div class="col-lg-8 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <input type="text" class="form-control" id="fieldlockflgid" th:field="*{finsblockflg}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        BlockFlg: <input type="text" class="form-control" id="fieldlockflgid" th:field="*{finsblockflg}">
+                                    </div>
+
+                                    <!-- Поле ввода Контрагент-->
+                                    <div class="form-group">
+                                        СontragentId: <input type="text" class="form-control" id="finscontragentid" th:field="*{Finscontragent}">
+                                    </div>
+
+                                    <!-- Поле ввода Реквизит-->
+                                    <div class="form-group">
+                                        RequisitId: <input type="text" class="form-control" id="requisitesid" th:field="*{Requisites}">
                                     </div>
 
                                     <!-- Поле ввода Сумма-->
@@ -335,7 +309,10 @@
                                             <div class="col-lg-8 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="text" class="form-control" id="finscontragentid" th:field="*{Finscontragent}">
+                                                        <select id="contr_agent_select_field" class="form-control">
+                                                            <option value="0">Выберете значение</option>
+                                                            <option th:each="cntr_agnt: ${contragentlist}" th:value="${cntr_agnt.id}" th:text="${cntr_agnt.name}"></option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -392,7 +369,10 @@
                                             <div class="col-lg-8 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="text" class="form-control" id="requisitesid" th:field="*{Requisites}">
+                                                        <select id="contr_agent_requisits_list" class="form-control">
+                                                            <option value="0">Выберете значение</option>
+
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -749,26 +729,35 @@
 
 <!-----------IVRIBIN User Script----------------------------->
 <!--Для работы нужен подключенный jquery-->
-<!--<script src="/webapp/js/jquery-1.9.1.min.js"></script> перенес в head-->
+<!--Ajax фуекции и методы окружения-->
 <script type="text/javascript">
-    function doAjax() {
-        var inputText = $("#input_str").val();
+    //Ajax получения списка реквезитов контрагента (не взлетел в внешнем файле скрипта)
+    function doAjaxGetRequisits() {
+        var strCntrAgentId = $("#finscontragentid").val();
         $.ajax({
-            url : 'Method_1',
+            url : 'SetContrAgentRequisits',
             type: 'GET',
             dataType: 'json',
             contentType: 'application/json',
             mimeType: 'application/json',
             data : ({
-                text: inputText
+                ContragentId: strCntrAgentId
             }),
             success: function (data) {
-
                 var result = '"'+data.text+'", '+data.count+' characters';
-                $("#result_text").text(result);
+                $("#requisitesid").attr('value',result);
+                $("#requisitesid").val(result);
+                $("#contr_agent_requisits_list").html(data.text);
             }
         });
-    }
+    };
+
+    //Выбор значения выпадающего списка контрагента и вызов Ajax для заполнения списка реквезитов
+     $("#contr_agent_select_field").change( function(){
+        $('#finscontragentid').attr('value',$('#contr_agent_select_field').val());
+         doAjaxGetRequisits();
+     });
+
 </script>
 
 <!--JQury обработки нажатия по записи таблицы-->
