@@ -371,7 +371,6 @@
                                                     <div class="col-md-12">
                                                         <select id="contr_agent_requisits_list" class="form-control">
                                                             <option value="0">Выберете значение</option>
-
                                                         </select>
                                                     </div>
                                                 </div>
@@ -733,7 +732,7 @@
 <script type="text/javascript">
     //Ajax получения списка реквезитов контрагента (не взлетел в внешнем файле скрипта)
     function doAjaxGetRequisits() {
-        var strCntrAgentId = $("#finscontragentid").val();
+        var strCntrAgentId = $("#finscontragentid").attr('value');
         $.ajax({
             url : 'SetContrAgentRequisits',
             type: 'GET',
@@ -744,9 +743,7 @@
                 ContragentId: strCntrAgentId
             }),
             success: function (data) {
-                var result = '"'+data.text+'", '+data.count+' characters';
-                $("#requisitesid").attr('value',result);
-                $("#requisitesid").val(result);
+                //Получаем из контрола контекст списка
                 $("#contr_agent_requisits_list").html(data.text);
             }
         });
@@ -755,8 +752,13 @@
     //Выбор значения выпадающего списка контрагента и вызов Ajax для заполнения списка реквезитов
      $("#contr_agent_select_field").change( function(){
         $('#finscontragentid').attr('value',$('#contr_agent_select_field').val());
+         $('#finscontragentid').val($('#contr_agent_select_field').val());
          doAjaxGetRequisits();
      });
+
+
+
+
 
 </script>
 
