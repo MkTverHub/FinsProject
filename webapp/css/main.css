@@ -280,3 +280,12 @@
   opacity: 1;
   color: #fff;
 }
+.f-d-n {
+  display: none;	
+}
+
+.modal-bg-img {
+  background: url(../images/modal-bg-img.png) no-repeat;
+  background-size: cover;
+}
+
