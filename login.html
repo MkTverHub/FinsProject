@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+</head>
+
+<body>
+
+                  <form th:action="@{/login}" method="post">
+                    <div>
+                      <input type="text" name="username" placeholder="логин">
+                    </div>
+                    <div>
+                      <input type="password" name="password" placeholder="пароль">
+                    </div>
+                    <!--<a href="index.html" class="btn btn-primary btn-user btn-block">
+                      Login
+                    </a>-->
+                    <input type="submit" value="войти"/>
+                    <hr>
+                  </form>
+
+</body>
+
+</html>
