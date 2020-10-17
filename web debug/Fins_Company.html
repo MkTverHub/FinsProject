@@ -41,7 +41,7 @@
 
         <nav class="navbar top-navbar navbar-expand-md">
             <div class="navbar-header">
-                 <div class="navbar-brand">
+                <div class="navbar-brand">
                     <!-- Logo icon -->
                     <a href="index.html">
                         <b class="logo-icon">
@@ -59,18 +59,66 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
-
+                    <!-- Кнопка СОЗДАТЬ НОВЫЙ ПРОЕКТ  -->
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <button type="button" class="btn btn-outline-secondary btn-rounded" data-toggle="modal"
+                                    data-target="#fill-primary-modal">Создать проект</button>
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Меню  -->
                 <nav class="nav_modify">
-                    <a href="#" class="nav-item_modify" active-color="blue">Контрагенты</a>
-                    <a href="#" class="nav-item_modify" active-color="blue">Проекты</a>
-                    <a href="#" class="nav-item_modify" active-color="blue">Отчеты</a>
+                    <form th:action="@{/Contragents}" method="post">
+                        <button type="submit" class="nav-item_modify">Контрагенты</button>
+                    </form>
+                    <form th:action="@{/Projects}" method="post">
+                        <button type="submit" class="nav-item_modify">Проекты</button>
+                    </form>
+                    <form th:action="@{/Reports}" method="post">
+                        <button type="submit" class="nav-item_modify">Отчеты</button>
+                    </form>
+                    <form th:action="@{/FinsOperations}" method="post">
+                        <button type="submit" class="nav-item_modify">Операции</button>
+                    </form>
+                    <form th:action="@{/FinsCompany}" method="post">
+                        <button type="submit" class="nav-item_modify">Компании</button>
+                    </form>
                     <span class="nav-indicator_modify"></span>
                 </nav>
             </div>
         </nav>
+
+
+        <!-- Primary Filled Modal -->
+        <div id="fill-primary-modal" class="modal fade" tabindex="-1" role="dialog"
+             aria-labelledby="fill-primary-modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-filled bg-primary">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="fill-primary-modalLabel">Создать новый проект</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="pl-3 pr-3" action="#">
+
+
+                            <input class="form-control" name="createProject" type="text"placeholder="Например: Продажа мебели">
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light"
+                                data-dismiss="modal">Отмена</button>
+                        <button type="button" class="btn btn-outline-light">Сохранить</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
     </header>
 
 
@@ -349,9 +397,6 @@
                                     <th>Полное название</th>
                                     <th>ИНН</th>
                                     <th>КПП</th>
-                                    
-
-                                   
                                 </tr>
                                 </thead>
                                 <tbody> <!-- сюда вываливаються данные из в карточки создать проект -->
@@ -366,8 +411,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -378,17 +421,13 @@
                         <h4 class="card-title">Список сотрудников в компании</h4>
                         <h6 class="card-subtitle">Полный список всех проектов. Вы можете изменить или удалить нужный проект, достаточно кликнув по нему.</h6>
                         <div class="table-responsive">
-                            <table id="zero_config" class="table table-striped table-bordered no-wrap table-hover tabel-modif">
+                            <table id="zero_config_1" class="table table-striped table-bordered no-wrap table-hover tabel-modif">
                                 <thead> <!-- Заголовок таблицы -->
                                 <tr>
                                     <th>Название</th>
                                     <th>Начальный остаток</th>
                                     <th>Номер счета</th>
                                     <th>БИК</th>
-                                  
-                                    
-
-                                   
                                 </tr>
                                 </thead>
                                 <tbody> <!-- сюда вываливаються данные из в карточки создать проект -->
@@ -398,14 +437,10 @@
                                         <th th:text="${c.operdate}">0</th><!--Приход-->
                                         <th th:text="${c.amount}">41020202020</th><!--Расход-->
                                         <th th:text="${c.detail}">202020202</th><!--Прибыль-->
-
-                                        
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-
-
                     </div>
                 </div>
             </div>
