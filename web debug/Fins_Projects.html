@@ -280,6 +280,21 @@
 
                     </div>
 
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Привязать компанию компанию</h4>
+                                <h6 class="card-subtitle">Компания нужна для расчета финансовых операций</h6>
+                                <label>Выбрать проект:
+                                    <select name="s" id="company_picklist_id" class="form-control">
+                                        <option value="0">Выберете значение</option>
+                                    </select>
+                                </label>
+                                <button type="reset" class="btn btn-dark">Добавить</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
 
@@ -341,7 +356,7 @@
 <script type="text/javascript">
     //Событие загрузки страницы
     $(document).ready(function(){
-        doAjaxGetProjectList();
+        StartPage();
     });
 </script>
 
