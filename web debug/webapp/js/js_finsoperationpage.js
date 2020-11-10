@@ -21,6 +21,8 @@ $(function(){
         $('#projectidid').val(strProjectId);
         doAjaxGetProjectOperationList(strProjectId);
         doAjaxGetProjectProfit(strProjectId);
+        doAjaxGetContactFinsAccProject(strProjectId);
+        doAjaxGetLovList()//Получение выпадающего списка "Статья"
     });
 
 });
@@ -61,12 +63,20 @@ $(function(){
         $('#fieldoperdateid').attr('value',strOperDt);
         $('#fieldamountid').attr('value',strFinsAmount);
         $('#fielddetailid').attr('value',strFinsDetail);
-        $('#paymentaccinid').attr('value',strPaymentAccIn);
-        $('#paymentaccoutid').attr('value',strPaymentAccOut);
-        $('#finsarticleid').attr('value',strFinsArticle);
+        //$('#paymentaccinid').attr('value',strPaymentAccIn);
+        //$('#paymentaccoutid').attr('value',strPaymentAccOut);
+        $('#paymentaccinid_list').attr('select_value',strPaymentAccIn);
+        SetActiveSelect('#paymentaccinid_list',strPaymentAccIn);
+        $('#paymentaccoutid_list').attr('select_value',strPaymentAccOut);
+        SetActiveSelect('#paymentaccoutid_list',strPaymentAccOut);
+        //$('#finsarticleid').attr('value',strFinsArticle);
+        $('#finsarticleid_list').attr('select_value',strFinsArticle);
+        SetActiveSelect('#finsarticleid_list',strFinsArticle);
         $('#projectidid').attr('value',strProjectId);
         $('#finscontragentid').attr('value',strFinsContrAgent);
+        SetActiveSelect('#contr_agent_select_field',strFinsContrAgent);
         $('#requisitesid').attr('value',strFinsRequisites);
+        SetActiveSelect('#contr_agent_requisits_list',strFinsRequisites);
 
         $('#finsedittypeid').val('update');//update/new/delete
         $('#recordid').val(strFinsRecordId);
@@ -75,9 +85,9 @@ $(function(){
         $('#fieldoperdateid').val(strOperDt);
         $('#fieldamountid').val(strFinsAmount);
         $('#fielddetailid').val(strFinsDetail);
-        $('#paymentaccinid').val(strPaymentAccIn);
-        $('#paymentaccoutid').val(strPaymentAccOut);
-        $('#finsarticleid').val(strFinsArticle);
+        //$('#paymentaccinid').val(strPaymentAccIn);
+        //$('#paymentaccoutid').val(strPaymentAccOut);
+        //$('#finsarticleid').val(strFinsArticle);
         $('#projectidid').val(strProjectId);
         $('#finscontragentid').val(strFinsContrAgent);
         $('#requisitesid').val(strFinsRequisites);
@@ -98,6 +108,7 @@ $(function(){
             $('#transferbt').addClass('active');
             $('#expensebt').removeClass('active');
         }
+
     });
 });
 
@@ -140,6 +151,30 @@ $(function(){
     });
 });
 
+//Событие выбора значения выпадающего "Счет поступления"
+$(function(){
+    $("#paymentaccinid_list").change( function(){
+        var strSelectValue = $('#paymentaccinid_list').val();
+        $('#paymentaccinid_list').attr('select_value',strSelectValue);
+    });
+});
+
+//Событие выбора значения выпадающего "Счет списания"
+$(function(){
+    $("#paymentaccoutid_list").change( function(){
+        var strSelectValue = $('#paymentaccoutid_list').val();
+        $('#paymentaccoutid_list').attr('select_value',strSelectValue);
+    });
+});
+
+//Событие выбора значения выпадающего "Статья"
+$(function(){
+    $("#finsarticleid_list").change( function(){
+        var strSelectValue = $('#finsarticleid_list').val();
+        $('#finsarticleid_list').attr('select_value',strSelectValue);
+    });
+});
+
 //Событие Нажатия на "Приход"
 $(function(){
     $("#arrivalbt").on('click', function(){
@@ -174,9 +209,12 @@ function ClearFinsForm (){
     $('#fieldoperdateid').attr('value','');
     $('#fieldamountid').attr('value','');
     $('#fielddetailid').attr('value','');
-    $('#paymentaccinid').attr('value','');
-    $('#paymentaccoutid').attr('value','');
-    $('#finsarticleid').attr('value','');
+    //$('#paymentaccinid').attr('value','');
+    //$('#paymentaccoutid').attr('value','');
+    $('#paymentaccinid_list').attr('select_value','');
+    $('#paymentaccoutid_list').attr('select_value','');
+    //$('#finsarticleid').attr('value','');
+    $('#finsarticleid_list').attr('select_value','');
     //$('#projectidid').attr('value','');
     $('#finscontragentid').attr('value','');
     $('#requisitesid').attr('value','');
@@ -188,9 +226,9 @@ function ClearFinsForm (){
     $('#fieldoperdateid').val('');
     $('#fieldamountid').val('');
     $('#fielddetailid').val('');
-    $('#paymentaccinid').val('');
-    $('#paymentaccoutid').val('');
-    $('#finsarticleid').val('');
+    //$('#paymentaccinid').val('');
+    //$('#paymentaccoutid').val('');
+    //$('#finsarticleid').val('');
     //$('#projectidid').val('');
     $('#finscontragentid').val('');
     $('#requisitesid').val('');
@@ -277,6 +315,44 @@ function JSONStringToRequisitsPickList(JSONString) {
     $("#contr_agent_requisits_list").html(strRequisitsPickListContext);
 }
 
+//Парсинг JSON списка счетов сотрудников компаний проекта
+function JSONStringToContactFinsAccList(JSONString) {
+    var strContactName = '';
+    var strContactFinsAcc = '';
+    var strContactFinsAccListContext = '<option value="0">Выберете значение</option>';
+
+    var obj = jQuery.parseJSON(JSONString);
+    $.each(obj, function (index, value) {
+        if(value['first_name'] == null){strContactName = 'null';} else {strContactName = value['first_name'].toString();}
+        if(value['fins_acc'] == null){strContactFinsAcc = 'null';} else {strContactFinsAcc = value['fins_acc'].toString();}
+        strContactFinsAccListContext = strContactFinsAccListContext + '<option value = "' + strContactFinsAcc + '">' + strContactName + '</option>';
+    });
+    $("#paymentaccoutid_list").html(strContactFinsAccListContext);
+    $("#paymentaccinid_list").html(strContactFinsAccListContext);
+}
+
+//Парсинг JSON списка LOV (Поле "Статья")
+function JSONStringToFinsArticleList(JSONString) {
+    var strFinsArticleId = '';
+    var strFinsArticleValue = '';
+    var strFinsArticleListContext = '<option value="0">Выберете значение</option>';
+
+    var obj = jQuery.parseJSON(JSONString);
+    $.each(obj, function (index, value) {
+        strFinsArticleId = value['id'].toString();
+        if(value['text_val'] == null){strFinsArticleValue = 'null';} else {strFinsArticleValue = value['text_val'].toString();}
+        strFinsArticleListContext = strFinsArticleListContext + '<option value = "' + strFinsArticleId + '">' + strFinsArticleValue + '</option>';
+    });
+    $("#finsarticleid_list").html(strFinsArticleListContext);
+}
+
+//Функция установки выбранного значения
+function SetActiveSelect(ListSelector,SelectedVal){
+    $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
+    $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
+}
+
+
 //-----------Ajax Functions------------
 //Ajax получение списка проектов в левой панели
 function doAjaxGetProjectList() {
@@ -335,9 +411,12 @@ function doAjaxFinsOperation() {
     //Доступные поля
     var strFinsAmount = $('#fieldamountid').val();//Сумма
     var strFinsDetail = $('#fielddetailid').val();//Детали
-    var strPaymentAccIn = $('#paymentaccinid').val();//Счет поступления
-    var strPaymentAccOut = $('#paymentaccoutid').val();//Счет списания
-    var strFinsArticle = $('#finsarticleid').val();//Статья
+    //var strPaymentAccIn = $('#paymentaccinid').val();//Счет поступления
+    //var strPaymentAccOut = $('#paymentaccoutid').val();//Счет списания
+    var strPaymentAccIn = $('#paymentaccinid_list').attr('select_value');
+    var strPaymentAccOut = $('#paymentaccoutid_list').attr('select_value');
+    //var strFinsArticle = $('#finsarticleid').val();//Статья
+    var strFinsArticle =  $('#finsarticleid_list').attr('select_value');
 
     $.ajax({
         url : 'FinsOperationForm',
@@ -401,6 +480,24 @@ function doAjaxGetContragentRequisits(ContragentId) {
     });
 };
 
+//Ajax получение списка счетов сотрудников проекта
+function doAjaxGetContactFinsAccProject(ProjectId) {
+    $.ajax({
+        url : 'GetContactFinsAccProject',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+            ProjectId: ProjectId
+        }),
+        success: function (data) {
+            //console.log(data.text);
+            JSONStringToContactFinsAccList(data.text);
+        }
+    });
+};
+
 //Ajax получения отчета
 function doAjaxGetProjectProfit(ProjectId) {
     $.ajax({
@@ -414,7 +511,25 @@ function doAjaxGetProjectProfit(ProjectId) {
             ProjectId: ProjectId
         }),
         success: function (data) {
-            $('#projectprofitid').html(data.text);
+            var obj = jQuery.parseJSON(data.text);
+            $('#projectprofitid').html(obj.ProjectProfit);
+        }
+    });
+};
+
+//Ajax получение списка Lov
+function doAjaxGetLovList() {
+    $.ajax({
+        url : 'GetLovList',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+            //
+        }),
+        success: function (data) {
+            JSONStringToFinsArticleList(data.text)//Формирование выпадающего списка
         }
     });
 };
