@@ -226,7 +226,6 @@ $(function(){
 //------------Общие функции----------------------------------
 //Очистить форму финансовой операции
 function ClearFinsForm (){
-    //$('#finsedittypeid').attr('value','');
     $('#recordid').attr('value','');
     $('#fieldlockflgid').attr('value','');
     $('#finsopertypeid').attr('value','');
@@ -246,10 +245,15 @@ function ClearFinsForm (){
     $('#fielddetailid').val('');
     $('#finscontragentid').val('');
     $('#requisitesid').val('');
-    $('#paymentaccinid_list').find('[selected]').prop('selected', false);
-    $('#paymentaccoutid_list').find('[selected]').prop('selected', false);
-    $('#finsarticleid_list').find('[selected]').prop('selected', false);
-    $('#contr_agent_requisits_list').find('[selected]').prop('selected', false);
+
+
+    $('#paymentaccinid_list option:contains("Выберете значение")').prop('selected', true);
+    $('#paymentaccoutid_list option:contains("Выберете значение")').prop('selected', true);
+    $('#finsarticleid_list option:contains("Выберете значение")').prop('selected', true);
+    $('#contr_agent_requisits_list option:contains("Выберете значение")').prop('selected', true);
+
+
+
 };
 
 //Парсинг строки JSON в список финансовых операций и заполнение таблицы

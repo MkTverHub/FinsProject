@@ -246,14 +246,12 @@ function ClearFinsForm (){
     $('#finscontragentid').val('');
     $('#requisitesid').val('');
 
-    /*Надо сделать выбор дефолтного значения
-    $('#paymentaccinid_list').find('[selected]').prop('selected', false);
-    $('#paymentaccoutid_list').find('[selected]').prop('selected', false);
-    $('#finsarticleid_list').find('[selected]').prop('selected', false);
-    $('#contr_agent_requisits_list').find('[selected]').prop('selected', false);
-    */
-
-
+    //Сброс списков
+    $('#paymentaccinid_list option:contains("Выберете значение")').prop('selected', true);
+    $('#paymentaccoutid_list option:contains("Выберете значение")').prop('selected', true);
+    $('#finsarticleid_list option:contains("Выберете значение")').prop('selected', true);
+    $('#contr_agent_select_field option:contains("Выберете значение")').prop('selected', true);
+    $('#contr_agent_requisits_list option:contains("Выберете значение")').prop('selected', true);
 
 };
 
