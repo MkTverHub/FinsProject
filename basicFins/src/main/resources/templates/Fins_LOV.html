@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="webapp/images/favicon.png">
+    <title>FinSPETSEL</title>
+    <!-- Custom CSS -->
+    
+    <!-- Custom CSS -->
+    <link href="webapp/css/normalize.css" rel="stylesheet">
+    <link href="webapp/css/style.css" rel="stylesheet">
+    <link href="webapp/css/main.css" rel="stylesheet"> 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <script src="webapp/js/jquery-1.9.1.min.js"></script><!--Подцепляем jquery-->
+    <script src="webapp/js/js_finslovpage.js"></script><!--Подцепляем внешний скрипт-->
+
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header class="topbar">
+
+        <nav class="navbar top-navbar navbar-expand-md">
+            <div class="navbar-header">
+                 <div class="navbar-brand">
+                    <!-- Logo icon -->
+                    <a href="index.html">
+                        <b class="logo-icon">
+                            <!-- Dark Logo icon -->
+                            <img src="webapp/images/logo-icon.png" alt="homepage1" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <img src="webapp/images/logo-text.png" alt="homepage2" />
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+                    <!-- Кнопка СОЗДАТЬ НОВЫЙ ПРОЕКТ  -->
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <button type="button" class="btn btn-outline-secondary btn-rounded" data-toggle="modal"
+                                    data-target="#fill-primary-modal">Создать проект</button>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Меню  -->
+                <nav class="nav_modify">
+                    <form th:action="@{/Contragents}" method="post">
+                        <button type="submit" class="nav-item_modify">Контрагенты</button>
+                    </form>
+                    <form th:action="@{/Projects}" method="post">
+                        <button type="submit" class="nav-item_modify">Проекты</button>
+                    </form>
+                    <form th:action="@{/Reports}" method="post">
+                        <button type="submit" class="nav-item_modify">Отчеты</button>
+                    </form>
+                    <form th:action="@{/FinsOperations}" method="post">
+                        <button type="submit" class="nav-item_modify">Операции</button>
+                    </form>
+                    <form th:action="@{/FinsCompany}" method="post">
+                        <button type="submit" class="nav-item_modify">Компании</button>
+                    </form>
+                    <form th:action="@{/FinsLOV}" method="post">
+                        <button type="submit" class="nav-item_modify">Списки значений</button>
+                    </form>
+                    <span class="nav-indicator_modify"></span>
+                </nav>
+            </div>
+        </nav>
+
+
+        <!-- Primary Filled Modal -->
+            <div id="fill-primary-modal" class="modal fade" tabindex="-1" role="dialog"
+                aria-labelledby="fill-primary-modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modal-filled bg-primary">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="fill-primary-modalLabel">Создать новый проект</h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="pl-3 pr-3" action="#">
+                                    <input class="form-control" name="createProject" type="text"placeholder="Например: Продажа мебели">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light"
+                                data-dismiss="modal">Отмена</button>
+                            <button type="button" class="btn btn-outline-light">Сохранить</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        
+    </header>
+
+
+    
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section class="left-menu">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="left-menu-nav">
+                <ul id="left-menunav">
+
+                   
+                   <!-- Заголовок раздела -->
+                    <li class="nav-small-cap"><span class="hide-menu">Бизнес отчеты</span></li> 
+                    <!-- Заголовок раздела -->
+                    <li id="2rowid" class="left-menu-item left-menu-selected-link">
+                        <input type="button" class="left-menu-link finsproject_list_row" projnum="1" value="Аналитика"><!--класс finsproject_list_row дял скрипта-->
+                    </li>
+                    
+                    <!-- Разделитель между разделами -->
+                    <li class="list-divider"></li> 
+
+                    <!-- Заголовок раздела -->
+                    <li class="nav-small-cap"><span class="hide-menu">Ваши проекты</span></li>
+
+                    <!--СПИСОК ПРОЕКТОВ (заполняется Ajax)-->
+                    <div id="projectlistpanel"></div>
+
+                    <!-- Разделитель между разделами -->
+                    <li class="list-divider"></li> 
+
+
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </section>
+    
+
+
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Проекты</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mt-2 p-0">
+                                    <li class="breadcrumb-item text-muted active" aria-current="page"><a href="index.html">Ваши проекты</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        <div class="container-fluid">
+
+                <!-- *************************************************************** -->
+                <!-- Карточка с формой -->
+                <!-- *************************************************************** -->
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-8">
+
+                        
+                        <div class="card"> <!-- модуль c формой -->
+                            <div class="card-body">
+
+                                <!-- Форма с полями -->
+                                <form method="post">
+                                    <div class="form-body">
+                                        <!-- Системное. Тип операции-->
+                                        <div class="form-group f-d-n">
+                                            <input type="text" class="form-control" id="lov_db_action">
+                                        </div>
+                                        <!-- Системное. Поле ввода Id-->
+                                        <div class="form-group f-d-n">
+                                            <input type="text" class="form-control" id="lov_record_id">
+                                        </div>
+
+                                        <!-- Поле ввода "Значение"-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Значение</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                     <div class="row">
+                                                         <div class="col-md-12">
+                                                             <input type="text" id="lov_value" class="form-control">
+                                                         </div>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода "Описание"-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Описание</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="lov_description" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода "Характеристики"-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Характеристики</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <!--<input type="text" id="lov_options" class="form-control">-->
+                                                            <select id="lov_options_list" class="form-control">
+                                                                <option value="0">Выберете значение</option>
+                                                                <option value="Транзакционная">Транзакционная</option>
+                                                                <option value="Финансовая">Финансовая</option>
+                                                                <option value="Инвестиционная">Инвестиционная</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода "Тип"-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Тип</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <!--<input type="text" id="lov_type" class="form-control">-->
+                                                            <select id="lov_type_list" class="form-control">
+                                                                <option value="0">Выберете значение</option>
+                                                                <option value="Плановая">Плановая</option>
+                                                                <option value="Расход">Расход</option>
+                                                                <option value="Перевод">Перевод</option>
+                                                                <option value="Приход">Приход</option>
+                                                                <option value="Ввод финансов">Ввод финансов</option>
+                                                                <option value="Операция с налогами">Операция с налогами</option>
+                                                                <option value="Покупка">Покупка</option>
+                                                                <option value="Продажа">Продажа</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                                <button onclick="InsertLOV();" class="btn btn-info">Создать</button>
+                                <button onclick="DeleteLOV();" class="btn btn-info">Удалить</button>
+                                <button onclick="SaveLOV();" class="btn btn-info">Сохранить</button>
+                            </div>
+                        </div> <!-- модуль c формой .end -->
+
+                    </div>
+
+                </div>
+
+
+        <!-- *************************************************************** -->
+        <!-- Таблица - Список проектов -->
+        <!-- *************************************************************** -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Список проектов</h4>
+                        <h6 class="card-subtitle">Полный список всех проектов. Вы можете изменить или удалить нужный проект, достаточно кликнув по нему.</h6>
+                        <div class="table-responsive">
+                            <table id="finslov_table_list" class="table table-striped table-bordered no-wrap table-hover tabel-modif">
+                                <thead> <!-- Заголовок таблицы -->
+                                <tr>
+                                    <th>№</th>
+                                    <th>Значение</th>
+                                    <th>Описание</th>
+                                    <th>Характеристики</th>
+                                    <th>Тип</th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="finslov_table_body">
+                                    <!--Тело таблицы формируется скриптом при загрузки страницы, обращением ajax к контроллеру-->
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- *************************************************************** -->
+        <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+        <!-- *************************************************************** -->
+                
+        </div>
+    
+    </section>
+
+</div>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        StartPage();
+    });
+</script>
+
+</body>
+
+<!------------FRAMEWORK Script----------------------------->
+<!-- Bootstrap core JavaScript-->
+<script src="/framework/vendor/jquery/jquery.min.js"></script>
+<script src="/framework/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/framework/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/framework/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="/framework/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/framework/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="/framework/js/demo/datatables-demo.js"></script>
+
+</html>

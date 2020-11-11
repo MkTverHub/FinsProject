@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fbb93aff-60b0-44c2-8af6-56f2d609c56b" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="basicFins" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="1.8" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="9" />
+  </component>
+  <component name="ProjectId" id="1hvXqnyZ95kTo7xJnWI8IiCWjAw" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600889153940" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\webapp\js" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sweetcard.basic.config" />
+      <recent name="com.sweetcard.basic.dao.config" />
+      <recent name="com.sweetcard.basic.service" />
+      <recent name="com.sweetcard.basic.dao.entities" />
+      <recent name="com.sweetcard.basic.dao.repository" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\IVRIBIN\IdeaProjects\basicFins\src\main\resources\templates" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\static\webapp\js" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\templates" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\static\webapp" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\webapp" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn spring-boot:run" />
+      <command value="mvn clean package" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="HEIGHT" value="0" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="WIDTH" value="0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="basic" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sweetcard.basic.Application" />
+      <option name="WORKING_DIRECTORY" value="file://C:/Program Files/Apache Software Foundation/Tomcat 9.0" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbb93aff-60b0-44c2-8af6-56f2d609c56b" name="Default" comment="" />
+      <created>1580314077757</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580314077757</updated>
+      <workItem from="1580314081681" duration="3197000" />
+      <workItem from="1580330581704" duration="146000" />
+      <workItem from="1580409480706" duration="6109000" />
+      <workItem from="1580479248086" duration="627000" />
+      <workItem from="1580638269778" duration="38000" />
+      <workItem from="1580648764445" duration="12111000" />
+      <workItem from="1580679100983" duration="592000" />
+      <workItem from="1580728139696" duration="5525000" />
+      <workItem from="1580822174464" duration="2341000" />
+      <workItem from="1580826401170" duration="8212000" />
+      <workItem from="1581078080281" duration="250000" />
+      <workItem from="1581078344697" duration="6323000" />
+      <workItem from="1581770668743" duration="1372000" />
+      <workItem from="1581782530402" duration="4033000" />
+      <workItem from="1581786603870" duration="1201000" />
+      <workItem from="1581850347197" duration="8931000" />
+      <workItem from="1582101960951" duration="27685000" />
+      <workItem from="1582637687340" duration="6262000" />
+      <workItem from="1582657539135" duration="15336000" />
+      <workItem from="1582727358585" duration="42900000" />
+      <workItem from="1583228364901" duration="9145000" />
+      <workItem from="1583331432099" duration="12363000" />
+      <workItem from="1583665865636" duration="52000" />
+      <workItem from="1583759939080" duration="31000" />
+      <workItem from="1583760005437" duration="21874000" />
+      <workItem from="1584089406911" duration="59000" />
+      <workItem from="1584185684725" duration="4649000" />
+      <workItem from="1584208141743" duration="2785000" />
+      <workItem from="1584274804628" duration="6902000" />
+      <workItem from="1584527613372" duration="30000" />
+      <workItem from="1584614380584" duration="18583000" />
+      <workItem from="1584715416556" duration="28791000" />
+      <workItem from="1584965018790" duration="18400000" />
+      <workItem from="1585290498947" duration="29000" />
+      <workItem from="1585306524256" duration="7595000" />
+      <workItem from="1585749889067" duration="1524000" />
+      <workItem from="1586201847349" duration="4283000" />
+      <workItem from="1586375677544" duration="3886000" />
+      <workItem from="1586444380867" duration="54000" />
+      <workItem from="1586449857207" duration="5186000" />
+      <workItem from="1586630157646" duration="4816000" />
+      <workItem from="1586773981063" duration="985000" />
+      <workItem from="1586969610495" duration="2368000" />
+      <workItem from="1587403940316" duration="494000" />
+      <workItem from="1587567220827" duration="761000" />
+      <workItem from="1587668954043" duration="3949000" />
+      <workItem from="1587995623578" duration="288000" />
+      <workItem from="1588101686341" duration="5229000" />
+      <workItem from="1588190895676" duration="6727000" />
+      <workItem from="1588776937545" duration="3933000" />
+      <workItem from="1589308511856" duration="1369000" />
+      <workItem from="1589462181204" duration="643000" />
+      <workItem from="1589572328782" duration="4548000" />
+      <workItem from="1589577410061" duration="4069000" />
+      <workItem from="1589832801272" duration="1671000" />
+      <workItem from="1590005794995" duration="6538000" />
+      <workItem from="1590656265070" duration="49000" />
+      <workItem from="1590694740867" duration="1604000" />
+      <workItem from="1591291005133" duration="14227000" />
+      <workItem from="1592419542027" duration="15618000" />
+      <workItem from="1592511057445" duration="6978000" />
+      <workItem from="1592518289461" duration="1876000" />
+      <workItem from="1592942039926" duration="4507000" />
+      <workItem from="1593028854916" duration="8828000" />
+      <workItem from="1593593307087" duration="17976000" />
+      <workItem from="1594066704561" duration="6485000" />
+      <workItem from="1594370796214" duration="9025000" />
+      <workItem from="1595364283349" duration="3358000" />
+      <workItem from="1595533582711" duration="5617000" />
+      <workItem from="1595966988470" duration="2370000" />
+      <workItem from="1595969464515" duration="472000" />
+      <workItem from="1596137770940" duration="2962000" />
+      <workItem from="1597693642777" duration="788000" />
+      <workItem from="1597949496719" duration="2991000" />
+      <workItem from="1598614435591" duration="25000" />
+      <workItem from="1600721818325" duration="142000" />
+      <workItem from="1600888067224" duration="1496000" />
+      <workItem from="1600889727060" duration="967000" />
+      <workItem from="1600891935940" duration="143000" />
+      <workItem from="1600892739791" duration="2763000" />
+      <workItem from="1600944675652" duration="1132000" />
+      <workItem from="1601011787471" duration="19288000" />
+      <workItem from="1601406864344" duration="9967000" />
+      <workItem from="1601655642175" duration="6023000" />
+      <workItem from="1602328112010" duration="14264000" />
+      <workItem from="1602704838216" duration="831000" />
+      <workItem from="1602706120715" duration="1612000" />
+      <workItem from="1602937627700" duration="17760000" />
+      <workItem from="1603222509251" duration="5991000" />
+      <workItem from="1603621267686" duration="11442000" />
+      <workItem from="1603910908240" duration="10789000" />
+      <workItem from="1603982488832" duration="3128000" />
+      <workItem from="1604342589753" duration="6091000" />
+      <workItem from="1604499600756" duration="6860000" />
+      <workItem from="1604771932745" duration="616000" />
+      <workItem from="1605035699498" duration="8026000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="$PROJECT_DIR$" />
+    <option value="clean package" />
+    <option value="spring-boot:run" />
+  </component>
+</project>
