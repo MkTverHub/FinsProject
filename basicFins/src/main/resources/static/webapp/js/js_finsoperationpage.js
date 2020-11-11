@@ -5,6 +5,7 @@ function StartPage() {
     //alert('StartPage');
     doAjaxGetProjectList();//Получение списка проектов в левой панели
     doAjaxGetContragentsList();//Получение списка контрагентов
+    SetROForm();//Сделать формк RO
 };
 
 
@@ -43,6 +44,7 @@ $(function(){
     var strFinsRequisites = "";
 
     $("#financetable").on("click", ".fincrowlink", function () {
+        UnSetROForm();
         strFinsRecordId = $(this).find('.fieldid').html();
         strFinsBlockFlg = $(this).find('.fieldlockflg').html();
         strFinsOpertype = $(this).find('.fieldfinsopertype').html();
@@ -97,16 +99,22 @@ $(function(){
             $('#arrivalbt').addClass('active');
             $('#transferbt').removeClass('active');
             $('#expensebt').removeClass('active');
+            $('#divpaymentaccoutid').hide();
+            $('#divpaymentaccinid').show();
         }
         if(strFinsOpertype == 'expense'){
             $('#arrivalbt').removeClass('active');
             $('#transferbt').removeClass('active');
             $('#expensebt').addClass('active');
+            $('#divpaymentaccoutid').show();
+            $('#divpaymentaccinid').hide();
         }
         if(strFinsOpertype == 'transfer'){
             $('#arrivalbt').removeClass('active');
             $('#transferbt').addClass('active');
             $('#expensebt').removeClass('active');
+            $('#divpaymentaccoutid').show();
+            $('#divpaymentaccinid').show();
         }
 
     });
@@ -114,6 +122,7 @@ $(function(){
 
 //Событие нажатия на кнопку "Создать" финансовую операцию
 function NewFinsOperation(){
+    UnSetROForm();
     $('#finsedittypeid').attr('value','insert');
     $('#finsedittypeid').val('insert');
     ClearFinsForm();
@@ -125,11 +134,20 @@ function DeleteFinsOperation(){
     $('#finsedittypeid').val('delete');
     doAjaxFinsOperation();
     ClearFinsForm();
+    SetROForm();
+};
+
+
+//Событие нажатия на кнопку "Отменить" финансовую операцию
+function ResetFinsOperation(){
+    ClearFinsForm();
+    SetROForm();
 };
 
 //Событие нажатия на кнопку "Сохранить" финансовую операцию
 function SaveFinsOperation(){
     doAjaxFinsOperation();
+    SetROForm();
 };
 
 //Событие выбора значения выпадающего списка контрагента
@@ -180,6 +198,8 @@ $(function(){
     $("#arrivalbt").on('click', function(){
         $('#finsopertypeid').attr('value','profit');
         $('#finsopertypeid').val('profit');
+        $('#divpaymentaccoutid').hide();
+        $('#divpaymentaccinid').show();
     });
 });
 
@@ -188,6 +208,8 @@ $(function(){
     $("#expensebt").on('click', function(){
         $('#finsopertypeid').attr('value','expense');
         $('#finsopertypeid').val('expense');
+        $('#divpaymentaccoutid').show();
+        $('#divpaymentaccinid').hide();
     });
 });
 
@@ -196,42 +218,43 @@ $(function(){
     $("#transferbt").on('click', function(){
         $('#finsopertypeid').attr('value','transfer');
         $('#finsopertypeid').val('transfer');
+        $('#divpaymentaccoutid').show();
+        $('#divpaymentaccinid').show();
     });
 });
 
 //------------Общие функции----------------------------------
 //Очистить форму финансовой операции
 function ClearFinsForm (){
-    //$('#finsedittypeid').attr('value','');
     $('#recordid').attr('value','');
     $('#fieldlockflgid').attr('value','');
     $('#finsopertypeid').attr('value','');
     $('#fieldoperdateid').attr('value','');
     $('#fieldamountid').attr('value','');
     $('#fielddetailid').attr('value','');
-    //$('#paymentaccinid').attr('value','');
-    //$('#paymentaccoutid').attr('value','');
     $('#paymentaccinid_list').attr('select_value','');
     $('#paymentaccoutid_list').attr('select_value','');
-    //$('#finsarticleid').attr('value','');
     $('#finsarticleid_list').attr('select_value','');
-    //$('#projectidid').attr('value','');
     $('#finscontragentid').attr('value','');
     $('#requisitesid').attr('value','');
-
-    //$('#finsedittypeid').val('');
     $('#recordid').val('');
     $('#fieldlockflgid').val('');
     $('#finsopertypeid').val('');
     $('#fieldoperdateid').val('');
     $('#fieldamountid').val('');
     $('#fielddetailid').val('');
-    //$('#paymentaccinid').val('');
-    //$('#paymentaccoutid').val('');
-    //$('#finsarticleid').val('');
-    //$('#projectidid').val('');
     $('#finscontragentid').val('');
     $('#requisitesid').val('');
+
+    /*Надо сделать выбор дефолтного значения
+    $('#paymentaccinid_list').find('[selected]').prop('selected', false);
+    $('#paymentaccoutid_list').find('[selected]').prop('selected', false);
+    $('#finsarticleid_list').find('[selected]').prop('selected', false);
+    $('#contr_agent_requisits_list').find('[selected]').prop('selected', false);
+    */
+
+
+
 };
 
 //Парсинг строки JSON в список финансовых операций и заполнение таблицы
@@ -350,6 +373,28 @@ function JSONStringToFinsArticleList(JSONString) {
 function SetActiveSelect(ListSelector,SelectedVal){
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
+}
+
+//Сделать форму RO
+function SetROForm(){
+    $('#fieldamountid').attr('readonly', true);
+    $('#paymentaccinid_list').attr('disabled', true);
+    $('#paymentaccoutid_list').attr('disabled', true);
+    $('#contr_agent_select_field').attr('disabled', true);
+    $('#finsarticleid_list').attr('disabled', true);
+    $('#fielddetailid').attr('readonly', true);
+    $('#contr_agent_requisits_list').attr('disabled', true);
+}
+
+//Сделать форму not RO
+function UnSetROForm(){
+    $('#fieldamountid').attr('readonly', false);
+    $('#paymentaccinid_list').attr('disabled', false);
+    $('#paymentaccoutid_list').attr('disabled', false);
+    $('#contr_agent_select_field').attr('disabled', false);
+    $('#finsarticleid_list').attr('disabled', false);
+    $('#fielddetailid').attr('readonly', false);
+    $('#contr_agent_requisits_list').attr('disabled', false);
 }
 
 
