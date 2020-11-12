@@ -6,6 +6,8 @@ function StartPage() {
     doAjaxGetProjectList();//Получение списка проектов в левой панели
     doAjaxGetContragentsList();//Заполнение таблицы контрагентов
     document.body.HashData = {ActiveContragentId:''};
+    SetROContragentForm();
+    SetRORequisitForm();
 };
 
 //-------------Функции событий-----------------
@@ -18,6 +20,7 @@ $(function(){
     var strContragenPhone = '';
     var strContragenMail = '';
     $("#contr_agent_table_body").on("click", ".contragentlist_row", function () {
+        UnSetROContragentForm();
         strContragentId = $(this).find('.cntr_id').attr('value');
         strContragentName = $(this).find('.cntr_name').attr('value');
         strContragenDescription = $(this).find('.cntr_description').attr('value');
@@ -46,36 +49,57 @@ $(function(){
 function SaveContragent(){
     doAjaxContragentDBOperation();
     ClearContragentForm();
+    SetROContragentForm();
 };
 //Событие нажатия на кнопку "Удалить" контрагента
 function DeleteContragent(){
     $('#cntragnt_db_action').attr('value','delete');//update/insert/delete
     doAjaxContragentDBOperation();
     ClearContragentForm();
+    SetROContragentForm();
 };
 //Событие нажатия на кнопку "Создать" контрагента
 function InsertContragent(){
+    UnSetROContragentForm();
     ClearContragentForm();
     $('#cntragnt_db_action').attr('value','insert');//update/insert/delete
 };
+//Событие нажатия на кнопку "Отменить" контрагента
+function ResetContragent(){
+    ClearContragentForm();
+    SetROContragentForm();
+};
+
 
 //Событие нажатия на кнопку "Сохранить" Реквезит
 function SaveContragentReq(){
     doAjaxRequisitDBOperation();
+    ClearRequisitForm();
+    SetRORequisitForm();
 };
 //Событие нажатия на кнопку "Создать" Реквезит
 function InsertContragentReq(){
+    UnSetRORequisitForm();
+    ClearRequisitForm();
     $('#requisit_db_action').attr('value','insert');//update/insert/delete
 };
 //Событие нажатия на кнопку "Удалить" Реквезит
 function DeleteContragentReq(){
     $('#requisit_db_action').attr('value','delete');//update/insert/delete
     doAjaxRequisitDBOperation();
+    ClearRequisitForm();
+    SetRORequisitForm();
+};
+//Событие нажатия на кнопку "Отменить" Реквезит
+function ResetContragentReq(){
+    ClearRequisitForm();
+    SetRORequisitForm();
 };
 
 //Событие нажатия на строку реквизита
 $(function(){
     $("#tb_cntragnt_requisits").on("click", ".requisitslist_row", function () {
+        UnSetRORequisitForm();
         $('#requisit_db_action').attr('value','update');
         $('#requisit_id').attr('value',$(this).find('.cntr_req_id').attr('value'));
         $('#requisit_name').val($(this).find('.cntr_req_name').attr('value'));
@@ -319,7 +343,6 @@ function JSONStringToContragentReqTable(JSONString) {
 };
 
 
-
 //Чистка формы контрагента
 function ClearContragentForm(){
     $('#cntragnt_db_action').attr('value','');//update/insert/delete
@@ -334,3 +357,75 @@ function ClearContragentForm(){
     $('#cntragnt_mail').val('');
     $('#cntragnt_phone').val('');
 };
+
+//Чистка формы Реквезита
+function ClearRequisitForm(){
+    $('#requisit_db_action').attr('value','');
+    $('#requisit_id').attr('value','');
+    $('#requisit_name').val('');
+    $('#requisit_description').val('');
+    $('#requisit_ReqINN').val('');
+    $('#requisit_ReqKPP').val('');
+    $('#requisit_ReqFinsAcc').val('');
+    $('#requisit_ReqBIK').val('');
+    $('#requisit_ReqBankName').val('');
+    $('#requisit_ReqCrspAcc').val('');
+    $('#requisit_ReqAddrIndex').val('');
+    $('#requisit_ReqAddrCity').val('');
+    $('#requisit_ReqAddrString').val('');
+    $('#requisit_ReqPhoneNum').val('');
+    $('#requisit_ReqEmail').val('');
+    $('#requisit_ReqWebSite').val('');
+};
+
+//Сделать форму Контрагента RO
+function SetROContragentForm(){
+    $('#cntragnt_name').attr('readonly', true);
+    $('#cntragnt_desqription').attr('readonly', true);
+    $('#cntragnt_mail').attr('readonly', true);
+    $('#cntragnt_phone').attr('readonly', true);
+}
+
+//Сделать форму Контрагента not RO
+function UnSetROContragentForm(){
+    $('#cntragnt_name').attr('readonly', false);
+    $('#cntragnt_desqription').attr('readonly', false);
+    $('#cntragnt_mail').attr('readonly', false);
+    $('#cntragnt_phone').attr('readonly', false);
+}
+
+//Сделать форму Реквезита RO
+function SetRORequisitForm(){
+    $('#requisit_name').attr('readonly', true);
+    $('#requisit_description').attr('readonly', true);
+    $('#requisit_ReqINN').attr('readonly', true);
+    $('#requisit_ReqKPP').attr('readonly', true);
+    $('#requisit_ReqFinsAcc').attr('readonly', true);
+    $('#requisit_ReqBIK').attr('readonly', true);
+    $('#requisit_ReqBankName').attr('readonly', true);
+    $('#requisit_ReqCrspAcc').attr('readonly', true);
+    $('#requisit_ReqAddrIndex').attr('readonly', true);
+    $('#requisit_ReqAddrCity').attr('readonly', true);
+    $('#requisit_ReqAddrString').attr('readonly', true);
+    $('#requisit_ReqPhoneNum').attr('readonly', true);
+    $('#requisit_ReqEmail').attr('readonly', true);
+    $('#requisit_ReqWebSite').attr('readonly', true);
+}
+
+//Сделать форму Реквезита not RO
+function UnSetRORequisitForm(){
+    $('#requisit_name').attr('readonly', false);
+    $('#requisit_description').attr('readonly', false);
+    $('#requisit_ReqINN').attr('readonly', false);
+    $('#requisit_ReqKPP').attr('readonly', false);
+    $('#requisit_ReqFinsAcc').attr('readonly', false);
+    $('#requisit_ReqBIK').attr('readonly', false);
+    $('#requisit_ReqBankName').attr('readonly', false);
+    $('#requisit_ReqCrspAcc').attr('readonly', false);
+    $('#requisit_ReqAddrIndex').attr('readonly', false);
+    $('#requisit_ReqAddrCity').attr('readonly', false);
+    $('#requisit_ReqAddrString').attr('readonly', false);
+    $('#requisit_ReqPhoneNum').attr('readonly', false);
+    $('#requisit_ReqEmail').attr('readonly', false);
+    $('#requisit_ReqWebSite').attr('readonly', false);
+}

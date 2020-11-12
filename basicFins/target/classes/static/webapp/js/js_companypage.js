@@ -8,11 +8,15 @@ function StartPage() {
     //doAjaxGetProjectList();//Получение списка проектов в левой панели
     //doAjaxGetContragentsList();//Заполнение таблицы контрагентов
     document.body.HashData = {ActiveCompanytId:''};
+    SetROCompanyForm();
+    SetROContactForm();
 };
 
 //-------------Функции событий-----------------
 //Событие нажатия на кнопку "Создать" компанию
 function InsertCompany(){
+    UnSetROCompanyForm();
+    CleanCompanyForm();
     $('#company_db_action').attr('value','insert');//update/insert/delete
 };
 //Событие нажатия на кнопку "Удалить" компанию
@@ -20,11 +24,18 @@ function DeleteCompany(){
     $('#company_db_action').attr('value','delete');
     doAjaxCompanytDBOperation();
     CleanCompanyForm();
+    SetROCompanyForm();
 };
 //Событие нажатия на кнопку "Сохранить" компанию
 function SaveCompany(){
     doAjaxCompanytDBOperation();
     CleanCompanyForm();
+    SetROCompanyForm();
+};
+//Событие нажатия на кнопку "Отменить" компанию
+function ResetCompany(){
+    CleanCompanyForm();
+    SetROCompanyForm();
 };
 
 //Событие нажатия на строку компании
@@ -33,6 +44,7 @@ $(function(){
     var strCompanytId = '';
 
     $('#company_table_body_id').on('click', '.companylist_row', function () {
+        UnSetROCompanyForm();
         $('#company_db_action').attr('value',strDBOperation);
         strCompanytId = $(this).find('.company_id').attr('value');
         doAjaxGetCompanyContactsList(strCompanytId);
@@ -48,6 +60,8 @@ $(function(){
 
 //Событие нажатия на кнопку "Создать" "Сотрудники"
 function InsertContact(){
+    UnSetROContactForm();
+    CleanContactForm();
     $('#contact_db_action').attr('value','insert');//update/insert/delete
 };
 
@@ -56,12 +70,20 @@ function DeleteContact(){
     $('#contact_db_action').attr('value','delete');
     doAjaxContactDBOperation();
     CleanContactForm();
+    SetROContactForm();
 };
 
 //Событие нажатия на кнопку "Сохранить" "Сотрудники"
 function SaveContact(){
     doAjaxContactDBOperation();
     CleanContactForm();
+    SetROContactForm();
+};
+
+//Событие нажатия на кнопку "Отменить" "Сотрудники"
+function ResetContact(){
+    CleanContactForm();
+    SetROContactForm();
 };
 
 //Событие нажатия на строку "Сотрудники"
@@ -69,6 +91,7 @@ $(function(){
     var strDBOperation = "update";//update/insert/delete
 
     $("#contact_table_body_id").on("click", ".contactlist_row", function () {
+        UnSetROContactForm();
         $('#contact_db_action').attr('value',strDBOperation);
         $('#contact_id').attr('value',$(this).find('.contact_id').attr('value'));
         $('#contact_first_name_id').val($(this).find('.contact_first_name').attr('value'));
@@ -243,3 +266,35 @@ function CleanContactForm() {
     $('#contact_balance_id').val('');
     $('#contact_fins_acc_id').val('');
 };
+
+//Сделать форму Компания RO
+function SetROCompanyForm(){
+    $('#company_name').attr('readonly', true);
+    $('#company_full_name').attr('readonly', true);
+    $('#company_inn').attr('readonly', true);
+    $('#company_kpp').attr('readonly', true);
+    $('#company_fins_acc').attr('readonly', true);
+}
+
+//Сделать форму Компания not RO
+function UnSetROCompanyForm(){
+    $('#company_name').attr('readonly', false);
+    $('#company_full_name').attr('readonly', false);
+    $('#company_inn').attr('readonly', false);
+    $('#company_kpp').attr('readonly', false);
+    $('#company_fins_acc').attr('readonly', false);
+}
+
+//Сделать форму Сотрудник RO
+function SetROContactForm(){
+    $('#contact_first_name_id').attr('readonly', true);
+    $('#contact_balance_id').attr('readonly', true);
+    $('#contact_fins_acc_id').attr('readonly', true);
+}
+
+//Сделать форму Сотрудник not RO
+function UnSetROContactForm(){
+    $('#contact_first_name_id').attr('readonly', false);
+    $('#contact_balance_id').attr('readonly', false);
+    $('#contact_fins_acc_id').attr('readonly', false);
+}

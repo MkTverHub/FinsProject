@@ -101,6 +101,8 @@ $(function(){
             $('#expensebt').removeClass('active');
             $('#divpaymentaccoutid').hide();
             $('#divpaymentaccinid').show();
+            $('#divcontragentrequisitsid').show();
+            $('#divcontragentfieldid').show();
         }
         if(strFinsOpertype == 'expense'){
             $('#arrivalbt').removeClass('active');
@@ -108,6 +110,8 @@ $(function(){
             $('#expensebt').addClass('active');
             $('#divpaymentaccoutid').show();
             $('#divpaymentaccinid').hide();
+            $('#divcontragentrequisitsid').show();
+            $('#divcontragentfieldid').show();
         }
         if(strFinsOpertype == 'transfer'){
             $('#arrivalbt').removeClass('active');
@@ -115,6 +119,8 @@ $(function(){
             $('#expensebt').removeClass('active');
             $('#divpaymentaccoutid').show();
             $('#divpaymentaccinid').show();
+            $('#divcontragentrequisitsid').hide();
+            $('#divcontragentfieldid').hide();
         }
 
     });
@@ -200,6 +206,8 @@ $(function(){
         $('#finsopertypeid').val('profit');
         $('#divpaymentaccoutid').hide();
         $('#divpaymentaccinid').show();
+        $('#divcontragentrequisitsid').show();
+        $('#divcontragentfieldid').show();
     });
 });
 
@@ -210,6 +218,8 @@ $(function(){
         $('#finsopertypeid').val('expense');
         $('#divpaymentaccoutid').show();
         $('#divpaymentaccinid').hide();
+        $('#divcontragentrequisitsid').show();
+        $('#divcontragentfieldid').show();
     });
 });
 
@@ -220,6 +230,9 @@ $(function(){
         $('#finsopertypeid').val('transfer');
         $('#divpaymentaccoutid').show();
         $('#divpaymentaccinid').show();
+        $('#divcontragentrequisitsid').hide();
+        $('#divcontragentfieldid').hide();
+
     });
 });
 
@@ -246,13 +259,12 @@ function ClearFinsForm (){
     $('#finscontragentid').val('');
     $('#requisitesid').val('');
 
-
+    //Сброс списков
     $('#paymentaccinid_list option:contains("Выберете значение")').prop('selected', true);
     $('#paymentaccoutid_list option:contains("Выберете значение")').prop('selected', true);
     $('#finsarticleid_list option:contains("Выберете значение")').prop('selected', true);
+    $('#contr_agent_select_field option:contains("Выберете значение")').prop('selected', true);
     $('#contr_agent_requisits_list option:contains("Выберете значение")').prop('selected', true);
-
-
 
 };
 

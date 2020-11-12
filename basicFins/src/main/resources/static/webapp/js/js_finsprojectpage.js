@@ -5,6 +5,9 @@
 function StartPage() {
     doAjaxGetProjectList();
     doAjaxGetCompanyList();
+    ClearProjectForm();
+    SetROForm();
+
 };
 
 //-----------Ajax Functions------------
@@ -37,8 +40,6 @@ function doAjaxDellProject() {
         }
     });
 
-    //Чистим форму
-    ClearFinsForm();
     $('#fins_project_operation_type').val('');
 };
 
@@ -74,8 +75,6 @@ function doAjaxGetProjectList() {
         }
     });
 
-    //Чистим форму
-    ClearFinsForm();
     $('#fins_project_operation_type').val('');
 };
 
@@ -96,30 +95,6 @@ function doAjaxGetCompanyList() {
     });
 };
 
-//Ajax формы операции DB Компании (Создать/Обновить/Удалить)
-function doAjaxCompanytDBOperation(strCompanyId, strProjectId) {
-    var strDBOperation = 'set_project';
-    $.ajax({
-        url : 'OperationCompany',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            DBOperation: strDBOperation,
-            CompanyId: strCompanyId,
-            CompanyName: '',
-            CompanyFullName: '',
-            CompanyINN: '',
-            CompanyKPP: '',
-            CompanyFinsAcc: '',
-            CompanyProjectId: strProjectId
-        }),
-        success: function (data) {
-            //alert('Ajax: OperationCompany');
-        }
-    });
-};
 
 //Ajax получения отчета
 function doAjaxGetProjectProfit(ProjectId) {
@@ -146,7 +121,7 @@ function doAjaxGetProjectProfit(ProjectId) {
 //Клик по записи
 $(function(){
     $('#finsproject_table_body').on('click', '.finsprojectrowlink', function(){
-        //alert('puk');
+        UnSetROForm();
         strFinsProjectId = $(this).find('.fieldid').html();
         strFinsProjectName = $(this).find('.fieldname').html();
         strFinsProjectDescription = $(this).find('.fielddescription').html();
@@ -159,8 +134,7 @@ $(function(){
 });
 
 //Отчистка формы
-function ClearFinsForm (){
-    //$('#fins_project_operation_type').val('');
+function ClearProjectForm (){
     $('#fins_project_record_id').val('');
     $('#fins_project_name').val('');
     $('#fins_project_desqription').val('');
@@ -170,18 +144,30 @@ function ClearFinsForm (){
 function deleteFinsProject() {
     $('#fins_project_operation_type').val('delete');
     doAjaxDellProject();
+    ClearProjectForm();
+    SetROForm();
 };
 
 //Кнопка "Создать"
 function createFinsProject() {
+    UnSetROForm();
+    ClearProjectForm();
     $('#fins_project_operation_type').val('new');
-    ClearFinsForm();
 };
 
 //Кнопка "Сохранить"
 function saveFinsProject() {
     doAjaxDellProject();
+    ClearProjectForm();
+    UnSetROForm();
 };
+
+//Кнопка "Отменить"
+function resetFinsProject() {
+    ClearProjectForm();
+    SetROForm();
+};
+
 
 //Кнопка "Добавить", привязать компанию к проекту
 function LinkCompanyToProject() {
@@ -211,4 +197,16 @@ function JSONStringToCompanyPickList(JSONString) {
         strCompanyPickListContext = strCompanyPickListContext + '<option value = "' + strCompanyId + '">' + strCompanyName + '</option>';
     });
     $("#company_picklist_id").html(strCompanyPickListContext);
+}
+
+//Сделать форму RO
+function SetROForm(){
+    $('#fins_project_name').attr('readonly', true);
+    $('#fins_project_desqription').attr('readonly', true);
+}
+
+//Сделать форму not RO
+function UnSetROForm(){
+    $('#fins_project_name').attr('readonly', false);
+    $('#fins_project_desqription').attr('readonly', false);
 }

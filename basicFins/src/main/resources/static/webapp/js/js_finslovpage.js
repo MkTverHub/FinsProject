@@ -5,6 +5,7 @@
 //Функция при загрузки страницы
 function StartPage() {
     doAjaxGetLovList();
+    SetROForm();
 };
 
 
@@ -88,29 +89,41 @@ function CleanLovForm() {
     $('#lov_description').val('');
     ResetPickList('#lov_options_list');
     ResetPickList('#lov_type_list');
+    $('#lov_options_list option:contains("Выберете значение")').prop('selected', true);
+    $('#lov_type_list option:contains("Выберете значение")').prop('selected', true);
 };
 
 
 //-------------Функции событий-----------------
-//Событие нажатия на кнопку "Создать" компанию
+//Событие нажатия на кнопку "Создать" lov
 function InsertLOV(){
+    UnSetROForm();
+    CleanLovForm();
     $('#lov_db_action').attr('value','insert');//update/insert/delete
 };
-//Событие нажатия на кнопку "Удалить" компанию
+//Событие нажатия на кнопку "Удалить" lov
 function DeleteLOV(){
     $('#lov_db_action').attr('value','delete');
     doAjaxLovDBOperation();
     CleanLovForm();
+    SetROForm();
 };
-//Событие нажатия на кнопку "Сохранить" компанию
+//Событие нажатия на кнопку "Сохранить" lov
 function SaveLOV(){
     doAjaxLovDBOperation();
     CleanLovForm();
+    SetROForm();
+};
+//Событие нажатия на кнопку "Отменить" lov
+function ResetLOV(){
+    CleanLovForm();
+    SetROForm();
 };
 
 //Событие нажатия на строку компании
 $(function(){
     $("#finslov_table_body").on("click", ".lovlist_row", function () {
+        UnSetROForm();
         $('#lov_db_action').attr('value',"update");
         $('#lov_record_id').attr('value',$(this).find('.lov_id_row').attr('value'));
         $('#lov_value').val($(this).find('.lov_value_row').attr('value'));
@@ -146,4 +159,20 @@ function SetActiveSelect(ListSelector,SelectedVal){
 function ResetPickList(ListSelector){
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[selected]').attr('select_value', null);
+
+}
+
+//Сделать форму RO
+function SetROForm(){
+    $('#lov_value').attr('readonly', true);
+    $('#lov_description').attr('readonly', true);
+    $('#lov_options_list').attr('disabled', true);
+    $('#lov_type_list').attr('disabled', true);
+}
+//Сделать форму not RO
+function UnSetROForm(){
+    $('#lov_value').attr('readonly', false);
+    $('#lov_description').attr('readonly', false);
+    $('#lov_options_list').attr('disabled', false);
+    $('#lov_type_list').attr('disabled', false);
 }
