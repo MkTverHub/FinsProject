@@ -1393,7 +1393,7 @@ pre {
     color: #b8c3d5;
     opacity: 1; }
   .form-control:disabled, .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: #f9fbfd;
     opacity: 1; }
 
 select.form-control:focus::-ms-value {
