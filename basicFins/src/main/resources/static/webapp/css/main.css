@@ -248,11 +248,11 @@
 
 /*7-03-2020*/
 
-.tabel-modif thead th, .table th {
+.table-modif thead th, .table th {
     font-weight: 300;
 }
 
-.tabel-modif .table-bordered th, .table-bordered td {
+.table-modif .table-bordered th, .table-bordered td {
     padding: 0.5rem;
 }
 
