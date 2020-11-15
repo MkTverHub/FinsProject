@@ -270,7 +270,8 @@
   opacity: 0.7;
   margin-right: 17px;
   width: 100%;
-  border: none; 
+  border: none;
+  background-color: #fff; 
 }
 
 .left-menu-item.left-menu-selected-link input[type="button"] {
