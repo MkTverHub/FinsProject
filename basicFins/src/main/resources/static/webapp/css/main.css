@@ -295,3 +295,7 @@ button:focus {
   background: url(../images/modal-bg-img.png) no-repeat;
   background-size: cover;
 }
+
+.btn-modif-size {
+  padding: 0.275rem 0.65rem;
+}
