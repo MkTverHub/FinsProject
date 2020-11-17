@@ -85,8 +85,8 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="mvn spring-boot:run" />
       <command value="mvn clean package" />
+      <command value="mvn spring-boot:run" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -353,6 +353,7 @@
       <workItem from="1605035699498" duration="8026000" />
       <workItem from="1605134336517" duration="4077000" />
       <workItem from="1605211832438" duration="4500000" />
+      <workItem from="1605627033702" duration="364000" />
     </task>
     <servers />
   </component>
