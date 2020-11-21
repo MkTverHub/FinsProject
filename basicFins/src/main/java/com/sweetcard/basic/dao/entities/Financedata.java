@@ -19,7 +19,7 @@ public class Financedata {
     @Column(name = "lock_flg")
     private boolean lockflg;
     @Column(name = "oper_date")
-    private Date operdate;
+    public String operdate;
     @Column(name = "amount")
     private Integer amount;
     @Column(name = "detail")
