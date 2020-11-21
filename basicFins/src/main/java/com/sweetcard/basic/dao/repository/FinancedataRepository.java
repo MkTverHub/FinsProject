@@ -23,7 +23,7 @@ public interface FinancedataRepository extends JpaRepository<Financedata, Intege
     List<Financedata> GetAll();
 
     //Выбрать все селектом по проекту
-    @Query(value = "SELECT * FROM financedata where project_id = :fins_project_id", nativeQuery = true)
+    @Query(value = "SELECT id,amount,detail,finscontragent,fins_oper_type,lock_flg,to_char(oper_date, 'yyyy-mm-dd hh24:mi:ss') oper_date,pay_acc_in,pay_acc_out,project_id,requisites,fins_article FROM financedata where project_id = :fins_project_id", nativeQuery = true)
     List<Financedata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid);
 
     //Получиь чистую прибыль по проекту
@@ -34,7 +34,7 @@ public interface FinancedataRepository extends JpaRepository<Financedata, Intege
     @Query(value = "select sum(amount) as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit'", nativeQuery = true)
     String GetProjectIncome (@Param("fins_project_id") Integer finsprojectid);
 
-    //Получить приход по проекту
+    //Получить расход по проекту
     @Query(value = "select sum(amount) as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense'", nativeQuery = true)
     String GetProjectExpense (@Param("fins_project_id") Integer finsprojectid);
 
