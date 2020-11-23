@@ -39,7 +39,7 @@ public class FinancedataJdbc {
             Integer intRecordId = null;
             Integer intAmount = null;
             Integer intFinsArticle = null;
-            if(strRecordId != null){intRecordId = Integer.parseInt(strRecordId);}
+            if(strRecordId != null){if(0 == strRecordId.compareTo("")){intRecordId = null;}else{intRecordId = Integer.parseInt(strRecordId);}}
             if(strAmount != null){intAmount = Integer.parseInt(strAmount);}
             try{intFinsArticle = Integer.parseInt(strFinsArticle);}catch (Exception ex_int){intFinsArticle = 0;}
 
@@ -51,7 +51,7 @@ public class FinancedataJdbc {
                         "fins_article = " + intFinsArticle + ", detail = '" + strDetail + "'," +
                         "finscontragent = '" + strContrAgent + "', requisites = '" + strRequisites + "'" +
                         " where id = " + intRecordId + " and project_id = " + intActivProjectId;
-                logger.info("FinancedataJdbc.RecordOperation (update): SQLUpdate " + strSQLUpdate);
+                logger.info("FinancedataJdbc.RecordOperation (update): SQLUpdate: " + strSQLUpdate);
                 jdbcTemplate.update(strSQLUpdate);
                 //jdbcTemplate.update("update financedata set oper_date = now()::timestamp, fins_oper_type = ?, amount = ?, pay_acc_in = ? , pay_acc_out = ? , fins_article = ?, project_id = ?, detail = ?,  finscontragent = ?, requisites = ? where id = ?",strFinsOperType ,intAmount, strPaymentAccIn, strPaymentAccOut, strFinsArticle, intActivProjectId, strDetail, strContrAgent, strRequisites, intRecordId);
             }
