@@ -140,7 +140,7 @@ function doAjaxCompanytDBOperation(CompanyId,ProjectId) {
             CompanyProjectId: strProjectId
         }),
         success: function (data) {
-            //alert('Ajax: OperationCompany');
+            //alert('Ajax: OperationCompany');//
         }
     });
 };
