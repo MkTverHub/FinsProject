@@ -53,6 +53,7 @@ public class FinancedataJdbc {
                         " where id = " + intRecordId + " and project_id = " + intActivProjectId;
                 logger.info("FinancedataJdbc.RecordOperation (update): SQLUpdate: " + strSQLUpdate);
                 jdbcTemplate.update(strSQLUpdate);
+                //
                 //jdbcTemplate.update("update financedata set oper_date = now()::timestamp, fins_oper_type = ?, amount = ?, pay_acc_in = ? , pay_acc_out = ? , fins_article = ?, project_id = ?, detail = ?,  finscontragent = ?, requisites = ? where id = ?",strFinsOperType ,intAmount, strPaymentAccIn, strPaymentAccOut, strFinsArticle, intActivProjectId, strDetail, strContrAgent, strRequisites, intRecordId);
             }
 
