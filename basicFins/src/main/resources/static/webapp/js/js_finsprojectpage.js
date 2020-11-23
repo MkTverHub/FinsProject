@@ -117,6 +117,34 @@ function doAjaxGetProjectProfit(ProjectId) {
     });
 };
 
+//Ajax приявязки компании
+function doAjaxCompanytDBOperation(CompanyId,ProjectId) {
+    var strDBOperation = 'set_project';
+    var strCompanyId = CompanyId;
+    var strProjectId = ProjectId;
+
+    $.ajax({
+        url : 'OperationCompany',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+            DBOperation: strDBOperation,
+            CompanyId: strCompanyId,
+            CompanyName: '',
+            CompanyFullName: '',
+            CompanyINN: '',
+            CompanyKPP: '',
+            CompanyFinsAcc: '',
+            CompanyProjectId: strProjectId
+        }),
+        success: function (data) {
+            //alert('Ajax: OperationCompany');
+        }
+    });
+};
+
 
 //Клик по записи
 $(function(){
@@ -210,3 +238,4 @@ function UnSetROForm(){
     $('#fins_project_name').attr('readonly', false);
     $('#fins_project_desqription').attr('readonly', false);
 }
+
