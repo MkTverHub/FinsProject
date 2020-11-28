@@ -2,30 +2,9 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="webapp/images/favicon.png">
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
     <title>Fin</title>
-    <!-- Custom CSS -->
-    
-    <!-- Custom CSS -->
-    <link href="webapp/css/normalize.css" rel="stylesheet">
-    <link href="webapp/css/style.css" rel="stylesheet">
-    <link href="webapp/css/main.css" rel="stylesheet"> 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]-->
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
-    <script src="webapp/js/jquery-1.9.1.min.js"></script><!--Подцепляем jquery-->
     <script src="webapp/js/js_finslovpage.js"></script><!--Подцепляем внешний скрипт-->
-
 </head>
 
 <body>
@@ -38,52 +17,14 @@
     <!-- *************************************************************** -->
     <!-- Верхнее Меню -->
     <!-- *************************************************************** -->
-    <header th:replace="fragments/fragment_agrigate :: header_fragment_1"></header>
-
-
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1"></header>
 
 
     <!-- *************************************************************** -->
     <!-- Левое Меню -->
     <!-- *************************************************************** -->
 
-    <section class="left-menu">
-        <!-- Sidebar scroll-->
-        <div class="scroll-sidebar">
-            <!-- Sidebar navigation-->
-            <nav class="left-menu-nav">
-                <ul id="left-menunav">
-
-                   
-                   <!-- Заголовок раздела -->
-                    <li class="nav-small-cap"><span class="hide-menu">Бизнес отчеты</span></li> 
-                    <!-- Заголовок раздела -->
-                    <li id="2rowid" class="left-menu-item left-menu-selected-link">
-                        <input type="button" class="left-menu-link finsproject_list_row" projnum="1" value="Аналитика"><!--класс finsproject_list_row дял скрипта-->
-                    </li>
-                    
-                    <!-- Разделитель между разделами -->
-                    <li class="list-divider"></li> 
-
-                    <!-- Заголовок раздела -->
-                    <li class="nav-small-cap"><span class="hide-menu">Ваши проекты</span></li>
-
-                    <!--СПИСОК ПРОЕКТОВ (заполняется Ajax)-->
-                    <div id="projectlistpanel"></div>
-
-                    <!-- Разделитель между разделами -->
-                    <li class="list-divider"></li> 
-
-
-                </ul>
-            </nav>
-            <!-- End Sidebar navigation -->
-        </div>
-        <!-- End Sidebar scroll-->
-    </section>
-    
-
-
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
 
     <!-- *************************************************************** -->
     <!-- Центральная часть -->
@@ -232,13 +173,6 @@
                                 <button onclick="LinkCompanyToProject()" id="com_pickl_btton_id" class="btn btn-dark">Добавить</button>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Добавить контаргента</h4>
-                                <h6 class="card-subtitle">Контарегент нужна для расчета финансовых операций</h6>
-                                <button onclick="LinkCompanyToProject()" id="com_pickl_btton_id" class="btn btn-dark">Добавить</button>
-                            </div>
-                        </div>
                     </div><!-- модуль c ссылкой на добавление .end -->
 
                 </div>
@@ -301,17 +235,6 @@
 </body>
 
 <!------------FRAMEWORK Script----------------------------->
-<!-- Bootstrap core JavaScript-->
-<script src="/framework/vendor/jquery/jquery.min.js"></script>
-<script src="/framework/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Core plugin JavaScript-->
-<script src="/framework/vendor/jquery-easing/jquery.easing.min.js"></script>
-<!-- Custom scripts for all pages-->
-<script src="/framework/js/sb-admin-2.min.js"></script>
-<!-- Page level plugins -->
-<script src="/framework/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="/framework/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<!-- Page level custom scripts -->
-<script src="/framework/js/demo/datatables-demo.js"></script>
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
 
 </html>
