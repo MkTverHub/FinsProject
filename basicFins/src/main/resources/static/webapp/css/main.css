@@ -251,17 +251,6 @@ button:focus {
 
 /*Стили для верхнего меню в header .end*/
 
-
-/*7-03-2020*/
-
-.table-modif thead th, .table th {
-    font-weight: 300;
-}
-
-.table-modif .table-bordered th, .table-bordered td {
-    padding: 0.5rem;
-}
-
 /*15-03-2020*/
 
 .left-menu-item input[type="button"] {
