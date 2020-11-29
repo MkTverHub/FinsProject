@@ -154,12 +154,18 @@
                             <div class="card-body">
                                 <h4 class="card-title">Добавить компанию</h4>
                                 <h6 class="card-subtitle">Компания нужна для расчета финансовых операций</h6>
-                                <label>Список компаний:
-                                    <select name="s" id="company_picklist_id" class="form-control">
-                                        <option value="0">Выберете</option>
-                                    </select>
-                                </label>
-                                <button onclick="LinkCompanyToProject()" id="com_pickl_btton_id" class="btn btn-dark">Добавить</button>
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Список компаний:</label>
+                                            <select name="s" id="company_picklist_id" class="form-control col-lg-9 align-self-center">
+                                                <option value="0">Выберете</option>
+                                            </select>
+                                            
+                                            <button onclick="LinkCompanyToProject()" id="com_pickl_btton_id" class="btn btn-dark col-lg-6 align-self-center">Добавить</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
