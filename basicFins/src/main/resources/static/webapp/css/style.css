@@ -8160,9 +8160,12 @@ Table Cell
 .no-wrap th {
   white-space: nowrap; }
 
-.table thead th,
-.table th {
+.table thead th {
   font-weight: 500; }
+  
+.table th{
+  font-weight: 400;
+}
 
 .nowrap {
   white-space: nowrap; }
