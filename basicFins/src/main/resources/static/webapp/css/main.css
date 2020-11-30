@@ -71,7 +71,10 @@ button:focus {
   min-height: calc(100vh - 210px); 
 }
 
-
+.page-wrap > .container-fluid {
+    padding: 35px;
+    min-height: calc(100vh - 210px);
+}
 
 
 .left-menu {   
