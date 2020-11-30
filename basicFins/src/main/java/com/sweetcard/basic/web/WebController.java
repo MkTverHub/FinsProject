@@ -101,11 +101,10 @@ public class WebController {
             return "error";
         }
     }
-
+    //Переход на страницу Отчеты
     @RequestMapping(value = "/Reports", method = RequestMethod.POST)
     public String GoToReports(Model model){
         return "Fins_Reports";
     }
-
 
 }

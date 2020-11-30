@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -424,7 +425,7 @@ public class ReqController {
                                                    @RequestParam String CompanyFinsAcc,
                                                    @RequestParam String CompanyProjectId)
     {
-        logger.info("ReqController.OperationCompany -> " + DBOperation + "/" + DBOperation + "/" + CompanyId + "/" + CompanyName + "/" + CompanyFullName + "/" + CompanyINN + "/" + CompanyKPP + "/" + CompanyFinsAcc + "/" + CompanyProjectId);
+        logger.info("ReqController.OperationCompany -> " + DBOperation + "/" + CompanyId + "/" + CompanyName + "/" + CompanyFullName + "/" + CompanyINN + "/" + CompanyKPP + "/" + CompanyFinsAcc + "/" + CompanyProjectId);
         try{
             Companyform companyform = new Companyform();
             companyform.setCompanyAction(DBOperation);
@@ -611,6 +612,13 @@ public class ReqController {
             //Получить список финансовых операций по проекту
             List<Financedata> financedataList = financedataRepository.GetAllByProj(intProjectId);
             logger.info("ReqController.GetProjectFinsOperationList -> row_count: " + financedataList.size());
+
+            /*
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            for(int i = 0; financedataList.size() > i; i++){
+                Financedata financedata = financedataList.get(i);
+                System.out.println(dateFormat.parse(financedata.operdate.toString()));
+            }*/
 
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();

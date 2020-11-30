@@ -8,7 +8,7 @@
   -webkit-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   -moz-transform: rotate(45deg); }
-
+  
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -1393,7 +1393,7 @@ pre {
     color: #b8c3d5;
     opacity: 1; }
   .form-control:disabled, .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: #f9fbfd;
     opacity: 1; }
 
 select.form-control:focus::-ms-value {

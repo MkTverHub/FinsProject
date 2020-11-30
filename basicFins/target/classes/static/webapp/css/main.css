@@ -1,3 +1,9 @@
+button, 
+button:active, 
+button:focus {
+    outline: none;
+}
+
 .modify-id-hidden{
 	display: none;
 }
@@ -60,7 +66,7 @@
   margin-left: 260px;
 }
 
-.page-wrap > .container-fluid {
+.page-wrap > .container {
   padding: 35px;
   min-height: calc(100vh - 210px); 
 }
@@ -245,17 +251,6 @@
 
 /*Стили для верхнего меню в header .end*/
 
-
-/*7-03-2020*/
-
-.tabel-modif thead th, .table th {
-    font-weight: 300;
-}
-
-.tabel-modif .table-bordered th, .table-bordered td {
-    padding: 0.5rem;
-}
-
 /*15-03-2020*/
 
 .left-menu-item input[type="button"] {
@@ -270,7 +265,8 @@
   opacity: 0.7;
   margin-right: 17px;
   width: 100%;
-  border: none; 
+  border: none;
+  background-color: #fff; 
 }
 
 .left-menu-item.left-menu-selected-link input[type="button"] {
@@ -289,3 +285,6 @@
   background-size: cover;
 }
 
+.btn-modif-size {
+  padding: 0.275rem 0.65rem;
+}

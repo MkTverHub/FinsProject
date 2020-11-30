@@ -28,7 +28,7 @@ function doAjaxGetLovList() {
     });
 };
 
-//Ajax формы операции DB Контакта (Создать/Обновить/Удалить)
+//Ajax формы операции DB lov (Создать/Обновить/Удалить)
 function doAjaxLovDBOperation() {
     var strDBOperation = $('#lov_db_action').attr('value');//update/insert/delete
     var strLovId = '';
@@ -86,7 +86,7 @@ function doAjaxGetProjectList() {
 };
 
 //--------Функции заполнения----------------
-//Парсинг JSON списка компаний в таблицу
+//Парсинг JSON списка lov в таблицу
 function JSONStringToLovTable(JSONString) {
     var strLovTableContext = '';
     var strLovId = '';
@@ -156,6 +156,7 @@ $(function(){
         $('#lov_description').val($(this).find('.lov_description_row').attr('value'));
         SetActiveSelect('#lov_options_list',$(this).find('.lov_options_row').attr('value'));
         SetActiveSelect('#lov_type_list',$(this).find('.lov_type_row').attr('value'));
+
     });
 });
 
@@ -180,6 +181,7 @@ $(function(){
 function SetActiveSelect(ListSelector,SelectedVal){
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
+    $(ListSelector).attr('select_value',SelectedVal);
 }
 //Функция сброса списка
 function ResetPickList(ListSelector){

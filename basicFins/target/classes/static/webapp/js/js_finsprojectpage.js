@@ -3,6 +3,7 @@
  */
 //Функция при загрузки страницы
 function StartPage() {
+    doAjaxGetProjectListLeft();
     doAjaxGetProjectList();
     doAjaxGetCompanyList();
     ClearProjectForm();
@@ -117,6 +118,59 @@ function doAjaxGetProjectProfit(ProjectId) {
     });
 };
 
+//Ajax приявязки компании
+function doAjaxCompanytDBOperation(CompanyId,ProjectId) {
+    var strDBOperation = 'set_project';
+    var strCompanyId = CompanyId;
+    var strProjectId = ProjectId;
+
+    $.ajax({
+        url : 'OperationCompany',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+            DBOperation: strDBOperation,
+            CompanyId: strCompanyId,
+            CompanyName: '',
+            CompanyFullName: '',
+            CompanyINN: '',
+            CompanyKPP: '',
+            CompanyFinsAcc: '',
+            CompanyProjectId: strProjectId
+        }),
+        success: function (data) {
+            //alert('Ajax: OperationCompany');//
+        }
+    });
+};
+
+//Ajax получение списка проектов в левой панели
+function doAjaxGetProjectListLeft() {
+    $.ajax({
+        url : 'GetFinsProjectList',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+
+        }),
+        success: function (data) {
+            var strProjectListContext = "";
+            var obj = jQuery.parseJSON(data.text);
+            $.each(obj, function (index, value) {
+                strProjectListContext = strProjectListContext
+                    + '<li id="' + value["id"].toString()
+                    + '_rowid" class="left-menu-item finsproject_list_row_li"><input type="button" class="left-menu-link finsproject_list_row" projnum="'
+                    + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
+            });
+            $("#projectlistpanel").html(strProjectListContext);
+        }
+    });
+};
+
 
 //Клик по записи
 $(function(){
@@ -210,3 +264,4 @@ function UnSetROForm(){
     $('#fins_project_name').attr('readonly', false);
     $('#fins_project_desqription').attr('readonly', false);
 }
+

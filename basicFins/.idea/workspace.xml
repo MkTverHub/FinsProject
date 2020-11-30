@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fbb93aff-60b0-44c2-8af6-56f2d609c56b" name="Default" comment="" />
+    <list default="true" id="fbb93aff-60b0-44c2-8af6-56f2d609c56b" name="Default" comment="бага привязки к проектуf">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/dao/repository/FinsprojectRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/dao/repository/FinsprojectRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/web/ReqController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/web/ReqController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/web/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/web/WebController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/webapp/js/js_finslovpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/webapp/js/js_finslovpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/fragment_agrigate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/fragment_agrigate_layouts_breadcrump.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Financedata.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Financedata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinancedataJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinancedataJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/FinancedataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/FinancedataRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/ReqController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/ReqController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_companypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_companypage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_contragentspage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_contragentspage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finslovpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finslovpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsoperationpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsoperationpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsprojectpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsprojectpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsreportspage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsreportspage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Company.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Company.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Contragents.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Contragents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_LOV.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_LOV.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Operations.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Operations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Projects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Reports.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +51,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -56,7 +84,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600889153940" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../IdeaProjects/test_maven" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -354,7 +382,115 @@
       <workItem from="1605134336517" duration="4077000" />
       <workItem from="1605211832438" duration="4500000" />
       <workItem from="1605627033702" duration="364000" />
+      <workItem from="1605962234019" duration="5332000" />
+      <workItem from="1606149418326" duration="3384000" />
+      <workItem from="1606487070948" duration="3092000" />
+      <workItem from="1606490184511" duration="876000" />
+      <workItem from="1606561041118" duration="2890000" />
+      <workItem from="1606597679332" duration="7854000" />
+      <workItem from="1606771319122" duration="22000" />
+      <workItem from="1606771383375" duration="38000" />
+      <workItem from="1606771491480" duration="347000" />
     </task>
+    <task id="LOCAL-00001" summary="бага">
+      <created>1606151801531</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606151801532</updated>
+    </task>
+    <task id="LOCAL-00002" summary="бага привязки к проекту">
+      <created>1606152009264</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606152009264</updated>
+    </task>
+    <task id="LOCAL-00003" summary="бага привязки к проекту2">
+      <created>1606152142917</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606152142917</updated>
+    </task>
+    <task id="LOCAL-00004" summary="бага привязки к проекту2">
+      <created>1606152161546</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606152161546</updated>
+    </task>
+    <task id="LOCAL-00005" summary="thymeleaf - fragment">
+      <created>1606489767893</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606489767893</updated>
+    </task>
+    <task id="LOCAL-00006" summary="бага привязки к проекту">
+      <created>1606489859940</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606489859940</updated>
+    </task>
+    <task id="LOCAL-00007" summary=" thymeleaf fragment in page">
+      <created>1606489933799</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606489933799</updated>
+    </task>
+    <task id="LOCAL-00008" summary="бага привязки к проектуf">
+      <created>1606561985844</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606561985844</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fragment 1">
+      <created>1606562027255</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606562027255</updated>
+    </task>
+    <task id="LOCAL-00010" summary="фрагментация хедера">
+      <created>1606562937498</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606562937498</updated>
+    </task>
+    <task id="LOCAL-00011" summary="фрагментация ебаной тучи">
+      <created>1606602485775</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606602485776</updated>
+    </task>
+    <task id="LOCAL-00012" summary="фрагменты">
+      <created>1606649494069</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1606649494069</updated>
+    </task>
+    <task id="LOCAL-00013" summary="бага 1">
+      <created>1606650130752</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1606650130752</updated>
+    </task>
+    <task id="LOCAL-00014" summary="вавава">
+      <created>1606771584761</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606771584762</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -381,6 +517,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="бага" />
+    <MESSAGE value="бага привязки к проекту2" />
+    <MESSAGE value="thymeleaf - fragment" />
+    <MESSAGE value="бага привязки к проекту" />
+    <MESSAGE value=" thymeleaf fragment in page" />
+    <MESSAGE value="бага привязки к проектуf" />
+    <MESSAGE value="fragment 1" />
+    <MESSAGE value="фрагментация хедера" />
+    <MESSAGE value="фрагментация ебаной тучи" />
+    <MESSAGE value="фрагменты" />
+    <MESSAGE value="бага 1" />
+    <MESSAGE value="вавава" />
+    <option name="LAST_COMMIT_MESSAGE" value="вавава" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

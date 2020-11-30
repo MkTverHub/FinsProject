@@ -153,6 +153,7 @@ function ResetFinsOperation(){
 //Событие нажатия на кнопку "Сохранить" финансовую операцию
 function SaveFinsOperation(){
     doAjaxFinsOperation();
+    ClearFinsForm ();
     SetROForm();
 };
 

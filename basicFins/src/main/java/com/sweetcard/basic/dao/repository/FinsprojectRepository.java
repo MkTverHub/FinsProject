@@ -23,7 +23,6 @@ public interface FinsprojectRepository extends JpaRepository<Finsproject, Intege
     @Query(value = "select max(id) from finsproject", nativeQuery = true)
     String GetMaxId();
 
-
     //Калькулируемые поля
     //Выбрать все селектом
     @Query(value = "select t1.id, t1.name, t1.description, t1.name || ' ' || t1.id as clc_1 from finsproject t1", nativeQuery = true)

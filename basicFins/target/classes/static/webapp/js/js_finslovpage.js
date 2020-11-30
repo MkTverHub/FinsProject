@@ -4,6 +4,7 @@
 
 //Функция при загрузки страницы
 function StartPage() {
+    doAjaxGetProjectList();//Получение списка проектов в левой панели
     doAjaxGetLovList();
     SetROForm();
 };
@@ -27,7 +28,7 @@ function doAjaxGetLovList() {
     });
 };
 
-//Ajax формы операции DB Контакта (Создать/Обновить/Удалить)
+//Ajax формы операции DB lov (Создать/Обновить/Удалить)
 function doAjaxLovDBOperation() {
     var strDBOperation = $('#lov_db_action').attr('value');//update/insert/delete
     var strLovId = '';
@@ -59,8 +60,33 @@ function doAjaxLovDBOperation() {
     });
 };
 
+//Ajax получение списка проектов в левой панели
+function doAjaxGetProjectList() {
+    $.ajax({
+        url : 'GetFinsProjectList',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+
+        }),
+        success: function (data) {
+            var strProjectListContext = "";
+            var obj = jQuery.parseJSON(data.text);
+            $.each(obj, function (index, value) {
+                strProjectListContext = strProjectListContext
+                    + '<li id="' + value["id"].toString()
+                    + '_rowid" class="left-menu-item finsproject_list_row_li"><input type="button" class="left-menu-link finsproject_list_row" projnum="'
+                    + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
+            });
+            $("#projectlistpanel").html(strProjectListContext);
+        }
+    });
+};
+
 //--------Функции заполнения----------------
-//Парсинг JSON списка компаний в таблицу
+//Парсинг JSON списка lov в таблицу
 function JSONStringToLovTable(JSONString) {
     var strLovTableContext = '';
     var strLovId = '';
@@ -130,6 +156,7 @@ $(function(){
         $('#lov_description').val($(this).find('.lov_description_row').attr('value'));
         SetActiveSelect('#lov_options_list',$(this).find('.lov_options_row').attr('value'));
         SetActiveSelect('#lov_type_list',$(this).find('.lov_type_row').attr('value'));
+
     });
 });
 
@@ -154,6 +181,7 @@ $(function(){
 function SetActiveSelect(ListSelector,SelectedVal){
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
+    $(ListSelector).attr('select_value',SelectedVal);
 }
 //Функция сброса списка
 function ResetPickList(ListSelector){
