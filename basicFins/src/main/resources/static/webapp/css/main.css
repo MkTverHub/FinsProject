@@ -1,4 +1,4 @@
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 6px; }
 
 ::-webkit-scrollbar-track {
   background: #f7efef;
@@ -6,21 +6,21 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a5a2a2;
+  background: #cac7c7;
   border-radius: 5px;
 }
 
 pre::-webkit-scrollbar {
-  height: 14px;
-  width: 14px;
+  height: 6px;
+  width: 6px;
 
   -webkit-appearance: none;
 }
 
 pre::-webkit-scrollbar-thumb {
   background-color: rgba(47, 46, 46, 0.2);
-  border: 3px solid #fbf6f6;
-  border-radius: 8px;
+  border: 3px solid #cac7c7;
+  border-radius: 5px;
 }
 
 button, 
