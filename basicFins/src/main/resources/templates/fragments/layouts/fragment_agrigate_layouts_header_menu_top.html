@@ -35,24 +35,18 @@
             <!-- Меню  -->
             <ul class="navbar-nav float-right">
                 <nav class="nav_modify">
+                    <form th:action="@{/Reports}" method="post">
+                        <button type="submit" class="nav-item_modify">Отчеты</button>
+                    </form>
                     <form th:action="@{/Contragents}" method="post">
                         <button type="submit" class="nav-item_modify">Контрагенты</button>
                     </form>
                     <form th:action="@{/Projects}" method="post">
                         <button type="submit" class="nav-item_modify">Проекты</button>
                     </form>
-                    <form th:action="@{/Reports}" method="post">
-                        <button type="submit" class="nav-item_modify">Отчеты</button>
-                    </form>
                     <form th:action="@{/FinsOperations}" method="post">
                         <button type="submit" class="nav-item_modify">Операции</button>
-                    </form>
-                    <form th:action="@{/FinsCompany}" method="post">
-                        <button type="submit" class="nav-item_modify">Компании</button>
-                    </form>
-                    <form th:action="@{/FinsLOV}" method="post">
-                        <button type="submit" class="nav-item_modify">Статьи</button>
-                    </form>
+                    </form>    
                     <span class="nav-indicator_modify"></span>
                 </nav>
                 <!-- ============================================================== -->
