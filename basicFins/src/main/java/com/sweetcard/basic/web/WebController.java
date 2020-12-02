@@ -72,7 +72,8 @@ public class WebController {
     }
 
     //Переход на страницу LOV
-    @RequestMapping(value = "/FinsLOV", method = RequestMethod.POST)
+    //@RequestMapping(value = "/FinsLOV", method = RequestMethod.POST)
+    @RequestMapping(value = "/FinsLOV")
     public String GoToFinsLOV(Model model){
         logger.info("WebController.GoToFinsLOV -> ");
         return "Fins_LOV";
@@ -91,7 +92,8 @@ public class WebController {
     }
 
     //Переход на страницу Компании
-    @RequestMapping(value = "/FinsCompany", method = RequestMethod.POST)
+    //@RequestMapping(value = "/FinsCompany", method = RequestMethod.POST)
+    @RequestMapping(value = "/FinsCompany")
     public String GoToFinsCompany(Model model){
         try{
             logger.info("WebController.GoToFinsCompany -> ");
@@ -101,10 +103,16 @@ public class WebController {
             return "error";
         }
     }
+
     //Переход на страницу Отчеты
     @RequestMapping(value = "/Reports", method = RequestMethod.POST)
     public String GoToReports(Model model){
         return "Fins_Reports";
     }
 
+    //Переход на экран настройки пользователя
+    @RequestMapping(value = "/UserSettings")
+    public String GoToUserSettings(Model model){
+        return "Fins_Account_Settings";
+    }
 }
