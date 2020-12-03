@@ -272,6 +272,7 @@ function ClearFinsForm (){
 //Парсинг строки JSON в список финансовых операций и заполнение таблицы
 function JSONStringToFinsOperationList(JSONString) {
     var strFinsOpertype = "";
+    var strFinsOpertypeRU = "";
     var strFinsOperationListContext = "";
     var strRowId = "";
     var strLockFlg = "";
@@ -300,13 +301,31 @@ function JSONStringToFinsOperationList(JSONString) {
         if(value["finscontragent"] == null){strFinsContrAgent = 'null';} else {strFinsContrAgent = value["finscontragent"].toString();}
         if(value["requisites"] == null){strFinsRequisites = 'null';} else {strFinsRequisites = value["requisites"].toString();}
 
+
+        switch(strFinsOpertype) {
+            case "profit":
+                strFinsOpertypeRU = "приход";
+            break;
+            case "expense":
+                strFinsOpertypeRU = "расход";
+            break;
+            case "transfer":
+                strFinsOpertypeRU = "перевод";
+            break;
+            default:{
+                strFinsOpertypeRU = "null";
+            }
+        }
+
         strFinsOperationListContext = strFinsOperationListContext
             + '<tr class="fincrowlink">'
             + '<th class="fieldfinsopertype">' + strFinsOpertype + '</th>'
+            + '<th class="fieldfinsopertyperu">' + strFinsOpertypeRU + '</th>'
             + '<th class="fieldid">' + strRowId + '</th>'
             + '<th class="fieldlockflg">' + strLockFlg + '</th>'
             + '<th class="fieldoperdate">' + strOperDate + '</th>'
             + '<th class="fieldamount">' + strFinsAmount + '</th>'
+            + '<th class="fieldamountprint">' + strFinsAmount + ' руб.' + '</th>'
             + '<th class="fieldpayaccin">' + strPaymentAccIn + '</th>'
             + '<th class="fieldpayaccout">' + strPaymentAccOut + '</th>'
             + '<th class="fieldfinsarticle">' + strFinsArticle + '</th>'

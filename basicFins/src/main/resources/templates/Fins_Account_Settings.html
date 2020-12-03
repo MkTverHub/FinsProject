@@ -104,7 +104,9 @@
                         <h3>Добавить компанию</h3>
                         <p class="lead">Компанию и сотрудников необходимо добавить для правильного финансового учета с контрагентами</p>
                         <p class="lead">
-                            <button type="submit" class="btn btn-dark">Добавить</button>
+                            <form th:action="@{/FinsCompany}" method="post">
+                                <button type="submit" class="btn btn-dark">Добавить</button>
+                            </form>
                         </p>
                     </div>
                 </div>
@@ -114,7 +116,9 @@
                         <h3>Добавить статьи</h3>
                         <p class="lead">Статьи - это финансовые метки, по которым Вы можете более детально разбить финансовые операции</p>
                         <p class="lead">
-                           <button type="submit" class="btn btn-dark">Добавить</button>
+                            <form th:action="@{/FinsLOV}" method="post">
+                                <button type="submit" class="btn btn-dark">Добавить</button>
+                            </form>
                         </p>
                     </div>
                 </div>

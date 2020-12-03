@@ -32,19 +32,14 @@ function doAjaxDellProject() {
             FinsProjectDescription : strFinsProjectDescription
         }),
         success: function (data) {
-            var strTableData = "";
-            var obj = jQuery.parseJSON(data.text);
-            $.each(obj, function (index, value) {
-                strTableData = strTableData + '<tr id="'+value["id"].toString()+'_rowid" class="finsprojectrowlink"><th class="fieldid">' + value["id"].toString() + '</th><th class="fieldname">' + value["name"] + '</th><th class="fielddescription">' + value["description"] + '</th></tr>';
-            });
-            $("#finsproject_table_body").html(strTableData);
+            doAjaxGetProjectList();
         }
     });
 
     $('#fins_project_operation_type').val('');
 };
 
-//Ajax получение списка проектов при загрузке страницы
+//Ajax получение списка проектов + заполнение таблицы
 function doAjaxGetProjectList() {
     $.ajax({
         url : 'GetFinsProjectList',
@@ -56,26 +51,9 @@ function doAjaxGetProjectList() {
 
         }),
         success: function (data) {
-            var strTableData = "";//Контекст таблицы
-            var strProjectListContext = "";//Контекс левой панели
-            var obj = jQuery.parseJSON(data.text);
-            $.each(obj, function (index, value) {
-                strTableData = strTableData
-                    + '<tr id="'+value["id"].toString()
-                    + '_rowid" class="finsprojectrowlink"><th class="fieldid">'
-                    + value["id"].toString() + '</th><th class="fieldname">'
-                    + value["name"] + '</th><th class="fielddescription">'
-                    + value["description"] + '</th></tr>';
-                strProjectListContext = strProjectListContext
-                    + '<li id="' + value["id"].toString()
-                    + '_rowid" class="left-menu-item finsproject_list_row"><input type="button" class="left-menu-link finsproject_list_row" projnum="'
-                    + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
-            });
-            $("#finsproject_table_body").html(strTableData);
-            $("#projectlistpanel").html(strProjectListContext);
+            $("#finsproject_table_body").html(JsonToTableBody("project","id",["id","name","description"],data.text));
         }
     });
-
     $('#fins_project_operation_type').val('');
 };
 
@@ -146,39 +124,14 @@ function doAjaxCompanytDBOperation(CompanyId,ProjectId) {
     });
 };
 
-//Ajax получение списка проектов в левой панели
-function doAjaxGetProjectListLeft() {
-    $.ajax({
-        url : 'GetFinsProjectList',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-
-        }),
-        success: function (data) {
-            var strProjectListContext = "";
-            var obj = jQuery.parseJSON(data.text);
-            $.each(obj, function (index, value) {
-                strProjectListContext = strProjectListContext
-                    + '<li id="' + value["id"].toString()
-                    + '_rowid" class="left-menu-item finsproject_list_row_li"><input type="button" class="left-menu-link finsproject_list_row" projnum="'
-                    + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
-            });
-            $("#projectlistpanel").html(strProjectListContext);
-        }
-    });
-};
-
 
 //Клик по записи
 $(function(){
-    $('#finsproject_table_body').on('click', '.finsprojectrowlink', function(){
+    $('#finsproject_table_body').on('click', '.project_t_row_class', function(){
         UnSetROForm();
-        strFinsProjectId = $(this).find('.fieldid').html();
-        strFinsProjectName = $(this).find('.fieldname').html();
-        strFinsProjectDescription = $(this).find('.fielddescription').html();
+        strFinsProjectId = $(this).find('.id_t_cell_class').html();
+        strFinsProjectName = $(this).find('.name_t_cell_class').html();
+        strFinsProjectDescription = $(this).find('.description_t_cell_class').html();
         $('#fins_project_operation_type').val('edit');
         $('#fins_project_record_id').val(strFinsProjectId);
         $('#fins_project_name').val(strFinsProjectName);

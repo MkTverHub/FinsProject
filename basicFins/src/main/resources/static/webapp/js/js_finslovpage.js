@@ -4,14 +4,14 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-    doAjaxGetProjectList();//Получение списка проектов в левой панели
+    doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
     doAjaxGetLovList();
     SetROForm();
 };
 
 
 //-----------Ajax Functions------------
-//Ajax получение списка Компаний
+//Ajax получение списка Lov + заполнение таблицы
 function doAjaxGetLovList() {
     $.ajax({
         url : 'GetLovList',
@@ -23,7 +23,8 @@ function doAjaxGetLovList() {
             //
         }),
         success: function (data) {
-            JSONStringToLovTable(data.text);
+            //JSONStringToLovTable(data.text);
+            $("#finslov_table_body").html(JsonToTableBody("lov","id",["id","text_val","description","options","type"],data.text));
         }
     });
 };
@@ -58,53 +59,6 @@ function doAjaxLovDBOperation() {
             doAjaxGetLovList();
         }
     });
-};
-
-//Ajax получение списка проектов в левой панели
-function doAjaxGetProjectList() {
-    $.ajax({
-        url : 'GetFinsProjectList',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-
-        }),
-        success: function (data) {
-            var strProjectListContext = "";
-            var obj = jQuery.parseJSON(data.text);
-            $.each(obj, function (index, value) {
-                strProjectListContext = strProjectListContext
-                    + '<li id="' + value["id"].toString()
-                    + '_rowid" class="left-menu-item finsproject_list_row_li"><input type="button" class="left-menu-link finsproject_list_row" projnum="'
-                    + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
-            });
-            $("#projectlistpanel").html(strProjectListContext);
-        }
-    });
-};
-
-//--------Функции заполнения----------------
-//Парсинг JSON списка lov в таблицу
-function JSONStringToLovTable(JSONString) {
-    var strLovTableContext = '';
-    var strLovId = '';
-    var strLovVal = '';
-    var strLovDescription = '';
-    var strLovOptions = '';
-    var strLovType = '';
-    var obj = jQuery.parseJSON(JSONString);
-    $.each(obj, function (index, value) {
-        strLovTableContext = strLovTableContext + '<tr class="fincrowlink lovlist_row">';
-        if(value['id'] == null){strLovId = 'null';} else {strLovId = value['id'].toString();}
-        if(value['text_val'] == null){strLovVal = 'null';} else {strLovVal = value['text_val'].toString();}
-        if(value['description'] == null){strLovDescription = 'null';} else {strLovDescription = value['description'].toString();}
-        if(value['options'] == null){strLovOptions = 'null';} else {strLovOptions = value['options'].toString();}
-        if(value['type'] == null){strLovType = 'null';} else {strLovType = value['type'].toString();}
-        strLovTableContext = strLovTableContext + '<th class="lov_id_row" value="' + strLovId + '">' + strLovId + '</th>' + '<th class="lov_value_row" value="' + strLovVal + '">' + strLovVal + '</th>' + '<th class="lov_description_row" value="' + strLovDescription + '">' + strLovDescription + '</th>' + '<th class="lov_options_row" value="' + strLovOptions + '">' + strLovOptions + '</th>' + '<th class="lov_type_row" value="' + strLovType + '">' + strLovType + '</th>' + '</tr>';
-    });
-    $("#finslov_table_body").html(strLovTableContext);
 };
 
 //Чистка формы Lov
@@ -146,16 +100,17 @@ function ResetLOV(){
     SetROForm();
 };
 
-//Событие нажатия на строку компании
+//Событие нажатия на строку lov
 $(function(){
-    $("#finslov_table_body").on("click", ".lovlist_row", function () {
+    $("#finslov_table_body").on("click", ".lov_t_row_class", function () {
+        console.log("Click");
         UnSetROForm();
         $('#lov_db_action').attr('value',"update");
-        $('#lov_record_id').attr('value',$(this).find('.lov_id_row').attr('value'));
-        $('#lov_value').val($(this).find('.lov_value_row').attr('value'));
-        $('#lov_description').val($(this).find('.lov_description_row').attr('value'));
-        SetActiveSelect('#lov_options_list',$(this).find('.lov_options_row').attr('value'));
-        SetActiveSelect('#lov_type_list',$(this).find('.lov_type_row').attr('value'));
+        $('#lov_record_id').attr('value',$(this).find('.id_t_cell_class').attr('value'));
+        $('#lov_value').val($(this).find('.text_val_t_cell_class').attr('value'));
+        $('#lov_description').val($(this).find('.description_t_cell_class').attr('value'));
+        SetActiveSelect('#lov_options_list',$(this).find('.options_t_cell_class').attr('value'));
+        SetActiveSelect('#lov_type_list',$(this).find('.type_t_cell_class').attr('value'));
 
     });
 });
