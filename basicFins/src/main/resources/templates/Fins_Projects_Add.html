@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <title>Fin</title>
+    <script src="webapp/js/js_finsreportspage.js"></script><!--Подцепляем внешний скрипт-->
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1"></header>
+
+    
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Аналитика</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-2 p-0">
+                                <li class="breadcrumb-item text-muted active" aria-current="page"><a href="#">Ваши отчеты</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
+        <div class="container">
+
+                <!-- *************************************************************** -->
+                <!-- Карточка для создания проекта -->
+                <!-- *************************************************************** -->
+                <div class="row">
+                    <div class="col-12 mt-4">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                Проект - это ваш бизнес! Вы сможете детально оценивать ваши финансовые дела
+                            </div>
+                            <div class="card-body">
+                                <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать проект</button>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Новый проект будет доступен для финансовых операциях
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Назание проекта</h2>
+                                <p class="card-text">Описание проекта</p>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text">
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="projectprofitid">2 785 222,99</h2>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Деньги
+                                        </h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7">₽</span>
+                                    </div>
+                                </div>
+                                </p>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text">
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">Транзакции:
+                                        </h4>
+                                    </div>
+                                    </div>
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                        <div>
+                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Приход
+                                            </h6>
+                                        </div>
+                                        <div class="ml-auto mt-md-1">+ 3 485
+                                            <span class="opacity-7">₽</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                        <div>
+                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Расход
+                                            </h6>
+                                        </div>
+                                        <div class="ml-auto mt-md-1">- 22 100
+                                            <span class="opacity-7">₽</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                        <div>
+                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Сальдо
+                                            </h6>
+                                        </div>
+                                        <div class="ml-auto mt-md-1">- 8 100
+                                            <span class="opacity-7">₽</span>
+                                        </div>
+                                    </div>
+                                </p>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>
+                                <button class="btn btn-light">Операции</button>
+                                <button class="btn btn-light">Изменить</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 class="card-title">Назание проекта</h2>
+                                <p class="card-text">Описание проекта</p>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text">
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="projectprofitid">2 785 222,99</h2>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Деньги
+                                        </h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7">₽</span>
+                                    </div>
+                                </div>
+                                </p>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text">
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">Транзакции:
+                                        </h4>
+                                    </div>
+                                    </div>
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                        <div>
+                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Приход
+                                            </h6>
+                                        </div>
+                                        <div class="ml-auto mt-md-1">+ 3 485
+                                            <span class="opacity-7">₽</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                        <div>
+                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Расход
+                                            </h6>
+                                        </div>
+                                        <div class="ml-auto mt-md-1">- 22 100
+                                            <span class="opacity-7">₽</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                        <div>
+                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Сальдо
+                                            </h6>
+                                        </div>
+                                        <div class="ml-auto mt-md-1">- 8 100
+                                            <span class="opacity-7">₽</span>
+                                        </div>
+                                    </div>
+                                </p>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>
+                                <button class="btn btn-light">Операции</button>
+                                <button class="btn btn-light">Изменить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <!-- *************************************************************** -->
+        <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+        <!-- *************************************************************** -->
+                
+        </div>
+    
+    </section>
+
+</div>
+
+
+</body>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        doAjaxGetProjectList();
+        StartPage();
+    });
+</script>
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+</html>
