@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <title>Fin</title>
+    <script src="webapp/js/js_finsreportspage.js"></script><!--Подцепляем внешний скрипт-->
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1"></header>
+
+    
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Аналитика</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-2 p-0">
+                                <li class="breadcrumb-item text-muted active" aria-current="page"><a href="#">Ваши отчеты</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
+        <div class="container">
+
+                <!-- *************************************************************** -->
+                <!-- Карточка администратора -->
+                <!-- *************************************************************** -->
+                <div class="row">
+
+                    <div class="col-md-8 mt-4">
+                        <div class="card bg-primary text-white">
+                            <div class="card-header">Настройки аккаунта: <span>info@mail.ru</span></div>
+                            <div class="card-body">
+                                <form method="post">
+                                    <div class="form-body">
+                                        <!-- Поле ввода -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">ФИО:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                     <div class="row">
+                                                         <div class="col-md-12">
+                                                             <input type="text" id="fins_project_name" class="form-control" readonly="readonly">
+                                                         </div>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                         <!-- Поле ввода -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Телефон:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                     <div class="row">
+                                                         <div class="col-md-12">
+                                                             <input type="text" id="fins_project_desqription" class="form-control" readonly="readonly">
+                                                         </div>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Вид бизнеса:</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="project_income_id" class="form-control" readonly="true">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Поле ввода -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Статус оплаты</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="project_expense_id" class="form-control" readonly="true">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Дата окончании</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="project_expense_id" class="form-control" readonly="true">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="form-actions">
+                                        <div class="text-right">
+                                            <button onclick="" class="btn waves-effect waves-light btn-dark btn-modif-size">Изменить</button>
+                                            <button onclick="" class="btn waves-effect waves-light btn-dark btn-modif-size">Сохранить</button>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                </form>
+                            </div>
+                            <div class="card-footer">
+                                Роль в системе: <span>Администратор</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mt-4">
+                        
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h2 class="mb-1 w-100 text-truncate font-weight-medium">389 руб.</h2>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7">Баланс</span>
+                                    </div>
+
+                                </div>
+                                 <div class="d-flex d-lg-flex d-md-block align-items-center mt-4">
+                                    <button type="button" class=" form-control btn waves-effect waves-light btn-rounded btn-success">Оплатить</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h2 class="mb-1 w-100 text-truncate font-weight-medium">5</h2>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7">Пользователей</span>
+                                    </div>
+
+                                </div>
+                                 <div class="d-flex d-lg-flex d-md-block align-items-center mt-4">
+                                    <button type="button" class="form-control btn waves-effect waves-light btn-rounded btn-dark">Посмотреть</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h4 class="card-title text-white">Информация по оплате</h4>
+                                <table class="table table-sm mb-0 text-white">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">№</th>
+                                            <th scope="col">Дата</th>
+                                            <th scope="col">Сумма</th>
+                                            <th scope="col">Статус</th>
+                                            <th scope="col">Платежка</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>28-10-2020</td>
+                                            <td>100 руб.</td>
+                                            <td>Успешно</td>
+                                            <td>Чек</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>28-11-2020</td>
+                                            <td>100 руб.</td>
+                                            <td>Успешно</td>
+                                            <td>Чек</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>28-12-2020</td>
+                                            <td>100 руб.</td>
+                                            <td>Ожидает оплаты</td>
+                                            <td>Чек</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                </div>
+        <!-- *************************************************************** -->
+        <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+        <!-- *************************************************************** -->
+                
+        </div>
+    
+    </section>
+
+</div>
+
+
+</body>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        doAjaxGetProjectList();
+        StartPage();
+    });
+</script>
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+</html>
