@@ -50,14 +50,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <!-- Card -->
-                    <div class="card">
+                    <div class="card bg-primary text-white">
                         <div class="card-header">
                             Администратор
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Аккаунт: <span>info@mail.ru</span></h4>
-                            <table class="table">
+                            <h4 class="card-title text-white">Аккаунт: <span>info@mail.ru</span></h4>
+                            <table class="table text-white">
                                 <tbody>
                                     <tr>
                                         <td>ФИО:</td>
@@ -82,14 +81,14 @@
                                         <td>28-10-2020</td>
                                     </tr>
                                 </tbody>
-                                </table>
-                                <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                    <div class="font-weight-normal mb-0 w-100 text-truncate"><button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-info">Настройки аккаунта</button></div>
-                                    <div class="ml-auto mt-md-1"><button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-dark">Пользователи</button></div>
-                                </div>
+                            </table>
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div class="font-weight-normal mb-0 w-100 text-truncate"><button type="submit" class="btn waves-effect waves-light btn-rounded btn-dark">Настройки аккаунта</button></div>
+                                <div class="ml-auto mt-md-1"><button type="submit" class="btn waves-effect waves-light btn-rounded btn-dark">Пользователи</button></div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Card -->
+                    
                 </div>
 
                 <div class="col-md-6">
@@ -97,7 +96,7 @@
                         <h3>Добавить пользователя</h3>
                         <p class="lead">Пользователь - это сотрудник, который получит доступ к вашим проектам</p>
                         <p class="lead">
-                            <button type="submit" class="btn btn-dark">Добавить</button>
+                            <button type="submit" class="btn btn-outline-dark">Добавить</button>
                         </p>
                     </div>
                 </div>
@@ -108,7 +107,7 @@
                         <p class="lead">Компанию и сотрудников необходимо добавить для правильного финансового учета с контрагентами</p>
                         <p class="lead">
                             <form th:action="@{/FinsCompany}" method="post">
-                                <button type="submit" class="btn btn-dark">Добавить</button>
+                                <button type="submit" class="btn btn-outline-dark">Добавить</button>
                             </form>
                         </p>
                     </div>
@@ -120,7 +119,7 @@
                         <p class="lead">Статьи - это финансовые метки, по которым Вы можете более детально разбить финансовые операции</p>
                         <p class="lead">
                             <form th:action="@{/FinsLOV}" method="post">
-                                <button type="submit" class="btn btn-dark">Добавить</button>
+                                <button type="submit" class="btn btn-outline-dark">Добавить</button>
                             </form>
                         </p>
                     </div>
