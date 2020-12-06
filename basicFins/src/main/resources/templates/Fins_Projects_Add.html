@@ -50,31 +50,31 @@
             
         <div class="container">
 
-                <!-- *************************************************************** -->
-                <!-- Карточка для создания проекта -->
-                <!-- *************************************************************** -->
-                <div class="row">
-                    <div class="col-12 mt-4">
-                        <div class="card text-center">
-                            <div class="card-header">
-                                Проект - это ваш бизнес. Все данные будут на одном экране. Полный контроль денег 
-                            </div>
-                            <div class="card-body">
-                                <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать новый проект</button>
-                            </div>
-                            <div class="card-footer text-muted">
-                                В проекте будут отражены Ваши финансовые операции с контрагентами
-                            </div>
+            <!-- *************************************************************** -->
+            <!-- Раздел для создания проекта -->
+            <!-- *************************************************************** -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Проект - это ваш бизнес. Все данные будут на одном экране. Полный контроль денег 
+                        </div>
+                        <div class="card-body">
+                            <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать новый проект</button>
+                        </div>
+                        <div class="card-footer text-muted">
+                            В проекте будут отражены Ваши финансовые операции с контрагентами
                         </div>
                     </div>
-
-
-                    <!--Плитки проектов-->
-                    <div class="col-md-4" th:each="p: ${finsprojectList}">
-                        <div th:replace="fragments\layouts\fragment_project_tile.html :: project_tile_fragment_1(projectName=${p.name},projectDescription=${p.description})"></div>
-                    </div>
-
                 </div>
+
+
+                <!-- Карточка проекта-->
+                <div class="col-md-4" th:each="p: ${finsprojectList}">
+                    <div th:replace="fragments\layouts\fragment_project_tile.html :: project_tile_fragment_1(projectName=${p.name},projectDescription=${p.description})"></div>
+                </div>
+
+            </div>
         <!-- *************************************************************** -->
         <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
         <!-- *************************************************************** -->
