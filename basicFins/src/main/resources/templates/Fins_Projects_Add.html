@@ -68,135 +68,18 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">Назание проекта</h3>
-                                <p class="card-text">Описание проекта</p>
-                                <div class="dropdown-divider"></div>
-                                <p class="card-text">
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                    <div>
-                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="projectprofitid">2 785 222,99</h2>
-                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Деньги
-                                        </h6>
-                                    </div>
-                                    <div class="ml-auto mt-md-3 mt-lg-0">
-                                        <span class="opacity-7">₽</span>
-                                    </div>
-                                </div>
-                                </p>
-                                <div class="dropdown-divider"></div>
-                                <p class="card-text">
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                    <div>
-                                        <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">Транзакции:
-                                        </h4>
-                                    </div>
-                                    </div>
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                        <div>
-                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Приход
-                                            </h6>
-                                        </div>
-                                        <div class="ml-auto mt-md-1">+ 3 485
-                                            <span class="opacity-7">₽</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                        <div>
-                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Расход
-                                            </h6>
-                                        </div>
-                                        <div class="ml-auto mt-md-1">- 22 100
-                                            <span class="opacity-7">₽</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                        <div>
-                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Сальдо
-                                            </h6>
-                                        </div>
-                                        <div class="ml-auto mt-md-1">- 8 100
-                                            <span class="opacity-7">₽</span>
-                                        </div>
-                                    </div>
-                                </p>
-                                <div class="dropdown-divider"></div>
-                                <p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>
-                                <button class="btn btn-light">Операции</button>
-                                <button class="btn btn-light">Изменить</button>
-                            </div>
-                        </div>
+
+                    <!--Плитки проектов-->
+                    <div class="col-md-4" th:each="p: ${finsprojectList}">
+                        <div th:replace="fragments\layouts\fragment_project_tile.html :: project_tile_fragment_1(projectName=${p.name},projectDescription=${p.description})"></div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title">Назание проекта</h3>
-                                <p class="card-text">Описание проекта</p>
-                                <div class="dropdown-divider"></div>
-                                <p class="card-text">
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                    <div>
-                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="projectprofitid">2 785 222,99</h2>
-                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Деньги
-                                        </h6>
-                                    </div>
-                                    <div class="ml-auto mt-md-3 mt-lg-0">
-                                        <span class="opacity-7">₽</span>
-                                    </div>
-                                </div>
-                                </p>
-                                <div class="dropdown-divider"></div>
-                                <p class="card-text">
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                    <div>
-                                        <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">Транзакции:
-                                        </h4>
-                                    </div>
-                                    </div>
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                        <div>
-                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Приход
-                                            </h6>
-                                        </div>
-                                        <div class="ml-auto mt-md-1">+ 3 485
-                                            <span class="opacity-7">₽</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                        <div>
-                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Расход
-                                            </h6>
-                                        </div>
-                                        <div class="ml-auto mt-md-1">- 22 100
-                                            <span class="opacity-7">₽</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                        <div>
-                                            <h6 class="font-weight-normal mb-0 w-100 text-truncate">Сальдо
-                                            </h6>
-                                        </div>
-                                        <div class="ml-auto mt-md-1">- 8 100
-                                            <span class="opacity-7">₽</span>
-                                        </div>
-                                    </div>
-                                </p>
-                                <div class="dropdown-divider"></div>
-                                <p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>
-                                <button class="btn btn-light">Операции</button>
-                                <button class="btn btn-light">Изменить</button>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
         <!-- *************************************************************** -->
         <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
         <!-- *************************************************************** -->
                 
         </div>
-    
     </section>
 
 </div>
@@ -211,10 +94,7 @@
 
 <script type="text/javascript">
     //Событие загрузки страницы
-    $(document).ready(function(){
-        doAjaxGetProjectList();
-        StartPage();
-    });
+
 </script>
 
 <!------------FRAMEWORK Script----------------------------->

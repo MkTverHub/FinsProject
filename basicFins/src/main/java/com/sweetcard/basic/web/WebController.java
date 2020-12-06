@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -61,7 +62,9 @@ public class WebController {
     @RequestMapping(value = "/Projects", method = RequestMethod.POST)
     public String GoToProjects(Model model){
         logger.info("WebController.GoToProjects -> ");
-        return "Fins_Projects";
+        List<Finsproject> finsprojectList = finsprojectRepository.GetAllUserProjects(GetUserLogin());
+        model.addAttribute("finsprojectList",finsprojectList);
+        return "Fins_Projects_Add";
     }
 
     //Переход на страницу Финвнсовых операций
@@ -115,4 +118,20 @@ public class WebController {
     public String GoToUserSettings(Model model){
         return "Fins_Account_Settings";
     }
+
+
+
+    //--------------------Внутринние методы---------------------------------
+    //Получить логин пользователя
+    private String GetUserLogin(){
+        String strUserName = "";
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            strUserName = ((UserDetails)principal).getUsername();
+        } else {
+            strUserName = principal.toString();
+        }
+        return strUserName;
+    }
 }
+
