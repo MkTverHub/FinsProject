@@ -319,17 +319,17 @@ function JSONStringToFinsOperationList(JSONString) {
 
         strFinsOperationListContext = strFinsOperationListContext
             + '<tr class="fincrowlink">'
-            + '<th class="fieldfinsopertype">' + strFinsOpertype + '</th>'
+            + '<th class="fieldfinsopertype f-d-n">' + strFinsOpertype + '</th>'
             + '<th class="fieldfinsopertyperu">' + strFinsOpertypeRU + '</th>'
-            + '<th class="fieldid">' + strRowId + '</th>'
-            + '<th class="fieldlockflg">' + strLockFlg + '</th>'
+            + '<th class="fieldid f-d-n">' + strRowId + '</th>'
+            + '<th class="fieldlockflg f-d-n">' + strLockFlg + '</th>'
             + '<th class="fieldoperdate">' + strOperDate + '</th>'
-            + '<th class="fieldamount">' + strFinsAmount + '</th>'
+            + '<th class="fieldamount f-d-n">' + strFinsAmount + '</th>'
             + '<th class="fieldamountprint">' + strFinsAmount + ' руб.' + '</th>'
             + '<th class="fieldpayaccin">' + strPaymentAccIn + '</th>'
             + '<th class="fieldpayaccout">' + strPaymentAccOut + '</th>'
             + '<th class="fieldfinsarticle">' + strFinsArticle + '</th>'
-            + '<th class="fieldprojectid">' + strProjectId + '</th>'
+            + '<th class="fieldprojectid f-d-n">' + strProjectId + '</th>'
             + '<th class="fieldfinscontragent">' + strFinsContrAgent + '</th>'
             + '<th class="fieldrequisites">' + strFinsRequisites + '</th>'
             + '<th class="fielddetail">' + strFinsDetail + '</th>'
@@ -337,6 +337,7 @@ function JSONStringToFinsOperationList(JSONString) {
     });
 
     $("#financetable").html(strFinsOperationListContext);
+    <!--sd-->
 }
 
 //Парсинг JSON списка контрагентов в выпадающий список
