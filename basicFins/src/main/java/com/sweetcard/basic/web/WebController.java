@@ -66,6 +66,12 @@ public class WebController {
         model.addAttribute("finsprojectList",finsprojectList);
         return "Fins_Projects_Add";
     }
+    //Переход на страницу Проектов (Редактор)
+    @RequestMapping(value = "/ProjectsEditor", method = RequestMethod.POST)
+    public String GoToProjectsEditor(Model model){
+        logger.info("WebController.GoToProjectsEditor -> ");
+        return "Fins_Projects";
+    }
 
     //Переход на страницу Финвнсовых операций
     @RequestMapping(value = "/FinsOperations", method = RequestMethod.POST)
@@ -82,14 +88,28 @@ public class WebController {
         return "Fins_LOV";
     }
 
-    //Переход на страницу контрагентов
+    //Переход на страницу контрагентов (Плитка)
     @RequestMapping(value = "/Contragents", method = RequestMethod.POST)
     public String GoToContragents(Model model){
         try{
             logger.info("WebController.GoToContragents -> ");
-            return "Fins_Contragents";
+            List<Contragent> contragentList = contragentRepository.findAllByOrderByIdAsc();
+            model.addAttribute("contragentList",contragentList);
+            return "Fins_Contragents_Add";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToContragents -> ERROR: " + req_ex1);
+            return "error";
+        }
+    }
+
+    //Переход на страницу контрагентов (Редактор)
+    @RequestMapping(value = "/ContragentsEditor", method = RequestMethod.POST)
+    public String GoToContragentsEditor(Model model){
+        try{
+            logger.info("WebController.ContragentsEditor -> ");
+            return "Fins_Contragents";
+        }catch (Exception req_ex1){
+            logger.info("WebController.ContragentsEditor -> ERROR: " + req_ex1);
             return "error";
         }
     }
