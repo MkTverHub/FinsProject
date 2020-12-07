@@ -4,7 +4,7 @@
 <head>
     <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
     <title>Fin</title>
-    <script src="webapp/js/js_finsreportspage.js"></script><!--Подцепляем внешний скрипт-->
+    <script src="webapp/js/js_finsreportspageadd.js"></script><!--Подцепляем внешний скрипт-->
 </head>
 
 <body>
@@ -60,7 +60,9 @@
                             Проект - это ваш бизнес. Все данные будут на одном экране. Полный контроль денег 
                         </div>
                         <div class="card-body">
-                            <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать новый проект</button>
+                            <form th:action="@{/ProjectsEditor}" method="post">
+                                <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-success">Редактирование проектов</button>
+                            </form>
                         </div>
                         <div class="card-footer text-muted">
                             В проекте будут отражены Ваши финансовые операции с контрагентами
@@ -69,7 +71,7 @@
                 </div>
 
 
-                <!-- Карточка проекта-->
+                <!-- Плитки проектов-->
                 <div class="col-md-4" th:each="p: ${finsprojectList}">
                     <div th:replace="fragments\layouts\fragment_project_tile.html :: project_tile_fragment_1(projectName=${p.name},projectDescription=${p.description})"></div>
                 </div>
@@ -94,7 +96,9 @@
 
 <script type="text/javascript">
     //Событие загрузки страницы
-
+    $(document).ready(function(){
+        StartPage();
+    });
 </script>
 
 <!------------FRAMEWORK Script----------------------------->
