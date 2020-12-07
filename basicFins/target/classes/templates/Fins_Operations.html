@@ -6,6 +6,7 @@
 <head>
     <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
     <title>FinSpetsel - Финансовый</title>
+    <script src="webapp/js/js_general_functions.js"></script>
     <script src="webapp/js/js_finsoperationpage.js"></script>
 </head>
 
@@ -268,7 +269,7 @@
                                 </div>
                                 <div class="col-md-6 align-self-center">
                                     <div class="text-right">
-                                        <button class="btn btn-outline-secondary ml-1" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                                        <button class="btn waves-effect waves-light btn-rounded btn-light ml-1" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
                                             Фильтр
                                         </button>
                                     </div>
@@ -525,8 +526,7 @@
                 </div>
 
             </div>
-
-
+    
             <!-- *************************************************************** -->
             <!-- ТАБЛИЦА - ПОДРОБНАЯ ИФНОРМАЦИЯ -->
             <!-- *************************************************************** -->
@@ -538,26 +538,26 @@
                             <h4 class="card-title">Подробная информация</h4>
                             <h6 class="card-subtitle">Полный список всех операции по текущему проекту. Вы можете изменить или удалить нужную запись, достаточно кликнув по ней.</h6>
                             <div class="table-responsive">
-                                <table id="financedatatable" class="table table-striped table-bordered no-wrap tabel-hover">
+                                <table id="financedatatable" class="table table-striped table-bordered no-wrap table-hover">
                                     <thead> <!-- Заголовок таблицы -->
                                     <tr>
+                                        <!--<th class="f-d-n">Тип операции</th>-->
                                         <th>Тип операции</th>
-                                        <th>Row_ID</th>
-                                        <th>Блок Флаг</th>
-                                        <th>Дата опер.</th>
+                                        <!--<th class="f-d-n">Row_ID</th>-->
+                                        <!--<th class="f-d-n">Блок Флаг</th>-->
+                                        <th>Дата операции</th>
+                                        <!--<th class="f-d-n">Сумма</th>-->
                                         <th>Сумма</th>
                                         <th>Счет поступления</th>
                                         <th>Счет списания</th>
                                         <th>Статья</th>
-                                        <th>Id проекта</th>
+                                        <!--<th class="f-d-n">Id проекта</th>-->
                                         <th>Контрагент</th>
                                         <th>Реквизиты</th>
                                         <th>Детали</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="financetable">
-
-                                    </tbody>
+                                    <tbody id="financetable"></tbody>
                                 </table>
                             </div>
                         </div>
