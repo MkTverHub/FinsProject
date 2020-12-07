@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<!--ПЛИТКА ДЛЯ ЭКРАНА ПРОЕКТОВ-->
 <!--<div class="col-md-4" th:fragment="project_tile_fragment_1">-->
     <div class="card" th:fragment="project_tile_fragment_1(projectName,projectDescription)">
         <div class="card-body">
@@ -58,6 +59,88 @@
             <div class="dropdown-divider"></div>
             <p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>
             <button class="btn btn-light">Операции</button>
+            <button class="btn btn-light">Изменить</button>
+        </div>
+    </div>
+<!--</div>-->
+
+<!--ПЛИТКА ДЛЯ ЭКРАНА КОНТРАГЕНТОВ-->
+<!--<div class="col-md-4">-->
+    <div class="card" th:fragment="contragent_tile_fragment_1(contragentName,contragentDescription,contragentPhone,contragentMail)">
+        <div class="card-body">
+            <h4 class="card-title" th:utext="${contragentName}"></h4>
+            <p class="card-text">
+                <span>ИП Иван</span>
+                <span>4101010100101</span></p>
+            <div class="dropdown-divider"></div>
+            <p class="card-text">
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">2 785 222,99</h4>
+                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Отправлено на счет
+                    </h6>
+                </div>
+                <div class="ml-auto mt-md-3 mt-lg-0">
+                    <span class="opacity-7">₽</span>
+                </div>
+            </div>
+            </p>
+            <p class="card-text">
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">2 785 222,99</h4>
+                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Получено нам
+                    </h6>
+                </div>
+                <div class="ml-auto mt-md-3 mt-lg-0">
+                    <span class="opacity-7">₽</span>
+                </div>
+            </div>
+            </p>
+            <p class="card-text">
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">2 785 222,99</h4>
+                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Разница
+                    </h6>
+                </div>
+                <div class="ml-auto mt-md-3 mt-lg-0">
+                    <span class="opacity-7">₽</span>
+                </div>
+            </div>
+            </p>
+            <div class="dropdown-divider"></div>
+            <p class="card-text">
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">Подробнее:
+                    </h4>
+                </div>
+            </div>
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h6 class="font-weight-normal mb-0 w-100 text-truncate">Телефон:
+                    </h6>
+                </div>
+                <div class="ml-auto mt-md-1" th:utext="${contragentPhone}">8(800)800-80-80</div>
+            </div>
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h6 class="font-weight-normal mb-0 w-100 text-truncate">Почта:
+                    </h6>
+                </div>
+                <div class="ml-auto mt-md-1" th:utext="${contragentMail}">mail@mail.ru</div>
+            </div>
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h6 class="font-weight-normal mb-0 w-100 text-truncate">Активный
+                    </h6>
+                </div>
+                <div class="ml-auto mt-md-1">Да</div>
+            </div>
+            </p>
+            <div class="dropdown-divider"></div>
+            <p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>
             <button class="btn btn-light">Изменить</button>
         </div>
     </div>
