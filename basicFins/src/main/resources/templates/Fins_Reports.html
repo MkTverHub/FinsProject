@@ -51,22 +51,38 @@
         <div class="container-fluid">
 
                 <!-- *************************************************************** -->
-                <!-- Карточка с формой -->
+                <!-- Карточка с Отчетами -->
                 <!-- *************************************************************** -->
+                
                 <div class="row">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Отчеты</h4>
-                            <h6 class="card-subtitle">Удобный</h6>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Отчет по контрагентам</h4>
+                                <canvas id="myChart2" width="200" height="50"></canvas><!------------Первый отчет------------->
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3"><button type="button" class="btn waves-effect waves-light btn-rounded btn-light">Проекты</button></div>
-                            <div class="col-md-3"><button type="button" class="btn waves-effect waves-light btn-rounded btn-light">Контрагенты</button></div>
-                            <div class="col-md-3"><button type="button" class="btn waves-effect waves-light btn-rounded btn-light">Компании</button></div>
-                            <div class="col-md-3"><button type="button" class="btn waves-effect waves-light btn-rounded btn-light">Статьи</button></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Отчет по проектам</h4>
+                                <canvas id="myChart3" width="200" height="80"></canvas><!------------Второй отчет------------->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Отчет по компаниям</h4>
+                                <canvas id="myChart" width="200" height="80"></canvas><!------------Третий отчет------------->
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="card-group">
                     <div class="card border-right">
                         <div class="card-body">
@@ -159,5 +175,101 @@
 
 <!------------FRAMEWORK Script----------------------------->
 <script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+
+
+
+<!------------Скрипт отчетов----------------------------->
+<script src="webapp/js/js_сhart.min.js"></script>
+<!------------Настройка отчетов----------------------------->
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+<script>
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById('myChart3').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'pie',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: [
+                'rgb(54, 162, 235)',
+                'rgb(255, 99, 132)',
+                'rgb(255, 206, 86)'
+            ],
+            borderColor: 'rgb(255, 255, 255)',
+            data: [10, 20, 35]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+    });
+</script>
+
+
 
 </html>
