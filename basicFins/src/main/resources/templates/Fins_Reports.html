@@ -143,6 +143,63 @@
                     </div>
                 </div>
 
+                 <div class="col-lg-12"> <!------------Дефолтная таблица для четвертого отчета------------->
+                        <div class="card">
+                            <div class="card-body">
+                            <table class="table" id="dataTable">
+                              <thead>
+                                <th>year</th>
+                                <th>sale</th>
+                                <th>oborot</th>
+                                <th>profit</th>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>2016</td>
+                                  <td>10</td>
+                                  <td>200</td>
+                                  <td>89</td>
+                                </tr>
+                                <tr>
+                                  <td>2017</td>
+                                  <td>25</td>
+                                  <td>550</td>
+                                  <td>225</td>
+                                </tr>
+                                <tr>
+                                  <td>2018</td>
+                                  <td>55</td>
+                                  <td>1200</td>
+                                  <td>600</td>
+                                </tr>
+                                <tr>
+                                  <td>2019</td>
+                                  <td>120</td>
+                                  <td>2450</td>
+                                  <td>1100</td>
+                                </tr>
+                                <tr>
+                                  <td>2020</td>
+                                  <td>200</td>
+                                  <td>2450</td>
+                                  <td>1100</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            </div>
+                        </div>    
+                        
+                    </div>  
+
+                    <div class="col-lg-12"> <!------------Четвертый отчет------------->
+                        <div class="card">
+                            <div class="card-body chart">
+                                <h4 class="card-title">Отчет сколько было продаж Sale за год Year</h4>
+                                <canvas id="myChart4" width="200" height="50"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
 
         <!-- *************************************************************** -->
         <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
@@ -178,8 +235,12 @@
 
 <!------------Скрипт отчетов----------------------------->
 <script src="webapp/js/js_сhart.min.js"></script>
+
+
+
 <!------------Настройка отчетов----------------------------->
-<script>
+
+<script> //=========================Первый Отчет =============================
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
@@ -189,20 +250,20 @@ var myChart = new Chart(ctx, {
             label: '# of Votes',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+               'rgba(97, 116, 213, 1)',
+                'rgba(95, 118, 232, 1)',
+                'rgba(118, 139, 244, 1)',
+                'rgba(115, 133, 223, 1)',
+                'rgba(177, 189, 250, 1)',
+                'rgba(199, 208, 255, 1)'
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)'
             ],
             borderWidth: 1
         }]
@@ -219,7 +280,7 @@ var myChart = new Chart(ctx, {
 });
 </script>
 
-<script>
+<script> //========================== Второй отчет====================================
     var ctx = document.getElementById('myChart2').getContext('2d');
     var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -230,8 +291,8 @@ var myChart = new Chart(ctx, {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
             label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+             backgroundColor: 'rgba(97, 116, 213, 1)',
+            borderColor: 'rgba(97, 116, 213, 0.1)',
             data: [0, 10, 5, 2, 20, 30, 45]
         }]
     },
@@ -241,7 +302,7 @@ var myChart = new Chart(ctx, {
     });
 </script>
 
-<script>
+<script> //====================Третий отчет=========================
     var ctx = document.getElementById('myChart3').getContext('2d');
     var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -253,9 +314,9 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: 'My First dataset',
             backgroundColor: [
-                'rgb(54, 162, 235)',
-                'rgb(255, 99, 132)',
-                'rgb(255, 206, 86)'
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 0.6)',
+                'rgba(97, 116, 213, 0.2)'
             ],
             borderColor: 'rgb(255, 255, 255)',
             data: [10, 20, 35]
@@ -267,6 +328,81 @@ var myChart = new Chart(ctx, {
     });
 </script>
 
+
+
+
+
+<script> //=========================== Четвертый отчет=====================================
+function BuildChart(labels, values, chartTitle) {
+  var ctx = document.getElementById("myChart4").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels, // Наши метки
+      datasets: [{
+        label: chartTitle, // Название рядов
+        data: values, // Значения
+        backgroundColor: [ // Задаем произвольные цвета
+          'rgba(97, 116, 213, 1)',
+          'rgba(95, 118, 232, 1)',
+          'rgba(118, 139, 244, 1)',
+          'rgba(115, 133, 223, 1)',
+          'rgba(177, 189, 250, 1)',
+          'rgba(199, 208, 255, 1)'
+        ],
+        borderColor: [ // Добавляем произвольный цвет обводки
+          'rgba(97, 116, 213, 1)',
+          'rgba(97, 116, 213, 1)',
+          'rgba(97, 116, 213, 1)',
+          'rgba(97, 116, 213, 1)',
+          'rgba(97, 116, 213, 1)',
+          'rgba(97, 116, 213, 1)'
+        ],
+        borderWidth: 1 // Задаем ширину обводки секций
+      }]
+    }
+  });
+  return myChart;
+}
+</script>
+
+
+<script> // Получаем json из дефолтной таблицы для четвертого отчета
+    var table = document.getElementById('dataTable');
+    var json = []; // Первая строка – это заголовки 
+    var headers = [];
+    for (var i = 0; i < table.rows[0].cells.length; i++) {
+      headers[i] = table.rows[0].cells[i].innerHTML.toLowerCase().replace(/ /gi, '');
+    }
+
+    // Перебор ячеек 
+    for (var i = 1; i < table.rows.length; i++) {
+      var tableRow = table.rows[i];
+      var rowData = {};
+      for (var j = 0; j < tableRow.cells.length; j++) {
+        rowData[headers[j]] = tableRow.cells[j].innerHTML;
+      }
+
+      json.push(rowData);
+
+    }
+
+    console.log(json);
+
+    // Добавляем JSON-значения в массив меток
+    var labels = json.map(function(e) {
+      return e.year;
+    });
+    console.log(labels); // ["2016", "2017", "2018", "2019"]
+
+    // Добавляем JSON-значения в массив значений
+    var values = json.map(function(e) {
+      return e.sale;
+    });
+    console.log(values); // ["10", "25", "55", "120"]
+
+    var chart = BuildChart(labels, values, "Продажи товаров за период");
+</script>
 
 
 </html>
