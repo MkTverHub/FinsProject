@@ -565,6 +565,13 @@ public class ReqController {
                     //[{"id":0,"name":"Error","description":"Error"}]
                     result.setText(strJsonResult);
                 }break;
+                case "GetYearProfitList":{
+                    logger.info("ReqController.GetReport -> GetYearProfitList: ");
+                    /*
+                    Gson gson = new Gson();
+                    result.setText(gson.toJson(reportType1List));
+                     */
+                }
             }
             return result;
         }catch (Exception ex_rep){
