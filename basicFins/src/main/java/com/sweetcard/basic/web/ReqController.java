@@ -567,6 +567,7 @@ public class ReqController {
                 }break;
                 case "GetYearProfitList":{
                     logger.info("ReqController.GetReport -> GetYearProfitList: ");
+
                     /*
                     Gson gson = new Gson();
                     result.setText(gson.toJson(reportType1List));
