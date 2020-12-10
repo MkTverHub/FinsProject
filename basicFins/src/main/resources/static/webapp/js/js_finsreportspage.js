@@ -5,6 +5,8 @@
 function StartPage() {
     //alert('StartPage');
     doAjaxGetProjectList();//Получение списка проектов в левой панели
+    BuildChart(["2016", "2017", "2018", "2019"],["10", "25", "55", "120"],"Продажи товаров за период");
+    doAjaxGetYearProfitList('22');
 };
 
 //-----------Ajax Functions------------
@@ -32,4 +34,55 @@ function doAjaxGetProjectList() {
         }
     });
 };
+//Ajax получения отчета
+function doAjaxGetYearProfitList(ProjectId) {
+    $.ajax({
+        url : 'GetReport',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+            ReportName: 'GetYearProfitList',
+            ProjectId: ProjectId
+        }),
+        success: function (data) {
+            console.log(data.text);
+        }
+    });
+};
 
+
+//-----------Конструкторы графиков-----------
+//4й график
+function BuildChart(labels, values, chartTitle) {
+    var ctx = document.getElementById("myChart4").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels, // Наши метки
+            datasets: [{
+                label: chartTitle, // Название рядов
+                data: values, // Значения
+                backgroundColor: [ // Задаем произвольные цвета
+                    'rgba(97, 116, 213, 1)',
+                    'rgba(95, 118, 232, 1)',
+                    'rgba(118, 139, 244, 1)',
+                    'rgba(115, 133, 223, 1)',
+                    'rgba(177, 189, 250, 1)',
+                    'rgba(199, 208, 255, 1)'
+                ],
+                borderColor: [ // Добавляем произвольный цвет обводки
+                    'rgba(97, 116, 213, 1)',
+                    'rgba(97, 116, 213, 1)',
+                    'rgba(97, 116, 213, 1)',
+                    'rgba(97, 116, 213, 1)',
+                    'rgba(97, 116, 213, 1)',
+                    'rgba(97, 116, 213, 1)'
+                ],
+                borderWidth: 1 // Задаем ширину обводки секций
+            }]
+        }
+    });
+    return myChart;
+}
