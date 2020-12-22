@@ -1,8 +1,11 @@
 package com.sweetcard.basic.dao.repository;
 
+import com.sweetcard.basic.dao.entities.Customer;
 import com.sweetcard.basic.dao.entities.Financedata;
 import com.sweetcard.basic.dao.entities.Finsproject;
+import org.hibernate.annotations.SQLUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -36,6 +39,6 @@ public interface FinancedataRepository extends JpaRepository<Financedata, Intege
     String GetProjectExpense (@Param("fins_project_id") Integer finsprojectid);
 
     //----Отчетность----------
-
+    //Получить profit по годам
 
 }
