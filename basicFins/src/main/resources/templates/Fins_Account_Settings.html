@@ -4,7 +4,7 @@
 <head>
     <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
     <title>Fin</title>
-    <script src="webapp/js/js_finslovpage.js"></script><!--Подцепляем внешний скрипт-->
+    <script src="webapp/js/js_finsaccsettingspage.js"></script><!--Подцепляем внешний скрипт-->
 </head>
 
 <body>
@@ -51,8 +51,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header">
-                            Администратор
+                        <div class="card-header" id="react_root">
+                            Настройки
                         </div>
                         <div class="card-body">
                             <h4 class="card-title">Аккаунт: <span>info@mail.ru</span></h4>
@@ -148,5 +148,15 @@
 
 <!------------FRAMEWORK Script----------------------------->
 <script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+
+<!-- Загрузка React. -->
+<!-- Внимание: во время развертывания, замените "development.js" на "production.min.js". -->
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<!--React component-->
+<script src="webapp/js/js_finsaccsettingpage_react.js"></script>
 
 </html>
