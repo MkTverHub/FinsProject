@@ -83,7 +83,11 @@
                                 </tbody>
                             </table>
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div class="font-weight-normal mb-0 w-100 text-truncate"><button type="submit" class="btn waves-effect waves-light btn-light">Настройки аккаунта</button></div>
+                                <div class="font-weight-normal mb-0 w-100 text-truncate">
+                                    <form th:action="@{/UserSettingsInfo}" method="post">
+                                        <button type="submit" class="btn waves-effect waves-light btn-light">Настройки аккаунта</button>
+                                    </form>
+                                </div>
                                 <div class="ml-auto mt-md-1"><button type="submit" class="btn waves-effect waves-light btn-light">Пользователи</button></div>
                             </div>
                         </div>
