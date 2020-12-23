@@ -9,6 +9,9 @@ public class Contragentform {
     private String strContragentDescription = "";
     private String strContragentPhone = "";
     private String strContragentEmail = "";
+    private String strContragentType = "";
+    private String strContragentBalance = "";
+
     private String strContragentaction = ""; //Создать / обновить / удалить (insert/update/delete)
 
     /*----------------GET / SET Полей--------------*/
@@ -34,6 +37,10 @@ public class Contragentform {
     }
     public String getContragentemail() {return strContragentEmail;}
     public void setContragentemail(String Contragentemail) {this.strContragentEmail = Contragentemail;}
+    public String getContragentType() {return strContragentType;}
+    public void setContragentType(String ContragentType) {this.strContragentType = ContragentType;}
+    public String getContragentBalance() {return strContragentBalance;}
+    public void setContragentBalance(String ContragentBalance) {this.strContragentBalance = ContragentBalance;}
 
     public String getContragentaction() {return strContragentaction;}
     public void setContragentaction(String Contragentaction) {this.strContragentaction = Contragentaction;}

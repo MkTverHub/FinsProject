@@ -20,6 +20,7 @@ public class Cntragntreqform {
     private String strReqPhoneNum = "";
     private String strReqEmail = "";
     private String strReqWebSite = "";
+    private String strCardNumber = "";
     private String strReqAction = ""; //Создать / обновить / удалить (insert/update/delete)
 
 
@@ -57,6 +58,8 @@ public class Cntragntreqform {
     public void setReqEmail (String ReqEmail) {this.strReqEmail = ReqEmail;}
     public String getReqWebSite () {return strReqWebSite;}
     public void setReqWebSite (String ReqWebSite) {this.strReqWebSite = ReqWebSite;}
+    public String getCardNumber () {return strCardNumber;}
+    public void setCardNumber (String CardNumber) {this.strCardNumber = CardNumber;}
 
     public String getReqaction() {return strReqAction;}
     public void setReqaction(String Reqaction) {this.strReqAction = Reqaction;}
