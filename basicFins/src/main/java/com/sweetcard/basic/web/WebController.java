@@ -139,6 +139,12 @@ public class WebController {
         return "Fins_Account_Settings";
     }
 
+    //Переход на экран настройки пользователя
+    @RequestMapping(value = "/UserSettingsInfo")
+    public String GoToUserSettingsInfo(Model model){
+        return "Fins_Account_Settings_Info";
+    }
+
 
 
     //--------------------Внутринние методы---------------------------------
