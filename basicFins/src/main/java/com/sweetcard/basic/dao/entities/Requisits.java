@@ -44,4 +44,6 @@ public class Requisits {
     private String email_addr;
     @Column(name = "web_site")
     private String web_site;
+    @Column(name = "card_num")
+    private String card_num;
 }

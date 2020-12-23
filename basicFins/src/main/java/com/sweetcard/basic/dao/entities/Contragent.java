@@ -22,5 +22,9 @@ public class Contragent {
     private String phone_num;
     @Column(name = "email_addr")
     private String email_addr;
+    @Column(name = "type")
+    private String type;
+    @Column(name = "balance")
+    private String balance;
 
 }
