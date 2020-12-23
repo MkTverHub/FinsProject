@@ -318,7 +318,8 @@ public class ReqController {
                                                     @RequestParam String ContragentName,
                                                     @RequestParam String ContragenDescription,
                                                     @RequestParam String ContragenPhone,
-                                                    @RequestParam String ContragenMail)
+                                                    @RequestParam String ContragenMail,
+                                                    @RequestParam String ContragenType)
     {
         logger.info("ReqController.OperationFinsContragent -> " + DBOperation + "/" + ContragentId + "/" + ContragentName + "/" + ContragenDescription + "/" + ContragenPhone + "/" + ContragenMail);
         try{
@@ -329,6 +330,7 @@ public class ReqController {
             contragentform.setContragentdescription(ContragenDescription);
             contragentform.setContragentphone(ContragenPhone);
             contragentform.setContragentemail(ContragenMail);
+            contragentform.setContragentType(ContragenType);
 
             contragentJdbc.Contragentaction(contragentform);
 
@@ -363,7 +365,8 @@ public class ReqController {
                                                         @RequestParam String RequisitAddrString,
                                                         @RequestParam String RequisitPhoneNum,
                                                         @RequestParam String RequisitEmail,
-                                                        @RequestParam String RequisitWebSite)
+                                                        @RequestParam String RequisitWebSite,
+                                                        @RequestParam String RequisitCardNum)
     {
         logger.info("ReqController.OperationFinsRequisit -> DBOperation = " + DBOperation + ", ContragentId = " + ContragentId + ", RequisitId = " + RequisitId);
         try{
@@ -385,6 +388,7 @@ public class ReqController {
             cntragntreqform.setReqPhoneNum(RequisitPhoneNum);
             cntragntreqform.setReqEmail(RequisitEmail);
             cntragntreqform.setReqWebSite(RequisitWebSite);
+            cntragntreqform.setCardNumber(RequisitCardNum);
 
             requisitJdbc.Requisitaction(cntragntreqform);
 
