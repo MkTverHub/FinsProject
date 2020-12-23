@@ -35,10 +35,10 @@ public class RequisitJdbc {
                     logger.info("RequisitJdbc.Requisitaction (update): RecordId=" + cntragntreqform.getReqId() + " ContragentId=" + cntragntreqform.getContragentId());
                     Integer intRequisitId = Integer.parseInt(cntragntreqform.getReqId());
                     Integer intContragentId = Integer.parseInt(cntragntreqform.getContragentId());
-                    jdbcTemplate.update("update requisits set name=?,description=?,inn=?,kpp=?,fins_acc=?,bik=?,bank_name=?,crsp_acc=?,addr_index=?,addr_city=?,addr_string=?,phone_num=?,email_addr=? where id=? and par_row_id=?",
+                    jdbcTemplate.update("update requisits set name=?,description=?,inn=?,kpp=?,fins_acc=?,bik=?,bank_name=?,crsp_acc=?,addr_index=?,addr_city=?,addr_string=?,phone_num=?,email_addr=?,card_num=? where id=? and par_row_id=?",
                             cntragntreqform.getReqName(),cntragntreqform.getReqDescription(),cntragntreqform.getReqINN(),cntragntreqform.getReqKPP(),cntragntreqform.getReqFinsAcc(),cntragntreqform.getReqBIK(),
                             cntragntreqform.getReqBankName(),cntragntreqform.getReqCrspAcc(),cntragntreqform.getReqAddrIndex(),cntragntreqform.getReqAddrCity(),cntragntreqform.getReqAddrString(),
-                            cntragntreqform.getReqPhoneNum(),cntragntreqform.getReqEmail(),intRequisitId,intContragentId);
+                            cntragntreqform.getReqPhoneNum(),cntragntreqform.getReqEmail(),cntragntreqform.getCardNumber(),intRequisitId,intContragentId);
                 }break;
                 case "insert" : {
                     logger.info("RequisitJdbc.Requisitaction (new): " + " ContragentId=" + cntragntreqform.getContragentId());
@@ -48,7 +48,7 @@ public class RequisitJdbc {
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
                         public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                            PreparedStatement statement = con.prepareStatement("insert into Requisits (par_row_id,name,description,inn,kpp,fins_acc,bik,bank_name,crsp_acc,addr_index,addr_city,addr_string,phone_num,email_addr) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                            PreparedStatement statement = con.prepareStatement("insert into Requisits (par_row_id,name,description,inn,kpp,fins_acc,bik,bank_name,crsp_acc,addr_index,addr_city,addr_string,phone_num,email_addr,card_num) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
                             statement.setInt(1, intContragentId);
                             statement.setString(2, cntragntreqform.getReqName());
                             statement.setString(3, cntragntreqform.getReqDescription());
@@ -63,6 +63,7 @@ public class RequisitJdbc {
                             statement.setString(12, cntragntreqform.getReqAddrString());
                             statement.setString(13, cntragntreqform.getReqPhoneNum());
                             statement.setString(14, cntragntreqform.getReqEmail());
+                            statement.setString(15, cntragntreqform.getCardNumber());
                             return statement;
                         }
                     }, holder);

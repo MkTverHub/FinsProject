@@ -34,8 +34,8 @@ public class ContragentJdbc {
                 case "update" : {
                     Integer intContragentId = Integer.parseInt(contragentform.getContragentid());
                     logger.info("ContragentJdbc.Update: Id = " + intContragentId);
-                    jdbcTemplate.update("update Contragent set name = ?, description = ?, phone_num = ?, email_addr = ? where id = ?",
-                            contragentform.getContragentname() ,contragentform.getContragentdescription(), contragentform.getContragentphone(), contragentform.getContragentemail(), intContragentId);
+                    jdbcTemplate.update("update Contragent set name = ?, description = ?, phone_num = ?, email_addr = ?, type = ?, balance = ? where id = ?",
+                            contragentform.getContragentname() ,contragentform.getContragentdescription(), contragentform.getContragentphone(), contragentform.getContragentemail(), contragentform.getContragentType(), contragentform.getContragentBalance(), intContragentId);
 
                 }break;
                 case "insert" : {
@@ -44,11 +44,13 @@ public class ContragentJdbc {
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
                         public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                            PreparedStatement statement = con.prepareStatement("INSERT INTO contragent (name , description, phone_num, email_addr) VALUES (?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
+                            PreparedStatement statement = con.prepareStatement("INSERT INTO contragent (name , description, phone_num, email_addr) VALUES (?,?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
                             statement.setString(1, contragentform.getContragentname());
                             statement.setString(2, contragentform.getContragentdescription());
                             statement.setString(3, contragentform.getContragentphone());
                             statement.setString(4, contragentform.getContragentemail());
+                            statement.setString(5, contragentform.getContragentType());
+                            statement.setString(6, contragentform.getContragentBalance());
                             return statement;
                         }
                     }, holder);
