@@ -144,6 +144,7 @@ function doAjaxContragentDBOperation() {
     var strContragenDescription = $('#cntragnt_desqription').val();
     var strContragenPhone = $('#cntragnt_mail').val();
     var strContragenMail = $('#cntragnt_phone').val();
+    var strContragenType = '';
     $.ajax({
         url : 'OperationFinsContragent',
         type: 'GET',
@@ -156,7 +157,8 @@ function doAjaxContragentDBOperation() {
             ContragentName: strContragentName,
             ContragenDescription: strContragenDescription,
             ContragenPhone: strContragenPhone,
-            ContragenMail: strContragenMail
+            ContragenMail: strContragenMail,
+            ContragenType:strContragenType
         }),
         success: function (data) {
             doAjaxGetContragentsList();//Обновить таблицу контрагентов
@@ -205,6 +207,7 @@ function doAjaxRequisitDBOperation() {
     var strRequisitPhoneNum = $('#requisit_ReqPhoneNum').val();
     var strRequisitEmail = $('#requisit_ReqEmail').val();
     var strRequisitWebSite = $('#requisit_ReqWebSite').val();
+    var strRequisitCardNum = $('#requisit_card_number').val();
     $.ajax({
         url : 'OperationFinsRequisit',
         type: 'GET',
@@ -228,7 +231,8 @@ function doAjaxRequisitDBOperation() {
             RequisitAddrString: strRequisitAddrString,
             RequisitPhoneNum: strRequisitPhoneNum,
             RequisitEmail: strRequisitEmail,
-            RequisitWebSite: strRequisitWebSite
+            RequisitWebSite: strRequisitWebSite,
+            RequisitCardNum: strRequisitCardNum
         }),
         success: function (data) {
             doAjaxGetContragentRequisits(document.body.HashData.ActiveContragentId);
@@ -270,6 +274,8 @@ function JSONStringToContragentTable(JSONString) {
     var strContragenDescription = '';
     var strContragenPhone = '';
     var strContragenMail = '';
+    var strContragenType = '';
+    var strContragenBalance = '';
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
         strContragentTableContext = strContragentTableContext + '<tr class="fincrowlink contragentlist_row">';
@@ -278,7 +284,15 @@ function JSONStringToContragentTable(JSONString) {
         if(value['description'] == null){strContragenDescription = 'null';} else {strContragenDescription = value['description'].toString();}
         if(value['phone_num'] == null){strContragenPhone = 'null';} else {strContragenPhone = value['phone_num'].toString();}
         if(value['email_addr'] == null){strContragenMail = 'null';} else {strContragenMail = value['email_addr'].toString();}
-        strContragentTableContext = strContragentTableContext + '<th class="cntr_id" value="' + strContragentId + '">' + strContragentId + '</th>' + '<th class="cntr_name" value="' + strContragentName + '">' + strContragentName + '</th>' + '<th class="cntr_description" value="' + strContragenDescription + '">' + strContragenDescription + '</th>' + '<th class="cntr_phone_num" value="' + strContragenPhone + '">' + strContragenPhone + '</th>' + '<th class="cntr_email_addr" value="' + strContragenMail + '">' + strContragenMail + '</th>' + '</tr>';
+        if(value['type'] == null){strContragenType = 'null';} else {strContragenType = value['type'].toString();}
+        strContragentTableContext = strContragentTableContext +
+            '<th class="cntr_id" value="' + strContragentId + '">' + strContragentId + '</th>' +
+            '<th class="cntr_name" value="' + strContragentName + '">' + strContragentName + '</th>' +
+            '<th class="cntr_description" value="' + strContragenDescription + '">' + strContragenDescription + '</th>' +
+            '<th class="cntr_phone_num" value="' + strContragenPhone + '">' + strContragenPhone + '</th>' +
+            '<th class="cntr_email_addr" value="' + strContragenMail + '">' + strContragenMail + '</th>' +
+            '<th class="cntr_email_type" value="' + strContragenType + '">' + strContragenType + '</th>' +
+            '</tr>';
     });
     $("#contr_agent_table_body").html(strContragentTableContext);
 };
@@ -302,6 +316,7 @@ function JSONStringToContragentReqTable(JSONString) {
     var strReqPhoneNum = '';
     var strReqEmail = '';
     var strReqWebSite = '';
+    var strCardNumber = '';
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
         strContragentReqTableContext = strContragentReqTableContext + '<tr class="fincrowlink requisitslist_row">';
@@ -321,6 +336,7 @@ function JSONStringToContragentReqTable(JSONString) {
         if(value['phone_num'] == null){strReqPhoneNum = '';}else{strReqPhoneNum = value['phone_num'].toString();}
         if(value['email_addr'] == null){strReqEmail = '';}else{strReqEmail = value['email_addr'].toString();}
         if(value['web_site'] == null){strReqWebSite = '';}else{strReqWebSite = value['web_site'].toString();}
+        if(value['card_num'] == null){strCardNumber = '';}else{strCardNumber = value['card_num'].toString();}
         strContragentReqTableContext = strContragentReqTableContext + '<th class="cntr_req_id" value="' + strReqId + '">' + strReqId + '</th>' +
             '<th class="cntr_req_name" value="' + strReqName + '">' + strReqName + '</th>' +
             '<th class="cntr_req_description" value="' + strReqDescription + '">' + strReqDescription + '</th>' +
@@ -334,7 +350,9 @@ function JSONStringToContragentReqTable(JSONString) {
             '<th class="cntr_req_addr_city" value="' + strReqAddrCity + '">' + strReqAddrCity + '</th>' +
             '<th class="cntr_req_addr_string" value="' + strReqAddrString + '">' + strReqAddrString + '</th>' +
             '<th class="cntr_req_phone_num" value="' + strReqPhoneNum + '">' + strReqPhoneNum + '</th>' +
-            '<th class="cntr_req_email_addr" value="' + strReqEmail + '">' + strReqEmail + '</th>' + '</tr>';
+            '<th class="cntr_req_email_addr" value="' + strReqEmail + '">' + strReqEmail + '</th>' +
+            '<th class="cntr_req_card_number" value="' + strCardNumber + '">' + strCardNumber + '</th>' +
+            '</tr>';
 
     });
     $("#contragent_req_body").html(strContragentReqTableContext);
@@ -374,6 +392,7 @@ function ClearRequisitForm(){
     $('#requisit_ReqPhoneNum').val('');
     $('#requisit_ReqEmail').val('');
     $('#requisit_ReqWebSite').val('');
+    $('#requisit_card_number').val('');
 };
 
 //Сделать форму Контрагента RO
@@ -408,6 +427,7 @@ function SetRORequisitForm(){
     $('#requisit_ReqPhoneNum').attr('readonly', true);
     $('#requisit_ReqEmail').attr('readonly', true);
     $('#requisit_ReqWebSite').attr('readonly', true);
+    $('#requisit_card_number').attr('readonly', true);
 }
 
 //Сделать форму Реквезита not RO
@@ -426,4 +446,5 @@ function UnSetRORequisitForm(){
     $('#requisit_ReqPhoneNum').attr('readonly', false);
     $('#requisit_ReqEmail').attr('readonly', false);
     $('#requisit_ReqWebSite').attr('readonly', false);
+    $('#requisit_card_number').attr('readonly', false);
 }
