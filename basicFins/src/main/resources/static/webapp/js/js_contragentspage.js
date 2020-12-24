@@ -38,6 +38,7 @@ $(function(){
         $('#cntragnt_desqription').val(strContragenDescription);
         $('#cntragnt_mail').val(strContragenMail);
         $('#cntragnt_phone').val(strContragenPhone);
+        SetActiveSelect('#contragent_type_list',$(this).find('.cntr_type').attr('value'));
 
         //Обновить список реквезитов
         document.body.HashData = {ActiveContragentId:strContragentId};//Устанавливаем Id активного контрагента
@@ -116,9 +117,19 @@ $(function(){
         $('#requisit_ReqPhoneNum').val($(this).find('.cntr_req_phone_num').attr('value'));
         $('#requisit_ReqEmail').val($(this).find('.cntr_req_email_addr').attr('value'));
         $('#requisit_ReqWebSite').val('');
+        $('#requisit_card_number').val($(this).find('.cntr_req_card_number').attr('value'));
     });
 });
 
+//Событие выбора значения выпадающего "Тип"
+$(function(){
+    $("#contragent_type_list").change( function(){
+        $('#contragent_type_list').attr('select_value',$('#contragent_type_list').val());
+    });
+});
+
+
+//-----------Ajax Functions------------
 //Ajax получение списка Контрагентов
 function doAjaxGetContragentsList() {
     $.ajax({
@@ -144,7 +155,7 @@ function doAjaxContragentDBOperation() {
     var strContragenDescription = $('#cntragnt_desqription').val();
     var strContragenPhone = $('#cntragnt_mail').val();
     var strContragenMail = $('#cntragnt_phone').val();
-    var strContragenType = '';
+    var strContragenType = $('#contragent_type_list').attr('select_value');
     $.ajax({
         url : 'OperationFinsContragent',
         type: 'GET',
@@ -291,7 +302,7 @@ function JSONStringToContragentTable(JSONString) {
             '<th class="cntr_description" value="' + strContragenDescription + '">' + strContragenDescription + '</th>' +
             '<th class="cntr_phone_num" value="' + strContragenPhone + '">' + strContragenPhone + '</th>' +
             '<th class="cntr_email_addr" value="' + strContragenMail + '">' + strContragenMail + '</th>' +
-            '<th class="cntr_email_type" value="' + strContragenType + '">' + strContragenType + '</th>' +
+            '<th class="cntr_type" value="' + strContragenType + '">' + strContragenType + '</th>' +
             '</tr>';
     });
     $("#contr_agent_table_body").html(strContragentTableContext);
@@ -372,6 +383,9 @@ function ClearContragentForm(){
     $('#cntragnt_desqription').val('');
     $('#cntragnt_mail').val('');
     $('#cntragnt_phone').val('');
+    ResetPickList('#contragent_type_list');
+    $('#contragent_type_list option:contains("Выберете значение")').prop('selected', true);
+
 };
 
 //Чистка формы Реквезита
@@ -401,6 +415,7 @@ function SetROContragentForm(){
     $('#cntragnt_desqription').attr('readonly', true);
     $('#cntragnt_mail').attr('readonly', true);
     $('#cntragnt_phone').attr('readonly', true);
+    $('#contragent_type_list').attr('disabled', true);
 }
 
 //Сделать форму Контрагента not RO
@@ -409,6 +424,7 @@ function UnSetROContragentForm(){
     $('#cntragnt_desqription').attr('readonly', false);
     $('#cntragnt_mail').attr('readonly', false);
     $('#cntragnt_phone').attr('readonly', false);
+    $('#contragent_type_list').attr('disabled', false);
 }
 
 //Сделать форму Реквезита RO
@@ -447,4 +463,17 @@ function UnSetRORequisitForm(){
     $('#requisit_ReqEmail').attr('readonly', false);
     $('#requisit_ReqWebSite').attr('readonly', false);
     $('#requisit_card_number').attr('readonly', false);
+}
+
+//Функция установки выбранного значения
+function SetActiveSelect(ListSelector,SelectedVal){
+    $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
+    $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
+    $(ListSelector).attr('select_value',SelectedVal);
+}
+//Функция сброса списка
+function ResetPickList(ListSelector){
+    $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
+    $(ListSelector).find('[selected]').attr('select_value', null);
+
 }
