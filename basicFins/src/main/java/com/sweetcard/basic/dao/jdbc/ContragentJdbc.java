@@ -34,8 +34,8 @@ public class ContragentJdbc {
                 case "update" : {
                     Integer intContragentId = Integer.parseInt(contragentform.getContragentid());
                     logger.info("ContragentJdbc.Update: Id = " + intContragentId);
-                    jdbcTemplate.update("update Contragent set name = ?, description = ?, phone_num = ?, email_addr = ?, type = ?, balance = ? where id = ?",
-                            contragentform.getContragentname() ,contragentform.getContragentdescription(), contragentform.getContragentphone(), contragentform.getContragentemail(), contragentform.getContragentType(), contragentform.getContragentBalance(), intContragentId);
+                    jdbcTemplate.update("update Contragent set name = ?, description = ?, phone_num = ?, email_addr = ?, type = ? where id = ?",
+                            contragentform.getContragentname() ,contragentform.getContragentdescription(), contragentform.getContragentphone(), contragentform.getContragentemail(), contragentform.getContragentType(), intContragentId);
 
                 }break;
                 case "insert" : {
