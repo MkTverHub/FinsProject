@@ -1,32 +1,22 @@
 package com.sweetcard.basic.web;
 
-import com.sweetcard.basic.dao.entities.Contragent;
-import com.sweetcard.basic.dao.entities.Financedata;
-import com.sweetcard.basic.dao.entities.Finsproject;
-import com.sweetcard.basic.dao.entities.Requisits;
+import com.sweetcard.basic.dao.entities.AggregateData;
+import com.sweetcard.basic.dao.repository.AggregateDataRepository;
+import com.sweetcard.basic.dao.entities.*;
 import com.sweetcard.basic.dao.jdbc.ContragentJdbc;
 import com.sweetcard.basic.dao.jdbc.FinsprojectJdbc;
 import com.sweetcard.basic.dao.jdbc.RequisitJdbc;
-import com.sweetcard.basic.dao.repository.ContragentRepository;
-import com.sweetcard.basic.dao.repository.FinsprojectRepository;
-import com.sweetcard.basic.dao.repository.RequisitRepository;
-import com.sweetcard.basic.model.Cntragntreqform;
-import com.sweetcard.basic.model.Contragentform;
-import com.sweetcard.basic.model.Financedataform;
+import com.sweetcard.basic.dao.repository.*;
 import com.sweetcard.basic.dao.jdbc.FinancedataJdbc;
-import com.sweetcard.basic.dao.repository.FinancedataRepository;
-import com.sweetcard.basic.model.Finsprojectform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Controller
@@ -42,6 +32,8 @@ public class WebController {
     ContragentRepository contragentRepository;
     @Autowired
     RequisitRepository requisitRepository;
+    @Autowired
+    AggregateDataRepository aggregateDataRepository;
     @Autowired
     FinancedataJdbc financedataJdbc;
     @Autowired
@@ -94,6 +86,10 @@ public class WebController {
         try{
             logger.info("WebController.GoToContragents -> ");
             List<Contragent> contragentList = contragentRepository.findAllByOrderByIdAsc();
+
+            List<AggregateData> objectList = aggregateDataRepository.GetAll();
+            logger.info("WebController.GoToContragents -> AggregateData: " + objectList.size());
+
             model.addAttribute("contragentList",contragentList);
             return "Fins_Contragents_Add";
         }catch (Exception req_ex1){
