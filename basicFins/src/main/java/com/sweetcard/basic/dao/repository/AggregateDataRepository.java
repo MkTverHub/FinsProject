@@ -9,6 +9,6 @@ import java.util.List;
 
 
 public interface AggregateDataRepository extends JpaRepository<AggregateData, Integer> {
-    @Query(value = "select cnt.id, cnt.name from contragent cnt left join financedata fd on cnt.id = fd.finscontragent", nativeQuery = true)
+    @Query(value = "select cnt.id, cnt.name, fd.amount from contragent cnt left join financedata fd on cnt.id = int4(fd.finscontragent)", nativeQuery = true)
     List<AggregateData> GetAll();
 }
