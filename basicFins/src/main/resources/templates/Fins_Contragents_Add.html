@@ -56,7 +56,7 @@
                     <div class="col-12">
                         <div class="card text-center">
                             <div class="card-header">
-                                Контрагент - это лицо с которым Вы ведёт финансовые дела. Все данные будут доступны на одном экране 
+                                Контрагент - это человек с которым Вы ведёт финансовые дела. Все данные будут доступны на одном экране 
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/ContragentsEditor}" method="post">
@@ -67,7 +67,7 @@
                     </div>
 
                     <!-- Плитки Контрагенов-->
-                    <div class="col-md-4" th:each="c: ${contragentList}">
+                    <div class="col-md-3" th:each="c: ${contragentList}">
                         <div th:replace="fragments\layouts\fragment_project_tile.html :: contragent_tile_fragment_1(contragentName=${c.name},contragentDescription=${c.description},contragentPhone=${c.phone_num},contragentMail=${c.email_addr})"></div>
                     </div>
                     
