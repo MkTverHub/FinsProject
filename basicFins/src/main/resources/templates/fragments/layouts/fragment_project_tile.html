@@ -65,7 +65,7 @@
 
 <!--ПЛИТКА ДЛЯ ЭКРАНА КОНТРАГЕНТОВ-->
 <!--<div class="col-md-4">-->
-    <div class="card" th:fragment="contragent_tile_fragment_1(contragentName,contragentDescription,contragentPhone,contragentMail)">
+    <div class="card" th:fragment="contragent_tile_fragment_1(contragentName,contragentDescription,contragentPhone,contragentMail,contragentAmmountIn,contragentAmmountOut,contragentBalance)">
         <div class="card-body">
             <h4 class="card-title" th:utext="${contragentName}"></h4>
             <p class="card-text">
@@ -75,7 +75,7 @@
             <p class="card-text">
             <div class="d-flex d-lg-flex d-md-block align-items-center">
                 <div>
-                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">2 785 222,99</h4>
+                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium" th:utext="${contragentAmmountIn}"/>
                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Отправлено на счет
                     </h6>
                 </div>
@@ -87,9 +87,20 @@
             <p class="card-text">
             <div class="d-flex d-lg-flex d-md-block align-items-center">
                 <div>
-                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">2 785 222,99</h4>
+                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium" th:utext="${contragentAmmountOut}"/>
                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Получено нам
                     </h6>
+                </div>
+                <div class="ml-auto mt-md-3 mt-lg-0">
+                    <span class="opacity-7">₽</span>
+                </div>
+            </div>
+            </p>
+            <p class="card-text">
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium" th:utext="${contragentBalance}"/>
+                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Разница</h6>
                 </div>
                 <div class="ml-auto mt-md-3 mt-lg-0">
                     <span class="opacity-7">₽</span>
