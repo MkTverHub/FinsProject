@@ -1,6 +1,5 @@
 package com.sweetcard.basic.web;
 
-import com.sweetcard.basic.dao.entities.AggregateData;
 import com.sweetcard.basic.dao.repository.AggregateDataRepository;
 import com.sweetcard.basic.dao.entities.*;
 import com.sweetcard.basic.dao.jdbc.ContragentJdbc;
@@ -85,10 +84,10 @@ public class WebController {
     public String GoToContragents(Model model){
         try{
             logger.info("WebController.GoToContragents -> ");
-            List<Contragent> contragentList = contragentRepository.findAllByOrderByIdAsc();
+            //List<Contragent> contragentList = contragentRepository.findAllByOrderByIdAsc();
 
-            List<AggregateData> objectList = aggregateDataRepository.GetAll();
-            logger.info("WebController.GoToContragents -> AggregateData: " + objectList.size());
+            List<AggrContragent> contragentList = aggregateDataRepository.GetAllContragent();
+            logger.info("WebController.GoToContragents -> AggregateData: " + contragentList.size());
 
             model.addAttribute("contragentList",contragentList);
             return "Fins_Contragents_Add";
