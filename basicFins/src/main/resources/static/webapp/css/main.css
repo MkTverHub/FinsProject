@@ -308,3 +308,9 @@ button:focus {
 .btn-modif-size {
   padding: 0.275rem 0.65rem;
 }
+
+div.dataTables_wrapper div.dataTables_paginate {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
+}
