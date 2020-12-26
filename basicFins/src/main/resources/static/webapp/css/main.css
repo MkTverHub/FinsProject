@@ -330,3 +330,10 @@ button:focus {
     padding-top: 0.85em;
     white-space: nowrap;
 }
+
+.dataTables_filter input,
+.dataTables_length select {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+}
