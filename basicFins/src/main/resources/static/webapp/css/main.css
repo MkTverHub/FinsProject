@@ -309,13 +309,24 @@ button:focus {
   padding: 0.275rem 0.65rem;
 }
 
-div.dataTables_wrapper div.dataTables_paginate {
+.dataTables_paginate {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
     margin: 0;
     white-space: nowrap;
     text-align: right;
 }
 
-div.dataTables_wrapper div.dataTables_info {
+.dataTables_filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.dataTables_info {
     padding-top: 0.85em;
     white-space: nowrap;
 }
