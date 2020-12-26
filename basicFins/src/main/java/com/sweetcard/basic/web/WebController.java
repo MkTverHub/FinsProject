@@ -84,11 +84,7 @@ public class WebController {
     public String GoToContragents(Model model){
         try{
             logger.info("WebController.GoToContragents -> ");
-            //List<Contragent> contragentList = contragentRepository.findAllByOrderByIdAsc();
-
             List<AggrContragent> contragentList = aggregateDataRepository.GetAllContragent();
-            logger.info("WebController.GoToContragents -> AggregateData: " + contragentList.size());
-
             model.addAttribute("contragentList",contragentList);
             return "Fins_Contragents_Add";
         }catch (Exception req_ex1){
