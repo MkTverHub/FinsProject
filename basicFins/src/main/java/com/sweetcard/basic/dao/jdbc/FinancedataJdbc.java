@@ -37,17 +37,16 @@ public class FinancedataJdbc {
             String strRequisites = finsform.getRequisites();
 
             Integer intRecordId = null;
-            Integer intAmount = null;
             Integer intFinsArticle = null;
             if(strRecordId != null){if(0 == strRecordId.compareTo("")){intRecordId = null;}else{intRecordId = Integer.parseInt(strRecordId);}}
-            if(strAmount != null){intAmount = Integer.parseInt(strAmount);}
+
             try{intFinsArticle = Integer.parseInt(strFinsArticle);}catch (Exception ex_int){intFinsArticle = 0;}
 
             //Обновление записи
             if (0 == strEditType.compareTo("update")) {
                 logger.info("FinancedataJdbc.RecordOperation (update): Record Id = " + intRecordId);
                 String strSQLUpdate = "update financedata set oper_date = now()::timestamp, fins_oper_type = '" + strFinsOperType + "'," +
-                        "amount = " + intAmount + ", pay_acc_in = '" + strPaymentAccIn + "', pay_acc_out = '" + strPaymentAccOut + "'," +
+                        "amount = '" + strAmount + "', pay_acc_in = '" + strPaymentAccIn + "', pay_acc_out = '" + strPaymentAccOut + "'," +
                         "fins_article = " + intFinsArticle + ", detail = '" + strDetail + "'," +
                         "finscontragent = '" + strContrAgent + "', requisites = '" + strRequisites + "'" +
                         " where id = " + intRecordId + " and project_id = " + intActivProjectId;
@@ -61,7 +60,7 @@ public class FinancedataJdbc {
             if (0 == strEditType.compareTo("insert")) {
                 logger.info("FinancedataJdbc.RecordOperation (new): ");
                 String strSQLInsert = "insert into financedata (oper_date,fins_oper_type,amount,pay_acc_in,pay_acc_out,fins_article,detail,finscontragent,requisites,project_id) " +
-                        "values (now()::timestamp,'"+ strFinsOperType +"'," + intAmount + ",'" + strPaymentAccIn + "','" + strPaymentAccOut + "',"
+                        "values (now()::timestamp,'"+ strFinsOperType +"','" + strAmount + "','" + strPaymentAccIn + "','" + strPaymentAccOut + "',"
                         + intFinsArticle + ",'" + strDetail + "','" + strContrAgent + "','" + strRequisites + "'," + intActivProjectId + ");";
                 logger.info("FinancedataJdbc.RecordOperation (insert): SQLInsert " + strSQLInsert);
                 jdbcTemplate.update(strSQLInsert);
