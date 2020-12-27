@@ -21,7 +21,7 @@ public class Financedata {
     @Column(name = "oper_date")
     public String operdate;
     @Column(name = "amount")
-    private Integer amount;
+    private String amount;
     @Column(name = "detail")
     private String detail;
     @Column(name = "fins_oper_type")//Тип транзакции profit/loss/transfer
