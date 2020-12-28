@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <title>Fin</title>
+    
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1"></header>
+
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Раздел пользователи - Информация</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mt-2 p-0">
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">
+                                        <a href="#">Информация о пользователей</a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        <div class="container">
+
+                <!-- *************************************************************** -->
+                <!-- Карточка с формой -->
+                <!-- *************************************************************** -->
+
+                <div class="row">
+                    <div class="col-md-6"><!-- Карточка с формой правая часть -->
+                        <div class="card">
+                            <div class="card-body">
+                            <!-- Форма с полями Пользователя-->
+                            <form action="#" method="post">
+                                <div class="form-body">
+                                    <!-- Заголовок -->
+                                    <div class="form-group mb-3">
+                                        <h4 class="card-title">Добавить нового пользователя</h4>
+                                    </div>
+
+                                    <!-- Поле ввода Имя-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Имя</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Фамилия-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Фамилия</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Отчество-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Отчество</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Телефон-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Телефон</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_phone" class="form-control" readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--  Поле ввода Должность -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Должность</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <select id="contragent_type_list" class="form-control custom-select" select_value="" disabled="disabled">
+                                                            <option value="">Выберете значение</option>
+                                                            <option value="Покупатель">Менеджер</option>
+                                                            <option value="Покупатель">Директор</option>
+                                                            <option value="Покупатель">Бухгалтер</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--  Подзаголовок для логин и пароля от кабинета -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="text-dark form-control-label mt-2">Данные для входа в кабинет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Почта-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Почта</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Почта-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Пароль</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" class="form-control" readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                            <!-- Кнопки для записи в БД -->
+                            <div class="form-actions">
+                                <div class="text-right">
+                                    <button class="btn waves-effect waves-light btn-outline-primary btn-modif-size">Создать</button>
+                                    <button class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Сохранить</button>
+                                    <button class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Отменить</button>
+                                    <button class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Удалить</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6"><!--  Правая часть с Ролями с системе -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Роли в системе</h4>
+                                <h6 class="card-subtitle">Ограничить действия пользователя</h6>
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <label class="align-self-center">Запретить удаление:</label>
+                                        <select name="s" id="company_picklist_id" class="form-control custom-select align-self-center"><option value="0">Выберете значение</option><option value="2">Менеджер</option></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button  class="btn waves-effect waves-light btn-light align-self-center">Добавить</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="align-self-center">Заблокировать пользователя:</label>
+                                        <select name="s" id="company_picklist_id" class="form-control custom-select align-self-center"><option value="0">Выберете значение</option><option value="2">Менеджер</option></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button  class="btn waves-effect waves-light btn-light align-self-center">Добавить</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12"> <!-- Таблица списка пользователей -->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="card-title">Список пользователей</h4>
+                                        <h6 class="card-subtitle">Полный список всех пользователей. Вы можете изменить или удалить нужную запись, достаточно кликнув по записи</h6>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-responsive">
+                                    <table class="table no-wrap table-hover">
+                                        <thead> <!-- Заголовок таблицы -->
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Имя</th>
+                                            <th>Фамилия</th>
+                                            <th>Отчество</th>
+                                            <th>Почта</th>
+                                            <th>Телефон</th>
+                                            <th>Должность</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="fincrowlink">
+                                                <th class="" value="1">1</th>
+                                                <th class="" value="ИП Иванов 2">ИП Иванов 2</th>
+                                                <th class="" value="Покупка комплекттующих">Покупка комплекттующих</th>
+                                                <th class="" value="89000000000">89000000000</th>
+                                                <th class="" value="mail@mail.ru">mail@mail.ru</th>
+                                                <th class="" value="Заказчик">Заказчик</th>
+                                                <th class="" value="Заказчик">Заказчик</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- *************************************************************** -->
+            <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+            <!-- *************************************************************** -->
+                
+        </div>
+    
+    </section>
+
+</div>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        StartPage();
+    });
+</script>
+
+</body>
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+</html>
