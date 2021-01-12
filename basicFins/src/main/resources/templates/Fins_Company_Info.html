@@ -4,7 +4,7 @@
 <head>
     <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
     <title>Fin</title>
-    
+    <script src="webapp/js/js_companypageadd.js"></script><!--Подцепляем внешний скрипт-->
 </head>
 
 <body>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-5 align-self-center">
                         <div class="customize-input float-right">
-                            <form method="post"><input type="hidden" name="_csrf" value="c401bb75-ea7f-49d8-9afb-d08b350a32f8">
+                            <form th:action="@{/FinsCompanyEditor}" method="post">
                                 <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать или изменить компанию</button>
                             </form>
                         </div>
