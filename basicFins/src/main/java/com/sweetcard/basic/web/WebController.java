@@ -106,14 +106,25 @@ public class WebController {
     }
 
     //Переход на страницу Компании
-    //@RequestMapping(value = "/FinsCompany", method = RequestMethod.POST)
     @RequestMapping(value = "/FinsCompany")
     public String GoToFinsCompany(Model model){
         try{
             logger.info("WebController.GoToFinsCompany -> ");
-            return "Fins_Company";
+            return "Fins_Company_Info";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToFinsCompany -> ERROR: " + req_ex1);
+            return "error";
+        }
+    }
+
+    //Переход на страницу Компании Редактор
+    @RequestMapping(value = "/FinsCompanyEditor")
+    public String GoToFinsCompanyEditor(Model model){
+        try{
+            logger.info("WebController.GoToFinsCompanyEditor -> ");
+            return "Fins_Company";
+        }catch (Exception req_ex1){
+            logger.info("WebController.GoToFinsCompanyEditor -> ERROR: " + req_ex1);
             return "error";
         }
     }
