@@ -147,6 +147,18 @@ public class WebController {
         return "Fins_Account_Settings_Info";
     }
 
+    //Переход на экран Fins_Account_User_Info
+    @RequestMapping(value = "/FinsAccountUsersInfo")
+    public String GoToFinsAccountUsersInfo(Model model){
+        return "Fins_Account_Users_Info";
+    }
+
+    //Переход на экран Fins_Account_User_Add
+    @RequestMapping(value = "/FinsAccountUsersAdd")
+    public String GoToFinsAccountUsersAdd(Model model){
+        return "Fins_Account_Users_Add";
+    }
+
 
 
     //--------------------Внутринние методы---------------------------------
