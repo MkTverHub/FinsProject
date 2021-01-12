@@ -47,8 +47,7 @@
                     </div>
                     <div class="col-5 align-self-center"> <!-- Левая кнопка для перехода в раздел добавления -->
                         <div class="customize-input float-right">
-                            <form method="post">
-                                <input type="hidden" name="_csrf" value="c401bb75-ea7f-49d8-9afb-d08b350a32f8">
+                            <form th:action="@{/FinsAccountUsersAdd}" method="post">
                                 <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать или изменить пользователя</button>
                             </form>
                         </div>
