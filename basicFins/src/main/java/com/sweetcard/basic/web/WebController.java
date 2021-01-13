@@ -51,16 +51,20 @@ public class WebController {
 
     //Переход на страницу Проектов
     @RequestMapping(value = "/Projects", method = RequestMethod.POST)
-    public String GoToProjects(Model model){
+    public String GoToProjects( Model model){
         logger.info("WebController.GoToProjects -> ");
         List<Finsproject> finsprojectList = finsprojectRepository.GetAllUserProjects(GetUserLogin());
         model.addAttribute("finsprojectList",finsprojectList);
         return "Fins_Projects_Add";
     }
+
+
+
     //Переход на страницу Проектов (Редактор)
-    @RequestMapping(value = "/ProjectsEditor", method = RequestMethod.POST)
-    public String GoToProjectsEditor(Model model){
-        logger.info("WebController.GoToProjectsEditor -> ");
+    //@RequestMapping(value = "/ProjectsEditor", method = RequestMethod.GET)
+    @RequestMapping(value = "/ProjectsEditor")
+    public String GoToProjectsEditor(@RequestParam(name = "ProjectId", required = false, defaultValue = "def_val") String project_id, Model model){
+        logger.info("WebController.GoToProjectsEditor -> " + project_id);
         return "Fins_Projects";
     }
 
