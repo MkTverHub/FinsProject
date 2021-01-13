@@ -43,8 +43,10 @@ function doAjaxGetProjectListLeft() {
             $.each(obj, function (index, value) {
                 strProjectListContext = strProjectListContext
                     + '<li id="' + value["id"].toString()
-                    + '_rowid" class="left-menu-item finsproject_list_row_li"><input type="button" class="left-menu-link finsproject_list_row" projnum="'
-                    + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
+                    + '_rowid" class="left-menu-item finsproject_list_row_li">' +
+                    '<input type="button" class="left-menu-link finsproject_list_row" projnum="' + value["id"].toString() + '" value="' + value["name"] + '"/>' +
+                    '<a href="/ProjectsEditor?ProjectId=' + value["id"].toString() + '">' + value["name"] + '</a>' +
+                    '</li>';
             });
             $("#projectlistpanel").html(strProjectListContext);
         }
