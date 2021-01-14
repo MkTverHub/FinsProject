@@ -5,7 +5,7 @@
 function StartPage() {
     //alert('StartPage');
     doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
-    Report4_BuildChart(["2016", "2017", "2018", "2019"],["10", "25", "55", "120"],"Продажи товаров за период");
+    //Report4_BuildChart(["2016", "2017", "2018", "2019"],["10", "25", "55", "120"],"Продажи товаров за период");
 };
 
 //-------------Функции событий-----------------
@@ -39,9 +39,21 @@ function doAjaxGetYearProfitList(ProjectId) {
         }),
         success: function (data) {
             console.log(data.text);
+            var arr_lable = [];
+            var arr_value = [];
+            var obj = jQuery.parseJSON(data.text);
+            if(data.text != null) {
+                $.each(obj, function (index, value) {
+                    arr_lable.push(value["rep_lable"]);
+                    arr_value.push(value["rep_value"]);
+                });
+                Report4_BuildChart(arr_lable,arr_value,"Продажи товаров за период")
+            }
         }
     });
 };
+
+
 
 
 //-----------Конструкторы графиков-----------
