@@ -4,36 +4,27 @@
 //Функция при загрузки страницы
 function StartPage() {
     //alert('StartPage');
-    doAjaxGetProjectList();//Получение списка проектов в левой панели
-    BuildChart(["2016", "2017", "2018", "2019"],["10", "25", "55", "120"],"Продажи товаров за период");
-    doAjaxGetYearProfitList('22');
+    doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
+    Report4_BuildChart(["2016", "2017", "2018", "2019"],["10", "25", "55", "120"],"Продажи товаров за период");
 };
+
+//-------------Функции событий-----------------
+//Событие нажатия на проект в левой панели
+/*ВАЖНО: jqury слушает только элементы существующие на момент инициализации скрипта,
+т.к. проекты создаются из ajax, то слушатель нужно поставить на родительский элемент div,
+который существует изначально на странице */
+$(function(){
+    var strProjectId = "";
+    $("#projectlistpanel").on("click", ".finsproject_list_row", function () {
+        strProjectId = $(this).attr("projnum");
+        doAjaxGetYearProfitList(strProjectId);
+    });
+
+});
+
 
 //-----------Ajax Functions------------
-//Ajax получение списка проектов в левой панели
-function doAjaxGetProjectList() {
-    $.ajax({
-        url : 'GetFinsProjectList',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
 
-        }),
-        success: function (data) {
-            var strProjectListContext = "";
-            var obj = jQuery.parseJSON(data.text);
-            $.each(obj, function (index, value) {
-                strProjectListContext = strProjectListContext
-                    + '<li id="' + value["id"].toString()
-                    + '_rowid" class="left-menu-item finsproject_list_row"><input type="button" class="left-menu-link finsproject_list_row" projnum="'
-                    + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
-            });
-            $("#projectlistpanel").html(strProjectListContext);
-        }
-    });
-};
 //Ajax получения отчета
 function doAjaxGetYearProfitList(ProjectId) {
     $.ajax({
@@ -54,8 +45,8 @@ function doAjaxGetYearProfitList(ProjectId) {
 
 
 //-----------Конструкторы графиков-----------
-//4й график
-function BuildChart(labels, values, chartTitle) {
+//4й график (Сколько было продаж за год)
+function Report4_BuildChart(labels, values, chartTitle) {
     var ctx = document.getElementById("myChart4").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
