@@ -63,6 +63,8 @@ public class ReqController {
     LovRepository lovRepository;
     @Autowired
     LovJdbc lovJdbc;
+    @Autowired
+    AggregateDataReport aggregateDataReport;
 
     @RequestMapping(value = "/SetContrAgentRequisits", method = RequestMethod.GET)
     public @ResponseBody Response GetRequisitsList(@RequestParam String ContragentId) {
@@ -571,11 +573,9 @@ public class ReqController {
                 }break;
                 case "GetYearProfitList":{
                     logger.info("ReqController.GetReport -> GetYearProfitList: " + ProjectId);
-
-                    /*
+                    List<AggrReport> aggrReport = aggregateDataReport.GetYearProjectProfit(Integer.parseInt(ProjectId));
                     Gson gson = new Gson();
-                    result.setText(gson.toJson(reportType1List));
-                     */
+                    result.setText(gson.toJson(aggrReport));
                 }
             }
             return result;
