@@ -570,7 +570,7 @@ public class ReqController {
                     result.setText(strJsonResult);
                 }break;
                 case "GetYearProfitList":{
-                    logger.info("ReqController.GetReport -> GetYearProfitList: ");
+                    logger.info("ReqController.GetReport -> GetYearProfitList: " + ProjectId);
 
                     /*
                     Gson gson = new Gson();
