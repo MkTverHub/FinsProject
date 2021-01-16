@@ -45,7 +45,7 @@ function doAjaxGetProjectListLeft() {
                     + '<li id="' + value["id"].toString()
                     + '_rowid" class="left-menu-item finsproject_list_row_li">' +
                     '<input type="button" class="left-menu-link finsproject_list_row" projnum="' + value["id"].toString() + '" value="' + value["name"] + '"/>' +
-                    '<a href="/ProjectsEditor?ProjectId=' + value["id"].toString() + '">' + value["name"] + '</a>' +
+                    //'<a href="/ProjectsEditor?ProjectId=' + value["id"].toString() + '">' + value["name"] + '</a>' +
                     '</li>';
             });
             $("#projectlistpanel").html(strProjectListContext);
@@ -53,3 +53,37 @@ function doAjaxGetProjectListLeft() {
     });
 };
 //========================================================
+//Ajax получение UserCache
+function doAjaxGetUserCache() {
+    $.ajax({
+        url : 'GetUserCache',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+            //
+        }),
+        success: function (data) {
+            console.log(data.text);
+        }
+    });
+};
+
+//========================================================
+//Ajax получение Оновления UserCache
+function doAjaxUserCacheOperation(ProjectId) {
+    $.ajax({
+        url : 'OperationUserCache',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+            ActiveProjectId: ProjectId
+        }),
+        success: function (data) {
+            //
+        }
+    });
+};
