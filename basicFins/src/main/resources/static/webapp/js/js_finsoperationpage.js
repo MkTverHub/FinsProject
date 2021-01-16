@@ -2,10 +2,10 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-    //alert('StartPage');
+    doAjaxGetUserCache();//Получение Cache пользователя
     doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
     doAjaxGetContragentsList();//Получение списка контрагентов
-    SetROForm();//Сделать формк RO
+    SetROForm();//Сделать форму RO
 };
 
 
@@ -20,6 +20,7 @@ $(function(){
         strProjectId = $(this).attr("projnum");
         $('#projectidid').attr("value",strProjectId);
         $('#projectidid').val(strProjectId);
+        doAjaxUserCacheOperation(strProjectId);
         doAjaxGetProjectOperationList(strProjectId);
         doAjaxGetProjectProfit(strProjectId);
         doAjaxGetContactFinsAccProject(strProjectId);
