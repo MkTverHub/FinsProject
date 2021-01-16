@@ -65,6 +65,10 @@ public class ReqController {
     LovJdbc lovJdbc;
     @Autowired
     AggregateDataReport aggregateDataReport;
+    @Autowired
+    UsercacheRepository usercacheRepository;
+    @Autowired
+    UsercacheJdbc usercacheJdbc;
 
     @RequestMapping(value = "/SetContrAgentRequisits", method = RequestMethod.GET)
     public @ResponseBody Response GetRequisitsList(@RequestParam String ContragentId) {
@@ -546,6 +550,58 @@ public class ReqController {
         return GetAllUserProject();
 
     }
+
+    //------Получение активного проекта пользователя
+    @RequestMapping(value = "/GetUserCache", method = RequestMethod.GET)
+    public @ResponseBody Response GetUserCache() {
+        try{
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            if(usercache == null){
+                logger.info("ReqController.GetUserCache -> get null");
+                Usercacheform usercacheform = new Usercacheform();
+                usercacheform.setLogin(GetUserLogin());
+                usercacheform.setActiveProject(0);
+                usercacheform.setUsercacheAction("insert");
+                usercacheJdbc.UsercacheAction(usercacheform);
+                usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            }
+
+            //Создать экземпляр ответа и отправить JSON строку
+            Response result = new Response();
+            Gson gson = new Gson();
+            result.setText(gson.toJson(usercache));
+            return result;
+        }catch (Exception ex_rep){
+            logger.info("ReqController.GetUserCache -> Error: " + ex_rep);
+            return null;
+        }
+
+    }
+
+    //-------Объединенная точка работы с формой UserCache
+    @RequestMapping(value = "/OperationUserCache", method = RequestMethod.GET)
+    public @ResponseBody Response OperationUserCache(@RequestParam String ActiveProjectId)
+    {
+        logger.info("ReqController.OperationUserCache -> ");
+        try{
+            Usercacheform usercacheform = new Usercacheform();
+            usercacheform.setLogin(GetUserLogin());
+            usercacheform.setActiveProject(Integer.parseInt(ActiveProjectId));
+            usercacheform.setUsercacheAction("update");
+            usercacheJdbc.UsercacheAction(usercacheform);
+
+            //Просто устой ответ
+            Response result = new Response();
+            return result;
+        }catch (Exception lov_oper_ex){
+            logger.info("ReqController.OperationUserCache -> Error: " + lov_oper_ex);
+            Response result = new Response();
+            result.setText("");
+            result.setCount(0);
+            return result;
+        }
+    }
+
 
 
     //------Получение отчетов
