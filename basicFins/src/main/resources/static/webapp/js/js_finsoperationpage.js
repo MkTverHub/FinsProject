@@ -2,7 +2,7 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-    doAjaxGetUserCache();//Получение Cache пользователя
+
     doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
     doAjaxGetContragentsList();//Получение списка контрагентов
     SetROForm();//Сделать форму RO
