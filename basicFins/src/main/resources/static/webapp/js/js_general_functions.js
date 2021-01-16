@@ -28,6 +28,7 @@ function JsonToTableBody(strTableName,strIdName,arrFields,strJsonContext){
 //========================================================
 //Ajax получение списка проектов в левой панели
 function doAjaxGetProjectListLeft() {
+    doAjaxGetUserCache();
     $.ajax({
         url : 'GetFinsProjectList',
         type: 'GET',
@@ -65,7 +66,9 @@ function doAjaxGetUserCache() {
             //
         }),
         success: function (data) {
-            console.log(data.text);
+            var obj = jQuery.parseJSON(data.text);
+            var strActiveProjectId = obj.active_proj;
+            console.log(strActiveProjectId);
         }
     });
 };
