@@ -27,7 +27,7 @@ function JsonToTableBody(strTableName,strIdName,arrFields,strJsonContext){
 
 //========================================================
 //Ajax получение списка проектов в левой панели
-function doAjaxGetProjectListLeft(ActiveProjectId) {
+function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
     //console.log('doAjaxGetProjectListLeft: ' + ActiveProjectId)
     $.ajax({
         url : 'GetFinsProjectList',
@@ -51,9 +51,9 @@ function doAjaxGetProjectListLeft(ActiveProjectId) {
                 strProjectListContext = strProjectListContext
                     + '<li id="' + value["id"].toString()
                     + '_rowid" class="' + strLiClass + '">' +
-                    '<input type="button" class="left-menu-link finsproject_list_row" projnum="' + value["id"].toString() + '" value="' + value["name"] + '"/>' +
+                    //'<input type="button" class="left-menu-link finsproject_list_row" projnum="' + value["id"].toString() + '" value="' + value["name"] + '"/>' +
                     //'<a href="/ProjectsEditor?ProjectId=' + value["id"].toString() + '">' + value["name"] + '</a>' +
-
+                    '<a href="/' + PageName + '?ProjectId=' + value["id"].toString() + '">' + value["name"] + '</a>' +
                     '</li>';
             });
             $("#projectlistpanel").html(strProjectListContext);
@@ -63,7 +63,7 @@ function doAjaxGetProjectListLeft(ActiveProjectId) {
 };
 //========================================================
 //Ajax получение UserCache
-function doAjaxGetUserCache() {
+function doAjaxGetUserCache(PageName) {
     //document.body.HashData = {ActiveProjectId:''};
     $.ajax({
         url : 'GetUserCache',
@@ -78,7 +78,7 @@ function doAjaxGetUserCache() {
             var obj = jQuery.parseJSON(data.text);
             var strActiveProjectId = obj.active_proj;
             //document.body.HashData = {ActiveProjectId:strActiveProjectId};
-            doAjaxGetProjectListLeft(strActiveProjectId);
+            doAjaxGetProjectListLeft(PageName,strActiveProjectId);
         }
     });
 };

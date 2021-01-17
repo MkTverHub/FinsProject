@@ -4,7 +4,7 @@
 function StartPage() {
 
     //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
-    doAjaxGetUserCache();//Получение списка проектов в левой панели
+    doAjaxGetUserCache("FinsOperations");//Получение списка проектов в левой панели
     doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
     doAjaxGetContragentsList();//Получение списка контрагентов
     SetROForm();//Сделать форму RO
@@ -16,8 +16,9 @@ function StartPage() {
 /*ВАЖНО: jqury слушает только элементы существующие на момент инициализации скрипта,
 т.к. проекты создаются из ajax, то слушатель нужно поставить на родительский элемент div,
 который существует изначально на странице */
+//Не актуально, переделано на ссылки
 $(function(){
-
+    /*
     var strProjectId = "";
     $("#projectlistpanel").on("click", ".finsproject_list_row", function () {
         strProjectId = $(this).attr("projnum");
@@ -28,7 +29,7 @@ $(function(){
         doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
         doAjaxGetLovList()//Получение выпадающего списка "Статья"
     });
-
+    */
 });
 
 //Событие нажатия на финансовую операцию
