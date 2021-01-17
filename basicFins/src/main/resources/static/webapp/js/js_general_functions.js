@@ -53,6 +53,7 @@ function doAjaxGetProjectListLeft(ActiveProjectId) {
                     + '_rowid" class="' + strLiClass + '">' +
                     '<input type="button" class="left-menu-link finsproject_list_row" projnum="' + value["id"].toString() + '" value="' + value["name"] + '"/>' +
                     //'<a href="/ProjectsEditor?ProjectId=' + value["id"].toString() + '">' + value["name"] + '</a>' +
+
                     '</li>';
             });
             $("#projectlistpanel").html(strProjectListContext);

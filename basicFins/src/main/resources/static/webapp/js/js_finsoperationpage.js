@@ -17,8 +17,8 @@ function StartPage() {
 т.к. проекты создаются из ajax, то слушатель нужно поставить на родительский элемент div,
 который существует изначально на странице */
 $(function(){
-    var strProjectId = "";
 
+    var strProjectId = "";
     $("#projectlistpanel").on("click", ".finsproject_list_row", function () {
         strProjectId = $(this).attr("projnum");
         $('#projectidid').attr("value",strProjectId);
