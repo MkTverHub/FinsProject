@@ -3,9 +3,12 @@
 
 <!--ПЛИТКА ДЛЯ ЭКРАНА ПРОЕКТОВ-->
 <!--<div class="col-md-4" th:fragment="project_tile_fragment_1">-->
-    <div class="card" th:fragment="project_tile_fragment_1(projectName,projectDescription)">
+    <div class="card" th:fragment="project_tile_fragment_1(projectId,projectName,projectDescription)">
         <div class="card-body">
-            <h3 class="card-title" th:utext="${projectName}"></h3>
+            <!--<h3 class="card-title" th:utext="${projectName}"></h3>-->
+
+            <a class="card-title" th:href="@{'/FinsOperations?ProjectId=' + ${projectId}}" th:utext="${projectName}"/>
+
             <p class="card-text" th:utext="${projectDescription}"></p>
             <div class="dropdown-divider"></div>
             <p class="card-text">

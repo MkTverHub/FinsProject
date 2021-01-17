@@ -18,6 +18,7 @@ function StartPage() {
 который существует изначально на странице */
 $(function(){
     var strProjectId = "";
+
     $("#projectlistpanel").on("click", ".finsproject_list_row", function () {
         strProjectId = $(this).attr("projnum");
         $('#projectidid').attr("value",strProjectId);
