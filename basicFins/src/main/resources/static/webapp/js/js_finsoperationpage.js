@@ -4,7 +4,8 @@
 function StartPage() {
 
     //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
-    doAjaxGetUserCache();
+    doAjaxGetUserCache();//Получение списка проектов в левой панели
+    doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
     doAjaxGetContragentsList();//Получение списка контрагентов
     SetROForm();//Сделать форму RO
 };
@@ -21,10 +22,9 @@ $(function(){
         strProjectId = $(this).attr("projnum");
         $('#projectidid').attr("value",strProjectId);
         $('#projectidid').val(strProjectId);
-        doAjaxUserCacheOperation(strProjectId);
-        doAjaxGetProjectOperationList(strProjectId);
-        doAjaxGetProjectProfit(strProjectId);
-        doAjaxGetContactFinsAccProject(strProjectId);
+        doAjaxUserCacheOperation(strProjectId);//Апдейт активного проекта
+        doAjaxGetProjectListLeft(strProjectId);//Перестроить левое меню списка проектов
+        doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
         doAjaxGetLovList()//Получение выпадающего списка "Статья"
     });
 
@@ -433,6 +433,31 @@ function UnSetROForm(){
 
 
 //-----------Ajax Functions------------
+
+
+//Ajax получение UserCache. Заполнение DOM экрана в зависимости от активного проекта
+function doAjaxGetActiveProjectContext() {
+    //document.body.HashData = {ActiveProjectId:''};
+    $.ajax({
+        url : 'GetUserCache',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+            //
+        }),
+        success: function (data) {
+            var obj = jQuery.parseJSON(data.text);
+            var strActiveProjectId = obj.active_proj;
+            doAjaxGetProjectOperationList(strActiveProjectId);
+            doAjaxGetProjectProfit(strActiveProjectId);
+            doAjaxGetContactFinsAccProject(strActiveProjectId);
+        }
+    });
+};
+
+
 
 //Ajax получение списка операций по проекту
 function doAjaxGetProjectOperationList(ProjectNum) {

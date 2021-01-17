@@ -28,7 +28,7 @@ function JsonToTableBody(strTableName,strIdName,arrFields,strJsonContext){
 //========================================================
 //Ajax получение списка проектов в левой панели
 function doAjaxGetProjectListLeft(ActiveProjectId) {
-    console.log('doAjaxGetProjectListLeft: ' + ActiveProjectId)
+    //console.log('doAjaxGetProjectListLeft: ' + ActiveProjectId)
     $.ajax({
         url : 'GetFinsProjectList',
         type: 'GET',
@@ -41,10 +41,16 @@ function doAjaxGetProjectListLeft(ActiveProjectId) {
         success: function (data) {
             var strProjectListContext = "";
             var obj = jQuery.parseJSON(data.text);
+            var strLiClass = 'left-menu-item finsproject_list_row_li';
             $.each(obj, function (index, value) {
+                if( value["id"].toString() == ActiveProjectId){
+                    strLiClass = 'left-menu-item left-menu-selected-link';
+                }else{
+                    strLiClass = 'left-menu-item finsproject_list_row_li';
+                }
                 strProjectListContext = strProjectListContext
                     + '<li id="' + value["id"].toString()
-                    + '_rowid" class="left-menu-item finsproject_list_row_li">' +
+                    + '_rowid" class="' + strLiClass + '">' +
                     '<input type="button" class="left-menu-link finsproject_list_row" projnum="' + value["id"].toString() + '" value="' + value["name"] + '"/>' +
                     //'<a href="/ProjectsEditor?ProjectId=' + value["id"].toString() + '">' + value["name"] + '</a>' +
                     '</li>';
@@ -52,11 +58,12 @@ function doAjaxGetProjectListLeft(ActiveProjectId) {
             $("#projectlistpanel").html(strProjectListContext);
         }
     });
+
 };
 //========================================================
 //Ajax получение UserCache
 function doAjaxGetUserCache() {
-    document.body.HashData = {ActiveProjectId:''};
+    //document.body.HashData = {ActiveProjectId:''};
     $.ajax({
         url : 'GetUserCache',
         type: 'GET',
@@ -69,7 +76,6 @@ function doAjaxGetUserCache() {
         success: function (data) {
             var obj = jQuery.parseJSON(data.text);
             var strActiveProjectId = obj.active_proj;
-            console.log(strActiveProjectId);
             //document.body.HashData = {ActiveProjectId:strActiveProjectId};
             doAjaxGetProjectListLeft(strActiveProjectId);
         }
