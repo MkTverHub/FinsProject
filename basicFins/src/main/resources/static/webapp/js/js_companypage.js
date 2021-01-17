@@ -4,7 +4,8 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-    doAjaxGetProjectList();//Получение списка проектов в левой панели
+    //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
+    doAjaxGetUserCache();
     doAjaxGetCompanyList();
     //doAjaxGetProjectList();//Получение списка проектов в левой панели
     //doAjaxGetContragentsList();//Заполнение таблицы контрагентов

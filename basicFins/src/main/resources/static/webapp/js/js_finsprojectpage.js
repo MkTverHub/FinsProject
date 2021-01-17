@@ -3,7 +3,8 @@
  */
 //Функция при загрузки страницы
 function StartPage() {
-    doAjaxGetProjectListLeft();
+    //doAjaxGetProjectListLeft();
+    doAjaxGetUserCache();
     doAjaxGetProjectList();
     doAjaxGetCompanyList();
     ClearProjectForm();

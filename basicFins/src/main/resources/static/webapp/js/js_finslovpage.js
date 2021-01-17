@@ -4,7 +4,8 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-    doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
+    //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
+    doAjaxGetUserCache();
     doAjaxGetLovList();
     SetROForm();
 };

@@ -4,7 +4,8 @@
 //Функция при загрузки страницы
 function StartPage() {
     //alert('StartPage');
-    doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
+    //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
+    doAjaxGetUserCache();
     //Report4_BuildChart(["2016", "2017", "2018", "2019"],["10", "25", "55", "120"],"Продажи товаров за период");
 };
 

@@ -2,5 +2,6 @@
     Created by Ivribin
 */
 function StartPage() {
-    doAjaxGetProjectListLeft();
+    //doAjaxGetProjectListLeft();
+    doAjaxGetUserCache();
 }
