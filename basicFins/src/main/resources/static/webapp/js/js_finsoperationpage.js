@@ -7,6 +7,7 @@ function StartPage() {
     doAjaxGetUserCache("FinsOperations");//Получение списка проектов в левой панели
     doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
     doAjaxGetContragentsList();//Получение списка контрагентов
+    doAjaxGetLovList();
     SetROForm();//Сделать форму RO
 };
 
