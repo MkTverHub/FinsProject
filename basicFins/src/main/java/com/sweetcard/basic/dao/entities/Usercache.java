@@ -9,6 +9,6 @@ import javax.persistence.*;
 public class Usercache {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id") public Integer id;
-    @Column(name = "active_proj") private Integer active_proj;
+    @Column(name = "active_proj") public Integer active_proj;
     @Column(name = "login") public String login;
 }
