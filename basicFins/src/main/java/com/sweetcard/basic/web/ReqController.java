@@ -198,7 +198,7 @@ public class ReqController {
         }
     }
 
-    //-------Объединенная точка работы с операцией
+    //-------Объединенная точка работы с операцией--------------------------------
     @RequestMapping(value = "/FinsOperationForm", method = RequestMethod.GET)
     public @ResponseBody Response AjaxFinsOperationForm(@RequestParam String RecordOperation,
                                                 @RequestParam String Row_Id,
@@ -210,17 +210,20 @@ public class ReqController {
                                                 @RequestParam String Pay_Acc_In,
                                                 @RequestParam String Pay_Acc_Out,
                                                 @RequestParam String Fins_Article,
-                                                @RequestParam String ProjectId,
+                                                //@RequestParam String ProjectId,
                                                 @RequestParam String Contragent,
                                                 @RequestParam String Requisite){
-        logger.info("ReqController.FinsOperation -> " + RecordOperation + " | " + Row_Id + " | " + Lock_Flg  + " | "
-                + Amount + " | " + Detail + " | " + Fins_Transaction_Type + " | " + Pay_Acc_In + " | " + Pay_Acc_Out + " | " + Fins_Article
-                + " | " + ProjectId + " | " + Contragent + " | " + Requisite);
+        //logger.info("ReqController.FinsOperation -> " + RecordOperation + " | " + Row_Id + " | " + Lock_Flg  + " | "
+        //        + Amount + " | " + Detail + " | " + Fins_Transaction_Type + " | " + Pay_Acc_In + " | " + Pay_Acc_Out + " | " + Fins_Article
+        //        + " | " + Contragent + " | " + Requisite);
 
 
         try{
 
-            financedataJdbc.setActivProjectId(Integer.parseInt(ProjectId));
+            //Установка Id активного проекта
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            financedataJdbc.setActivProjectId(usercache.active_proj);
+
             Financedataform financedataform = new Financedataform();
             financedataform.setFinsedittype(RecordOperation);
             financedataform.setFinsOperType(Fins_Transaction_Type);
@@ -231,7 +234,7 @@ public class ReqController {
             financedataform.setPaymentAccIn(Pay_Acc_In);
             financedataform.setPaymentAccOut(Pay_Acc_Out);
             financedataform.setFinsArticle(Fins_Article);
-            financedataform.setProjectId(ProjectId);
+            //financedataform.setProjectId(ProjectId);
             financedataform.setFinscontragent(Contragent);
             financedataform.setRequisites(Requisite);
             switch(RecordOperation){
