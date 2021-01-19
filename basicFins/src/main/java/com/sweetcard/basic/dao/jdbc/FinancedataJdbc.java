@@ -31,7 +31,7 @@ public class FinancedataJdbc {
             String strPaymentAccOut = finsform.getPaymentAccOut();
             String strFinsArticle = finsform.getFinsArticle();
             //String strProjectId = finsform.getProjectId();
-            String strProjectId = intActivProjectId.toString();
+            //String strProjectId = intActivProjectId.toString();
             String strDetail = finsform.getFinsdetail();
             String strContrAgent = finsform.getFinscontragent();
             String strRequisites = finsform.getRequisites();
