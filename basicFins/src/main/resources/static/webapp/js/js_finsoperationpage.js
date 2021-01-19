@@ -43,7 +43,7 @@ $(function(){
     var strPaymentAccIn = "";
     var strPaymentAccOut = "";
     var strFinsArticle = "";
-    var strProjectId = "";
+    //var strProjectId = "";
     var strFinsContrAgent = "";
     var strFinsRequisites = "";
 
@@ -58,7 +58,7 @@ $(function(){
         strPaymentAccIn = $(this).find('.fieldpayaccin').html();
         strPaymentAccOut = $(this).find('.fieldpayaccout').html();
         strFinsArticle = $(this).find('.fieldfinsarticle').html();
-        strProjectId = $(this).find('.fieldprojectid').html();
+        //strProjectId = $(this).find('.fieldprojectid').html();
         strFinsContrAgent = $(this).find('.fieldfinscontragent').html();
         strFinsRequisites = $(this).find('.fieldrequisites').html();
 
@@ -78,7 +78,7 @@ $(function(){
         //$('#finsarticleid').attr('value',strFinsArticle);
         $('#finsarticleid_list').attr('select_value',strFinsArticle);
         SetActiveSelect('#finsarticleid_list',strFinsArticle);
-        $('#projectidid').attr('value',strProjectId);
+        //$('#projectidid').attr('value',strProjectId);
         $('#finscontragentid').attr('value',strFinsContrAgent);
         SetActiveSelect('#contr_agent_select_field',strFinsContrAgent);
         $('#requisitesid').attr('value',strFinsRequisites);
@@ -94,7 +94,7 @@ $(function(){
         //$('#paymentaccinid').val(strPaymentAccIn);
         //$('#paymentaccoutid').val(strPaymentAccOut);
         //$('#finsarticleid').val(strFinsArticle);
-        $('#projectidid').val(strProjectId);
+        //$('#projectidid').val(strProjectId);
         $('#finscontragentid').val(strFinsContrAgent);
         $('#requisitesid').val(strFinsRequisites);
 
@@ -437,7 +437,7 @@ function UnSetROForm(){
 //-----------Ajax Functions------------
 
 
-//Ajax получение UserCache. Заполнение DOM экрана в зависимости от активного проекта
+//Ajax получение UserCache. Заполнение Контекста экрана в зависимости от активного проекта
 function doAjaxGetActiveProjectContext() {
     //document.body.HashData = {ActiveProjectId:''};
     $.ajax({
@@ -485,7 +485,7 @@ function doAjaxFinsOperation() {
     var strFinsRecordId = $('#recordid').attr('value');//Id записи
     var strFinsBlockFlg = $('#fieldlockflgid').attr('value');//Признак блокировки
     var strFinsOpertype = $('#finsopertypeid').attr('value');//Тип транзакции profit/expense/transfer
-    var strProjectId = $('#projectidid').attr('value');//Id проекта
+    //var strProjectId = $('#projectidid').attr('value');//Id проекта
     var strFinsContrAgent = $('#finscontragentid').attr('value');//Id контрагента
     var strFinsRequisites = $('#requisitesid').attr('value');//Id реквезита
     //var strOperDt = $('#fieldoperdateid').attr('value');
@@ -517,13 +517,14 @@ function doAjaxFinsOperation() {
             Pay_Acc_In: strPaymentAccIn,
             Pay_Acc_Out: strPaymentAccOut,
             Fins_Article: strFinsArticle,
-            ProjectId: strProjectId,
+            //ProjectId: strProjectId,
             Contragent: strFinsContrAgent,
             Requisite: strFinsRequisites
         }),
         success: function (data) {
             //JSONStringToFinsOperationList(data.text);
-            doAjaxGetProjectOperationList(strProjectId);
+            //doAjaxGetProjectOperationList(strProjectId);
+            doAjaxGetActiveProjectContext();
         }
     });
 };
