@@ -71,7 +71,7 @@
 
                 <!-- Плитки проектов-->
                 <div class="col-md-4" th:each="p: ${finsprojectList}">
-                    <div th:replace="fragments\layouts\fragment_project_tile.html :: project_tile_fragment_1(projectId=${p.id},projectName=${p.name},projectDescription=${p.description})"></div>
+                    <div th:replace="fragments\layouts\fragment_project_tile.html :: project_tile_fragment_1(projectId=${p.id},projectName=${p.name},projectDescription=${p.description},projectAmountIn=${p.amount_in},projectAmountOut=${p.amount_out},projectBalance=${p.balance})"></div>
                 </div>
 
             </div>

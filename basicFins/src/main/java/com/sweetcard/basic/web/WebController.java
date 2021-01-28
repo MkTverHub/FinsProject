@@ -26,6 +26,8 @@ public class WebController {
     @Autowired
     FinsprojectRepository finsprojectRepository;
     @Autowired
+    AggregateDataFinsprojectRepository aggregateDataFinsprojectRepository;
+    @Autowired
     ContragentRepository contragentRepository;
     @Autowired
     RequisitRepository requisitRepository;
@@ -68,8 +70,8 @@ public class WebController {
     @RequestMapping(value = "/Projects", method = RequestMethod.POST)
     public String GoToProjects( Model model){
         logger.info("WebController.GoToProjects -> ");
-        List<Finsproject> finsprojectList = finsprojectRepository.GetAllUserProjects(GetUserLogin());
-        model.addAttribute("finsprojectList",finsprojectList);
+        List<AggrFinsproject> aggrFinsprojectList = aggregateDataFinsprojectRepository.GetAllUserProjects(GetUserLogin());
+        model.addAttribute("finsprojectList",aggrFinsprojectList);
         return "Fins_Projects_Add";
     }
 
