@@ -14,7 +14,7 @@
             <p class="card-text">
             <div class="d-flex d-lg-flex d-md-block align-items-center">
                 <div>
-                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="projectprofitid">2 785 222,99</h2>
+                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="projectprofitid" th:utext="${projectBalance}"/>
                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Деньги
                     </h6>
                 </div>
@@ -49,19 +49,10 @@
                     <span class="opacity-7">₽</span>
                 </div>
             </div>
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h6 class="font-weight-normal mb-0 w-100 text-truncate">Сальдо
-                    </h6>
-                </div>
-                <div class="ml-auto mt-md-1" th:utext="${projectBalance}">
-                    <span class="opacity-7">₽</span>
-                </div>
-            </div>
             </p>
             <div class="dropdown-divider"></div>
-            <p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>
-            <button class="btn btn-light btn-block">Операции</button>
+            <!--<p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>-->
+            <button class="btn btn-light btn-block" th:onclick="'location.href=\'' +  @{'/FinsOperations?ProjectId=' + ${projectId}} +'\';'">Операции</button>
         </div>
     </div>
 <!--</div>-->
