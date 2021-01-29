@@ -154,8 +154,8 @@ function doAjaxContragentDBOperation() {
     var strContragentId = $('#cntragnt_id').attr('value');
     var strContragentName = $('#cntragnt_name').val();
     var strContragenDescription = $('#cntragnt_desqription').val();
-    var strContragenPhone = $('#cntragnt_mail').val();
-    var strContragenMail = $('#cntragnt_phone').val();
+    var strContragenPhone = $('#cntragnt_phone').val();
+    var strContragenMail = $('#cntragnt_mail').val();
     var strContragenType = $('#contragent_type_list').attr('select_value');
     $.ajax({
         url : 'OperationFinsContragent',
