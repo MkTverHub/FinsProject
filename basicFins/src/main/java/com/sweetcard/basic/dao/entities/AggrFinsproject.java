@@ -13,6 +13,7 @@ public class AggrFinsproject{
     private Long id;
     private String name;
     private String description;
+    private String created;
     private String amount_in;
     private String amount_out;
     private String balance;
@@ -24,6 +25,8 @@ public class AggrFinsproject{
     public void setName(String name) {this.name = name;}
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
+    public String getCreated() {return created;}
+    public void setCreated(String created) {this.created = created;}
     public String getAmount_in() {return amount_in;}
     public void setAmount_in(String amount_in) {this.amount_in = amount_in;}
     public String getAmount_out() {return amount_out;}

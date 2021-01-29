@@ -51,7 +51,7 @@
             </div>
             </p>
             <div class="dropdown-divider"></div>
-            <!--<p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>-->
+            <p class="card-text"><small class="text-muted" th:utext="'Дата создание: ' + ${projectCreated}"/></p>
             <button class="btn btn-light btn-block" th:onclick="'location.href=\'' +  @{'/FinsOperations?ProjectId=' + ${projectId}} +'\';'">Операции</button>
         </div>
     </div>
