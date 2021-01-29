@@ -1,12 +1,15 @@
 package com.sweetcard.basic.dao.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+
+@SqlResultSetMapping(
+        name = "nativeSqlResult",
+        entities = @EntityResult(entityClass = AggrFinsproject.class)
+)
 
 @Entity
-public class AggrFinsproject {
+public class AggrFinsproject{
     private Long id;
     private String name;
     private String description;

@@ -1,7 +1,6 @@
 package com.sweetcard.basic.dao.repository;
 
 import com.sweetcard.basic.dao.entities.AggrFinsproject;
-import com.sweetcard.basic.dao.entities.Finsproject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,4 +16,5 @@ public interface AggregateDataFinsprojectRepository extends JpaRepository<AggrFi
             "where\n" +
             " t1.id in (select project_id from it_proj_user where user_id = (select id from t_user where username = :user_login))", nativeQuery = true)
     List<AggrFinsproject> GetAllUserProjects(@Param("user_login") String user_login_in);
+
 }
