@@ -1,7 +1,7 @@
 package com.sweetcard.basic.web;
 
 import com.sweetcard.basic.dao.jdbc.*;
-import com.sweetcard.basic.dao.repository.AggregateDataRepository;
+import com.sweetcard.basic.dao.repository.AggregateDataContragent;
 import com.sweetcard.basic.dao.entities.*;
 import com.sweetcard.basic.dao.repository.*;
 import com.sweetcard.basic.model.Usercacheform;
@@ -32,7 +32,7 @@ public class WebController {
     @Autowired
     RequisitRepository requisitRepository;
     @Autowired
-    AggregateDataRepository aggregateDataRepository;
+    AggregateDataContragent aggregateDataContragent;
     @Autowired
     FinancedataJdbc financedataJdbc;
     @Autowired
@@ -105,7 +105,7 @@ public class WebController {
     public String GoToContragents(Model model){
         try{
             logger.info("WebController.GoToContragents -> ");
-            List<AggrContragent> contragentList = aggregateDataRepository.GetAllContragent();
+            List<AggrContragent> contragentList = aggregateDataContragent.GetAllContragent();
             model.addAttribute("contragentList",contragentList);
             return "Fins_Contragents_Add";
         }catch (Exception req_ex1){

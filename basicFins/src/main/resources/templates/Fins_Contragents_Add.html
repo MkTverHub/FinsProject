@@ -71,7 +71,7 @@
 
                     <!-- Плитки Контрагенов-->
                     <div class="col-md-3" th:each="c: ${contragentList}">
-                        <div th:replace="fragments\layouts\fragment_project_tile.html :: contragent_tile_fragment_1(contragentName=${c.name},contragentDescription=${c.description},contragentPhone=${c.phone_num},contragentMail=${c.email_addr},contragentAmmountIn=${c.amount_in},contragentAmmountOut=${c.amount_out},contragentBalance=${c.balance})"></div>
+                        <div th:replace="fragments\layouts\fragment_project_tile.html :: contragent_tile_fragment_1(contragentName=${c.name},contragentDescription=${c.description},contragentPhone=${c.phone_num},contragentMail=${c.email_addr},contragentType=${c.type},contragentAmmountIn=${c.amount_in},contragentAmmountOut=${c.amount_out},contragentBalance=${c.balance},contragentCreated=${c.created},contragentMainInn=${c.main_inn},contragentMainCardNum=${c.main_cardnum})"></div>
                     </div>
                     
                 </div>

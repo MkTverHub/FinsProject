@@ -62,9 +62,9 @@
     <div class="card" th:fragment="contragent_tile_fragment_1(contragentName,contragentDescription,contragentPhone,contragentMail,contragentAmmountIn,contragentAmmountOut,contragentBalance)">
         <div class="card-body">
             <h4 class="card-title" th:utext="${contragentName}"></h4>
-            <p class="card-text">
-                <span>ИП Иван</span>
-                <span>4101010100101</span></p>
+            <p class="card-text"><span th:utext="'ИНН: '+${contragentMainInn}"/></p>
+            <p class="card-text"><span th:utext="'№ Карты: '+${contragentMainCardNum}"/></p>
+
             <div class="dropdown-divider"></div>
             <p class="card-text">
             <div class="d-flex d-lg-flex d-md-block align-items-center">
@@ -128,11 +128,11 @@
                     <h6 class="font-weight-normal mb-0 w-100 text-truncate">Вид
                     </h6>
                 </div>
-                <div class="ml-auto mt-md-1">Поставщик</div>
+                <div class="ml-auto mt-md-1" th:utext="${contragentType}"/>
             </div>
             </p>
             <div class="dropdown-divider"></div>
-            <p class="card-text"><small class="text-muted">Дата создание: 08-20-2020</small></p>
+            <p class="card-text"><small class="text-muted" th:utext="'Дата созданиz:' + ${contragentCreated}"/></p>
         </div>
     </div>
 <!--</div>-->

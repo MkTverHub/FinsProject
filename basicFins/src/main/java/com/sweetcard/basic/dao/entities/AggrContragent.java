@@ -17,6 +17,9 @@ public class AggrContragent implements Serializable {
     private String amount_in;
     private String amount_out;
     private String balance;
+    private String created;
+    private String main_inn;
+    private String main_cardnum;
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
 
@@ -38,4 +41,10 @@ public class AggrContragent implements Serializable {
     public void setAmount_out(String amount_out) {this.amount_out = amount_out;}
     public String getBalance() {return balance;}
     public void setBalance(String balance) {this.balance = balance;}
+    public String getCreated() {return created;}
+    public void setCreated(String created) {this.created = created;}
+    public String getMain_inn() {return main_inn; }
+    public void setMain_inn(String main_inn) {this.main_inn = main_inn;}
+    public String getMain_cardnum() {return main_cardnum;}
+    public void setMain_cardnum(String main_cardnum) {this.main_cardnum = main_cardnum;}
 }

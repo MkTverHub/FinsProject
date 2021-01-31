@@ -35,8 +35,8 @@ public class RequisitJdbc {
                     logger.info("RequisitJdbc.Requisitaction (update): RecordId=" + cntragntreqform.getReqId() + " ContragentId=" + cntragntreqform.getContragentId());
                     Integer intRequisitId = Integer.parseInt(cntragntreqform.getReqId());
                     Integer intContragentId = Integer.parseInt(cntragntreqform.getContragentId());
-                    jdbcTemplate.update("update requisits set name=?,description=?,inn=?,kpp=?,fins_acc=?,bik=?,bank_name=?,crsp_acc=?,addr_index=?,addr_city=?,addr_string=?,phone_num=?,email_addr=?,card_num=? where id=? and par_row_id=?",
-                            cntragntreqform.getReqName(),cntragntreqform.getReqDescription(),cntragntreqform.getReqINN(),cntragntreqform.getReqKPP(),cntragntreqform.getReqFinsAcc(),cntragntreqform.getReqBIK(),
+                    jdbcTemplate.update("update requisits set main_flg=?,name=?,description=?,inn=?,kpp=?,fins_acc=?,bik=?,bank_name=?,crsp_acc=?,addr_index=?,addr_city=?,addr_string=?,phone_num=?,email_addr=?,card_num=? where id=? and par_row_id=?",
+                            cntragntreqform.getBlMainFlg(),cntragntreqform.getReqName(),cntragntreqform.getReqDescription(),cntragntreqform.getReqINN(),cntragntreqform.getReqKPP(),cntragntreqform.getReqFinsAcc(),cntragntreqform.getReqBIK(),
                             cntragntreqform.getReqBankName(),cntragntreqform.getReqCrspAcc(),cntragntreqform.getReqAddrIndex(),cntragntreqform.getReqAddrCity(),cntragntreqform.getReqAddrString(),
                             cntragntreqform.getReqPhoneNum(),cntragntreqform.getReqEmail(),cntragntreqform.getCardNumber(),intRequisitId,intContragentId);
                 }break;
@@ -48,22 +48,23 @@ public class RequisitJdbc {
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
                         public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                            PreparedStatement statement = con.prepareStatement("insert into Requisits (par_row_id,name,description,inn,kpp,fins_acc,bik,bank_name,crsp_acc,addr_index,addr_city,addr_string,phone_num,email_addr,card_num) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                            PreparedStatement statement = con.prepareStatement("insert into Requisits (par_row_id,main_flg,name,description,inn,kpp,fins_acc,bik,bank_name,crsp_acc,addr_index,addr_city,addr_string,phone_num,email_addr,card_num) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
                             statement.setInt(1, intContragentId);
-                            statement.setString(2, cntragntreqform.getReqName());
-                            statement.setString(3, cntragntreqform.getReqDescription());
-                            statement.setString(4, cntragntreqform.getReqINN());
-                            statement.setString(5, cntragntreqform.getReqKPP());
-                            statement.setString(6, cntragntreqform.getReqFinsAcc());
-                            statement.setString(7, cntragntreqform.getReqBIK());
-                            statement.setString(8, cntragntreqform.getReqBankName());
-                            statement.setString(9, cntragntreqform.getReqCrspAcc());
-                            statement.setString(10, cntragntreqform.getReqAddrIndex());
-                            statement.setString(11, cntragntreqform.getReqAddrCity());
-                            statement.setString(12, cntragntreqform.getReqAddrString());
-                            statement.setString(13, cntragntreqform.getReqPhoneNum());
-                            statement.setString(14, cntragntreqform.getReqEmail());
-                            statement.setString(15, cntragntreqform.getCardNumber());
+                            statement.setBoolean(2, cntragntreqform.getBlMainFlg());
+                            statement.setString(3, cntragntreqform.getReqName());
+                            statement.setString(4, cntragntreqform.getReqDescription());
+                            statement.setString(5, cntragntreqform.getReqINN());
+                            statement.setString(6, cntragntreqform.getReqKPP());
+                            statement.setString(7, cntragntreqform.getReqFinsAcc());
+                            statement.setString(8, cntragntreqform.getReqBIK());
+                            statement.setString(9, cntragntreqform.getReqBankName());
+                            statement.setString(10, cntragntreqform.getReqCrspAcc());
+                            statement.setString(11, cntragntreqform.getReqAddrIndex());
+                            statement.setString(12, cntragntreqform.getReqAddrCity());
+                            statement.setString(13, cntragntreqform.getReqAddrString());
+                            statement.setString(14, cntragntreqform.getReqPhoneNum());
+                            statement.setString(15, cntragntreqform.getReqEmail());
+                            statement.setString(16, cntragntreqform.getCardNumber());
                             return statement;
                         }
                     }, holder);

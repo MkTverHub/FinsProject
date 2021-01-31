@@ -361,6 +361,7 @@ public class ReqController {
     public @ResponseBody Response OperationFinsRequisit(@RequestParam String DBOperation,
                                                         @RequestParam String ContragentId,
                                                         @RequestParam String RequisitId,
+                                                        @RequestParam Boolean MainFlg,
                                                         @RequestParam String RequisitName,
                                                         @RequestParam String RequisitDescription,
                                                         @RequestParam String RequisitINN,
@@ -383,6 +384,7 @@ public class ReqController {
             cntragntreqform.setReqaction(DBOperation);
             cntragntreqform.setReqId(RequisitId);
             cntragntreqform.setContragentId(ContragentId);
+            cntragntreqform.setBlMainFlg(MainFlg);
             cntragntreqform.setReqName(RequisitName);
             cntragntreqform.setReqDescription(RequisitDescription);
             cntragntreqform.setReqINN(RequisitINN);

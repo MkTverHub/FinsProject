@@ -5,6 +5,7 @@ package com.sweetcard.basic.model;
  */
 public class Cntragntreqform {
     private String strReqId = "";
+    private Boolean blMainFlg = false;
     private String strContragentId = "";
     private String strReqName = "";
     private String strReqDescription = "";
@@ -28,6 +29,8 @@ public class Cntragntreqform {
     /*Имя get/set должно начинать с get/set + имя атрибута в html (с у четом заглавных)*/
     public String getReqId() {return strReqId;}
     public void setReqId(String ReqId) {this.strReqId = ReqId;}//Имя переменной в атрибутах метода (с учетом заглавных) "ReqId" это имя field в html
+    public Boolean getBlMainFlg() {return blMainFlg; }
+    public void setBlMainFlg(Boolean blMainFlg) {this.blMainFlg = blMainFlg; }
     public String getContragentId() {return strContragentId;}
     public void setContragentId(String ContragentId) {this.strContragentId = ContragentId;}
     public String getReqName () {return strReqName;}

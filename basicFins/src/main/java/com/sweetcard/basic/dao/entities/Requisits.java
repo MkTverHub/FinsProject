@@ -46,4 +46,6 @@ public class Requisits {
     private String web_site;
     @Column(name = "card_num")
     private String card_num;
+    @Column(name = "main_flg")
+    private Boolean main_flg;
 }

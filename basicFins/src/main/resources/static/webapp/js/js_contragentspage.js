@@ -104,6 +104,7 @@ $(function(){
         UnSetRORequisitForm();
         $('#requisit_db_action').attr('value','update');
         $('#requisit_id').attr('value',$(this).find('.cntr_req_id').attr('value'));
+        if($(this).find('.cntr_req_main_flg').attr('value') == 'true'){$('#requisit_main').prop('checked', true);}else{$('#requisit_main').prop('checked', false);}
         $('#requisit_name').val($(this).find('.cntr_req_name').attr('value'));
         $('#requisit_description').val($(this).find('.cntr_req_description').attr('value'));
         $('#requisit_ReqINN').val($(this).find('.cntr_req_inn').attr('value'));
@@ -205,6 +206,7 @@ function doAjaxRequisitDBOperation() {
     if (strRequisitContragentId == null){strRequisitContragentId = '';}
     var strRequisitId = $('#requisit_id').attr('value');
     if (strRequisitId == null){strRequisitId = '';}
+    if($('#requisit_main').prop('checked')){strMainFlg = 'true';}else{strMainFlg = 'false';}
     var strRequisitName = $('#requisit_name').val();
     var strRequisitDescription = $('#requisit_description').val();
     var strRequisitINN = $('#requisit_ReqINN').val();
@@ -230,6 +232,7 @@ function doAjaxRequisitDBOperation() {
             DBOperation: strDBOperation,
             ContragentId: strRequisitContragentId,
             RequisitId: strRequisitId,
+            MainFlg: strMainFlg,
             RequisitName: strRequisitName,
             RequisitDescription: strRequisitDescription,
             RequisitINN: strRequisitINN,
@@ -314,6 +317,7 @@ function JSONStringToContragentReqTable(JSONString) {
     var strContragentReqTableContext = '';
     var strReqId = '';
     var strContragentId = '';
+    var strMainFlg = '';
     var strReqName = '';
     var strReqDescription = '';
     var strReqINN = '';
@@ -334,6 +338,7 @@ function JSONStringToContragentReqTable(JSONString) {
         strContragentReqTableContext = strContragentReqTableContext + '<tr class="fincrowlink requisitslist_row">';
         if(value['id'] == null){strReqId = '';}else{strReqId = value['id'].toString();}
         if(value['par_row_id'] == null){strContragentId = '';}else{strContragentId = value['par_row_id'].toString();}
+        if(value['main_flg'] == null){strMainFlg= 'false';}else{strMainFlg = value['main_flg'].toString();}
         if(value['name'] == null){strReqName = '';}else{strReqName = value['name'].toString();}
         if(value['description'] == null){strReqDescription = '';}else{strReqDescription = value['description'].toString();}
         if(value['inn'] == null){strReqINN = '';}else{strReqINN = value['inn'].toString();}
@@ -350,6 +355,7 @@ function JSONStringToContragentReqTable(JSONString) {
         if(value['web_site'] == null){strReqWebSite = '';}else{strReqWebSite = value['web_site'].toString();}
         if(value['card_num'] == null){strCardNumber = '';}else{strCardNumber = value['card_num'].toString();}
         strContragentReqTableContext = strContragentReqTableContext + '<th class="cntr_req_id" value="' + strReqId + '">' + strReqId + '</th>' +
+            '<th class="cntr_req_main_flg" value="' + strMainFlg + '">' + strMainFlg + '</th>' +
             '<th class="cntr_req_name" value="' + strReqName + '">' + strReqName + '</th>' +
             '<th class="cntr_req_description" value="' + strReqDescription + '">' + strReqDescription + '</th>' +
             '<th class="cntr_req_inn" value="' + strReqINN + '">' + strReqINN + '</th>' +
@@ -393,6 +399,7 @@ function ClearContragentForm(){
 function ClearRequisitForm(){
     $('#requisit_db_action').attr('value','');
     $('#requisit_id').attr('value','');
+    $('#requisit_main').prop('checked',false);
     $('#requisit_name').val('');
     $('#requisit_description').val('');
     $('#requisit_ReqINN').val('');
@@ -430,6 +437,7 @@ function UnSetROContragentForm(){
 
 //Сделать форму Реквезита RO
 function SetRORequisitForm(){
+    $('#requisit_main').attr("onclick","return false");
     $('#requisit_name').attr('readonly', true);
     $('#requisit_description').attr('readonly', true);
     $('#requisit_ReqINN').attr('readonly', true);
@@ -449,6 +457,7 @@ function SetRORequisitForm(){
 
 //Сделать форму Реквезита not RO
 function UnSetRORequisitForm(){
+    $('#requisit_main').removeAttr("onclick");
     $('#requisit_name').attr('readonly', false);
     $('#requisit_description').attr('readonly', false);
     $('#requisit_ReqINN').attr('readonly', false);
