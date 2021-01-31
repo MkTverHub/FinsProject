@@ -4,7 +4,8 @@
 //Функция при загрузки страницы
 function StartPage() {
     //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
-    doAjaxGetUserCache();
+    doAjaxGetUserCache("Contragents");
+    SetFormatData('h4.formatnumber_1');
     doAjaxGetContragentsList();//Заполнение таблицы контрагентов
     document.body.HashData = {ActiveContragentId:''};
     SetROContragentForm();

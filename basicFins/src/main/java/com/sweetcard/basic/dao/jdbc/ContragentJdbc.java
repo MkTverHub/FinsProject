@@ -21,6 +21,7 @@ import java.sql.Statement;
 @Component
 public class ContragentJdbc {
     private Logger logger = LoggerFactory.getLogger(FinancedataJdbc.class);
+    private Integer intActivProjectId = null;//Id текущего проекта
     @Autowired
     JdbcTemplate jdbcTemplate;
     //Создание записи
@@ -34,8 +35,8 @@ public class ContragentJdbc {
                 case "update" : {
                     Integer intContragentId = Integer.parseInt(contragentform.getContragentid());
                     logger.info("ContragentJdbc.Update: Id = " + intContragentId);
-                    jdbcTemplate.update("update Contragent set name = ?, description = ?, phone_num = ?, email_addr = ?, type = ? where id = ?",
-                            contragentform.getContragentname() ,contragentform.getContragentdescription(), contragentform.getContragentphone(), contragentform.getContragentemail(), contragentform.getContragentType(), intContragentId);
+                    jdbcTemplate.update("update Contragent set project_id = ?, name = ?, description = ?, phone_num = ?, email_addr = ?, type = ? where id = ?",
+                            intActivProjectId, contragentform.getContragentname() ,contragentform.getContragentdescription(), contragentform.getContragentphone(), contragentform.getContragentemail(), contragentform.getContragentType(), intContragentId);
 
                 }break;
                 case "insert" : {
@@ -44,13 +45,13 @@ public class ContragentJdbc {
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
                         public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                            PreparedStatement statement = con.prepareStatement("INSERT INTO contragent (name , description, phone_num, email_addr) VALUES (?,?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
-                            statement.setString(1, contragentform.getContragentname());
-                            statement.setString(2, contragentform.getContragentdescription());
-                            statement.setString(3, contragentform.getContragentphone());
-                            statement.setString(4, contragentform.getContragentemail());
-                            statement.setString(5, contragentform.getContragentType());
-                            statement.setString(6, contragentform.getContragentBalance());
+                            PreparedStatement statement = con.prepareStatement("INSERT INTO contragent (project_id ,name , description, phone_num, email_addr,type) VALUES (?,?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
+                            statement.setInt(1, intActivProjectId);
+                            statement.setString(2, contragentform.getContragentname());
+                            statement.setString(3, contragentform.getContragentdescription());
+                            statement.setString(4, contragentform.getContragentphone());
+                            statement.setString(5, contragentform.getContragentemail());
+                            statement.setString(6, contragentform.getContragentType());
                             return statement;
                         }
                     }, holder);
@@ -61,8 +62,8 @@ public class ContragentJdbc {
                 }break;
                 case "delete" : {
                     Integer intContragentId = Integer.parseInt(contragentform.getContragentid());
-                    logger.info("ContragentJdbc.Delete: Id = " + intContragentId);
-                    jdbcTemplate.update("delete from contragent where id = ?", intContragentId);
+                    logger.info("ContragentJdbc.Delete: Id = " + intContragentId + "/" + intActivProjectId);
+                    jdbcTemplate.update("delete from contragent where project_id = ? and id = ?", intActivProjectId, intContragentId);
                 }break;
 
                 default:{
@@ -75,5 +76,10 @@ public class ContragentJdbc {
             logger.info("ContragentJdbc.Contragentaction -> ERROR: " + exp_sql);
             return null;
         }
+    }
+
+    //-----------------------------SETTERS------------------------------
+    public void setActivProjectId(Integer ProjectId){
+        intActivProjectId = ProjectId;
     }
 }

@@ -26,5 +26,7 @@ public class Contragent {
     private String type;
     @Column(name = "balance")
     private String balance;
+    @Column(name = "project_id")
+    private Integer project_id;
 
 }

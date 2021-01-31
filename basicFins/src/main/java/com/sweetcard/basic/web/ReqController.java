@@ -332,6 +332,10 @@ public class ReqController {
     {
         logger.info("ReqController.OperationFinsContragent -> " + DBOperation + "/" + ContragentId + "/" + ContragentName + "/" + ContragenDescription + "/" + ContragenPhone + "/" + ContragenMail);
         try{
+            //Установка Id активного проекта
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            contragentJdbc.setActivProjectId(usercache.active_proj);
+
             Contragentform contragentform = new Contragentform();
             contragentform.setContragentaction(DBOperation);
             contragentform.setContragentid(ContragentId);

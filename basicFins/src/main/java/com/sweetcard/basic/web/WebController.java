@@ -43,6 +43,8 @@ public class WebController {
     RequisitJdbc requisitJdbc;
     @Autowired
     UsercacheJdbc usercacheJdbc;
+    @Autowired
+    UsercacheRepository usercacheRepository;
 
     //Здесь вход на app
     @GetMapping({"/", "/index","/FinsOperations"})
@@ -66,6 +68,13 @@ public class WebController {
         }
     }
 
+    //Переход на страницу Финвнсовых операций (из верхней шапки)
+    @RequestMapping(value = "/FinsOperations", method = RequestMethod.POST)
+    public String GoToFinsOperations(Model model){
+        logger.info("WebController.GoToFinsOperations -> ");
+        return "Fins_Operations";
+    }
+
     //Переход на страницу Проектов
     @RequestMapping(value = "/Projects", method = RequestMethod.POST)
     public String GoToProjects( Model model){
@@ -85,13 +94,6 @@ public class WebController {
         return "Fins_Projects";
     }
 
-    //Переход на страницу Финвнсовых операций
-    @RequestMapping(value = "/FinsOperations", method = RequestMethod.POST)
-    public String GoToFinsOperations(Model model){
-        logger.info("WebController.GoToFinsOperations -> ");
-        return "Fins_Operations";
-    }
-
     //Переход на страницу LOV
     //@RequestMapping(value = "/FinsLOV", method = RequestMethod.POST)
     @RequestMapping(value = "/FinsLOV")
@@ -101,11 +103,25 @@ public class WebController {
     }
 
     //Переход на страницу контрагентов (Плитка)
-    @RequestMapping(value = "/Contragents", method = RequestMethod.POST)
-    public String GoToContragents(Model model){
+   // @RequestMapping(value = "/Contragents", method = RequestMethod.GET)
+    @RequestMapping(value = "/Contragents")
+    public String GoToContragents(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
-            logger.info("WebController.GoToContragents -> ");
-            List<AggrContragent> contragentList = aggregateDataContragent.GetAllContragent();
+            logger.info("WebController.GoToContragents -> " + ProjectId);
+
+            if (0 != ProjectId.compareTo("no_value")) {
+                //Переход из левой понели проектов кликом по проекту
+                Usercacheform usercacheform = new Usercacheform();
+                usercacheform.setLogin(GetUserLogin());
+                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
+                usercacheform.setUsercacheAction("update");
+                usercacheJdbc.UsercacheAction(usercacheform);
+            }
+
+            //Получение активного проекта пользователя
+            Usercache usercache = GetUsercache();
+
+            List<AggrContragent> contragentList = aggregateDataContragent.GetProjectContragent(usercache.active_proj);
             model.addAttribute("contragentList",contragentList);
             return "Fins_Contragents_Add";
         }catch (Exception req_ex1){
@@ -114,9 +130,10 @@ public class WebController {
         }
     }
 
+
     //Переход на страницу контрагентов (Редактор)
     @RequestMapping(value = "/ContragentsEditor", method = RequestMethod.POST)
-    public String GoToContragentsEditor(Model model){
+    public String GoToContragentsEditor(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.ContragentsEditor -> ");
             return "Fins_Contragents";
@@ -194,5 +211,21 @@ public class WebController {
         }
         return strUserName;
     }
+
+    //Получить UserCach
+    private Usercache GetUsercache(){
+        Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+        if(usercache == null){
+            logger.info("ReqController.GetUserCache -> get null");
+            Usercacheform usercacheform = new Usercacheform();
+            usercacheform.setLogin(GetUserLogin());
+            usercacheform.setActiveProject(0);
+            usercacheform.setUsercacheAction("insert");
+            usercacheJdbc.UsercacheAction(usercacheform);
+            usercache = usercacheRepository.GetUsercache(GetUserLogin());
+        }
+        return usercache;
+    }
+
 }
 
