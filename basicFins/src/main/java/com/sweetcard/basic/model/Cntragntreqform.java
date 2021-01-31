@@ -4,9 +4,9 @@ package com.sweetcard.basic.model;
  * Created by Admin on 22.03.2020.
  */
 public class Cntragntreqform {
-    private String strReqId = "";
+    private Integer intReqId;
     private Boolean blMainFlg = false;
-    private String strContragentId = "";
+    private Integer intContragentId;
     private String strReqName = "";
     private String strReqDescription = "";
     private String strReqINN = "";
@@ -27,12 +27,12 @@ public class Cntragntreqform {
 
     /*----------------GET / SET Полей--------------*/
     /*Имя get/set должно начинать с get/set + имя атрибута в html (с у четом заглавных)*/
-    public String getReqId() {return strReqId;}
-    public void setReqId(String ReqId) {this.strReqId = ReqId;}//Имя переменной в атрибутах метода (с учетом заглавных) "ReqId" это имя field в html
+    public Integer getReqId() {return intReqId;}
+    public void setReqId(Integer ReqId) {this.intReqId = ReqId;}//Имя переменной в атрибутах метода (с учетом заглавных) "ReqId" это имя field в html
     public Boolean getBlMainFlg() {return blMainFlg; }
     public void setBlMainFlg(Boolean blMainFlg) {this.blMainFlg = blMainFlg; }
-    public String getContragentId() {return strContragentId;}
-    public void setContragentId(String ContragentId) {this.strContragentId = ContragentId;}
+    public Integer getContragentId() {return intContragentId;}
+    public void setContragentId(Integer ContragentId) {this.intContragentId = ContragentId;}
     public String getReqName () {return strReqName;}
     public void setReqName (String ReqName) {this.strReqName = ReqName;}
     public String getReqDescription () {return strReqDescription;}

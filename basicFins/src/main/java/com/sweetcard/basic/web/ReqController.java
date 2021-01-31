@@ -359,8 +359,8 @@ public class ReqController {
     //-------Объединенная точка работы с формой Реквезита
     @RequestMapping(value = "/OperationFinsRequisit", method = RequestMethod.GET)
     public @ResponseBody Response OperationFinsRequisit(@RequestParam String DBOperation,
-                                                        @RequestParam String ContragentId,
-                                                        @RequestParam String RequisitId,
+                                                        @RequestParam Integer ContragentId,
+                                                        @RequestParam Integer RequisitId,
                                                         @RequestParam Boolean MainFlg,
                                                         @RequestParam String RequisitName,
                                                         @RequestParam String RequisitDescription,
