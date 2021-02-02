@@ -132,10 +132,21 @@ public class WebController {
 
 
     //Переход на страницу контрагентов (Редактор)
-    @RequestMapping(value = "/ContragentsEditor", method = RequestMethod.POST)
+    //@RequestMapping(value = "/ContragentsEditor", method = RequestMethod.POST)
+    @RequestMapping(value = "/ContragentsEditor")
     public String GoToContragentsEditor(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.ContragentsEditor -> ");
+
+            if (0 != ProjectId.compareTo("no_value")) {
+                //Переход из левой понели проектов кликом по проекту
+                Usercacheform usercacheform = new Usercacheform();
+                usercacheform.setLogin(GetUserLogin());
+                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
+                usercacheform.setUsercacheAction("update");
+                usercacheJdbc.UsercacheAction(usercacheform);
+            }
+
             return "Fins_Contragents";
         }catch (Exception req_ex1){
             logger.info("WebController.ContragentsEditor -> ERROR: " + req_ex1);

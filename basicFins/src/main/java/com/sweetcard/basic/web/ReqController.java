@@ -125,8 +125,10 @@ public class ReqController {
             //Получение логина пользователя
             String strUserLogin = GetUserLogin();
 
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+
             //Получить список ВСЕХ контрагентов
-            List<Contragent> contragentList = contragentRepository.findAllByOrderByIdAsc();
+            List<Contragent> contragentList = contragentRepository.GetAllByProject(usercache.active_proj);
 
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();

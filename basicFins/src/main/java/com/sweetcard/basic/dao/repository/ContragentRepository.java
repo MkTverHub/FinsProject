@@ -2,8 +2,10 @@ package com.sweetcard.basic.dao.repository;
 
 import com.sweetcard.basic.dao.entities.Contragent;
 import com.sweetcard.basic.dao.entities.Finsproject;
+import com.sweetcard.basic.dao.entities.Requisits;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,4 +19,8 @@ public interface ContragentRepository extends JpaRepository<Contragent, Integer>
 
     //Выбрать все с групировкой по Id
     List<Contragent> findAllByOrderByIdAsc();
+
+    //По проекту
+    @Query(value = "SELECT * FROM contragent where project_id = :fins_project_id", nativeQuery = true)
+    List<Contragent> GetAllByProject (@Param("fins_project_id") Integer finsprojectid);
 }
