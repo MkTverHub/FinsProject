@@ -350,3 +350,7 @@ button:focus {
     width: 100%;
     border: none;
 }
+
+.scroll-sidebar {
+  overflow-y: auto;
+}
