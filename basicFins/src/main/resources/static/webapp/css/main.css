@@ -337,3 +337,16 @@ button:focus {
     display: inline-block;
     width: auto;
 }
+
+
+.left-menu-item .finsproject_list_link_row {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-right: 17px;
+    font-size: 16px;
+    padding: 10px 10px;
+    width: 100%;
+    border: none;
+}
