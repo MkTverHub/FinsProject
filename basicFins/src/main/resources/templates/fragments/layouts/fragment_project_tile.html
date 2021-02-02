@@ -62,8 +62,10 @@
     <div class="card" th:fragment="contragent_tile_fragment_1(contragentName,contragentDescription,contragentPhone,contragentMail,contragentAmmountIn,contragentAmmountOut,contragentBalance)">
         <div class="card-body">
             <h4 class="card-title" th:utext="${contragentName}"></h4>
-            <p class="card-text"><span th:utext="'ИНН: '+${contragentMainInn}"/></p>
-            <p class="card-text"><span th:utext="'№ Карты: '+${contragentMainCardNum}"/></p>
+            <p class="card-text">
+                <span th:utext="'ИНН: '+${contragentMainInn}"/>
+                <span th:utext="'№ Карты: '+${contragentMainCardNum}"/>
+            </p>
 
             <div class="dropdown-divider"></div>
             <p class="card-text">
