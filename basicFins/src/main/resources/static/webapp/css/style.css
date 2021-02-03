@@ -7830,7 +7830,7 @@ Preloader
 Designed dropdown
 ******************/
 .topbar .dropdown-menu {
-  padding-top: 0px;
+  padding-top: 0.5rem;
   border: 0px;
   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
