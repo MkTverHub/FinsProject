@@ -10,126 +10,145 @@
             <a class="card-title" th:href="@{'/FinsOperations?ProjectId=' + ${projectId}}" th:utext="${projectName}"/>
 
             <p class="card-text" th:utext="${projectDescription}"></p>
+
             <div class="dropdown-divider"></div>
+
             <p class="card-text">
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="projectprofitid" th:utext="${projectBalance}"/>
-                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Деньги
-                    </h6>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" id="projectprofitid" th:utext="${projectBalance}"/>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Деньги
+                        </h6>
+                    </div>
+                    <div class="ml-auto mt-md-3 mt-lg-0">
+                        <span class="opacity-7">₽</span>
+                    </div>
                 </div>
-                <div class="ml-auto mt-md-3 mt-lg-0">
-                    <span class="opacity-7">₽</span>
-                </div>
-            </div>
             </p>
+
             <div class="dropdown-divider"></div>
+
             <p class="card-text">
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">Транзакции:
-                    </h4>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium">Транзакции:
+                        </h4>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h6 class="font-weight-normal mb-0 w-100 text-truncate">Приход
-                    </h6>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h6 class="font-weight-normal mb-0 w-100 text-truncate">Приход
+                        </h6>
+                    </div>
+                    <div class="ml-auto mt-md-1" th:utext="${projectAmountIn}">
+                        <span class="opacity-7">₽</span>
+                    </div>
                 </div>
-                <div class="ml-auto mt-md-1" th:utext="${projectAmountIn}">
-                    <span class="opacity-7">₽</span>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h6 class="font-weight-normal mb-0 w-100 text-truncate">Расход
+                        </h6>
+                    </div>
+                    <div class="ml-auto mt-md-1" th:utext="${projectAmountOut}">
+                        <span class="opacity-7">₽</span>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h6 class="font-weight-normal mb-0 w-100 text-truncate">Расход
-                    </h6>
-                </div>
-                <div class="ml-auto mt-md-1" th:utext="${projectAmountOut}">
-                    <span class="opacity-7">₽</span>
-                </div>
-            </div>
             </p>
+
             <div class="dropdown-divider"></div>
-            <p class="card-text"><small class="text-muted" th:utext="'Дата создания: ' + ${projectCreated}"/></p>
+
+            <p class="card-text">
+                <small class="text-muted" th:utext="'Дата создания: ' + ${projectCreated}"></small>
+            </p>
+
             <button class="btn btn-light btn-block" th:onclick="'location.href=\'' +  @{'/FinsOperations?ProjectId=' + ${projectId}} +'\';'">Операции</button>
         </div>
     </div>
 <!--</div>-->
 
 <!--ПЛИТКА ДЛЯ ЭКРАНА КОНТРАГЕНТОВ-->
+
 <!--<div class="col-md-4">-->
     <div class="card" th:fragment="contragent_tile_fragment_1(contragentName,contragentDescription,contragentPhone,contragentMail,contragentAmmountIn,contragentAmmountOut,contragentBalance)">
         <div class="card-body">
-            <h4 class="card-title mb-2" th:utext="${contragentName}"></h4>
-            <p class="card-text mb-2"><span th:utext="'ИНН: '+${contragentMainInn}"/></p>
+            <h4 class="card-title" th:utext="${contragentName}"></h4>
+            <p class="card-text"><span th:utext="'ИНН: '+${contragentMainInn}"/></p>
             <!-- <p class="card-text mb-2"><span th:utext="'№ Карты: '+${contragentMainCardNum}"/></p> -->
 
             <div class="dropdown-divider"></div>
+
             <p class="card-text">
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium formatnumber_1" th:utext="${contragentAmmountIn}"/>
-                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Отправлено на счет
-                    </h6>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium formatnumber_1" th:utext="${contragentAmmountIn}"/>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Отправлено на счет
+                        </h6>
+                    </div>
+                    <div class="ml-auto mt-md-3 mt-lg-0">
+                        <span class="opacity-7">₽</span>
+                    </div>
                 </div>
-                <div class="ml-auto mt-md-3 mt-lg-0">
-                    <span class="opacity-7">₽</span>
-                </div>
-            </div>
             </p>
+
             <p class="card-text">
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium formatnumber_1" th:utext="${contragentAmmountOut}"/>
-                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Получено нам
-                    </h6>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium formatnumber_1" th:utext="${contragentAmmountOut}"/>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Получено нам
+                        </h6>
+                    </div>
+                    <div class="ml-auto mt-md-3 mt-lg-0">
+                        <span class="opacity-7">₽</span>
+                    </div>
                 </div>
-                <div class="ml-auto mt-md-3 mt-lg-0">
-                    <span class="opacity-7">₽</span>
-                </div>
-            </div>
             </p>
+
             <p class="card-text">
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium formatnumber_1" th:utext="${contragentBalance}"/>
-                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Разница</h6>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h4 class="text-dark mb-1 w-100 text-truncate font-weight-medium formatnumber_1" th:utext="${contragentBalance}"/>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Разница</h6>
+                    </div>
+                    <div class="ml-auto mt-md-3 mt-lg-0">
+                        <span class="opacity-7">₽</span>
+                    </div>
                 </div>
-                <div class="ml-auto mt-md-3 mt-lg-0">
-                    <span class="opacity-7">₽</span>
-                </div>
-            </div>
             </p>
+
             <div class="dropdown-divider"></div>
+
             <p class="card-text">
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h4 class="text-dark mb-3 w-100 text-truncate font-weight-medium">Подробнее:
-                    </h4>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h4 class="text-dark mb-3 w-100 text-truncate font-weight-medium">Подробнее:
+                        </h4>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h6 class="font-weight-normal mb-2 w-100 text-truncate" th:utext="${contragentPhone}">
-                    </h6>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h6 class="font-weight-normal mb-2 w-100 text-truncate" th:utext="${contragentPhone}">
+                        </h6>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h6 class="font-weight-normal mb-2 w-100 text-truncate" th:utext="${contragentMail}">
-                    </h6>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h6 class="font-weight-normal mb-2 w-100 text-truncate" th:utext="${contragentMail}">
+                        </h6>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                <div>
-                    <h6 class="font-weight-normal mb-2 w-100 text-truncate" th:utext="${contragentType}">
-                    </h6>
+                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                    <div>
+                        <h6 class="font-weight-normal mb-2 w-100 text-truncate" th:utext="${contragentType}">
+                        </h6>
+                    </div>
                 </div>
-            </div>
             </p>
+
             <div class="dropdown-divider"></div>
-            <p class="card-text"><small class="text-muted" th:utext="'Дата создания: ' + ${contragentCreated}"/></p>
+
+            <p class="card-text">
+                <small class="text-muted" th:utext="'Дата создания: ' + ${contragentCreated}"></small>
+            </p>
         </div>
     </div>
 <!--</div>-->
