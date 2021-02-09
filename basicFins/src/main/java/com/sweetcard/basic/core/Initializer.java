@@ -1,6 +1,5 @@
 package com.sweetcard.basic.core;
 
-import com.sweetcard.basic.config.WebSecurityConfig;
 import com.sweetcard.basic.web.ReqController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -5,6 +5,10 @@ import com.sweetcard.basic.dao.repository.AggregateDataContragent;
 import com.sweetcard.basic.dao.entities.*;
 import com.sweetcard.basic.dao.repository.*;
 import com.sweetcard.basic.model.Usercacheform;
+import com.sweetcard.basic.registration.RegistrationForm;
+import com.sweetcard.basic.registration.RegistrationRequest;
+import com.sweetcard.basic.registration.RegistrationService;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,8 @@ import java.util.List;
 @Controller
 public class WebController {
     private Logger logger = LoggerFactory.getLogger(WebController.class);
+    @Autowired
+    private RegistrationService registrationService;
     //@Autowired
     //CustomerRepository customerRepository;
     @Autowired
@@ -67,6 +73,23 @@ public class WebController {
             return "Fins_Operations";
         }
     }
+
+    //Переход на страницу Регистрации
+    @GetMapping(value = "/Registration")
+    public String GoToUserRegistration(Model model){
+        logger.info("WebController.GoToUserRegistration -> ");
+        model.addAttribute("registrationform", new RegistrationForm());
+        return "UserRegistration";
+    }
+
+    //Получение формы регистрации
+    @RequestMapping(value = "/RegConfirm", method = RequestMethod.POST)
+    public String GoToUserRegConfirm(@ModelAttribute RegistrationForm registrationForm, Model model){
+        logger.info("WebController.GoToUserRegConfirm -> " + registrationForm.getFirstName() + " " + registrationForm.getLastName() + " " + registrationForm.getEmail() + " " + registrationForm.getPassword());
+        registrationService.register2(registrationForm);
+        return "UserRegConfirm";
+    }
+
 
     //Переход на страницу Финвнсовых операций (из верхней шапки)
     @RequestMapping(value = "/FinsOperations", method = RequestMethod.POST)
