@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="webapp/images/favicon.png">
+    <title>FinSpetsel - Финансовый учет</title>
+    <!-- Custom CSS -->
+    <link href="webapp/css/normalize.css" rel="stylesheet"> 
+    <link href="webapp/css/style.css" rel="stylesheet">
+    <link href="webapp/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <form class="pl-3 pr-3" action="#" th:action="@{/RegConfirm}" th:object="${registrationform}" method="post">
+        <input type="text" th:field="*{firstName}">
+        <input type="text" th:field="*{lastName}">
+        <input type="text" th:field="*{email}">
+        <input type="password" th:field="*{password}">
+        <button type="reset" class="btn btn-light" data-dismiss="modal">Отмена</button>
+        <button type="submit" class="btn btn-outline-light">Сохранить</button>
+    </form>
+
+
+
+<!-----------IVRIBIN User Script----------------------------->
+<script type="text/javascript">
+
+</script>
+
+</body>
+
+</html>
