@@ -1,5 +1,6 @@
 package com.sweetcard.basic.dao.repository;
 
+import com.sweetcard.basic.dao.entities.AggrFinsdata;
 import com.sweetcard.basic.dao.entities.Customer;
 import com.sweetcard.basic.dao.entities.Financedata;
 import com.sweetcard.basic.dao.entities.Finsproject;
@@ -14,17 +15,15 @@ import java.util.List;
 /**
  * Created by Admin on 21.02.2020.
  */
-public interface FinancedataRepository extends JpaRepository<Financedata, Integer> {
-    //Выбрать все с групировкой по Id
-    List<Financedata> findAllByOrderByIdAsc();
+public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integer> {
 
     //Выбрать все селектом
     @Query(value = "SELECT * FROM financedata", nativeQuery = true)
-    List<Financedata> GetAll();
+    List<AggrFinsdata> GetAll();
 
     //Выбрать все селектом по проекту
-    @Query(value = "SELECT id,amount,detail,finscontragent,fins_oper_type,lock_flg,to_char(oper_date, 'yyyy-mm-dd hh24:mi:ss') oper_date,pay_acc_in,pay_acc_out,project_id,requisites,fins_article FROM financedata where project_id = :fins_project_id", nativeQuery = true)
-    List<Financedata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid);
+    @Query(value = "SELECT id,amount,detail,finscontragent,fins_oper_type as finsopertype,lock_flg as lockflg,to_char(oper_date, 'yyyy-mm-dd hh24:mi:ss') as operdate,pay_acc_in as payaccin,pay_acc_out as payaccout,project_id as projectid,requisites,fins_article as finsarticle FROM financedata where project_id = :fins_project_id", nativeQuery = true)
+    List<AggrFinsdata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid);
 
     //Получиь чистую прибыль по проекту
     @Query(value = "select (select sum(amount) as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit') - (select sum(amount) as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense')\n", nativeQuery = true)

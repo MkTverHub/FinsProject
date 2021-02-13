@@ -102,8 +102,13 @@ public class WebController {
     @RequestMapping(value = "/Projects", method = RequestMethod.POST)
     public String GoToProjects( Model model){
         logger.info("WebController.GoToProjects -> ");
-        List<AggrFinsproject> aggrFinsprojectList = aggregateDataFinsprojectRepository.GetAllUserProjects(GetUserLogin());
-        model.addAttribute("finsprojectList",aggrFinsprojectList);
+        ;
+        try {
+            List<AggrFinsproject> aggrFinsprojectList = aggregateDataFinsprojectRepository.GetAllUserProjects(GetUserLogin());
+            model.addAttribute("finsprojectList",aggrFinsprojectList);
+        }catch (Exception ex1){
+            //SQL aggregateDataFinsprojectRepository.GetAllUserProjects падает, если в нет записей в операциях
+        }
         return "Fins_Projects_Add";
     }
 

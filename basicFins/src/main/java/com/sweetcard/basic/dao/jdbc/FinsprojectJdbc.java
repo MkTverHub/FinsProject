@@ -1,8 +1,8 @@
 package com.sweetcard.basic.dao.jdbc;
 
-import com.sweetcard.basic.dao.repository.FinsprojectRepository;
-import com.sweetcard.basic.dao.repository.UserRepository;
-import com.sweetcard.basic.model.Financedataform;
+import com.sweetcard.basic.appuser.AppUser;
+import com.sweetcard.basic.appuser.AppUserRepository;
+
 import com.sweetcard.basic.model.Finsprojectform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -19,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 
 /**
  * Created by Admin on 09.03.2020.
@@ -29,7 +29,8 @@ public class FinsprojectJdbc {
     @Autowired
     JdbcTemplate jdbcTemplate;
     @Autowired
-    UserRepository userRepository;
+    //UserRepository userRepository;
+    AppUserRepository appUserRepository;
 
 
     //Создание записи
@@ -113,6 +114,6 @@ public class FinsprojectJdbc {
 
     //Получить Id пользователя по логину
     private Integer GetUserId(String UserLogin){
-        return userRepository.GetUserIdbyLogin(UserLogin);
+        return appUserRepository.GetUserIdbyEmail(UserLogin);
     }
 }

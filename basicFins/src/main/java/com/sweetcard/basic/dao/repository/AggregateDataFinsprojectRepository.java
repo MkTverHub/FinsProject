@@ -14,7 +14,7 @@ public interface AggregateDataFinsprojectRepository extends JpaRepository<AggrFi
             " left join (select sum(amount) as amount_in, project_id from financedata where fins_oper_type = 'profit' group by project_id) t_profit on t1.id = t_profit.project_id\n" +
             " left join (select sum(amount) as amount_out, project_id from financedata where fins_oper_type = 'expense' group by project_id) t_expense on t1.id = t_expense.project_id\n" +
             "where\n" +
-            " t1.id in (select project_id from it_proj_user where user_id = (select id from t_user where username = :user_login))", nativeQuery = true)
+            " t1.id in (select project_id from it_proj_user where user_id = (select id from app_user where email = :user_login))", nativeQuery = true)
     List<AggrFinsproject> GetAllUserProjects(@Param("user_login") String user_login_in);
 
 }

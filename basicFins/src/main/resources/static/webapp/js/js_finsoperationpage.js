@@ -474,7 +474,10 @@ function doAjaxGetProjectOperationList(ProjectNum) {
             FinsProjectId: ProjectNum
         }),
         success: function (data) {
-            JSONStringToFinsOperationList(data.text);
+            if(data.text != null){
+                console.log(data.text);
+                JSONStringToFinsOperationList(data.text);
+            }
         }
     });
 };

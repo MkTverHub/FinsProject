@@ -110,7 +110,7 @@ public class ReqController {
         }catch (Exception ex_1){
             logger.info("ReqController.GetProjFinsOperList -> Error: " + ex_1);
             Response result = new Response();
-            result.setText("");
+            result.setText(null);
             result.setCount(0);
             return result;
         }
@@ -689,7 +689,7 @@ public class ReqController {
             String strUserLogin = GetUserLogin();
             Integer intProjectId = Integer.parseInt(FinsProjectId);
             //Получить список финансовых операций по проекту
-            List<Financedata> financedataList = financedataRepository.GetAllByProj(intProjectId);
+            List<AggrFinsdata> financedataList = financedataRepository.GetAllByProj(intProjectId);
             logger.info("ReqController.GetProjectFinsOperationList -> row_count: " + financedataList.size());
 
             /*

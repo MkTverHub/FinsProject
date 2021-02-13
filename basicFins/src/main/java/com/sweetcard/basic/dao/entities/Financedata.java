@@ -3,7 +3,7 @@ package com.sweetcard.basic.dao.entities;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by Admin on 21.02.2020.
@@ -16,12 +16,12 @@ public class Financedata {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "lock_flg")
+    @Column(name = "lock_flg", columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean lockflg;
-    @Column(name = "oper_date")
-    public String operdate;
+    @Column(name = "oper_date", columnDefinition = "TIMESTAMP DEFAULT NOW()")
+    public Date operdate;
     @Column(name = "amount")
-    private String amount;
+    private Float amount;
     @Column(name = "detail")
     private String detail;
     @Column(name = "fins_oper_type")//Тип транзакции profit/loss/transfer
@@ -31,11 +31,11 @@ public class Financedata {
     @Column(name = "pay_acc_out")//Счет списания
     private String payaccout;
     @Column(name = "fins_article")//Статья
-    private String finsarticle;
+    private Integer finsarticle;
     @Column(name = "project_id")
     private Integer projectid;
     @Column(name = "finscontragent")
-    private String finscontragent;
+    private Integer finscontragent;
     @Column(name = "requisites")
-    private String requisites;
+    private Integer requisites;
 }

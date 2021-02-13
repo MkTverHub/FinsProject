@@ -29,7 +29,7 @@ public interface FinsprojectRepository extends JpaRepository<Finsproject, Intege
     List<Finsproject> GetAllClc();
 
     //Выбрать все проекты пользователя
-    @Query(value = "select t1.id, t1.name, t1.description from finsproject t1 where t1.id in (select project_id from it_proj_user where user_id = (select id from t_user where username = :user_login))", nativeQuery = true)
+    @Query(value = "select t1.id, t1.name, t1.description from finsproject t1 where t1.id in (select project_id from it_proj_user where user_id = (select id from app_user where email = :user_login))", nativeQuery = true)
     List<Finsproject> GetAllUserProjects(@Param("user_login") String user_login_in);
 
     //Обновить проект
