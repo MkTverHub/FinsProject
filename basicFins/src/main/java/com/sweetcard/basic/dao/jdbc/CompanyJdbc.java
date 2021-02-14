@@ -17,6 +17,7 @@ import java.sql.Statement;
 @Component
 public class CompanyJdbc {
     private Logger logger = LoggerFactory.getLogger(CompanyJdbc.class);
+    private Integer intActivProjectId = null;//Id текущего проекта
     @Autowired JdbcTemplate jdbcTemplate;
 
     //Создание записи
@@ -31,8 +32,8 @@ public class CompanyJdbc {
                     logger.info("CompanyJdbc.UpdateCompany");
                     Integer intCompanyId = Integer.parseInt(companyform.getCompanyId());
                     logger.info("CompanyJdbc.Update: Id = " + intCompanyId);
-                    jdbcTemplate.update("update company set name = ?, full_name = ?, inn = ?, kpp = ?, fins_acc = ? where id = ?",
-                            companyform.getCompanyName() ,companyform.getCompanyFullName(), companyform.getCompanyINN(), companyform.getCompanyKPP(), companyform.getCompanyFinsAcc(), intCompanyId);
+                    jdbcTemplate.update("update company set name = ?, full_name = ?, inn = ?, kpp = ?, fins_acc = ?, project_id = ? where id = ?",
+                            companyform.getCompanyName() ,companyform.getCompanyFullName(), companyform.getCompanyINN(), companyform.getCompanyKPP(), companyform.getCompanyFinsAcc(), intActivProjectId, intCompanyId);
 
                 }break;
                 case "insert" : {
@@ -41,13 +42,14 @@ public class CompanyJdbc {
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
                         public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                            PreparedStatement statement = con.prepareStatement("INSERT INTO company (name , full_name, inn, kpp, fins_acc, owner_id) VALUES (?,?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
+                            PreparedStatement statement = con.prepareStatement("INSERT INTO company (name , full_name, inn, kpp, fins_acc, owner_id, project_id) VALUES (?,?,?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
                             statement.setString(1, companyform.getCompanyName());
                             statement.setString(2, companyform.getCompanyFullName());
                             statement.setString(3, companyform.getCompanyINN());
                             statement.setString(4, companyform.getCompanyKPP());
                             statement.setString(5, companyform.getCompanyFinsAcc());
                             statement.setString(6, companyform.getCompanyOwner());
+                            statement.setInt(7, intActivProjectId);
                             return statement;
                         }
                     }, holder);
@@ -78,6 +80,11 @@ public class CompanyJdbc {
             logger.info("ContragentJdbc.Contragentaction -> ERROR: " + exp_sql);
             return null;
         }
+    }
+
+    //-----------------------------SETTERS------------------------------
+    public void setActivProjectId(Integer ProjectId){
+        intActivProjectId = ProjectId;
     }
 
 }

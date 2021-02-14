@@ -28,5 +28,7 @@ public class Contragent {
     private String balance;
     @Column(name = "project_id")
     private Integer project_id;
+    @Column(name = "created", columnDefinition = "TIMESTAMP DEFAULT NOW()")
+    public String created;
 
 }

@@ -443,11 +443,14 @@ public class ReqController {
                                                    @RequestParam String CompanyFullName,
                                                    @RequestParam String CompanyINN,
                                                    @RequestParam String CompanyKPP,
-                                                   @RequestParam String CompanyFinsAcc,
-                                                   @RequestParam String CompanyProjectId)
+                                                   @RequestParam String CompanyFinsAcc)
     {
-        logger.info("ReqController.OperationCompany -> " + DBOperation + "/" + CompanyId + "/" + CompanyName + "/" + CompanyFullName + "/" + CompanyINN + "/" + CompanyKPP + "/" + CompanyFinsAcc + "/" + CompanyProjectId);
+        logger.info("ReqController.OperationCompany -> " + DBOperation + "/" + CompanyId + "/" + CompanyName + "/" + CompanyFullName + "/" + CompanyINN + "/" + CompanyKPP + "/" + CompanyFinsAcc);
         try{
+            //Установка Id активного проекта
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            companyJdbc.setActivProjectId(usercache.active_proj);
+
             Companyform companyform = new Companyform();
             companyform.setCompanyAction(DBOperation);
             companyform.setCompanyId(CompanyId);
@@ -457,7 +460,6 @@ public class ReqController {
             companyform.setCompanyKPP(CompanyKPP);
             companyform.setCompanyFinsAcc(CompanyFinsAcc);
             companyform.setCompanyOwner(GetUserLogin());
-            companyform.setCompanyProjectId(CompanyProjectId);
 
             companyJdbc.CompanyAction(companyform);
 
@@ -566,6 +568,7 @@ public class ReqController {
     @RequestMapping(value = "/GetUserCache", method = RequestMethod.GET)
     public @ResponseBody Response GetUserCache() {
         try{
+            logger.info("ReqController.GetUserCache ->");
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
             if(usercache == null){
                 logger.info("ReqController.GetUserCache -> get null");

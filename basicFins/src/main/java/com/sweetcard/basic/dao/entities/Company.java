@@ -7,7 +7,9 @@ import javax.persistence.*;
 @Data
 @Entity
 public class Company {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id") private Integer id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "full_name")
@@ -21,5 +23,5 @@ public class Company {
     @Column(name = "owner_id")
     private String owner_id;
     @Column(name = "project_id")
-    private String project_id;
+    private Integer project_id;
 }

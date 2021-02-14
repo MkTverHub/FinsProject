@@ -18,6 +18,8 @@ public class Finsproject {
     public String name;
     @Column(name = "description")
     public String description;
+    @Column(name = "created", columnDefinition = "TIMESTAMP DEFAULT NOW()")
+    public String created;
     //@Column(name = "clc_1")//Пример калькулируемого поля
    // private String clc_1;
 

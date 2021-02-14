@@ -127,8 +127,7 @@ function doAjaxCompanytDBOperation() {
             CompanyFullName: strCompanyFullName,
             CompanyINN: strCompanyINN,
             CompanyKPP: strCompanyKPP,
-            CompanyFinsAcc: strCompanyFinsAcc,
-            CompanyProjectId: ''
+            CompanyFinsAcc: strCompanyFinsAcc
         }),
         success: function (data) {
             //alert('Ajax: OperationCompany');

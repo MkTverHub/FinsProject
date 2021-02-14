@@ -440,7 +440,6 @@ function UnSetROForm(){
 
 //Ajax получение UserCache. Заполнение Контекста экрана в зависимости от активного проекта
 function doAjaxGetActiveProjectContext() {
-    //document.body.HashData = {ActiveProjectId:''};
     $.ajax({
         url : 'GetUserCache',
         type: 'GET',
@@ -475,7 +474,6 @@ function doAjaxGetProjectOperationList(ProjectNum) {
         }),
         success: function (data) {
             if(data.text != null){
-                console.log(data.text);
                 JSONStringToFinsOperationList(data.text);
             }
         }
@@ -579,7 +577,6 @@ function doAjaxGetContactFinsAccProject(ProjectId) {
             ProjectId: ProjectId
         }),
         success: function (data) {
-            //console.log(data.text);
             JSONStringToContactFinsAccList(data.text);
         }
     });

@@ -206,7 +206,7 @@ function doAjaxRequisitDBOperation() {
     var strRequisitContragentId = document.body.HashData.ActiveContragentId;
     if (strRequisitContragentId == null){strRequisitContragentId = '';}
     var strRequisitId = $('#requisit_id').attr('value');
-    if (strRequisitId == null){strRequisitId = '';}
+    if (strRequisitId == ''){strRequisitId = '0';}
     if($('#requisit_main').prop('checked')){strMainFlg = 'true';}else{strMainFlg = 'false';}
     var strRequisitName = $('#requisit_name').val();
     var strRequisitDescription = $('#requisit_description').val();
