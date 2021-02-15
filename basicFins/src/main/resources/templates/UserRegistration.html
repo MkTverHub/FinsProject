@@ -22,12 +22,12 @@
 <body>
 
     <form class="pl-3 pr-3" action="#" th:action="@{/RegConfirm}" th:object="${registrationform}" method="post">
-        <input type="text" th:field="*{firstName}">
-        <input type="text" th:field="*{lastName}">
-        <input type="text" th:field="*{email}">
-        <input type="password" th:field="*{password}">
+        <div>Имя: <input type="text" th:field="*{firstName}"></div>
+        <div>Фамилия: <input type="text" th:field="*{lastName}"></div>
+        <div>email: <input type="text" th:field="*{email}"></div>
+        <div>Пароль: <input type="password" th:field="*{password}"></div>
         <button type="reset" class="btn btn-light" data-dismiss="modal">Отмена</button>
-        <button type="submit" class="btn btn-outline-light">Сохранить</button>
+        <button type="submit" class="btn btn-outline-light">Регистрация</button>
     </form>
 
 
