@@ -19,6 +19,9 @@ public class AggrFinsdata {
     private Integer projectid;
     private Integer finscontragent;
     private Integer requisites;
+    private String requisites_name;
+    private String contragent_name;
+    private String article_name;
 
 
     @Id
@@ -112,5 +115,29 @@ public class AggrFinsdata {
 
     public Integer getRequisites() {
         return requisites;
+    }
+
+    public String getRequisites_name() {
+        return requisites_name;
+    }
+
+    public String getContragent_name() {
+        return contragent_name;
+    }
+
+    public String getArticle_name() {
+        return article_name;
+    }
+
+    public void setRequisites_name(String requisites_name) {
+        this.requisites_name = requisites_name;
+    }
+
+    public void setContragent_name(String contragent_name) {
+        this.contragent_name = contragent_name;
+    }
+
+    public void setArticle_name(String article_name) {
+        this.article_name = article_name;
     }
 }

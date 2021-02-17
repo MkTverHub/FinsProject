@@ -290,6 +290,9 @@ function JSONStringToFinsOperationList(JSONString) {
     var strProjectId = "";
     var strFinsContrAgent = "";
     var strFinsRequisites = "";
+    var strArticleName = "";
+    var strContrAgentName = "";
+    var strRequisitesName = "";
 
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
@@ -306,6 +309,9 @@ function JSONStringToFinsOperationList(JSONString) {
         if(value["finscontragent"] == null){strFinsContrAgent = 'null';} else {strFinsContrAgent = value["finscontragent"].toString();}
         if(value["requisites"] == null){strFinsRequisites = 'null';} else {strFinsRequisites = value["requisites"].toString();}
 
+        if(value["requisites_name"] == null){strRequisitesName = 'null';} else {strRequisitesName = value["requisites_name"].toString();}
+        if(value["contragent_name"] == null){strContrAgentName = 'null';} else {strContrAgentName = value["contragent_name"].toString();}
+        if(value["article_name"] == null){strArticleName = 'null';} else {strArticleName = value["article_name"].toString();}
 
         switch(strFinsOpertype) {
             case "profit":
@@ -333,10 +339,15 @@ function JSONStringToFinsOperationList(JSONString) {
             + '<th class="fieldamountprint">' + strFinsAmount + ' руб.' + '</th>'
             + '<th class="fieldpayaccin">' + strPaymentAccIn + '</th>'
             + '<th class="fieldpayaccout">' + strPaymentAccOut + '</th>'
-            + '<th class="fieldfinsarticle">' + strFinsArticle + '</th>'
+            + '<th class="fieldfinsarticle f-d-n">' + strFinsArticle + '</th>'
             + '<th class="fieldprojectid f-d-n">' + strProjectId + '</th>'
-            + '<th class="fieldfinscontragent">' + strFinsContrAgent + '</th>'
-            + '<th class="fieldrequisites">' + strFinsRequisites + '</th>'
+            + '<th class="fieldfinscontragent f-d-n">' + strFinsContrAgent + '</th>'
+            + '<th class="fieldrequisites f-d-n">' + strFinsRequisites + '</th>'
+
+            + '<th class="fieldfinsarticle_name">' + strArticleName + '</th>'
+            + '<th class="fieldfinscontragent_name">' + strContrAgentName + '</th>'
+            + '<th class="fieldrequisites_name">' + strRequisitesName + '</th>'
+
             + '<th class="fielddetail">' + strFinsDetail + '</th>'
             + '</tr>';
     });
