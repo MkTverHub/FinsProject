@@ -99,7 +99,8 @@ public class WebController {
     }
 
     //Переход на страницу Проектов
-    @RequestMapping(value = "/Projects", method = RequestMethod.POST)
+    //@RequestMapping(value = "/Projects", method = RequestMethod.POST)
+    @RequestMapping(value = "/Projects")
     public String GoToProjects( Model model){
         logger.info("WebController.GoToProjects -> ");
         ;
