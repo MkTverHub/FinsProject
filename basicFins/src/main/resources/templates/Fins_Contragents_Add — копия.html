@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <script src="webapp/js/js_general_functions.js"></script>
+    <title>Fin</title>
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1"></header>
+
+    
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Раздел статьи - Информация</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-2 p-0">
+                                <li class="breadcrumb-item text-muted active" aria-current="page"><a href="#">Ваши статьи</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
+        <div class="container">
+
+                <!-- *************************************************************** -->
+                <!-- Карточка для создания ловов -->
+                <!-- *************************************************************** -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <h3 class="card-title mb-0">Статьи</h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Это Статья</p>
+                                <form th:action="@{/ContragentsEditor}" method="post">
+                                    <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать или изменить статью</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Плитки Статьи-->
+                   <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h4 class="text-dark mb-2 w-100 text-truncate font-weight-medium">Красные гвозди(название)</h4>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Для цеха N2(описание)
+                                        </h6>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Транзакционная(вид)
+                                        </h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7">Плановая(тип)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h4 class="text-dark mb-2 w-100 text-truncate font-weight-medium">Красные гвозди(название)</h4>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Для цеха N2(описание)
+                                        </h6>
+                                        <div class="dropdown-divider"></div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Транзакционная(вид)
+                                        </h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7">Плановая(тип)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+        <!-- *************************************************************** -->
+        <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+        <!-- *************************************************************** -->
+                
+        </div>
+    
+    </section>
+
+</div>
+
+
+</body>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        doAjaxGetUserCache("Contragents");
+    });
+</script>
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+</html>
