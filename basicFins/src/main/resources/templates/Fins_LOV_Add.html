@@ -4,6 +4,7 @@
 <head>
     <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
     <script src="webapp/js/js_general_functions.js"></script>
+    <script src="webapp/js/js_finslovpage_add.js"></script><!--Подцепляем внешний скрипт-->
     <title>Fin</title>
 </head>
 
@@ -61,7 +62,7 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-text">Это Статья</p>
-                                <form th:action="@{/ContragentsEditor}" method="post">
+                                <form th:action="@{/FinsLOVEditor}" method="post">
                                     <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать или изменить статью</button>
                                 </form>
                             </div>
@@ -69,45 +70,9 @@
                     </div>
 
                     <!-- Плитки Статьи-->
-                   <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                    <div>
-                                        <h4 class="text-dark mb-2 w-100 text-truncate font-weight-medium">Красные гвозди(название)</h4>
-                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Для цеха N2(описание)
-                                        </h6>
-                                        <div class="dropdown-divider"></div>
-                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Транзакционная(вид)
-                                        </h6>
-                                    </div>
-                                    <div class="ml-auto mt-md-3 mt-lg-0">
-                                        <span class="opacity-7">Плановая(тип)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-6" th:each="p: ${lovList}">
+                        <div th:replace="fragments\layouts\fragment_project_tile.html :: lov_tile_fragment_1(text_val=${p.text_val},description=${p.description},options=${p.options},type=${p.type})"></div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                    <div>
-                                        <h4 class="text-dark mb-2 w-100 text-truncate font-weight-medium">Красные гвозди(название)</h4>
-                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Для цеха N2(описание)
-                                        </h6>
-                                        <div class="dropdown-divider"></div>
-                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Транзакционная(вид)
-                                        </h6>
-                                    </div>
-                                    <div class="ml-auto mt-md-3 mt-lg-0">
-                                        <span class="opacity-7">Плановая(тип)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
                     
                 </div>
         <!-- *************************************************************** -->
@@ -131,7 +96,7 @@
 <script type="text/javascript">
     //Событие загрузки страницы
     $(document).ready(function(){
-        doAjaxGetUserCache("Contragents");
+        StartPage();
     });
 </script>
 

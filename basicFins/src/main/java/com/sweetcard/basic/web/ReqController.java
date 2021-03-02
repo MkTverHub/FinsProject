@@ -532,6 +532,10 @@ public class ReqController {
     {
         logger.info("ReqController.OperationLov -> " + DBOperation + "/" + LovId + "/" + LovValue + "/" + LovDescription + "/" + LovOptions + "/" + LovType);
         try{
+            //Установка Id активного проекта
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            lovJdbc.setActiveProjectId(usercache.active_proj);
+
             LovForm lovForm = new LovForm();
             lovForm.setLovAction(DBOperation);
             lovForm.setLovId(LovId);
@@ -772,10 +776,9 @@ public class ReqController {
     private Response GetLovListResponse(){
         try{
             logger.info("ReqController.GetLovList");
-            //Получение логина пользователя
-            String strUserLogin = GetUserLogin();
-            //Получить список проектов пользователя
-            List<Lov> lovList = lovRepository.findAllByOrderByIdAsc();
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            lovJdbc.setActiveProjectId(usercache.active_proj);
+            List<Lov> lovList = lovRepository.GetAllByProject(usercache.active_proj);
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
             Gson gson = new Gson();

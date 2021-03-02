@@ -153,4 +153,20 @@
     </div>
 <!--</div>-->
 
+<!--ПЛИТКА ДЛЯ ЭКРАНА LOV-->
+    <div class="card" th:fragment="lov_tile_fragment_1(text_val,description,options,type)">
+        <div class="card-body">
+            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                <div>
+                    <h4 class="text-dark mb-2 w-100 text-truncate font-weight-medium" th:utext="${text_val}"/>
+                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate" th:utext="${description}"/>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate" th:utext="${options}"/>
+                </div>
+                <div class="ml-auto mt-md-3 mt-lg-0">
+                    <span class="opacity-7" th:utext="${type}"/>
+                </div>
+            </div>
+        </div>
+    </div>
 </html>

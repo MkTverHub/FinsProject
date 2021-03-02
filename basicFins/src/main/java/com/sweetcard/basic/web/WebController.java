@@ -51,6 +51,8 @@ public class WebController {
     UsercacheJdbc usercacheJdbc;
     @Autowired
     UsercacheRepository usercacheRepository;
+    @Autowired
+    LovRepository lovRepository;
 
     //Здесь вход на app
     @GetMapping({"/", "/index","/FinsOperations"})
@@ -103,7 +105,6 @@ public class WebController {
     @RequestMapping(value = "/Projects")
     public String GoToProjects( Model model){
         logger.info("WebController.GoToProjects -> ");
-        ;
         try {
             List<AggrFinsproject> aggrFinsprojectList = aggregateDataFinsprojectRepository.GetAllUserProjects(GetUserLogin());
             model.addAttribute("finsprojectList",aggrFinsprojectList);
@@ -126,10 +127,42 @@ public class WebController {
     //Переход на страницу LOV
     //@RequestMapping(value = "/FinsLOV", method = RequestMethod.POST)
     @RequestMapping(value = "/FinsLOV")
-    public String GoToFinsLOV(Model model){
+    public String GoToFinsLOV(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         logger.info("WebController.GoToFinsLOV -> ");
+        try {
+            if (0 != ProjectId.compareTo("no_value")) {
+                //Переход из левой понели проектов кликом по проекту
+                Usercacheform usercacheform = new Usercacheform();
+                usercacheform.setLogin(GetUserLogin());
+                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
+                usercacheform.setUsercacheAction("update");
+                usercacheJdbc.UsercacheAction(usercacheform);
+            }
+
+            //Получение активного проекта пользователя
+            Usercache usercache = GetUsercache();
+            List<Lov> lovList = lovRepository.GetAllByProject(usercache.active_proj);
+            model.addAttribute("lovList",lovList);
+        }catch (Exception ex1){
+            //SQL aggregateDataFinsprojectRepository.GetAllUserProjects падает, если в нет записей в операциях
+        }
+        return "Fins_LOV_Add";
+    }
+
+    @RequestMapping(value = "/FinsLOVEditor")
+    public String GoToFinsLOVEditor(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
+        logger.info("WebController.GoToFinsLOVEditor -> ");
+        if (0 != ProjectId.compareTo("no_value")) {
+            //Переход из левой понели проектов кликом по проекту
+            Usercacheform usercacheform = new Usercacheform();
+            usercacheform.setLogin(GetUserLogin());
+            usercacheform.setActiveProject(Integer.parseInt(ProjectId));
+            usercacheform.setUsercacheAction("update");
+            usercacheJdbc.UsercacheAction(usercacheform);
+        }
         return "Fins_LOV";
     }
+
 
     //Переход на страницу контрагентов (Плитка)
    // @RequestMapping(value = "/Contragents", method = RequestMethod.GET)

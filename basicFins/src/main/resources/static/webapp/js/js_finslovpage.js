@@ -5,9 +5,10 @@
 //Функция при загрузки страницы
 function StartPage() {
     //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
-    doAjaxGetUserCache();
+    doAjaxGetUserCache("FinsLOVEditor");//Получение списка проектов в левой панели
     doAjaxGetLovList();
     SetROForm();
+    FinsLOV
 };
 
 

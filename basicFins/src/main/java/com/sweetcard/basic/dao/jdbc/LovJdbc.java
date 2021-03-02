@@ -24,6 +24,7 @@ public class LovJdbc {
     private Logger logger = LoggerFactory.getLogger(LovJdbc.class);
     @Autowired
     JdbcTemplate jdbcTemplate;
+    private Integer intActiveProjectId = null;//Id текущего проекта
 
     public Integer LovAction(LovForm lovForm) {
         try{
@@ -35,8 +36,8 @@ public class LovJdbc {
                 case "update" : {
                     Integer intLovId = Integer.parseInt(lovForm.getLovId());
                     logger.info("LovJdbc.UpdateLov -> " + intLovId);
-                    jdbcTemplate.update("update lov set text_val = ?, description = ?, options = ?, type = ? where id = ?",
-                            lovForm.getLovVal(), lovForm.getLovDescription(), lovForm.getLovOptions(), lovForm.getLovType(), intLovId);
+                    jdbcTemplate.update("update lov set project_id = ?, text_val = ?, description = ?, options = ?, type = ? where id = ?",
+                            intActiveProjectId,lovForm.getLovVal(), lovForm.getLovDescription(), lovForm.getLovOptions(), lovForm.getLovType(), intLovId);
                 }break;
                 case "insert" : {
                     //Создание записи
@@ -44,11 +45,12 @@ public class LovJdbc {
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
                         public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                            PreparedStatement statement = con.prepareStatement("INSERT INTO lov (text_val,description,options,type) VALUES (?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
+                            PreparedStatement statement = con.prepareStatement("INSERT INTO lov (text_val,description,options,type,project_id) VALUES (?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
                             statement.setString(1, lovForm.getLovVal());
                             statement.setString(2, lovForm.getLovDescription());
                             statement.setString(3, lovForm.getLovOptions());
                             statement.setString(4, lovForm.getLovType());
+                            statement.setInt(5, intActiveProjectId);
                             return statement;
                         }
                     }, holder);
@@ -73,5 +75,10 @@ public class LovJdbc {
             logger.info("LovJdbc.LovAction -> ERROR: " + exp_sql);
             return null;
         }
+    }
+
+    //-----------------------------SETTERS------------------------------
+    public void setActiveProjectId(Integer ProjectId){
+        intActiveProjectId = ProjectId;
     }
 }

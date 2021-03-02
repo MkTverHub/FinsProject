@@ -17,5 +17,6 @@ public class Lov {
     @Column(name = "description") public String description;
     @Column(name = "options") public String options;
     @Column(name = "type") public String type;
+    @Column(name = "project_id") private Integer project_id;
 
 }
