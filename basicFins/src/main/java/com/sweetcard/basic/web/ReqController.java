@@ -122,20 +122,15 @@ public class ReqController {
     public @ResponseBody Response GetContragentsList(){
         try{
             logger.info("ReqController.GetContragentsList -> ");
-            //Получение логина пользователя
-            String strUserLogin = GetUserLogin();
-
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
-
-            //Получить список ВСЕХ контрагентов
-            List<Contragent> contragentList = contragentRepository.GetAllByProject(usercache.active_proj);
-
-            //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
             Gson gson = new Gson();
-            result.setText(gson.toJson(contragentList));
+            if(usercache.active_proj != 0){
+                //Получить список ВСЕХ контрагентов
+                List<Contragent> contragentList = contragentRepository.GetAllByProject(usercache.active_proj);
+                result.setText(gson.toJson(contragentList));
+            }
             return result;
-
         }catch (Exception cag_ex){
             logger.info("ReqController.GetContragentsList -> Error: " + cag_ex);
             Response result = new Response();
@@ -150,19 +145,14 @@ public class ReqController {
     public @ResponseBody Response GetContragentRequisits(@RequestParam String ContragentId){
         try{
             logger.info("ReqController.GetContragentRequisits -> ContragentId = " + ContragentId);
-            //Получение логина пользователя
-            String strUserLogin = GetUserLogin();
-
             //Получение списка реквизитов контрагента
             Integer intContragentId = Integer.parseInt(ContragentId);
             List<Requisits> requisitsList = requisitRepository.GetAllByContragent(intContragentId);
-
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
             Gson gson = new Gson();
             result.setText(gson.toJson(requisitsList));
             return result;
-
         }catch (Exception cag_ex){
             logger.info("ReqController.GetContragentRequisits -> Error: " + cag_ex);
             Response result = new Response();
@@ -177,20 +167,15 @@ public class ReqController {
     public @ResponseBody Response GetContactFinsAccProject(@RequestParam String ProjectId){
         try{
             logger.info("ReqController.GetContactFinsAcc -> " + ProjectId);
-            //Получение логина пользователя
-            String strUserLogin = GetUserLogin();
             Integer intProjectId = Integer.parseInt(ProjectId);
-
             //Получить список счетов сотрудников компаний проекта
             List<Contact> contactList = contactRepository.GetContactFinsAccProj(intProjectId);
             logger.info("ReqController.GetContactFinsAcc -> Size " + contactList.size());
-
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
             Gson gson = new Gson();
             result.setText(gson.toJson(contactList));
             return result;
-
         }catch (Exception cag_ex){
             logger.info("ReqController.GetContactFinsAcc -> Error: " + cag_ex);
             Response result = new Response();
@@ -215,49 +200,51 @@ public class ReqController {
                                                 //@RequestParam String ProjectId,
                                                 @RequestParam String Contragent,
                                                 @RequestParam String Requisite){
-        //logger.info("ReqController.FinsOperation -> " + RecordOperation + " | " + Row_Id + " | " + Lock_Flg  + " | "
-        //        + Amount + " | " + Detail + " | " + Fins_Transaction_Type + " | " + Pay_Acc_In + " | " + Pay_Acc_Out + " | " + Fins_Article
-        //        + " | " + Contragent + " | " + Requisite);
-
-
         try{
-
             //Установка Id активного проекта
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
-            financedataJdbc.setActivProjectId(usercache.active_proj);
+            if(usercache.active_proj != 0) {
 
-            Financedataform financedataform = new Financedataform();
-            financedataform.setFinsedittype(RecordOperation);
-            financedataform.setFinsOperType(Fins_Transaction_Type);
-            financedataform.setFinsrecordid(Row_Id);
-            financedataform.setFinsblockflg(Lock_Flg);
-            financedataform.setFinsamount(Amount);
-            financedataform.setFinsdetail(Detail);
-            financedataform.setPaymentAccIn(Pay_Acc_In);
-            financedataform.setPaymentAccOut(Pay_Acc_Out);
-            financedataform.setFinsArticle(Fins_Article);
-            //financedataform.setProjectId(ProjectId);
-            financedataform.setFinscontragent(Contragent);
-            financedataform.setRequisites(Requisite);
-            switch(RecordOperation){
-                case("update"):{
-                    logger.info("ReqController.FinsOperation -> Case update: ");
-                    if(RecordOperation == null){throw new Exception("RecordOperation IS NULL");}
-                    financedataJdbc.RecordOperation(financedataform);
-                }break;
-                case("insert"):{
-                    logger.info("ReqController.FinsOperation -> Case insert: ");
-                    financedataJdbc.RecordOperation(financedataform);
-                }break;
-                case("delete"):{
-                    logger.info("ReqController.FinsOperation -> Case delete: ");
-                    financedataJdbc.RecordOperation(financedataform);
-                }break;
-                default:{
+                financedataJdbc.setActivProjectId(usercache.active_proj);
 
-                }break;
+                Financedataform financedataform = new Financedataform();
+                financedataform.setFinsedittype(RecordOperation);
+                financedataform.setFinsOperType(Fins_Transaction_Type);
+                financedataform.setFinsrecordid(Row_Id);
+                financedataform.setFinsblockflg(Lock_Flg);
+                financedataform.setFinsamount(Amount);
+                financedataform.setFinsdetail(Detail);
+                financedataform.setPaymentAccIn(Pay_Acc_In);
+                financedataform.setPaymentAccOut(Pay_Acc_Out);
+                financedataform.setFinsArticle(Fins_Article);
+                //financedataform.setProjectId(ProjectId);
+                financedataform.setFinscontragent(Contragent);
+                financedataform.setRequisites(Requisite);
+                switch (RecordOperation) {
+                    case ("update"): {
+                        logger.info("ReqController.FinsOperation -> Case update: ");
+                        if (RecordOperation == null) {
+                            throw new Exception("RecordOperation IS NULL");
+                        }
+                        financedataJdbc.RecordOperation(financedataform);
+                    }
+                    break;
+                    case ("insert"): {
+                        logger.info("ReqController.FinsOperation -> Case insert: ");
+                        financedataJdbc.RecordOperation(financedataform);
+                    }
+                    break;
+                    case ("delete"): {
+                        logger.info("ReqController.FinsOperation -> Case delete: ");
+                        financedataJdbc.RecordOperation(financedataform);
+                    }
+                    break;
+                    default: {
+
+                    }
+                    break;
+                }
             }
-
 
             Response result = new Response();
             return result;
@@ -336,19 +323,18 @@ public class ReqController {
         try{
             //Установка Id активного проекта
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
-            contragentJdbc.setActivProjectId(usercache.active_proj);
-
-            Contragentform contragentform = new Contragentform();
-            contragentform.setContragentaction(DBOperation);
-            contragentform.setContragentid(ContragentId);
-            contragentform.setContragentname(ContragentName);
-            contragentform.setContragentdescription(ContragenDescription);
-            contragentform.setContragentphone(ContragenPhone);
-            contragentform.setContragentemail(ContragenMail);
-            contragentform.setContragentType(ContragenType);
-
-            contragentJdbc.Contragentaction(contragentform);
-
+            if(usercache.active_proj != 0) {
+                contragentJdbc.setActivProjectId(usercache.active_proj);
+                Contragentform contragentform = new Contragentform();
+                contragentform.setContragentaction(DBOperation);
+                contragentform.setContragentid(ContragentId);
+                contragentform.setContragentname(ContragentName);
+                contragentform.setContragentdescription(ContragenDescription);
+                contragentform.setContragentphone(ContragenPhone);
+                contragentform.setContragentemail(ContragenMail);
+                contragentform.setContragentType(ContragenType);
+                contragentJdbc.Contragentaction(contragentform);
+            }
             //Просто устой ответ
             Response result = new Response();
             return result;
@@ -449,19 +435,19 @@ public class ReqController {
         try{
             //Установка Id активного проекта
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
-            companyJdbc.setActivProjectId(usercache.active_proj);
-
-            Companyform companyform = new Companyform();
-            companyform.setCompanyAction(DBOperation);
-            companyform.setCompanyId(CompanyId);
-            companyform.setCompanyName(CompanyName);
-            companyform.setCompanyFullName(CompanyFullName);
-            companyform.setCompanyINN(CompanyINN);
-            companyform.setCompanyKPP(CompanyKPP);
-            companyform.setCompanyFinsAcc(CompanyFinsAcc);
-            companyform.setCompanyOwner(GetUserLogin());
-
-            companyJdbc.CompanyAction(companyform);
+            if(usercache.active_proj != 0) {
+                companyJdbc.setActivProjectId(usercache.active_proj);
+                Companyform companyform = new Companyform();
+                companyform.setCompanyAction(DBOperation);
+                companyform.setCompanyId(CompanyId);
+                companyform.setCompanyName(CompanyName);
+                companyform.setCompanyFullName(CompanyFullName);
+                companyform.setCompanyINN(CompanyINN);
+                companyform.setCompanyKPP(CompanyKPP);
+                companyform.setCompanyFinsAcc(CompanyFinsAcc);
+                companyform.setCompanyOwner(GetUserLogin());
+                companyJdbc.CompanyAction(companyform);
+            }
 
             //Просто устой ответ
             Response result = new Response();
@@ -534,17 +520,17 @@ public class ReqController {
         try{
             //Установка Id активного проекта
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
-            lovJdbc.setActiveProjectId(usercache.active_proj);
-
-            LovForm lovForm = new LovForm();
-            lovForm.setLovAction(DBOperation);
-            lovForm.setLovId(LovId);
-            lovForm.setLovVal(LovValue);
-            lovForm.setLovDescription(LovDescription);
-            lovForm.setLovOptions(LovOptions);
-            lovForm.setLovType(LovType);
-            lovJdbc.LovAction(lovForm);
-
+            if(usercache.active_proj != 0) {
+                lovJdbc.setActiveProjectId(usercache.active_proj);
+                LovForm lovForm = new LovForm();
+                lovForm.setLovAction(DBOperation);
+                lovForm.setLovId(LovId);
+                lovForm.setLovVal(LovValue);
+                lovForm.setLovDescription(LovDescription);
+                lovForm.setLovOptions(LovOptions);
+                lovForm.setLovType(LovType);
+                lovJdbc.LovAction(lovForm);
+            }
             //Просто устой ответ
             Response result = new Response();
             return result;
@@ -626,7 +612,7 @@ public class ReqController {
     public @ResponseBody Response GetReport(@RequestParam String ReportName,
                                             @RequestParam String ProjectId) {
         try{
-            logger.info("ReqController.GetReport -> ReportName: " + ReportName);
+            logger.info("ReqController.GetReport -> ReportName: " + ReportName + ", ProjectId: " + ProjectId);
             Response result = new Response();
             switch (ReportName){
                 case "GetProjectProfit":{
