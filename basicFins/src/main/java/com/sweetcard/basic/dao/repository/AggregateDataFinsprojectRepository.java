@@ -9,7 +9,10 @@ import java.util.List;
 
 public interface AggregateDataFinsprojectRepository extends JpaRepository<AggrFinsproject,Integer> {
     //Выбрать все проекты пользователя
-    @Query(value = "select t1.id,t1.name,t1.description,to_char(t1.created, 'yyyy-mm-dd hh24:mi:ss') as created,t_profit.amount_in,t_expense.amount_out,(t_profit.amount_in - t_expense.amount_out) as balance\n" +
+    @Query(value = "select t1.id,t1.name,t1.description,to_char(t1.created, 'yyyy-mm-dd hh24:mi:ss') as created,\n" +
+            "case when t_profit.amount_in is null then 0 else t_profit.amount_in end amount_in,\n" +
+            "case when t_expense.amount_out is null then 0 else t_expense.amount_out end amount_out,\n" +
+            "(case when t_profit.amount_in is null then 0 else t_profit.amount_in end) - (case when t_expense.amount_out is null then 0 else t_expense.amount_out end) as balance\n" +
             "from finsproject t1\n" +
             " left join (select sum(amount) as amount_in, project_id from financedata where fins_oper_type = 'profit' group by project_id) t_profit on t1.id = t_profit.project_id\n" +
             " left join (select sum(amount) as amount_out, project_id from financedata where fins_oper_type = 'expense' group by project_id) t_expense on t1.id = t_expense.project_id\n" +
