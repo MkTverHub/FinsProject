@@ -57,6 +57,11 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
                     '</li>';
             });
             $("#projectlistpanel").html(strProjectListContext);
+
+            //Сообщение если не выбран проект
+            if(strActiveProjectId == '0'){
+                alert("Выбирите проект в левой панели!")
+            }
         }
     });
 
