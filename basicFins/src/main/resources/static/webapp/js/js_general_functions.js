@@ -59,7 +59,7 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
             $("#projectlistpanel").html(strProjectListContext);
 
             //Сообщение если не выбран проект
-            if(strActiveProjectId == '0'){
+            if(ActiveProjectId == '0'){
                 alert("Выбирите проект в левой панели!")
             }
         }
