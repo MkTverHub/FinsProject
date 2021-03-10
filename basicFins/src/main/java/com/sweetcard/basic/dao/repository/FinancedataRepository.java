@@ -35,15 +35,15 @@ public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integ
     List<AggrFinsdata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid);
 
     //Получиь чистую прибыль по проекту
-    @Query(value = "select (select sum(amount) as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit') - (select sum(amount) as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense')\n", nativeQuery = true)
+    @Query(value = "select (select  case when sum(amount) is null then 0 else sum(amount) end as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit') - (select  case when sum(amount) is null then 0 else sum(amount) end as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense')", nativeQuery = true)
     String GetProjectProfit(@Param("fins_project_id") Integer finsprojectid);
 
     //Получить приход по проекту
-    @Query(value = "select sum(amount) as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit'", nativeQuery = true)
+    @Query(value = "select  case when sum(amount) is null then 0 else sum(amount) end as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit'", nativeQuery = true)
     String GetProjectIncome (@Param("fins_project_id") Integer finsprojectid);
 
     //Получить расход по проекту
-    @Query(value = "select sum(amount) as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense'", nativeQuery = true)
+    @Query(value = "select  case when sum(amount) is null then 0 else sum(amount) end as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense'", nativeQuery = true)
     String GetProjectExpense (@Param("fins_project_id") Integer finsprojectid);
 
     //----Отчетность----------

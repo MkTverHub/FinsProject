@@ -609,30 +609,29 @@ public class ReqController {
 
     //------Получение отчетов
     @RequestMapping(value = "/GetReport", method = RequestMethod.GET)
-    public @ResponseBody Response GetReport(@RequestParam String ReportName,
-                                            @RequestParam String ProjectId) {
+    public @ResponseBody Response GetReport(@RequestParam String ReportName) {
         try{
-            logger.info("ReqController.GetReport -> ReportName: " + ReportName + ", ProjectId: " + ProjectId);
+            logger.info("ReqController.GetReport -> ReportName: " + ReportName);
             Response result = new Response();
+            //Установка Id активного проекта
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            Integer intProjectId = usercache.active_proj;
+
             switch (ReportName){
                 case "GetProjectProfit":{
-                    Integer intProjectId = Integer.parseInt(ProjectId);
                     String strProjectProfit = "";
                     String strProjectIncome = "";
                     String strProjectExpense = "";
                     String strJsonResult = "";
-
                     strProjectProfit = financedataRepository.GetProjectProfit(intProjectId);
                     strProjectIncome = financedataRepository.GetProjectIncome(intProjectId);
                     strProjectExpense = financedataRepository.GetProjectExpense(intProjectId);
-
                     strJsonResult = "{\"ProjectProfit\":" + strProjectProfit + ",\"ProjectIncome\":" + strProjectIncome + ",\"ProjectExpense\":" + strProjectExpense + "}";
-                    //[{"id":0,"name":"Error","description":"Error"}]
                     result.setText(strJsonResult);
                 }break;
                 case "GetYearProfitList":{
-                    logger.info("ReqController.GetReport -> GetYearProfitList: " + ProjectId);
-                    List<AggrReport> aggrReport = aggregateDataReport.GetYearProjectProfit(Integer.parseInt(ProjectId));
+                    logger.info("ReqController.GetReport -> GetYearProfitList: ");
+                    List<AggrReport> aggrReport = aggregateDataReport.GetYearProjectProfit(intProjectId);
                     Gson gson = new Gson();
                     result.setText(gson.toJson(aggrReport));
                 }

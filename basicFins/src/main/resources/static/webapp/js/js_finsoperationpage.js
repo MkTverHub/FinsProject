@@ -464,7 +464,7 @@ function doAjaxGetActiveProjectContext() {
             var obj = jQuery.parseJSON(data.text);
             var strActiveProjectId = obj.active_proj;
             doAjaxGetProjectOperationList(strActiveProjectId);
-            doAjaxGetProjectProfit(strActiveProjectId);
+            doAjaxGetProjectProfit();
             doAjaxGetContactFinsAccProject(strActiveProjectId);
         }
     });
@@ -594,7 +594,7 @@ function doAjaxGetContactFinsAccProject(ProjectId) {
 };
 
 //Ajax получения отчета
-function doAjaxGetProjectProfit(ProjectId) {
+function doAjaxGetProjectProfit() {
     $.ajax({
         url : 'GetReport',
         type: 'GET',
@@ -602,12 +602,14 @@ function doAjaxGetProjectProfit(ProjectId) {
         contentType: 'application/json',
         mimeType: 'application/json',
         data : ({
-            ReportName: 'GetProjectProfit',
-            ProjectId: ProjectId
+            ReportName: 'GetProjectProfit'
         }),
         success: function (data) {
             var obj = jQuery.parseJSON(data.text);
             $('#projectprofitid').html(obj.ProjectProfit);
+            $('#projectprofitid_sub').html(obj.ProjectIncome);
+            $('#projectexpenseid_sub').html(obj.ProjectExpense);
+            $('#projectsaldoid_sub').html(obj.ProjectProfit);
         }
     });
 };
