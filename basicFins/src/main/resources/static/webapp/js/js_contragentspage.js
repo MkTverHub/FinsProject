@@ -319,6 +319,7 @@ function JSONStringToContragentReqTable(JSONString) {
     var strReqId = '';
     var strContragentId = '';
     var strMainFlg = '';
+    var strMainFlg_UI = '';
     var strReqName = '';
     var strReqDescription = '';
     var strReqINN = '';
@@ -340,6 +341,7 @@ function JSONStringToContragentReqTable(JSONString) {
         if(value['id'] == null){strReqId = '';}else{strReqId = value['id'].toString();}
         if(value['par_row_id'] == null){strContragentId = '';}else{strContragentId = value['par_row_id'].toString();}
         if(value['main_flg'] == null){strMainFlg= 'false';}else{strMainFlg = value['main_flg'].toString();}
+        if(value['main_flg'] == true){strMainFlg_UI = 'Да';}else{strMainFlg_UI = 'Нет';}
         if(value['name'] == null){strReqName = '';}else{strReqName = value['name'].toString();}
         if(value['description'] == null){strReqDescription = '';}else{strReqDescription = value['description'].toString();}
         if(value['inn'] == null){strReqINN = '';}else{strReqINN = value['inn'].toString();}
@@ -356,7 +358,8 @@ function JSONStringToContragentReqTable(JSONString) {
         if(value['web_site'] == null){strReqWebSite = '';}else{strReqWebSite = value['web_site'].toString();}
         if(value['card_num'] == null){strCardNumber = '';}else{strCardNumber = value['card_num'].toString();}
         strContragentReqTableContext = strContragentReqTableContext + '<th class="cntr_req_id" value="' + strReqId + '">' + strReqId + '</th>' +
-            '<th class="cntr_req_main_flg" value="' + strMainFlg + '">' + strMainFlg + '</th>' +
+            '<th class="cntr_req_main_flg f-d-n" value="' + strMainFlg + '">' + strMainFlg + '</th>' +
+            '<th class="cntr_req_main_flg_ui" value="' + strMainFlg_UI + '">' + strMainFlg_UI + '</th>' +
             '<th class="cntr_req_name" value="' + strReqName + '">' + strReqName + '</th>' +
             '<th class="cntr_req_description" value="' + strReqDescription + '">' + strReqDescription + '</th>' +
             '<th class="cntr_req_inn" value="' + strReqINN + '">' + strReqINN + '</th>' +
