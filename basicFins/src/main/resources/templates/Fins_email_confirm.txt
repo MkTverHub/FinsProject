@@ -1,4 +1,4 @@
-"<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
+﻿"<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
 "\n" +
 "<span style=\"display:none;font-size:1px;color:#fff;max-height:0\"></span>\n" +
 "\n" +
@@ -53,7 +53,7 @@
 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" +
 "        \n" +
-"            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Привет " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Спасибо, что зарегистрировались. Пожалуйста, нажмите на ссылку ниже, чтобы активировать свой аккаунт: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Активируй сейчас</a> </p></blockquote>\n Срок действия ссылки истекает через 15 минут. <p>Скоро увидимся</p>" +
+"            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Привет " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Спасибо, что зарегистрировались. Пожалуйста, нажмите на ссылку ниже, чтобы активировать свой аккаунт: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Активируйте сейчас</a> </p></blockquote>\n Срок действия ссылки истекает через 15 минут. <p>Скоро увидимся</p>" +
 "        \n" +
 "      </td>\n" +
 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +

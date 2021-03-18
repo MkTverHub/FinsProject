@@ -26,16 +26,17 @@
 <body>
     <div class="main-wrapper">
         <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
+        <!-- Preloader -->
         <!-- ============================================================== -->
-        <!-- <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
-        </div> -->
+        <div class="loader">
+             <div class="loader-inner">
+                <svg width="120" height="220" viewbox="0 0 100 100" class="loading-spinner" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                   <circle class="spinner" cx="50" cy="50" r="21" fill="#ffffff" stroke-width="3"/>
+                </svg>
+             </div>
+        </div>
         <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
+        <!-- Preloader -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Login box.scss -->
@@ -69,7 +70,7 @@
                                     <button type="submit" class="btn btn-block btn-dark">Регистрация</button>
                                 </div>
                                 <div class="col-lg-12 text-center mt-5">
-                                    Уже зарегистрированы? Личный кабинет - <a href="#" class="text-danger">Войти</a>
+                                    Уже зарегистрированы? Личный кабинет - <a href="http://localhost:8080/login" class="text-danger">Войти</a>
                                 </div>
                             </div>
                         </form>
@@ -91,8 +92,17 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
-    <script>
-        $(".preloader ").fadeOut();
+
+    <script type="text/javascript">
+
+        // Working loader 
+        $(window).on("load", function() {
+        // Site loader 
+            $(".loader-inner").fadeOut();
+            $(".loader").delay(200).fadeOut("slow");
+
+        });
+
     </script>
 </body>
 
