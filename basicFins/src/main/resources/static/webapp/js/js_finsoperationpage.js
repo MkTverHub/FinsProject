@@ -8,9 +8,6 @@ function StartPage() {
     doAjaxGetLovList();
     SetROForm();//Сделать форму RO
 
-    // Site loader
-    $(".loader-inner").fadeOut();
-    $(".loader").delay(200).fadeOut("slow");
 };
 
 
