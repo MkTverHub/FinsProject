@@ -12,6 +12,10 @@ function StartPage() {
     document.body.HashData = {ActiveCompanytId:''};
     SetROCompanyForm();
     SetROContactForm();
+    
+    // Site loader 
+    // $(".loader-inner").fadeOut();
+    // $(".loader").delay(200).fadeOut("slow");
 };
 
 //-------------Функции событий-----------------
