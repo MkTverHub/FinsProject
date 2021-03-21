@@ -8,7 +8,6 @@ function StartPage() {
     doAjaxGetUserCache("FinsLOVEditor");//Получение списка проектов в левой панели
     doAjaxGetLovList();
     SetROForm();
-    FinsLOV
 };
 
 
