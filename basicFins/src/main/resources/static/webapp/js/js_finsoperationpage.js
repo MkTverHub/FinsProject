@@ -2,13 +2,15 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-
-    //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
     doAjaxGetUserCache("FinsOperations");//Получение списка проектов в левой панели
     doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
     doAjaxGetContragentsList();//Получение списка контрагентов
     doAjaxGetLovList();
     SetROForm();//Сделать форму RO
+
+    // Site loader
+    $(".loader-inner").fadeOut();
+    $(".loader").delay(200).fadeOut("slow");
 };
 
 

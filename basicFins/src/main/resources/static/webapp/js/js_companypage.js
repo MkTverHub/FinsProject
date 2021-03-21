@@ -14,8 +14,8 @@ function StartPage() {
     SetROContactForm();
     
     // Site loader 
-    // $(".loader-inner").fadeOut();
-    // $(".loader").delay(200).fadeOut("slow");
+    $(".loader-inner").fadeOut();
+    $(".loader").delay(200).fadeOut("slow");
 };
 
 //-------------Функции событий-----------------
