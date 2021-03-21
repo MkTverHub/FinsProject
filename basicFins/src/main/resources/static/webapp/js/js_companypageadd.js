@@ -4,7 +4,7 @@
 //Функция при загрузки страницы
 function StartPage() {
     //doAjaxGetProjectListLeft();
-    doAjaxGetUserCache();
+    doAjaxGetUserCache("FinsCompany");
 };
 
 

@@ -4,12 +4,8 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-    //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
-    doAjaxGetUserCache();
+    doAjaxGetUserCache("FinsCompanyEditor");
     doAjaxGetCompanyList();
-    //doAjaxGetProjectList();//Получение списка проектов в левой панели
-    //doAjaxGetContragentsList();//Заполнение таблицы контрагентов
-    document.body.HashData = {ActiveCompanytId:''};
     SetROCompanyForm();
     SetROContactForm();
     

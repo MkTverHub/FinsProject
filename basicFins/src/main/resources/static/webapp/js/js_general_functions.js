@@ -60,7 +60,8 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
 
             //Сообщение если не выбран проект
             if(ActiveProjectId == '0'){
-                alert("Выбирите проект в левой панели!")
+                //alert("Выбирите проект в левой панели!");
+                $("#success-alert-modal").attr('style','display: block; padding-right: 17px;');
             }
         }
     });

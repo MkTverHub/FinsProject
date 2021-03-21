@@ -218,7 +218,7 @@ public class WebController {
 
     //Переход на страницу Компании
     @RequestMapping(value = "/FinsCompany")
-    public String GoToFinsCompany(Model model){
+    public String GoToFinsCompany(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.GoToFinsCompany -> ");
             return "Fins_Company_Info";
@@ -230,7 +230,7 @@ public class WebController {
 
     //Переход на страницу Компании Редактор
     @RequestMapping(value = "/FinsCompanyEditor")
-    public String GoToFinsCompanyEditor(Model model){
+    public String GoToFinsCompanyEditor(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.GoToFinsCompanyEditor -> ");
             return "Fins_Company";
