@@ -1,8 +1,11 @@
 package com.sweetcard.basic.appuser;
 
+import com.sweetcard.basic.dao.jdbc.FinsprojectJdbc;
+import com.sweetcard.basic.model.Finsprojectform;
 import com.sweetcard.basic.registration.token.ConfirmationToken;
 import com.sweetcard.basic.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

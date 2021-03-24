@@ -560,13 +560,19 @@ public class ReqController {
         try{
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
             if(usercache == null){
-                logger.info("ReqController.GetUserCache -> get null");
+                //Установка дефолтного проекта
+                Finsprojectform finsprojectform = new Finsprojectform();
+                finsprojectform.setFinsprojectname("Начало работы");
+                finsprojectform.setFinsprojectdescription("Проект по уолчанию");
+                Integer intNewProjectId = finsprojectJdbc.NewFinsProject(finsprojectform);
+
                 Usercacheform usercacheform = new Usercacheform();
                 usercacheform.setLogin(GetUserLogin());
-                usercacheform.setActiveProject(0);
+                usercacheform.setActiveProject(intNewProjectId);
                 usercacheform.setUsercacheAction("insert");
                 usercacheJdbc.UsercacheAction(usercacheform);
                 usercache = usercacheRepository.GetUsercache(GetUserLogin());
+                logger.info("ReqController.GetUserCache -> New UserCache " + GetUserLogin() + " " + intNewProjectId);
             }
 
             //Создать экземпляр ответа и отправить JSON строку
