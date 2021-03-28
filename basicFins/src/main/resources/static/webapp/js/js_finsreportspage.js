@@ -28,6 +28,7 @@ $(function(){
 
 //Ajax получения отчета
 function doAjaxGetYearProfitList(ProjectId) {
+    SpinnerOn("doAjaxGetYearProfitList");
     $.ajax({
         url : 'GetReport',
         type: 'GET',
@@ -50,6 +51,7 @@ function doAjaxGetYearProfitList(ProjectId) {
                 });
                 Report4_BuildChart(arr_lable,arr_value,"Продажи товаров за период")
             }
+            SpinnerOff("doAjaxGetYearProfitList");
         }
     });
 };

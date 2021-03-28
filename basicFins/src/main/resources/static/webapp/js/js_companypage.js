@@ -106,6 +106,7 @@ $(function(){
 //-----------Ajax Functions------------
 //Ajax формы операции DB Компании (Создать/Обновить/Удалить)
 function doAjaxCompanytDBOperation() {
+    SpinnerOn("doAjaxCompanytDBOperation");
     var strDBOperation = $('#company_db_action').attr('value');//update/insert/delete
     var strCompanyId = $('#company_id').attr('value');
     var strCompanyName = $('#company_name').val();
@@ -132,12 +133,14 @@ function doAjaxCompanytDBOperation() {
         success: function (data) {
             //alert('Ajax: OperationCompany');
             doAjaxGetCompanyList();
+            SpinnerOff("doAjaxCompanytDBOperation");
         }
     });
 };
 
 //Ajax формы операции DB Контакта (Создать/Обновить/Удалить)
 function doAjaxContactDBOperation() {
+    SpinnerOn("doAjaxContactDBOperation");
     var strDBOperation = $('#contact_db_action').attr('value');//update/insert/delete
     var strContactId = $('#contact_id').attr('value');
     var strContactFirstName = $('#contact_first_name_id').val();
@@ -164,12 +167,14 @@ function doAjaxContactDBOperation() {
         success: function (data) {
             //alert('Ajax: OperationCompany');
             doAjaxGetCompanyContactsList(strCompanyId);
+            SpinnerOff("doAjaxContactDBOperation");
         }
     });
 };
 
 //Ajax получение списка Компаний
 function doAjaxGetCompanyList() {
+    SpinnerOn("doAjaxGetCompanyList");
     $.ajax({
         url : 'GetCompanyList',
         type: 'GET',
@@ -181,12 +186,14 @@ function doAjaxGetCompanyList() {
         }),
         success: function (data) {
             JSONStringToCompanyTable(data.text);
+            SpinnerOff("doAjaxGetCompanyList");
         }
     });
 };
 
 //Ajax получение списка Работников
 function doAjaxGetCompanyContactsList(CompanyId) {
+    SpinnerOn("doAjaxGetCompanyContactsList");
     $.ajax({
         url : 'GetCompanyEmployees',
         type: 'GET',
@@ -198,12 +205,14 @@ function doAjaxGetCompanyContactsList(CompanyId) {
         }),
         success: function (data) {
             JSONStringToContactsTable(data.text);
+            SpinnerOff("doAjaxGetCompanyContactsList");
         }
     });
 };
 
 //Ajax получение списка проектов в левой панели
 function doAjaxGetProjectList() {
+    SpinnerOn("doAjaxGetProjectList");
     $.ajax({
         url : 'GetFinsProjectList',
         type: 'GET',
@@ -223,6 +232,7 @@ function doAjaxGetProjectList() {
                     + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
             });
             $("#projectlistpanel").html(strProjectListContext);
+            SpinnerOff("doAjaxGetProjectList");
         }
     });
 };

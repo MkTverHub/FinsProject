@@ -450,6 +450,7 @@ function UnSetROForm(){
 
 //Ajax получение UserCache. Заполнение Контекста экрана в зависимости от активного проекта
 function doAjaxGetActiveProjectContext() {
+    SpinnerOn("doAjaxGetActiveProjectContext");
     $.ajax({
         url : 'GetUserCache',
         type: 'GET',
@@ -465,6 +466,7 @@ function doAjaxGetActiveProjectContext() {
             doAjaxGetProjectOperationList(strActiveProjectId);
             doAjaxGetProjectProfit();
             doAjaxGetContactFinsAccProject(strActiveProjectId);
+            SpinnerOff("doAjaxGetActiveProjectContext");
         }
     });
 };
@@ -473,6 +475,7 @@ function doAjaxGetActiveProjectContext() {
 
 //Ajax получение списка операций по проекту
 function doAjaxGetProjectOperationList(ProjectNum) {
+    SpinnerOn("doAjaxGetProjectOperationList");
     $.ajax({
         url : 'GetProjFinsOperList',
         type: 'GET',
@@ -485,6 +488,7 @@ function doAjaxGetProjectOperationList(ProjectNum) {
         success: function (data) {
             if(data.text != null){
                 JSONStringToFinsOperationList(data.text);
+                SpinnerOff("doAjaxGetProjectOperationList");
             }
         }
     });
@@ -492,6 +496,7 @@ function doAjaxGetProjectOperationList(ProjectNum) {
 
 //Ajax формы финансовой операции
 function doAjaxFinsOperation() {
+    SpinnerOn("doAjaxFinsOperation");
     //Скрытые поля
     var strRecordOperation = $('#finsedittypeid').attr('value');//update/new/delete
     var strFinsRecordId = $('#recordid').attr('value');//Id записи
@@ -537,12 +542,14 @@ function doAjaxFinsOperation() {
             //JSONStringToFinsOperationList(data.text);
             //doAjaxGetProjectOperationList(strProjectId);
             doAjaxGetActiveProjectContext();
+            SpinnerOff("doAjaxFinsOperation");
         }
     });
 };
 
 //Ajax получение списка Контрагентов
 function doAjaxGetContragentsList() {
+    SpinnerOn("doAjaxGetContragentsList");
     $.ajax({
         url : 'GetContragentsList',
         type: 'GET',
@@ -554,12 +561,14 @@ function doAjaxGetContragentsList() {
         }),
         success: function (data) {
             JSONStringToContragentPickList(data.text);
+            SpinnerOff("doAjaxGetContragentsList");
         }
     });
 };
 
 //Ajax получение списка реквезитов для контрагента
 function doAjaxGetContragentRequisits(ContragentId) {
+    SpinnerOn("doAjaxGetContragentRequisits");
     $.ajax({
         url : 'GetContragentRequisits',
         type: 'GET',
@@ -571,12 +580,14 @@ function doAjaxGetContragentRequisits(ContragentId) {
         }),
         success: function (data) {
             JSONStringToRequisitsPickList(data.text);
+            SpinnerOff("doAjaxGetContragentRequisits");
         }
     });
 };
 
 //Ajax получение списка счетов сотрудников проекта
 function doAjaxGetContactFinsAccProject(ProjectId) {
+    SpinnerOn("doAjaxGetContactFinsAccProject");
     $.ajax({
         url : 'GetContactFinsAccProject',
         type: 'GET',
@@ -588,12 +599,14 @@ function doAjaxGetContactFinsAccProject(ProjectId) {
         }),
         success: function (data) {
             JSONStringToContactFinsAccList(data.text);
+            SpinnerOff("doAjaxGetContactFinsAccProject");
         }
     });
 };
 
 //Ajax получения отчета
 function doAjaxGetProjectProfit() {
+    SpinnerOn("doAjaxGetProjectProfit");
     $.ajax({
         url : 'GetReport',
         type: 'GET',
@@ -609,12 +622,14 @@ function doAjaxGetProjectProfit() {
             $('#projectprofitid_sub').html(obj.ProjectIncome);
             $('#projectexpenseid_sub').html(obj.ProjectExpense);
             $('#projectsaldoid_sub').html(obj.ProjectProfit);
+            SpinnerOff("doAjaxGetProjectProfit");
         }
     });
 };
 
 //Ajax получение списка Lov
 function doAjaxGetLovList() {
+    SpinnerOn("doAjaxGetLovList");
     $.ajax({
         url : 'GetLovList',
         type: 'GET',
@@ -626,6 +641,7 @@ function doAjaxGetLovList() {
         }),
         success: function (data) {
             JSONStringToFinsArticleList(data.text)//Формирование выпадающего списка
+            SpinnerOff("doAjaxGetLovList");
         }
     });
 };

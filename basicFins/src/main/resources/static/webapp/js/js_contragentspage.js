@@ -135,6 +135,7 @@ $(function(){
 //-----------Ajax Functions------------
 //Ajax получение списка Контрагентов
 function doAjaxGetContragentsList() {
+    SpinnerOn("doAjaxGetContragentsList");
     $.ajax({
         url : 'GetContragentsList',
         type: 'GET',
@@ -146,12 +147,14 @@ function doAjaxGetContragentsList() {
         }),
         success: function (data) {
             JSONStringToContragentTable(data.text);
+            SpinnerOff("doAjaxGetContragentsList");
         }
     });
 };
 
 //Ajax формы операции DB Контрагента (Создать/Обновить/Удалить)
 function doAjaxContragentDBOperation() {
+    SpinnerOn("doAjaxContragentDBOperation");
     var strDBOperation = $('#cntragnt_db_action').attr('value');//update/insert/delete
     var strContragentId = $('#cntragnt_id').attr('value');
     var strContragentName = $('#cntragnt_name').val();
@@ -176,12 +179,14 @@ function doAjaxContragentDBOperation() {
         }),
         success: function (data) {
             doAjaxGetContragentsList();//Обновить таблицу контрагентов
+            SpinnerOff("doAjaxContragentDBOperation");
         }
     });
 };
 
 //Ajax получение реквезитов Контрагента
 function doAjaxGetContragentRequisits(ContragentId_In) {
+    SpinnerOn("doAjaxGetContragentRequisits");
     $.ajax({
         url : 'GetContragentRequisits',
         type: 'GET',
@@ -193,6 +198,7 @@ function doAjaxGetContragentRequisits(ContragentId_In) {
         }),
         success: function (data) {
             JSONStringToContragentReqTable(data.text)
+            SpinnerOff("doAjaxGetContragentRequisits");
         }
     });
 };
@@ -201,6 +207,7 @@ function doAjaxGetContragentRequisits(ContragentId_In) {
 
 //Ajax формы операции DB Реквезита (Создать/Обновить/Удалить)
 function doAjaxRequisitDBOperation() {
+    SpinnerOn("doAjaxRequisitDBOperation");
     var strDBOperation = $('#requisit_db_action').attr('value');//update/insert/delete
     if (strDBOperation == null){strDBOperation = '';}
     var strRequisitContragentId = document.body.HashData.ActiveContragentId;
@@ -252,34 +259,11 @@ function doAjaxRequisitDBOperation() {
         }),
         success: function (data) {
             doAjaxGetContragentRequisits(document.body.HashData.ActiveContragentId);
+            SpinnerOff("doAjaxRequisitDBOperation");
         }
     });
 };
 
-//Ajax получение списка проектов в левой панели
-function doAjaxGetProjectList() {
-    $.ajax({
-        url : 'GetFinsProjectList',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-
-        }),
-        success: function (data) {
-            var strProjectListContext = "";
-            var obj = jQuery.parseJSON(data.text);
-            $.each(obj, function (index, value) {
-                strProjectListContext = strProjectListContext
-                    + '<li id="' + value["id"].toString()
-                    + '_rowid" class="left-menu-item finsproject_list_row_li"><input type="button" class="left-menu-link finsproject_list_row" projnum="'
-                    + value["id"].toString() + '" value="' + value["name"] + '"/></li>';
-            });
-            $("#projectlistpanel").html(strProjectListContext);
-        }
-    });
-};
 
 //--------Функции заполнения----------------
 //Парсинг JSON списка контрагентов в таблицу

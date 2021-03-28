@@ -4,7 +4,6 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-    //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
     doAjaxGetUserCache("FinsLOVEditor");//Получение списка проектов в левой панели
     doAjaxGetLovList();
     SetROForm();
@@ -14,6 +13,7 @@ function StartPage() {
 //-----------Ajax Functions------------
 //Ajax получение списка Lov + заполнение таблицы
 function doAjaxGetLovList() {
+    SpinnerOn("doAjaxGetLovList");
     $.ajax({
         url : 'GetLovList',
         type: 'GET',
@@ -26,16 +26,17 @@ function doAjaxGetLovList() {
         success: function (data) {
             //JSONStringToLovTable(data.text);
             $("#finslov_table_body").html(JsonToTableBody("lov","id",["id","text_val","description","options","type"],data.text));
+            SpinnerOff("doAjaxGetLovList");
         }
     });
 };
 
 //Ajax формы операции DB lov (Создать/Обновить/Удалить)
 function doAjaxLovDBOperation() {
+    SpinnerOn("doAjaxLovDBOperation");
     var strDBOperation = $('#lov_db_action').attr('value');//update/insert/delete
     var strLovId = '';
     if($('#lov_record_id').attr('value') == null){strLovId = '';}else{strLovId = $('#lov_record_id').attr('value');}
-
     var strLovVal = $('#lov_value').val();
     var strLovDescription = $('#lov_description').val();
     var strLovOptions = $('#lov_options_list').attr('select_value');
@@ -56,8 +57,8 @@ function doAjaxLovDBOperation() {
             LovType: strLovType
         }),
         success: function (data) {
-            //alert('Ajax: OperationCompany');
             doAjaxGetLovList();
+            SpinnerOff("doAjaxLovDBOperation");
         }
     });
 };

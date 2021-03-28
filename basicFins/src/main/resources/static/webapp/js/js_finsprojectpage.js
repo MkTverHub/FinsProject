@@ -3,7 +3,6 @@
  */
 //Функция при загрузки страницы
 function StartPage() {
-    //doAjaxGetProjectListLeft();
     doAjaxGetUserCache();
     doAjaxGetProjectList();
     doAjaxGetCompanyList();
@@ -16,6 +15,7 @@ function StartPage() {
 
 //Ajax Создать/Обновить/Удалить
 function doAjaxDellProject() {
+    SpinnerOn("doAjaxDellProject");
     var strFinsProjectOperation = $("#fins_project_operation_type").val();
     var strFinsProjectId = $("#fins_project_record_id").val();
     var strFinsProjectName = $("#fins_project_name").val();
@@ -34,14 +34,15 @@ function doAjaxDellProject() {
         }),
         success: function (data) {
             doAjaxGetProjectList();
+            SpinnerOff("doAjaxDellProject");
         }
     });
-
     $('#fins_project_operation_type').val('');
 };
 
 //Ajax получение списка проектов + заполнение таблицы
 function doAjaxGetProjectList() {
+    SpinnerOn("doAjaxGetProjectList");
     $.ajax({
         url : 'GetFinsProjectList',
         type: 'GET',
@@ -53,13 +54,14 @@ function doAjaxGetProjectList() {
         }),
         success: function (data) {
             $("#finsproject_table_body").html(JsonToTableBody("project","id",["id","name","description"],data.text));
+            SpinnerOff("doAjaxGetProjectList");
         }
     });
-    $('#fins_project_operation_type').val('');
 };
 
 //Ajax получение списка Компаний
 function doAjaxGetCompanyList() {
+    SpinnerOn("doAjaxGetCompanyList");
     $.ajax({
         url : 'GetCompanyList',
         type: 'GET',
@@ -70,7 +72,8 @@ function doAjaxGetCompanyList() {
             //
         }),
         success: function (data) {
-            JSONStringToCompanyPickList(data.text)
+            JSONStringToCompanyPickList(data.text);
+            SpinnerOff("doAjaxGetCompanyList");
         }
     });
 };
@@ -78,6 +81,7 @@ function doAjaxGetCompanyList() {
 
 //Ajax получения отчета
 function doAjaxGetProjectProfit(ProjectId) {
+    SpinnerOn("doAjaxGetProjectProfit");
     $.ajax({
         url : 'GetReport',
         type: 'GET',
@@ -93,12 +97,14 @@ function doAjaxGetProjectProfit(ProjectId) {
             console.log(data.text);
             $('#project_income_id').val(obj.ProjectIncome);
             $('#project_expense_id').val(obj.ProjectExpense);
+            SpinnerOff("doAjaxGetProjectProfit");
         }
     });
 };
 
 //Ajax приявязки компании
 function doAjaxCompanytDBOperation(CompanyId,ProjectId) {
+    SpinnerOn("doAjaxCompanytDBOperation");
     var strDBOperation = 'set_project';
     var strCompanyId = CompanyId;
     var strProjectId = ProjectId;
@@ -120,7 +126,7 @@ function doAjaxCompanytDBOperation(CompanyId,ProjectId) {
             CompanyProjectId: strProjectId
         }),
         success: function (data) {
-            //alert('Ajax: OperationCompany');//
+            SpinnerOff("doAjaxCompanytDBOperation");
         }
     });
 };

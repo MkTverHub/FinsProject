@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -762,11 +763,11 @@ public class ReqController {
         }
     }
 
-
     //Получить список LOV
     private Response GetLovListResponse(){
         try{
-            logger.info("ReqController.GetLovList");
+            logger.info("ReqController.GetLovList + Задержка 4 сек для демонстрации спиннера");
+            TimeUnit.SECONDS.sleep(4);//Демонстрация спиннера
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
             lovJdbc.setActiveProjectId(usercache.active_proj);
             List<Lov> lovList = lovRepository.GetAllByProject(usercache.active_proj);
