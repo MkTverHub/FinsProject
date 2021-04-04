@@ -3,8 +3,7 @@
  */
 //Функция при загрузки страницы
 function StartPage() {
-    doAjaxGetUserCache();
-    doAjaxGetProjectList();
+    doAjaxGetUserCache("RoProject");
     doAjaxGetCompanyList();
     ClearProjectForm();
     SetROForm();

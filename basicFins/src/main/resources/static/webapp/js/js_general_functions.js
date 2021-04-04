@@ -42,20 +42,28 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
             var strProjectListContext = "";
             var obj = jQuery.parseJSON(data.text);
             var strLiClass = 'left-menu-item finsproject_list_row_li';
+            var strLiContext = "";
             $.each(obj, function (index, value) {
-                if( value["id"].toString() == ActiveProjectId){
+                if(PageName == "RoProject"){
+                    strLiContext = '<div class="finsproject_list_link_row">' + value["name"] +'</div>';
+                }else{
+                    strLiContext = '<a class="finsproject_list_link_row" href="/' + PageName + '?ProjectId=' + value["id"].toString() + '" projnum="' + value["id"].toString() + '">' + value["name"] + '</a>';
+                }
+                if( value["id"].toString() == ActiveProjectId && PageName != "RoProject"){
                     strLiClass = 'left-menu-item left-menu-selected-link finsproject_list_row';
                 }else{
                     strLiClass = 'left-menu-item finsproject_list_row_li finsproject_list_row';
                 }
                 strProjectListContext = strProjectListContext
                     + '<li id="' + value["id"].toString()
-                    + '_rowid" class="' + strLiClass + '" projnum="' + value["id"].toString() + '">' +
-                    //'<input type="button" class="left-menu-link finsproject_list_row" projnum="' + value["id"].toString() + '" value="' + value["name"] + '"/>' +
-                    //'<a href="/ProjectsEditor?ProjectId=' + value["id"].toString() + '">' + value["name"] + '</a>' +
-                    '<a class="finsproject_list_link_row" href="/' + PageName + '?ProjectId=' + value["id"].toString() + '" projnum="' + value["id"].toString() + '">' + value["name"] + '</a>' +
-                    '</li>';
+                    + '_rowid" class="' + strLiClass + '" projnum="' + value["id"].toString() + '">'
+                    + strLiContext
+                    + '</li>';
             });
+            strProjectListContext = strProjectListContext
+                + '<li class="left-menu-item finsproject_list_row_li finsproject_list_row">'
+                + '<a class="finsproject_list_link_row" href="/ProjectsEditor">Создать проект</a>'
+                + '</li>';
             $("#projectlistpanel").html(strProjectListContext);
 
             //Сообщение если не выбран проект
