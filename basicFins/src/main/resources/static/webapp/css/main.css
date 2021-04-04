@@ -440,3 +440,18 @@ button:focus {
 
 
 /*End preloader*/
+
+.topbar .top-navbar .navbar-header .navbar-brand .logo-text img {
+  margin-top: 10px;
+} 
+
+.finsproject_list_row_addproject_btn {
+  margin-left: 15px;
+}
+.finsproject_list_link_row_addproject_btn {
+    border: 1px solid;
+    color: #afafaf;
+    border-color: #afafaf;
+    margin-top: 20px;
+    border-radius: 8px;
+}
