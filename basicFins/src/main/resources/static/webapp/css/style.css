@@ -3434,7 +3434,8 @@ input[type="button"].btn-block {
   padding: 0.75rem 25px;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 0 solid #e9ecef; }
+  border-bottom: 0 solid #e9ecef; 
+  border-radius: 18px;}
   .card-header:first-child {
     border-radius: calc(0.25rem - 0) calc(0.25rem - 0) 0 0; }
   .card-header + .list-group .list-group-item:first-child {
@@ -8333,9 +8334,14 @@ strong {
   margin-bottom: 30px; }
 
 .card {
+/*
   box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15);
   -webkit-box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15);
-  -moz-box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15); }
+  -moz-box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15);
+*/    
+	box-shadow: 0 2px 8px rgb(18 17 36 / 4%), 0 4px 32px rgb(18 17 36 / 8%);
+    border-radius: 18px; 
+}
   .card .card-subtitle {
     font-weight: 300;
     margin-bottom: 10px;
