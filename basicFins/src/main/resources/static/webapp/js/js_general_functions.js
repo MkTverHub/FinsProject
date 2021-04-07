@@ -62,7 +62,7 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
             });
             strProjectListContext = strProjectListContext
                 + '<li class="left-menu-item finsproject_list_row_li finsproject_list_row finsproject_list_row_addproject_btn">'
-                + '<a class="finsproject_list_link_row finsproject_list_link_row_addproject_btn" href="/ProjectsEditor">+ проект</a>'
+                + '<a class="finsproject_list_link_row finsproject_list_link_row_addproject_btn" href="/Projects">Все проекты</a>'
                 + '</li>';
             $("#projectlistpanel").html(strProjectListContext);
 
