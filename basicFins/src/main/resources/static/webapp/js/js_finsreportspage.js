@@ -3,32 +3,19 @@
  */
 //Функция при загрузки страницы
 function StartPage() {
-    //alert('StartPage');
-    //doAjaxGetProjectListLeft();//Получение списка проектов в левой панели
-    doAjaxGetUserCache();
+    doAjaxGetUserCache("Reports");
+    doAjaxGetProjectProfit();
+    doAjaxGetYearProfitList();
     //Report4_BuildChart(["2016", "2017", "2018", "2019"],["10", "25", "55", "120"],"Продажи товаров за период");
 };
 
 //-------------Функции событий-----------------
-//Событие нажатия на проект в левой панели
-/*ВАЖНО: jqury слушает только элементы существующие на момент инициализации скрипта,
-т.к. проекты создаются из ajax, то слушатель нужно поставить на родительский элемент div,
-который существует изначально на странице */
-$(function(){
-    var strProjectId = "";
-    $("#projectlistpanel").on("click", ".finsproject_list_row", function () {
-        strProjectId = $(this).attr("projnum");
-        doAjaxGetYearProfitList(strProjectId);
-    });
-
-});
-
 
 //-----------Ajax Functions------------
 
 //Ajax получения отчета
-function doAjaxGetYearProfitList(ProjectId) {
-    SpinnerOn("doAjaxGetYearProfitList");
+function doAjaxGetYearProfitList() {
+    //SpinnerOn("doAjaxGetYearProfitList");
     $.ajax({
         url : 'GetReport',
         type: 'GET',
@@ -36,8 +23,7 @@ function doAjaxGetYearProfitList(ProjectId) {
         contentType: 'application/json',
         mimeType: 'application/json',
         data : ({
-            ReportName: 'GetYearProfitList',
-            ProjectId: ProjectId
+            ReportName: 'GetYearProfitList'
         }),
         success: function (data) {
             console.log(data.text);
@@ -51,9 +37,39 @@ function doAjaxGetYearProfitList(ProjectId) {
                 });
                 Report4_BuildChart(arr_lable,arr_value,"Продажи товаров за период")
             }
-            SpinnerOff("doAjaxGetYearProfitList");
+            //SpinnerOff("doAjaxGetYearProfitList");
         }
     });
+};
+
+
+//Ajax получения отчета
+function doAjaxGetProjectProfit() {
+    SpinnerOn("doAjaxGetProjectProfit");
+    try {
+        $.ajax({
+            url: 'GetReport',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                ReportName: 'GetProjectProfit'
+            }),
+            success: function (data) {
+                var obj = jQuery.parseJSON(data.text);
+                $('#projectprofitid').html(obj.ProjectProfit);
+                $('#projectprofitid_sub').html(obj.ProjectIncome);
+                $('#projectexpenseid_sub').html(obj.ProjectExpense);
+                $('#projectsaldoid_sub').html(obj.ProjectProfit);
+                SpinnerOff("doAjaxGetProjectProfit");
+            }
+        });
+    }catch (e) {
+        console.log("Error doAjaxGetProjectProfit: " + e);
+        SpinnerOff("doAjaxGetProjectProfit");
+        return "";
+    }
 };
 
 

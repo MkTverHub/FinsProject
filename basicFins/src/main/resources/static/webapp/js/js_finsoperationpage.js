@@ -451,24 +451,30 @@ function UnSetROForm(){
 //Ajax получение UserCache. Заполнение Контекста экрана в зависимости от активного проекта
 function doAjaxGetActiveProjectContext() {
     SpinnerOn("doAjaxGetActiveProjectContext");
-    $.ajax({
-        url : 'GetUserCache',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            //
-        }),
-        success: function (data) {
-            var obj = jQuery.parseJSON(data.text);
-            var strActiveProjectId = obj.active_proj;
-            doAjaxGetProjectOperationList(strActiveProjectId);
-            doAjaxGetProjectProfit();
-            doAjaxGetContactFinsAccProject(strActiveProjectId);
-            SpinnerOff("doAjaxGetActiveProjectContext");
-        }
-    });
+    try {
+        $.ajax({
+            url: 'GetUserCache',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                //
+            }),
+            success: function (data) {
+                var obj = jQuery.parseJSON(data.text);
+                var strActiveProjectId = obj.active_proj;
+                doAjaxGetProjectOperationList(strActiveProjectId);
+                doAjaxGetProjectProfit();
+                doAjaxGetContactFinsAccProject(strActiveProjectId);
+                SpinnerOff("doAjaxGetActiveProjectContext");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetActiveProjectContext");
+        console.log("Error doAjaxGetActiveProjectContext: " + e);
+        return "";
+    }
 };
 
 
@@ -476,172 +482,214 @@ function doAjaxGetActiveProjectContext() {
 //Ajax получение списка операций по проекту
 function doAjaxGetProjectOperationList(ProjectNum) {
     SpinnerOn("doAjaxGetProjectOperationList");
-    $.ajax({
-        url : 'GetProjFinsOperList',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            FinsProjectId: ProjectNum
-        }),
-        success: function (data) {
-            if(data.text != null){
-                JSONStringToFinsOperationList(data.text);
-                SpinnerOff("doAjaxGetProjectOperationList");
+    try {
+        $.ajax({
+            url: 'GetProjFinsOperList',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                FinsProjectId: ProjectNum
+            }),
+            success: function (data) {
+                if (data.text != null) {
+                    JSONStringToFinsOperationList(data.text);
+                    SpinnerOff("doAjaxGetProjectOperationList");
+                }
             }
-        }
-    });
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetProjectOperationList");
+        console.log("Error doAjaxGetProjectOperationList: " + e);
+        return "";
+    }
 };
 
 //Ajax формы финансовой операции
 function doAjaxFinsOperation() {
     SpinnerOn("doAjaxFinsOperation");
-    //Скрытые поля
-    var strRecordOperation = $('#finsedittypeid').attr('value');//update/new/delete
-    var strFinsRecordId = $('#recordid').attr('value');//Id записи
-    var strFinsBlockFlg = $('#fieldlockflgid').attr('value');//Признак блокировки
-    var strFinsOpertype = $('#finsopertypeid').attr('value');//Тип транзакции profit/expense/transfer
-    //var strProjectId = $('#projectidid').attr('value');//Id проекта
-    var strFinsContrAgent = $('#finscontragentid').attr('value');//Id контрагента
-    var strFinsRequisites = $('#requisitesid').attr('value');//Id реквезита
-    //var strOperDt = $('#fieldoperdateid').attr('value');
+    try {
+        //Скрытые поля
+        var strRecordOperation = $('#finsedittypeid').attr('value');//update/new/delete
+        var strFinsRecordId = $('#recordid').attr('value');//Id записи
+        var strFinsBlockFlg = $('#fieldlockflgid').attr('value');//Признак блокировки
+        var strFinsOpertype = $('#finsopertypeid').attr('value');//Тип транзакции profit/expense/transfer
+        //var strProjectId = $('#projectidid').attr('value');//Id проекта
+        var strFinsContrAgent = $('#finscontragentid').attr('value');//Id контрагента
+        var strFinsRequisites = $('#requisitesid').attr('value');//Id реквезита
+        //var strOperDt = $('#fieldoperdateid').attr('value');
 
-    //Доступные поля
-    var strFinsAmount = $('#fieldamountid').val();//Сумма
-    var strFinsDetail = $('#fielddetailid').val();//Детали
-    //var strPaymentAccIn = $('#paymentaccinid').val();//Счет поступления
-    //var strPaymentAccOut = $('#paymentaccoutid').val();//Счет списания
-    var strPaymentAccIn = $('#paymentaccinid_list').attr('select_value');
-    var strPaymentAccOut = $('#paymentaccoutid_list').attr('select_value');
-    //var strFinsArticle = $('#finsarticleid').val();//Статья
-    var strFinsArticle =  $('#finsarticleid_list').attr('select_value');
+        //Доступные поля
+        var strFinsAmount = $('#fieldamountid').val();//Сумма
+        var strFinsDetail = $('#fielddetailid').val();//Детали
+        //var strPaymentAccIn = $('#paymentaccinid').val();//Счет поступления
+        //var strPaymentAccOut = $('#paymentaccoutid').val();//Счет списания
+        var strPaymentAccIn = $('#paymentaccinid_list').attr('select_value');
+        var strPaymentAccOut = $('#paymentaccoutid_list').attr('select_value');
+        //var strFinsArticle = $('#finsarticleid').val();//Статья
+        var strFinsArticle = $('#finsarticleid_list').attr('select_value');
 
-    $.ajax({
-        url : 'FinsOperationForm',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            RecordOperation: strRecordOperation,
-            Row_Id: strFinsRecordId,
-            Lock_Flg: strFinsBlockFlg,
-            //Operation_Dt: strOperDt,
-            Amount: strFinsAmount,
-            Detail: strFinsDetail,
-            Fins_Transaction_Type: strFinsOpertype,
-            Pay_Acc_In: strPaymentAccIn,
-            Pay_Acc_Out: strPaymentAccOut,
-            Fins_Article: strFinsArticle,
-            //ProjectId: strProjectId,
-            Contragent: strFinsContrAgent,
-            Requisite: strFinsRequisites
-        }),
-        success: function (data) {
-            //JSONStringToFinsOperationList(data.text);
-            //doAjaxGetProjectOperationList(strProjectId);
-            doAjaxGetActiveProjectContext();
-            SpinnerOff("doAjaxFinsOperation");
-        }
-    });
+        $.ajax({
+            url: 'FinsOperationForm',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                RecordOperation: strRecordOperation,
+                Row_Id: strFinsRecordId,
+                Lock_Flg: strFinsBlockFlg,
+                //Operation_Dt: strOperDt,
+                Amount: strFinsAmount,
+                Detail: strFinsDetail,
+                Fins_Transaction_Type: strFinsOpertype,
+                Pay_Acc_In: strPaymentAccIn,
+                Pay_Acc_Out: strPaymentAccOut,
+                Fins_Article: strFinsArticle,
+                //ProjectId: strProjectId,
+                Contragent: strFinsContrAgent,
+                Requisite: strFinsRequisites
+            }),
+            success: function (data) {
+                //JSONStringToFinsOperationList(data.text);
+                //doAjaxGetProjectOperationList(strProjectId);
+                doAjaxGetActiveProjectContext();
+                SpinnerOff("doAjaxFinsOperation");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxFinsOperation");
+        console.log("Error doAjaxFinsOperation: " + e);
+        return "";
+    }
 };
 
 //Ajax получение списка Контрагентов
 function doAjaxGetContragentsList() {
     SpinnerOn("doAjaxGetContragentsList");
-    $.ajax({
-        url : 'GetContragentsList',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            //
-        }),
-        success: function (data) {
-            JSONStringToContragentPickList(data.text);
-            SpinnerOff("doAjaxGetContragentsList");
-        }
-    });
+    try {
+        $.ajax({
+            url: 'GetContragentsList',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                //
+            }),
+            success: function (data) {
+                JSONStringToContragentPickList(data.text);
+                SpinnerOff("doAjaxGetContragentsList");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetContragentsList");
+        console.log("Error doAjaxGetContragentsList: " + e);
+        return "";
+    }
 };
 
 //Ajax получение списка реквезитов для контрагента
 function doAjaxGetContragentRequisits(ContragentId) {
     SpinnerOn("doAjaxGetContragentRequisits");
-    $.ajax({
-        url : 'GetContragentRequisits',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            ContragentId: ContragentId
-        }),
-        success: function (data) {
-            JSONStringToRequisitsPickList(data.text);
-            SpinnerOff("doAjaxGetContragentRequisits");
-        }
-    });
+    try {
+        $.ajax({
+            url: 'GetContragentRequisits',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                ContragentId: ContragentId
+            }),
+            success: function (data) {
+                JSONStringToRequisitsPickList(data.text);
+                SpinnerOff("doAjaxGetContragentRequisits");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetContragentRequisits");
+        console.log("Error doAjaxGetContragentRequisits: " + e);
+        return "";
+    }
 };
 
 //Ajax получение списка счетов сотрудников проекта
 function doAjaxGetContactFinsAccProject(ProjectId) {
     SpinnerOn("doAjaxGetContactFinsAccProject");
-    $.ajax({
-        url : 'GetContactFinsAccProject',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            ProjectId: ProjectId
-        }),
-        success: function (data) {
-            JSONStringToContactFinsAccList(data.text);
-            SpinnerOff("doAjaxGetContactFinsAccProject");
-        }
-    });
+    try {
+        $.ajax({
+            url: 'GetContactFinsAccProject',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                ProjectId: ProjectId
+            }),
+            success: function (data) {
+                JSONStringToContactFinsAccList(data.text);
+                SpinnerOff("doAjaxGetContactFinsAccProject");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetContactFinsAccProject");
+        console.log("Error doAjaxGetContactFinsAccProject: " + e);
+        return "";
+    }
 };
 
 //Ajax получения отчета
 function doAjaxGetProjectProfit() {
     SpinnerOn("doAjaxGetProjectProfit");
-    $.ajax({
-        url : 'GetReport',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            ReportName: 'GetProjectProfit'
-        }),
-        success: function (data) {
-            var obj = jQuery.parseJSON(data.text);
-            $('#projectprofitid').html(obj.ProjectProfit);
-            $('#projectprofitid_sub').html(obj.ProjectIncome);
-            $('#projectexpenseid_sub').html(obj.ProjectExpense);
-            $('#projectsaldoid_sub').html(obj.ProjectProfit);
-            SpinnerOff("doAjaxGetProjectProfit");
-        }
-    });
+    try {
+        $.ajax({
+            url: 'GetReport',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                ReportName: 'GetProjectProfit'
+            }),
+            success: function (data) {
+                var obj = jQuery.parseJSON(data.text);
+                $('#projectprofitid').html(obj.ProjectProfit);
+                $('#projectprofitid_sub').html(obj.ProjectIncome);
+                $('#projectexpenseid_sub').html(obj.ProjectExpense);
+                $('#projectsaldoid_sub').html(obj.ProjectProfit);
+                SpinnerOff("doAjaxGetProjectProfit");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetProjectProfit");
+        console.log("Error doAjaxGetProjectProfit: " + e);
+        return "";
+    }
 };
 
 //Ajax получение списка Lov
 function doAjaxGetLovList() {
     SpinnerOn("doAjaxGetLovList");
-    $.ajax({
-        url : 'GetLovList',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            //
-        }),
-        success: function (data) {
-            JSONStringToFinsArticleList(data.text)//Формирование выпадающего списка
-            SpinnerOff("doAjaxGetLovList");
-        }
-    });
+    try {
+        $.ajax({
+            url: 'GetLovList',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                //
+            }),
+            success: function (data) {
+                JSONStringToFinsArticleList(data.text)//Формирование выпадающего списка
+                SpinnerOff("doAjaxGetLovList");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetLovList");
+        console.log("Error doAjaxGetLovList: " + e);
+        return "";
+    }
 };

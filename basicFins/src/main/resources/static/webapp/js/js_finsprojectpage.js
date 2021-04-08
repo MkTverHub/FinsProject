@@ -4,6 +4,7 @@
 //Функция при загрузки страницы
 function StartPage() {
     doAjaxGetUserCache("RoProject");
+    doAjaxGetProjectList();
     doAjaxGetCompanyList();
     ClearProjectForm();
     SetROForm();

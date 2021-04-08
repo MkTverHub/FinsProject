@@ -241,9 +241,25 @@ public class WebController {
     }
 
     //Переход на страницу Отчеты
-    @RequestMapping(value = "/Reports", method = RequestMethod.POST)
-    public String GoToReports(Model model){
-        return "Fins_Reports";
+    @RequestMapping(value = "/Reports")
+    public String GoToReports(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
+        try {
+            if (0 != ProjectId.compareTo("no_value")) {
+                //Переход из левой понели проектов кликом по проекту
+                Usercacheform usercacheform = new Usercacheform();
+                usercacheform.setLogin(GetUserLogin());
+                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
+                usercacheform.setUsercacheAction("update");
+                usercacheJdbc.UsercacheAction(usercacheform);
+            }
+
+
+            return "Fins_Reports";
+        }catch (Exception ex){
+            logger.info("WebController.GoToReports -> ERROR: " + ex);
+            return "Fins_Reports";
+        }
+
     }
 
     //Переход на экран настройки пользователя

@@ -767,7 +767,7 @@ public class ReqController {
     private Response GetLovListResponse(){
         try{
             logger.info("ReqController.GetLovList + Задержка 4 сек для демонстрации спиннера");
-            TimeUnit.SECONDS.sleep(4);//Демонстрация спиннера
+            TimeUnit.SECONDS.sleep(2);//Демонстрация спиннера
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
             lovJdbc.setActiveProjectId(usercache.active_proj);
             List<Lov> lovList = lovRepository.GetAllByProject(usercache.active_proj);
