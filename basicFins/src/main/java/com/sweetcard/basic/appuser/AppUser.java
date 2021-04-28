@@ -30,6 +30,7 @@ public class AppUser implements UserDetails{
             generator = "app_user_sequence"
     )
     private Long id;
+    private Long parent_id;
     private String firstName;
     private String lastName;
     private String email;
@@ -75,6 +76,10 @@ public class AppUser implements UserDetails{
     public  String getLastName(){
         return lastName;
     }
+
+    public Long getParent_id() {return parent_id;}
+
+    public void setParent_id(Long parent_id) {this.parent_id = parent_id;}
 
     public String getEmail() {
         return email;
