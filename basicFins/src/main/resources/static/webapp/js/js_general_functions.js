@@ -123,6 +123,7 @@ function SpinnerOn(AjaxChainName) {
     $("#spinner_main_div").removeClass('f-d-n');
 };
 //Spinner Off
+/*Чтобы функция не падала на split не забудь включиь фрагмент спиннера на html шаблоне*/
 function SpinnerOff(AjaxChainName) {
     $("#spinner_ajax_chain").removeClass(AjaxChainName);
     if($('#spinner_ajax_chain').attr('class').split(/\s+/).length == 1){

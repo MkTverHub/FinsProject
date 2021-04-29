@@ -3,6 +3,7 @@
 
 <head>
     <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <script src="webapp/js/js_fins_account_users_add.js"></script><!--Подцепляем внешний скрипт-->
     <title>Fin</title>
     
 </head>
@@ -15,7 +16,7 @@
 <div class="vip-wrapper">
 
     <!--Фрагмент спиннера-->
-    <!--<div th:replace="fragments\layouts\fragment_agrigate_layouts_spiner.html :: spinner_fragment_1"/>-->
+    <div th:replace="fragments\layouts\fragment_agrigate_layouts_spiner.html :: spinner_fragment_1"/>
     
     <!-- *************************************************************** -->
     <!-- Верхнее Меню -->
@@ -239,15 +240,12 @@
                                         <thead> <!-- Заголовок таблицы -->
                                         <tr>
                                             <th>Id</th>
-                                            <th>Имя</th>
-                                            <th>Фамилия</th>
-                                            <th>Отчество</th>
                                             <th>Почта</th>
-                                            <th>Телефон</th>
-                                            <th>Должность</th>
+                                            <th>Фамилия</th>
+                                            <th>Имя</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <!--<tbody>
                                             <tr class="fincrowlink">
                                                 <th class="" value="1">1</th>
                                                 <th class="" value="ИП Иванов 2">ИП Иванов 2</th>
@@ -257,6 +255,9 @@
                                                 <th class="" value="Заказчик">Заказчик</th>
                                                 <th class="" value="Заказчик">Заказчик</th>
                                             </tr>
+                                        </tbody>-->
+                                        <tbody id="sub_user_table_body">
+                                            <!--Тело таблицы формируется скриптом при загрузки страницы, обращением ajax к контроллеру-->
                                         </tbody>
                                     </table>
                                 </div>

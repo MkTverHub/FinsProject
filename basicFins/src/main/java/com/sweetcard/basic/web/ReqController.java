@@ -2,6 +2,8 @@ package com.sweetcard.basic.web;
 
 
 import com.google.gson.Gson;
+import com.sweetcard.basic.appuser.AppUser;
+import com.sweetcard.basic.appuser.AppUserRepository;
 import com.sweetcard.basic.dao.entities.*;
 import com.sweetcard.basic.dao.jdbc.*;
 import com.sweetcard.basic.dao.repository.*;
@@ -70,6 +72,8 @@ public class ReqController {
     UsercacheRepository usercacheRepository;
     @Autowired
     UsercacheJdbc usercacheJdbc;
+    @Autowired
+    AppUserRepository appUserRepository;
 
     @RequestMapping(value = "/SetContrAgentRequisits", method = RequestMethod.GET)
     public @ResponseBody Response GetRequisitsList(@RequestParam String ContragentId) {
@@ -543,6 +547,29 @@ public class ReqController {
             result.setCount(0);
             return result;
         }
+    }
+
+    //--------------------Экран Дочерних пользователей---------------------------------
+    //------Получение списка Дочерних пользователей-----------------------------------
+
+
+    //------Получение AJAX списка реквезитов контрагента---------------
+    @RequestMapping(value = "/GetSubUserList", method = RequestMethod.GET)
+    public @ResponseBody Response GetSubUserList() {
+        try{
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            List<AppUser> appUserList = appUserRepository.GetSubUserList(usercache.id);
+
+            //Создать экземпляр ответа и отправить JSON строку
+            Response result = new Response();
+            Gson gson = new Gson();
+            result.setText(gson.toJson(appUserList));
+            return result;
+        }catch (Exception ex_rep_1){
+            logger.info("ReqController.GetSubUserList -> Error: " + ex_rep_1);
+            return null;
+        }
+
     }
 
 
