@@ -557,6 +557,7 @@ public class ReqController {
     @RequestMapping(value = "/GetSubUserList", method = RequestMethod.GET)
     public @ResponseBody Response GetSubUserList() {
         try{
+            logger.info("ReqController.GetSubUserList ");
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
             List<AppUser> appUserList = appUserRepository.GetSubUserList(usercache.id);
 
@@ -593,10 +594,12 @@ public class ReqController {
                 finsprojectform.setFinsprojectname("Начало работы");
                 finsprojectform.setFinsprojectdescription("Проект по уолчанию");
                 Integer intNewProjectId = finsprojectJdbc.NewFinsProject(finsprojectform);
+                Integer intUserId = appUserRepository.GetUserIdbyEmail(GetUserLogin());
 
                 Usercacheform usercacheform = new Usercacheform();
                 usercacheform.setLogin(GetUserLogin());
                 usercacheform.setActiveProject(intNewProjectId);
+                usercacheform.setUserId(intUserId);
                 usercacheform.setUsercacheAction("insert");
                 usercacheJdbc.UsercacheAction(usercacheform);
                 usercache = usercacheRepository.GetUsercache(GetUserLogin());

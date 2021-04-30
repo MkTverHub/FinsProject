@@ -4,6 +4,7 @@ public class Usercacheform {
     private Integer intId;
     private String strLogin = "";
     private Integer intActiveProject;
+    private Integer intUserId;
     private String strUsercacheAction= ""; //insert/update/delete
 
     public Integer getId() {return intId;}
@@ -14,4 +15,6 @@ public class Usercacheform {
     public void setActiveProject(Integer ActiveProject) {this.intActiveProject = ActiveProject;}
     public String getUsercacheAction() {return strUsercacheAction;}
     public void setUsercacheAction(String UsercacheAction) {this.strUsercacheAction = UsercacheAction;}
+    public Integer getUserId() {return intUserId;}
+    public void setUserId(Integer UserId) {this.intUserId = UserId;}
 }
