@@ -71,6 +71,16 @@
                                         <h4 class="card-title">Добавить нового пользователя</h4>
                                     </div>
 
+                                    <!-- Системное. Действия insert/update/delete-->
+                                    <div class="form-group"><!--f-d-n-->
+                                        <input type="text" class="form-control" id="subuser_db_action">
+                                    </div>
+
+                                    <!-- Системное. Id-->
+                                    <div class="form-group"><!--f-d-n-->
+                                        <input type="text" class="form-control" id="subuser_id">
+                                    </div>
+
                                     <!-- Поле ввода Имя-->
                                     <div class="form-group">
                                         <div class="row">
@@ -78,7 +88,7 @@
                                             <div class="col-lg-9 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="text" class="form-control" readonly="readonly">
+                                                        <input type="text" class="form-control" readonly="readonly" id="subuser_fst_name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,7 +102,7 @@
                                             <div class="col-lg-9 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="text" class="form-control" readonly="readonly">
+                                                        <input type="text" class="form-control" readonly="readonly" id="subuser_lst_name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,7 +116,7 @@
                                             <div class="col-lg-9 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="text" class="form-control" readonly="readonly">
+                                                        <input type="text" class="form-control" readonly="readonly" id="subuser_mdl_name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,7 +130,7 @@
                                             <div class="col-lg-9 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="text" id="cntragnt_phone" class="form-control" readonly="readonly">
+                                                        <input type="text" class="form-control" readonly="readonly" id="subuser_phone">
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,7 +144,7 @@
                                             <div class="col-lg-9 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <select id="contragent_type_list" class="form-control custom-select" select_value="" disabled="disabled">
+                                                        <select class="form-control custom-select" select_value="" disabled="disabled" id="subuser_position">
                                                             <option value="">Выберете значение</option>
                                                             <option value="Покупатель">Менеджер</option>
                                                             <option value="Покупатель">Директор</option>
@@ -162,21 +172,21 @@
                                             <div class="col-lg-9 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="text" class="form-control" readonly="readonly">
+                                                        <input type="text" class="form-control" readonly="readonly" id="subuser_email">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Поле ввода Почта-->
+                                    <!-- Поле ввода password-->
                                     <div class="form-group">
                                         <div class="row">
                                             <label class="col-lg-3 align-self-center">Пароль</label>
                                             <div class="col-lg-9 align-self-center">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="text" class="form-control" readonly="readonly">
+                                                        <input type="text" class="form-control" readonly="readonly" id="subuser_password">
                                                     </div>
                                                 </div>
                                             </div>
