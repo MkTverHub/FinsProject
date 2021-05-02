@@ -551,9 +551,6 @@ public class ReqController {
 
     //--------------------Экран Дочерних пользователей---------------------------------
     //------Получение списка Дочерних пользователей-----------------------------------
-
-
-    //------Получение AJAX списка реквезитов контрагента---------------
     @RequestMapping(value = "/GetSubUserList", method = RequestMethod.GET)
     public @ResponseBody Response GetSubUserList() {
         try{
@@ -570,7 +567,38 @@ public class ReqController {
             logger.info("ReqController.GetSubUserList -> Error: " + ex_rep_1);
             return null;
         }
+    }
 
+    //-------Объединенная точка работы с формой SubUser
+    @RequestMapping(value = "/OperationSubUser", method = RequestMethod.GET)
+    public @ResponseBody Response OperationSubUser(@RequestParam String DBOperation,
+                                                   @RequestParam String SubUserId,
+                                                   @RequestParam String SubUserFstName,
+                                                   @RequestParam String SubUserLstName,
+                                                   @RequestParam String SubUserMdlName,
+                                                   @RequestParam String SubUserPhone,
+                                                   @RequestParam String SubUserPosition,
+                                                   @RequestParam String SubUserEmail,
+                                                   @RequestParam String SubUserPassword)
+    {
+        try{
+            logger.info("ReqController.OperationSubUser -> ");
+            //Установка Id активного проекта
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            Integer intActiveProject = usercache.active_proj;
+
+
+            //Просто устой ответ
+            Response result = new Response();
+            return result;
+
+        }catch (Exception lov_oper_ex){
+            logger.info("ReqController.OperationSubUser -> Error: " + lov_oper_ex);
+            Response result = new Response();
+            result.setText("");
+            result.setCount(0);
+            return result;
+        }
     }
 
 
