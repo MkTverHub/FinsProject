@@ -361,13 +361,18 @@ function JSONStringToContragentPickList(JSONString) {
     var strContragentName = '';
     var strContragentPickListContext = '<option value="0">Выберете значение</option>';
 
-    var obj = jQuery.parseJSON(JSONString);
-    $.each(obj, function (index, value) {
-        if(value['id'] == null){strContragentId = 'null';} else {strContragentId = value['id'].toString();}
-        if(value['name'] == null){strContragentName = 'null';} else {strContragentName = value['name'].toString();}
-        strContragentPickListContext = strContragentPickListContext + '<option value = "' + strContragentId + '">' + strContragentName + '</option>';
-    });
+    try{
+        var obj = jQuery.parseJSON(JSONString);
+        $.each(obj, function (index, value) {
+            if(value['id'] == null){strContragentId = 'null';} else {strContragentId = value['id'].toString();}
+            if(value['name'] == null){strContragentName = 'null';} else {strContragentName = value['name'].toString();}
+            strContragentPickListContext = strContragentPickListContext + '<option value = "' + strContragentId + '">' + strContragentName + '</option>';
+        });
+    }catch (e_1) {
+        console.log("JSONStringToContragentPickList ERROR: " + e_1);
+    }
     $("#contr_agent_select_field").html(strContragentPickListContext);
+
 }
 
 //Парсинг JSON списка реквизитов контрагента в выпадающий список

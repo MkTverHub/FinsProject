@@ -1,9 +1,6 @@
 package com.sweetcard.basic.appuser;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +13,7 @@ import java.util.Collections;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+@Data
 @Entity
 public class AppUser implements UserDetails{
     @SequenceGenerator(
@@ -24,12 +22,16 @@ public class AppUser implements UserDetails{
             allocationSize = 1
     )
 
+    /*
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "app_user_sequence"
-    )
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "app_user_sequence")
+    */
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id") public Integer id;
+
+
+    //private Long id;
+
     private Long parent_id;
     private String firstName;
     private String lastName;

@@ -34,14 +34,16 @@ function doAjaxGetSubUserList() {
 function doAjaxSubUserDBOperation() {
     SpinnerOn("doAjaxSubUserDBOperation");
     var strDBOperation = $('#subuser_db_action').attr('value');//update/insert/delete
-    var strSubUserId = $('#subuser_id').attr('value');
-    var strSubUserFstName = $('#subuser_fst_name').attr('value');
-    var strSubUserLstName= $('#subuser_lst_name').attr('value');
-    var strSubUserMdlName = $('#subuser_mdl_name').attr('value');
-    var strSubUserPhone = $('#subuser_phone').attr('value');
-    var strSubUserPosition = $('#subuser_position').attr('select_value');
-    var strSubUserEmail = $('#subuser_email').attr('value');
-    var strSubUserPassword = $('#subuser_password').attr('value');
+    var strSubUserId = "";
+    if($('#subuser_id').attr('value') == null){strSubUserId = "";}else{strSubUserId=$('#subuser_id').attr('value')};
+    var strSubUserFstName = $('#subuser_fst_name').val();
+    var strSubUserLstName= $('#subuser_lst_name').val();
+    var strSubUserMdlName = $('#subuser_mdl_name').val();
+    var strSubUserPhone = $('#subuser_phone').val();
+    var strSubUserPosition = $('#subuser_position').val();
+    var strSubUserEmail = $('#subuser_email').val();
+    var strSubUserPassword = $('#subuser_password').val();
+
 
     $.ajax({
         url : 'OperationSubUser',
@@ -76,14 +78,14 @@ function SaveSubUser(){
 };
 //Событие нажатия на кнопку "Удалить" контрагента
 function DeleteSubUser(){
-    $('#cntragnt_db_action').attr('value','delete');//update/insert/delete
+    $('#subuser_db_action').attr('value','delete');//update/insert/delete
     doAjaxSubUserDBOperation();
     SetROSubUserForm();
 };
 //Событие нажатия на кнопку "Создать" контрагента
 function InsertSubUser(){
     UnSetROSubUsertForm();
-    $('#cntragnt_db_action').attr('value','insert');//update/insert/delete
+    $('#subuser_db_action').attr('value','insert');//update/insert/delete
 };
 //Событие нажатия на кнопку "Отменить" контрагента
 function ResetSubUser(){

@@ -20,6 +20,7 @@ public class SubUserJdbc {
     private Logger logger = LoggerFactory.getLogger(SubUserJdbc.class);
     @Autowired
     JdbcTemplate jdbcTemplate;
+    private Integer intParentUserId;
 
     public Integer SubUserAction(SubUserForm subUserForm) {
         try{
@@ -32,7 +33,31 @@ public class SubUserJdbc {
 
                 }break;
                 case "insert" : {
-                    //
+
+                    GeneratedKeyHolder holder = new GeneratedKeyHolder();
+                    jdbcTemplate.update(new PreparedStatementCreator() {
+                        @Override
+                        public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+                            PreparedStatement statement = con.prepareStatement("INSERT INTO app_user (app_user_role,email,enabled,first_name,last_name,locked,parent_id,password) VALUES (?,?,?,?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
+                            statement.setString(1, subUserForm.getAppUserRole());
+                            statement.setString(2, subUserForm.getEmail());
+                            statement.setBoolean(3, subUserForm.getEnabled());
+                            statement.setString(4, subUserForm.getFirstName());
+                            statement.setString(5, subUserForm.getLastName());
+                            statement.setBoolean(6, subUserForm.getLocked());
+                            statement.setInt(7, subUserForm.getParentId());
+                            statement.setString(8, subUserForm.getPassword());
+                            return statement;
+                        }
+                    }, holder);
+
+
+
+                    String strSubUserId = holder.getKeyList().get(0).get("id").toString();
+                    logger.info("SubUserJdbc.NewSubUser -> SubUser Id: " + strSubUserId);
+                    intResult = Integer.parseInt(strSubUserId);
+
+
                 }break;
                 case "delete" : {
                     //
@@ -49,4 +74,6 @@ public class SubUserJdbc {
             return null;
         }
     }
+
+    public void SetParentUserId(Integer ParentId){intParentUserId = ParentId;}
 }

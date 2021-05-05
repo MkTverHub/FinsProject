@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/")
 public class ReqController {
     private Logger logger = LoggerFactory.getLogger(ReqController.class);
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(8);
 
 
     //---------------------Конструктор класса-----------------------
@@ -74,6 +76,8 @@ public class ReqController {
     UsercacheJdbc usercacheJdbc;
     @Autowired
     AppUserRepository appUserRepository;
+    @Autowired
+    SubUserJdbc subUserJdbc;
 
     @RequestMapping(value = "/SetContrAgentRequisits", method = RequestMethod.GET)
     public @ResponseBody Response GetRequisitsList(@RequestParam String ContragentId) {
@@ -171,18 +175,18 @@ public class ReqController {
     @RequestMapping(value = "/GetContactFinsAccProject", method = RequestMethod.GET)
     public @ResponseBody Response GetContactFinsAccProject(@RequestParam String ProjectId){
         try{
-            logger.info("ReqController.GetContactFinsAcc -> " + ProjectId);
+            logger.info("ReqController.GetContactFinsAccProject -> " + ProjectId);
             Integer intProjectId = Integer.parseInt(ProjectId);
             //Получить список счетов сотрудников компаний проекта
             List<Contact> contactList = contactRepository.GetContactFinsAccProj(intProjectId);
-            logger.info("ReqController.GetContactFinsAcc -> Size " + contactList.size());
+            logger.info("ReqController.GetContactFinsAccProject -> Size " + contactList.size());
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
             Gson gson = new Gson();
             result.setText(gson.toJson(contactList));
             return result;
         }catch (Exception cag_ex){
-            logger.info("ReqController.GetContactFinsAcc -> Error: " + cag_ex);
+            logger.info("ReqController.GetContactFinsAccProject -> Error: " + cag_ex);
             Response result = new Response();
             result.setText("");
             result.setCount(0);
@@ -582,11 +586,24 @@ public class ReqController {
                                                    @RequestParam String SubUserPassword)
     {
         try{
-            logger.info("ReqController.OperationSubUser -> ");
-            //Установка Id активного проекта
+            logger.info("ReqController.OperationSubUser -> " + DBOperation);
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
             Integer intActiveProject = usercache.active_proj;
+            Integer intUserId = usercache.user_id;
+            String encodedPassword = bCryptPasswordEncoder.encode(SubUserPassword);
 
+            SubUserForm subUserForm = new SubUserForm();
+            subUserForm.setDBOperation(DBOperation);
+            subUserForm.setAppUserRole("SUB_USER");
+            subUserForm.setEmail(SubUserEmail);
+            subUserForm.setEnabled(true);
+            subUserForm.setFirstName(SubUserFstName);
+            subUserForm.setLastName(SubUserLstName);
+            subUserForm.setLocked(false);
+            subUserForm.setParentId(intUserId);
+            subUserForm.setPassword(encodedPassword);
+
+            subUserJdbc.SubUserAction(subUserForm);
 
             //Просто устой ответ
             Response result = new Response();
