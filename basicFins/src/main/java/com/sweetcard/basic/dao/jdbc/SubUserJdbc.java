@@ -30,10 +30,11 @@ public class SubUserJdbc {
 
             switch(strOperationType){
                 case "update" : {
-
+                    jdbcTemplate.update("update app_user set email = ?, first_name = ?, last_name = ? where id = ? and parent_id = ?",
+                            subUserForm.getEmail(), subUserForm.getFirstName(), subUserForm.getLastName(), subUserForm.getId(), subUserForm.getParentId());
+                    logger.info(subUserForm.getEmail() + " " + subUserForm.getFirstName() + " " + subUserForm.getLastName() + " " + subUserForm.getId() + " " + subUserForm.getParentId());
                 }break;
                 case "insert" : {
-
                     GeneratedKeyHolder holder = new GeneratedKeyHolder();
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
@@ -50,17 +51,12 @@ public class SubUserJdbc {
                             return statement;
                         }
                     }, holder);
-
-
-
                     String strSubUserId = holder.getKeyList().get(0).get("id").toString();
-                    logger.info("SubUserJdbc.NewSubUser -> SubUser Id: " + strSubUserId);
                     intResult = Integer.parseInt(strSubUserId);
-
-
                 }break;
                 case "delete" : {
-                    //
+                    jdbcTemplate.update("delete from app_user where id = ? and parent_id = ?",
+                            subUserForm.getId(), subUserForm.getParentId());
                 }break;
                     //
                 default:{

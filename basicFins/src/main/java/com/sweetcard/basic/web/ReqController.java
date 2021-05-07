@@ -560,7 +560,7 @@ public class ReqController {
         try{
             logger.info("ReqController.GetSubUserList ");
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
-            List<AppUser> appUserList = appUserRepository.GetSubUserList(usercache.id);
+            List<AppUser> appUserList = appUserRepository.GetSubUserList(usercache.user_id);
 
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
@@ -591,9 +591,12 @@ public class ReqController {
             Integer intActiveProject = usercache.active_proj;
             Integer intUserId = usercache.user_id;
             String encodedPassword = bCryptPasswordEncoder.encode(SubUserPassword);
+            Integer intSubUserId;
+            if(0 == SubUserId.compareTo("")){intSubUserId = 0;}else{intSubUserId = Integer.parseInt(SubUserId);}
 
             SubUserForm subUserForm = new SubUserForm();
             subUserForm.setDBOperation(DBOperation);
+            subUserForm.setId(intSubUserId);
             subUserForm.setAppUserRole("SUB_USER");
             subUserForm.setEmail(SubUserEmail);
             subUserForm.setEnabled(true);

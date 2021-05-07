@@ -74,12 +74,14 @@ function doAjaxSubUserDBOperation() {
 //Событие нажатия на кнопку "Сохранить" контрагента
 function SaveSubUser(){
     doAjaxSubUserDBOperation();
+    ClearSubUserForm()
     SetROSubUserForm();
 };
 //Событие нажатия на кнопку "Удалить" контрагента
 function DeleteSubUser(){
     $('#subuser_db_action').attr('value','delete');//update/insert/delete
     doAjaxSubUserDBOperation();
+    ClearSubUserForm()
     SetROSubUserForm();
 };
 //Событие нажатия на кнопку "Создать" контрагента
@@ -89,6 +91,7 @@ function InsertSubUser(){
 };
 //Событие нажатия на кнопку "Отменить" контрагента
 function ResetSubUser(){
+    ClearSubUserForm()
     SetROSubUserForm();
 };
 
@@ -162,3 +165,16 @@ function UnSetROSubUsertForm(){
     $('#subuser_email').attr('readonly', false);
     $('#subuser_password').attr('readonly', false);
 }
+
+//Чистка формы SubUser
+function ClearSubUserForm(){
+    $('#subuser_db_action').attr('value','');//update/insert/delete
+    $('#subuser_id').attr('value','');
+    $('#subuser_fst_name').val('');
+    $('#subuser_lst_name').val('');
+    $('#subuser_mdl_name').val('');
+    $('#subuser_phone').val('');
+    $('#subuser_position').val('');
+    $('#subuser_email').val('');
+    $('#subuser_password').val('');
+};

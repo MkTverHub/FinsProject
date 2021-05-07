@@ -37,7 +37,6 @@ public class ContragentJdbc {
                     logger.info("ContragentJdbc.Update: Id = " + intContragentId);
                     jdbcTemplate.update("update Contragent set project_id = ?, name = ?, description = ?, phone_num = ?, email_addr = ?, type = ? where id = ?",
                             intActivProjectId, contragentform.getContragentname() ,contragentform.getContragentdescription(), contragentform.getContragentphone(), contragentform.getContragentemail(), contragentform.getContragentType(), intContragentId);
-
                 }break;
                 case "insert" : {
                     //Создание записи
