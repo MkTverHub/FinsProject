@@ -28,4 +28,7 @@ public interface AppUserRepository
 
     @Query(value = "SELECT * FROM app_user where parent_id = :parent_id and app_user_role = 'SUB_USER'", nativeQuery = true)
     List<AppUser> GetSubUserList (@Param("parent_id") Integer parent_id);
+
+    @Query(value = "SELECT * FROM app_user where id = :id and app_user_role = 'USER'", nativeQuery = true)
+    AppUser GetMainUser (@Param("id") Integer id);
 }

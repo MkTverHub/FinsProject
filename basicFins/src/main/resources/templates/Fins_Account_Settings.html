@@ -58,12 +58,12 @@
                             Информация
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Аккаунт: <span>info@mail.ru</span></h4>
+                            <h4 class="card-title">Аккаунт: <span th:utext="${attrUserMail}"/></h4>
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td>ФИО:</td>
-                                        <td>Иванов Иван Иванович</td>
+                                        <td th:utext="${attrUserLstName}+' '+${attrUserFstName}+' '+${attrUserMdlName}"/>
                                         
                                     </tr>
                                     <tr>

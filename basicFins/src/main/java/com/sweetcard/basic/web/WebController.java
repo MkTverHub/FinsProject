@@ -1,5 +1,7 @@
 package com.sweetcard.basic.web;
 
+import com.sweetcard.basic.appuser.AppUser;
+import com.sweetcard.basic.appuser.AppUserRepository;
 import com.sweetcard.basic.dao.jdbc.*;
 import com.sweetcard.basic.dao.repository.AggregateDataContragent;
 import com.sweetcard.basic.dao.entities.*;
@@ -53,6 +55,10 @@ public class WebController {
     UsercacheRepository usercacheRepository;
     @Autowired
     LovRepository lovRepository;
+    @Autowired
+    AppUserRepository appUserRepository;
+    @Autowired
+    AggregateDataSubUser aggregateDataSubUser;
 
     //Здесь вход на app
     @GetMapping({"/", "/index","/FinsOperations"})
@@ -265,7 +271,22 @@ public class WebController {
     //Переход на экран настройки пользователя
     @RequestMapping(value = "/UserSettings")
     public String GoToUserSettings(Model model){
-        return "Fins_Account_Settings";
+        try{
+            logger.info("WebController.GoToUserSettings -> ");
+            //Получение usercache
+            Usercache usercache = GetUsercache();
+            AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
+
+            model.addAttribute("attrUserFstName",appUser.getFirstName());
+            model.addAttribute("attrUserLstName",appUser.getLastName());
+            model.addAttribute("attrUserMdlName",appUser.getMiddleName());
+            model.addAttribute("attrUserMail",appUser.getEmail());
+            return "Fins_Account_Settings";
+        }catch (Exception req_ex1){
+            logger.info("WebController.GoToUserSettings -> ERROR: " + req_ex1);
+            return "error";
+        }
+
     }
 
     //Переход на экран настройки пользователя
@@ -277,7 +298,18 @@ public class WebController {
     //Переход на экран Fins_Account_User_Info
     @RequestMapping(value = "/FinsAccountUsersInfo")
     public String GoToFinsAccountUsersInfo(Model model){
-        return "Fins_Account_Users_Info";
+        try{
+            logger.info("WebController.GoToFinsAccountUsersInfo -> ");
+            //Получение usercache
+            Usercache usercache = GetUsercache();
+            List<AggrSubUser> aggrSubUserList = aggregateDataSubUser.GetSubUserList(usercache.user_id);
+
+            model.addAttribute("sub_user_list",aggrSubUserList);
+            return "Fins_Account_Users_Info";
+        }catch (Exception req_ex1){
+            logger.info("WebController.GoToFinsAccountUsersInfo -> ERROR: " + req_ex1);
+            return "error";
+        }
     }
 
     //Переход на экран Fins_Account_User_Add

@@ -35,6 +35,9 @@ public class AppUser implements UserDetails{
     private Long parent_id;
     private String firstName;
     private String lastName;
+    private String middleName;
+    private String phone;
+    private String position;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
@@ -70,16 +73,16 @@ public class AppUser implements UserDetails{
     public String getUsername() {
         return email;
     }
-
     public String getFirstName() {
         return firstName;
     }
-
     public  String getLastName(){
         return lastName;
     }
-
+    public String getMiddleName() { return middleName; }
     public Long getParent_id() {return parent_id;}
+    public String getPhone() { return phone; }
+    public String getPosition() { return position; }
 
     public void setParent_id(Long parent_id) {this.parent_id = parent_id;}
 
