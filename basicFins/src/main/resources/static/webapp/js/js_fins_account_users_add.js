@@ -24,7 +24,7 @@ function doAjaxGetSubUserList() {
         }),
         success: function (data) {
             console.log(data.text);
-            $("#sub_user_table_body").html(JsonToTableBody("app_user","id",["id","email","lastName","firstName"],data.text));
+            $("#sub_user_table_body").html(JsonToTableBody("app_user","id",["id","email","lastName","firstName","middleName","phone","position"],data.text));
             SpinnerOff("doAjaxGetSubUserList");
         }
     });
@@ -40,7 +40,7 @@ function doAjaxSubUserDBOperation() {
     var strSubUserLstName= $('#subuser_lst_name').val();
     var strSubUserMdlName = $('#subuser_mdl_name').val();
     var strSubUserPhone = $('#subuser_phone').val();
-    var strSubUserPosition = $('#subuser_position').val();
+    var strSubUserPosition = $('#subuser_position_list').attr('select_value');
     var strSubUserEmail = $('#subuser_email').val();
     var strSubUserPassword = $('#subuser_password').val();
 
@@ -95,6 +95,12 @@ function ResetSubUser(){
     SetROSubUserForm();
 };
 
+//Событие выбора значения выпадающего "Тип"
+$(function(){
+    $("#subuser_position_list").change( function(){
+        $('#subuser_position_list').attr('select_value',$('#subuser_position_list').val());
+    });
+});
 
 //Событие нажатия на строку SubUser
 $(function(){
@@ -107,17 +113,14 @@ $(function(){
     var strSubUserPosition = '';
     var strSubUserEmail = '';
     var strSubUserPassword = '';
-
-
-
     $("#sub_user_table_body").on("click", ".app_user_t_row_class", function () {
         UnSetROSubUsertForm();
         strSubUserId = $(this).find('.id_t_cell_class').attr('value');
         strSubUserFstName = $(this).find('.firstName_t_cell_class').attr('value');
         strSubUserLstName = $(this).find('.lastName_t_cell_class').attr('value');
-        strSubUserMdlName = "";
-        strSubUserPhone = "";
-        strSubUserPosition = "";
+        strSubUserMdlName = $(this).find('.middleName_t_cell_class').attr('value');
+        strSubUserPhone = $(this).find('.phone_t_cell_class').attr('value');
+        strSubUserPosition = $(this).find('.position_t_cell_class').attr('value');
         strSubUserEmail = $(this).find('.email_t_cell_class').attr('value');
         strSubUserPassword = "****";
 
@@ -127,7 +130,6 @@ $(function(){
         $('#subuser_lst_name').attr('value',strSubUserLstName);
         $('#subuser_mdl_name').attr('value',strSubUserMdlName);
         $('#subuser_phone').attr('value',strSubUserPhone);
-        $('#subuser_position').attr('value',strSubUserPosition);
         $('#subuser_email').attr('value',strSubUserEmail);
         $('#subuser_password').attr('value',strSubUserPassword);
 
@@ -136,7 +138,7 @@ $(function(){
         $('#subuser_lst_name').val(strSubUserLstName);
         $('#subuser_mdl_name').val(strSubUserMdlName);
         $('#subuser_phone').val(strSubUserPhone);
-        $('#subuser_position').val(strSubUserPosition);
+        SetActiveSelect('#subuser_position_list',strSubUserPosition)
         $('#subuser_email').val(strSubUserEmail);
         $('#subuser_password').val(strSubUserPassword);
 
@@ -150,7 +152,7 @@ function SetROSubUserForm(){
     $('#subuser_lst_name').attr('readonly', true);
     $('#subuser_mdl_name').attr('readonly', true);
     $('#subuser_phone').attr('readonly', true);
-    $('#subuser_position').attr('readonly', true);
+    $('#subuser_position_list').attr('disabled', true);
     $('#subuser_email').attr('readonly', true);
     $('#subuser_password').attr('readonly', true);
 }
@@ -161,7 +163,7 @@ function UnSetROSubUsertForm(){
     $('#subuser_lst_name').attr('readonly', false);
     $('#subuser_mdl_name').attr('readonly', false);
     $('#subuser_phone').attr('readonly', false);
-    $('#subuser_position').attr('readonly', false);
+    $('#subuser_position_list').attr('disabled', false);
     $('#subuser_email').attr('readonly', false);
     $('#subuser_password').attr('readonly', false);
 }
@@ -174,7 +176,20 @@ function ClearSubUserForm(){
     $('#subuser_lst_name').val('');
     $('#subuser_mdl_name').val('');
     $('#subuser_phone').val('');
-    $('#subuser_position').val('');
+    $('#subuser_position_list').val('');
     $('#subuser_email').val('');
     $('#subuser_password').val('');
 };
+
+//Функция установки выбранного значения
+function SetActiveSelect(ListSelector,SelectedVal){
+    $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
+    $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
+    $(ListSelector).attr('select_value',SelectedVal);
+}
+//Функция сброса списка
+function ResetPickList(ListSelector){
+    $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
+    $(ListSelector).find('[selected]').attr('select_value', null);
+
+}

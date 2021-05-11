@@ -77,6 +77,8 @@ public class ReqController {
     @Autowired
     AppUserRepository appUserRepository;
     @Autowired
+    AggregateDataSubUser aggregateDataSubUser;
+    @Autowired
     SubUserJdbc subUserJdbc;
 
     @RequestMapping(value = "/SetContrAgentRequisits", method = RequestMethod.GET)
@@ -592,21 +594,33 @@ public class ReqController {
             Integer intUserId = usercache.user_id;
             String encodedPassword = bCryptPasswordEncoder.encode(SubUserPassword);
             Integer intSubUserId;
-            if(0 == SubUserId.compareTo("")){intSubUserId = 0;}else{intSubUserId = Integer.parseInt(SubUserId);}
+            Integer intCountSubUser = aggregateDataSubUser.GetSubUserCount(intUserId);
 
-            SubUserForm subUserForm = new SubUserForm();
-            subUserForm.setDBOperation(DBOperation);
-            subUserForm.setId(intSubUserId);
-            subUserForm.setAppUserRole("SUB_USER");
-            subUserForm.setEmail(SubUserEmail);
-            subUserForm.setEnabled(true);
-            subUserForm.setFirstName(SubUserFstName);
-            subUserForm.setLastName(SubUserLstName);
-            subUserForm.setLocked(false);
-            subUserForm.setParentId(intUserId);
-            subUserForm.setPassword(encodedPassword);
+            if(intCountSubUser < 5) {
 
-            subUserJdbc.SubUserAction(subUserForm);
+                if (0 == SubUserId.compareTo("")) {
+                    intSubUserId = 0;
+                } else {
+                    intSubUserId = Integer.parseInt(SubUserId);
+                }
+
+                SubUserForm subUserForm = new SubUserForm();
+                subUserForm.setDBOperation(DBOperation);
+                subUserForm.setId(intSubUserId);
+                subUserForm.setAppUserRole("SUB_USER");
+                subUserForm.setEmail(SubUserEmail);
+                subUserForm.setEnabled(true);
+                subUserForm.setFirstName(SubUserFstName);
+                subUserForm.setLastName(SubUserLstName);
+                subUserForm.setMiddleName(SubUserMdlName);
+                subUserForm.setPhone(SubUserPhone);
+                subUserForm.setPosition(SubUserPosition);
+                subUserForm.setLocked(false);
+                subUserForm.setParentId(intUserId);
+                subUserForm.setPassword(encodedPassword);
+
+                subUserJdbc.SubUserAction(subUserForm);
+            }
 
             //Просто устой ответ
             Response result = new Response();
