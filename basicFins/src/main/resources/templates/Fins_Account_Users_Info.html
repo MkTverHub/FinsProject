@@ -68,7 +68,7 @@
 
 
                 <div class="row">
-                    <!-- Плитки Контрагенов-->
+                    <!-- Плитки SubUsers-->
                     <div class="col-12" th:each="c: ${sub_user_list}">
                         <div th:replace="fragments\layouts\fragment_project_tile.html :: sub_user_fragment_1(fst_name=${c.firstName},lst_name=${c.lastName},mdl_name=${c.middleName},phone=${c.phone},mail=${c.email},position=${c.position})"></div>
                     </div>

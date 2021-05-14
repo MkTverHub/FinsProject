@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface UsercacheRepository extends JpaRepository<Usercache, Integer> {
     //Выбрать все селектом по проекту
-    @Query(value = "SELECT id,active_proj,login,user_id FROM usercache where login = :user_login", nativeQuery = true)
+    @Query(value = "SELECT id,active_proj,login,user_id,role FROM usercache where login = :user_login", nativeQuery = true)
     Usercache GetUsercache(@Param("user_login") String UserLogin);
 }

@@ -26,9 +26,12 @@ public interface AppUserRepository
     @Query(value = "select id from app_user where email = :user_login", nativeQuery = true)
     Integer GetUserIdbyEmail(@Param("user_login") String user_login_in);
 
+    @Query(value = "SELECT * FROM app_user where email = :user_login", nativeQuery = true)
+    AppUser GetUserByEmail(@Param("user_login") String user_login_in);
+
     @Query(value = "SELECT * FROM app_user where parent_id = :parent_id and app_user_role = 'SUB_USER'", nativeQuery = true)
     List<AppUser> GetSubUserList (@Param("parent_id") Integer parent_id);
 
-    @Query(value = "SELECT * FROM app_user where id = :id and app_user_role = 'USER'", nativeQuery = true)
+    @Query(value = "SELECT * FROM app_user where id = :id", nativeQuery = true)
     AppUser GetMainUser (@Param("id") Integer id);
 }

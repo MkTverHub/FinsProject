@@ -596,8 +596,9 @@ public class ReqController {
             Integer intSubUserId;
             Integer intCountSubUser = aggregateDataSubUser.GetSubUserCount(intUserId);
 
-            if(intCountSubUser < 5) {
+            if(intCountSubUser < 5 && 0==usercache.role.compareTo("USER")) {
 
+                if(SubUserId == null){SubUserId="";}
                 if (0 == SubUserId.compareTo("")) {
                     intSubUserId = 0;
                 } else {
@@ -657,15 +658,18 @@ public class ReqController {
                 finsprojectform.setFinsprojectdescription("Проект по уолчанию");
                 Integer intNewProjectId = finsprojectJdbc.NewFinsProject(finsprojectform);
                 Integer intUserId = appUserRepository.GetUserIdbyEmail(GetUserLogin());
+                AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
+                String strUserRole = appUser.getRole().name();
 
                 Usercacheform usercacheform = new Usercacheform();
                 usercacheform.setLogin(GetUserLogin());
                 usercacheform.setActiveProject(intNewProjectId);
                 usercacheform.setUserId(intUserId);
+                usercacheform.setRole(strUserRole);
                 usercacheform.setUsercacheAction("insert");
                 usercacheJdbc.UsercacheAction(usercacheform);
                 usercache = usercacheRepository.GetUsercache(GetUserLogin());
-                logger.info("ReqController.GetUserCache -> New UserCache " + GetUserLogin() + " " + intNewProjectId);
+                logger.info("ReqController.GetUserCache -> New UserCache " + GetUserLogin() + " " + intNewProjectId + " " + strUserRole);
             }
 
             //Создать экземпляр ответа и отправить JSON строку

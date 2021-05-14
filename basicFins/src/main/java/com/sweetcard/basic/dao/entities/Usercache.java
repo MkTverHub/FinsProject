@@ -15,5 +15,6 @@ public class Usercache {
     @Column(name = "active_proj") public Integer active_proj;
     @Column(name = "login") public String login;
     @Column(name = "user_id") public Integer user_id;
+    @Column(name = "role") public String role;
 
 }

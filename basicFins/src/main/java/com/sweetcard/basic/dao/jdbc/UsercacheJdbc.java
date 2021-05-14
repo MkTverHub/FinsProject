@@ -30,8 +30,8 @@ public class UsercacheJdbc {
             switch(strOperationType){
                 case "update" : {
                     logger.info("UsercacheJdbc.UsercacheAction.update -> ");
-                    jdbcTemplate.update("update usercache set active_proj = ?, user_id = ? where login = ?",
-                            usercacheform.getActiveProject(), usercacheform.getUserId(), usercacheform.getLogin());
+                    jdbcTemplate.update("update usercache set active_proj = ?, user_id = ?, role = ? where login = ?",
+                            usercacheform.getActiveProject(), usercacheform.getUserId(), usercacheform.getLogin(), usercacheform.getRole());
                 }break;
                 case "insert" : {
                     //Создание записи
@@ -39,10 +39,11 @@ public class UsercacheJdbc {
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
                         public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                            PreparedStatement statement = con.prepareStatement("INSERT INTO usercache (login,active_proj,user_id) VALUES (?,?,?) ", Statement.RETURN_GENERATED_KEYS);
+                            PreparedStatement statement = con.prepareStatement("INSERT INTO usercache (login,active_proj,user_id,role) VALUES (?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
                             statement.setString(1, usercacheform.getLogin());
                             statement.setInt(2, usercacheform.getActiveProject());
                             statement.setInt(3, usercacheform.getUserId());
+                            statement.setString(4, usercacheform.getRole());
                             return statement;
                         }
                     }, holder);

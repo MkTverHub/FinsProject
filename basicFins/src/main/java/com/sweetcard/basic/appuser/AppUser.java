@@ -83,6 +83,7 @@ public class AppUser implements UserDetails{
     public Long getParent_id() {return parent_id;}
     public String getPhone() { return phone; }
     public String getPosition() { return position; }
+    public AppUserRole getRole() { return appUserRole; }
 
     public void setParent_id(Long parent_id) {this.parent_id = parent_id;}
 

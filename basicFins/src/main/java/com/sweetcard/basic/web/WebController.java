@@ -277,10 +277,14 @@ public class WebController {
             Usercache usercache = GetUsercache();
             AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
 
+            String AdminFlg = "false";
+            if(0==usercache.role.compareTo("USER")){AdminFlg="true";}
+
             model.addAttribute("attrUserFstName",appUser.getFirstName());
             model.addAttribute("attrUserLstName",appUser.getLastName());
             model.addAttribute("attrUserMdlName",appUser.getMiddleName());
             model.addAttribute("attrUserMail",appUser.getEmail());
+            model.addAttribute("attrUserAdmFlg",AdminFlg);
             return "Fins_Account_Settings";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToUserSettings -> ERROR: " + req_ex1);
