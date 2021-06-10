@@ -10,7 +10,7 @@ function StartPage() {
 };
 
 
-//Ajax получение списка дочерних пользаков + заполнение таблицы
+//Ajax получение списка дочерних пользаков + заполнение таблицы + заполнение пиклиста
 function doAjaxGetSubUserList() {
     SpinnerOn("doAjaxGetSubUserList");
     $.ajax({
@@ -23,8 +23,13 @@ function doAjaxGetSubUserList() {
 
         }),
         success: function (data) {
-            console.log(data.text);
+            var strSubUserPickListContext = '<option value="0">Выберете значение</option>';
             $("#sub_user_table_body").html(JsonToTableBody("app_user","id",["id","email","lastName","firstName","middleName","phone","position"],data.text));
+            var obj = jQuery.parseJSON(data.text);
+            $.each(obj, function (index, value) {
+                strSubUserPickListContext = strSubUserPickListContext + '<option value = "' + value['email'] + '">' + value["lastName"] + ' ' + value["firstName"]  + '</option>';
+            });
+            $("#sub_users_picklist").html(strSubUserPickListContext);
             SpinnerOff("doAjaxGetSubUserList");
         }
     });
@@ -43,7 +48,6 @@ function doAjaxSubUserDBOperation() {
     var strSubUserPosition = $('#subuser_position_list').attr('select_value');
     var strSubUserEmail = $('#subuser_email').val();
     var strSubUserPassword = $('#subuser_password').val();
-
 
     $.ajax({
         url : 'OperationSubUser',
@@ -142,6 +146,14 @@ $(function(){
         $('#subuser_email').val(strSubUserEmail);
         $('#subuser_password').val(strSubUserPassword);
 
+    });
+});
+
+//Событие выбора значения выпадающего SubUserPickList
+$(function(){
+    $("#sub_users_picklist").change( function(){
+        var strSelectValue = $('#sub_users_picklist').val();
+        $('#sub_users_picklist').attr('select_value',strSelectValue);
     });
 });
 
