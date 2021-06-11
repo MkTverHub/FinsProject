@@ -67,8 +67,10 @@ public class WebController {
         try {
             model.addAttribute("ModelProjectId", ProjectId);
             if (0 != ProjectId.compareTo("no_value")) {
+                Integer intUserId = appUserRepository.GetUserIdbyEmail(GetUserLogin());
                 Usercacheform usercacheform = new Usercacheform();
                 usercacheform.setLogin(GetUserLogin());
+                usercacheform.setUserId(intUserId);
                 usercacheform.setActiveProject(Integer.parseInt(ProjectId));
                 usercacheform.setUsercacheAction("update");
                 usercacheJdbc.UsercacheAction(usercacheform);
@@ -138,11 +140,14 @@ public class WebController {
         try {
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
+                SetActiveProjectUserCache(Integer.parseInt(ProjectId));
+                /*
                 Usercacheform usercacheform = new Usercacheform();
                 usercacheform.setLogin(GetUserLogin());
                 usercacheform.setActiveProject(Integer.parseInt(ProjectId));
                 usercacheform.setUsercacheAction("update");
                 usercacheJdbc.UsercacheAction(usercacheform);
+                */
             }
 
             //Получение активного проекта пользователя
@@ -160,11 +165,14 @@ public class WebController {
         logger.info("WebController.GoToFinsLOVEditor -> ");
         if (0 != ProjectId.compareTo("no_value")) {
             //Переход из левой понели проектов кликом по проекту
-            Usercacheform usercacheform = new Usercacheform();
-            usercacheform.setLogin(GetUserLogin());
-            usercacheform.setActiveProject(Integer.parseInt(ProjectId));
-            usercacheform.setUsercacheAction("update");
-            usercacheJdbc.UsercacheAction(usercacheform);
+            SetActiveProjectUserCache(Integer.parseInt(ProjectId));
+                /*
+                Usercacheform usercacheform = new Usercacheform();
+                usercacheform.setLogin(GetUserLogin());
+                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
+                usercacheform.setUsercacheAction("update");
+                usercacheJdbc.UsercacheAction(usercacheform);
+                */
         }
         return "Fins_LOV";
     }
@@ -179,11 +187,14 @@ public class WebController {
 
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
+                SetActiveProjectUserCache(Integer.parseInt(ProjectId));
+                /*
                 Usercacheform usercacheform = new Usercacheform();
                 usercacheform.setLogin(GetUserLogin());
                 usercacheform.setActiveProject(Integer.parseInt(ProjectId));
                 usercacheform.setUsercacheAction("update");
                 usercacheJdbc.UsercacheAction(usercacheform);
+                */
             }
 
             //Получение активного проекта пользователя
@@ -208,11 +219,14 @@ public class WebController {
 
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
+                SetActiveProjectUserCache(Integer.parseInt(ProjectId));
+                /*
                 Usercacheform usercacheform = new Usercacheform();
                 usercacheform.setLogin(GetUserLogin());
                 usercacheform.setActiveProject(Integer.parseInt(ProjectId));
                 usercacheform.setUsercacheAction("update");
                 usercacheJdbc.UsercacheAction(usercacheform);
+                */
             }
 
             return "Fins_Contragents";
@@ -252,11 +266,14 @@ public class WebController {
         try {
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
+                SetActiveProjectUserCache(Integer.parseInt(ProjectId));
+                /*
                 Usercacheform usercacheform = new Usercacheform();
                 usercacheform.setLogin(GetUserLogin());
                 usercacheform.setActiveProject(Integer.parseInt(ProjectId));
                 usercacheform.setUsercacheAction("update");
                 usercacheJdbc.UsercacheAction(usercacheform);
+                */
             }
 
 
@@ -350,6 +367,21 @@ public class WebController {
             usercache = usercacheRepository.GetUsercache(GetUserLogin());
         }
         return usercache;
+    }
+
+    //Обновить активный проект в Usercache
+    private void SetActiveProjectUserCache(Integer ProjectId){
+        try{
+            Integer intUserId = appUserRepository.GetUserIdbyEmail(GetUserLogin());
+            Usercacheform usercacheform = new Usercacheform();
+            usercacheform.setLogin(GetUserLogin());
+            usercacheform.setUserId(intUserId);
+            usercacheform.setActiveProject(ProjectId);
+            usercacheform.setUsercacheAction("update");
+            usercacheJdbc.UsercacheAction(usercacheform);
+        }catch (Exception ex_cach){
+            logger.info("WebController.SetActiveProjectUserCache -> ERROR: " + ex_cach);
+        }
     }
 
 }

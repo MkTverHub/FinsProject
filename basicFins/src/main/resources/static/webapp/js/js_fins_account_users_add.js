@@ -6,6 +6,7 @@
 function StartPage() {
     doAjaxGetUserCache("RoProject");
     doAjaxGetSubUserList();
+    doAjaxGetProjectList();
 
 };
 
@@ -34,6 +35,37 @@ function doAjaxGetSubUserList() {
         }
     });
 };
+
+//Ajax получение списка проектов в левой панели
+function doAjaxGetProjectList() {
+    SpinnerOn("doAjaxGetProjectList");
+    try {
+        $.ajax({
+            url: 'GetFinsProjectList',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+
+            }),
+            success: function (data) {
+                var obj = jQuery.parseJSON(data.text);
+                var strProjectPickListContext = '<option value="0">Выберете значение</option>';
+                $.each(obj, function (index, value) {
+                    strProjectPickListContext = strProjectPickListContext + '<option value = "' + value['id'] + '">' + value["name"] + '</option>';
+                });
+                $("#project_picklist").html(strProjectPickListContext);
+                SpinnerOff("doAjaxGetProjectList");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetProjectList");
+        console.log("Error doAjaxGetProjectList: " + e);
+    }
+};
+
+
 
 //Ajax формы операции DB SubUser (Создать/Обновить/Удалить)
 function doAjaxSubUserDBOperation() {
@@ -154,6 +186,14 @@ $(function(){
     $("#sub_users_picklist").change( function(){
         var strSelectValue = $('#sub_users_picklist').val();
         $('#sub_users_picklist').attr('select_value',strSelectValue);
+    });
+});
+
+//Событие выбора значения выпадающего ProjectPickList
+$(function(){
+    $("#project_picklist").change( function(){
+        var strSelectValue = $('#project_picklist').val();
+        $('#project_picklist').attr('select_value',strSelectValue);
     });
 });
 
