@@ -100,6 +100,20 @@ public class FinsprojectJdbc {
         }
     }
 
+    //Расшарить проект
+    public void ShareProject(Finsprojectform finsprojectform){
+        try{
+            String strUserLogin = GetUserLogin();//Получить логин пользователя
+            Integer intUserId = GetUserId(strUserLogin);//Получение Id пользователя
+            Integer intRecordId = Integer.parseInt(finsprojectform.getFinsprojectid());
+            Integer intSubUserIf = Integer.parseInt(finsprojectform.getFinsprojectname());
+
+            logger.info("FinsprojectJdbc.ShareProject -> SUCCESS");
+        }catch (Exception exp_sql){
+            logger.info("FinsprojectJdbc.ShareProject -> ERROR: " + exp_sql);
+        }
+    }
+
     //Получить логин пользователя
     private String GetUserLogin(){
         String strUserName = "";

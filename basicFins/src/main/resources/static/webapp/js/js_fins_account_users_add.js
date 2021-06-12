@@ -28,7 +28,7 @@ function doAjaxGetSubUserList() {
             $("#sub_user_table_body").html(JsonToTableBody("app_user","id",["id","email","lastName","firstName","middleName","phone","position"],data.text));
             var obj = jQuery.parseJSON(data.text);
             $.each(obj, function (index, value) {
-                strSubUserPickListContext = strSubUserPickListContext + '<option value = "' + value['email'] + '">' + value["lastName"] + ' ' + value["firstName"]  + '</option>';
+                strSubUserPickListContext = strSubUserPickListContext + '<option value = "' + value['id'] + '">' + value["lastName"] + ' ' + value["firstName"]  + '</option>';
             });
             $("#sub_users_picklist").html(strSubUserPickListContext);
             SpinnerOff("doAjaxGetSubUserList");
@@ -104,6 +104,36 @@ function doAjaxSubUserDBOperation() {
         }
     });
 };
+
+function doAjaxShareProjectDBOperation() {
+    SpinnerOn("doAjaxShareProjectDBOperation");
+    try {
+        var strDBOperation = "ShareProject";
+        var strProjectId = $('#project_picklist').attr('select_value');
+        var strSubUserId = $('#sub_users_picklist').attr('select_value');
+        $.ajax({
+            url: 'OperationFinsProject',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                FinsProjectOperation: strDBOperation,
+                FinsProjectId: strProjectId,
+                FinsProjectName: strSubUserId,
+                FinsProjectDescription: ""
+            }),
+            success: function (data) {
+                //
+                SpinnerOff("doAjaxShareProjectDBOperation");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxShareProjectDBOperation");
+        console.log("Error doAjaxShareProjectDBOperation: " + e);
+    }
+};
+
 
 
 //-------------Функции событий-----------------

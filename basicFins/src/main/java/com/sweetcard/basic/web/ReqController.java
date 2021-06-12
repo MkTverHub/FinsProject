@@ -300,6 +300,10 @@ public class ReqController {
                     logger.info("ReqController.OperationFinsProject -> edit");
                     System.out.println("ReqController.OperationFinsProject -> edit");
                 }
+                case "ShareProject":{
+                    logger.info("ReqController.OperationFinsProject -> ShareProject");
+                    finsprojectJdbc.ShareProject(finsprojectform);
+                }
                 break;
                 default:{
                     logger.info("ReqController.OperationFinsProject ERROR: -> Неизвестный тип операции " + FinsProjectOperation);
