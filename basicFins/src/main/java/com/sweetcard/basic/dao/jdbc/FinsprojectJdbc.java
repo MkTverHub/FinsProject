@@ -1,8 +1,10 @@
 package com.sweetcard.basic.dao.jdbc;
 
-import com.sweetcard.basic.appuser.AppUser;
 import com.sweetcard.basic.appuser.AppUserRepository;
 
+import com.sweetcard.basic.dao.entities.IT_Proj_User;
+import com.sweetcard.basic.dao.repository.ContactRepository;
+import com.sweetcard.basic.dao.repository.ITblProjectUserRepository;
 import com.sweetcard.basic.model.Finsprojectform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Optional;
+import java.util.List;
 
 /**
  * Created by Admin on 09.03.2020.
@@ -31,6 +33,8 @@ public class FinsprojectJdbc {
     @Autowired
     //UserRepository userRepository;
     AppUserRepository appUserRepository;
+    @Autowired
+    ITblProjectUserRepository iTblProjectUserRepository;
 
 
     //Создание записи
@@ -105,10 +109,12 @@ public class FinsprojectJdbc {
         try{
             String strUserLogin = GetUserLogin();//Получить логин пользователя
             Integer intUserId = GetUserId(strUserLogin);//Получение Id пользователя
-            Integer intRecordId = Integer.parseInt(finsprojectform.getFinsprojectid());
-            Integer intSubUserIf = Integer.parseInt(finsprojectform.getFinsprojectname());
-
-            logger.info("FinsprojectJdbc.ShareProject -> SUCCESS");
+            Integer intShareProjectId = Integer.parseInt(finsprojectform.getFinsprojectid());
+            Integer intSubUserId = Integer.parseInt(finsprojectform.getFinsprojectname());
+            List<IT_Proj_User> it_proj_userList = iTblProjectUserRepository.GetAllUserAndProject(intSubUserId,intShareProjectId);
+            if(it_proj_userList.size() == 0){
+                jdbcTemplate.update("insert into it_proj_user (user_id, project_id) values (?,?)", intSubUserId, intShareProjectId);
+            }
         }catch (Exception exp_sql){
             logger.info("FinsprojectJdbc.ShareProject -> ERROR: " + exp_sql);
         }
