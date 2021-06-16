@@ -76,6 +76,9 @@ public class WebController {
                 usercacheJdbc.UsercacheAction(usercacheform);
             }
 
+            Usercache usercache = GetUsercache();
+            model.addAttribute("AccountMail",usercache.login);
+
             logger.info("WebController.FinsOperations -> " + ProjectId);
             return "Fins_Operations";
         }catch (Exception ex){
@@ -105,6 +108,8 @@ public class WebController {
     @RequestMapping(value = "/FinsOperations", method = RequestMethod.POST)
     public String GoToFinsOperations(Model model){
         logger.info("WebController.GoToFinsOperations -> ");
+        Usercache usercache = GetUsercache();
+        model.addAttribute("AccountMail",usercache.login);
         return "Fins_Operations";
     }
 
@@ -116,6 +121,8 @@ public class WebController {
         try {
             List<AggrFinsproject> aggrFinsprojectList = aggregateDataFinsprojectRepository.GetAllUserProjects(GetUserLogin());
             model.addAttribute("finsprojectList",aggrFinsprojectList);
+            Usercache usercache = GetUsercache();
+            model.addAttribute("AccountMail",usercache.login);
         }catch (Exception ex1){
             //SQL aggregateDataFinsprojectRepository.GetAllUserProjects падает, если в нет записей в операциях
         }
@@ -129,6 +136,8 @@ public class WebController {
     @RequestMapping(value = "/ProjectsEditor")
     public String GoToProjectsEditor(@RequestParam(name = "ProjectId", required = false, defaultValue = "def_val") String project_id, Model model){
         logger.info("WebController.GoToProjectsEditor -> " + project_id);
+        Usercache usercache = GetUsercache();
+        model.addAttribute("AccountMail",usercache.login);
         return "Fins_Projects";
     }
 
@@ -141,19 +150,12 @@ public class WebController {
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
                 SetActiveProjectUserCache(Integer.parseInt(ProjectId));
-                /*
-                Usercacheform usercacheform = new Usercacheform();
-                usercacheform.setLogin(GetUserLogin());
-                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
-                usercacheform.setUsercacheAction("update");
-                usercacheJdbc.UsercacheAction(usercacheform);
-                */
             }
-
             //Получение активного проекта пользователя
             Usercache usercache = GetUsercache();
             List<Lov> lovList = lovRepository.GetAllByProject(usercache.active_proj);
             model.addAttribute("lovList",lovList);
+            model.addAttribute("AccountMail",usercache.login);
         }catch (Exception ex1){
             //SQL aggregateDataFinsprojectRepository.GetAllUserProjects падает, если в нет записей в операциях
         }
@@ -166,14 +168,9 @@ public class WebController {
         if (0 != ProjectId.compareTo("no_value")) {
             //Переход из левой понели проектов кликом по проекту
             SetActiveProjectUserCache(Integer.parseInt(ProjectId));
-                /*
-                Usercacheform usercacheform = new Usercacheform();
-                usercacheform.setLogin(GetUserLogin());
-                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
-                usercacheform.setUsercacheAction("update");
-                usercacheJdbc.UsercacheAction(usercacheform);
-                */
         }
+        Usercache usercache = GetUsercache();
+        model.addAttribute("AccountMail",usercache.login);
         return "Fins_LOV";
     }
 
@@ -188,20 +185,12 @@ public class WebController {
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
                 SetActiveProjectUserCache(Integer.parseInt(ProjectId));
-                /*
-                Usercacheform usercacheform = new Usercacheform();
-                usercacheform.setLogin(GetUserLogin());
-                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
-                usercacheform.setUsercacheAction("update");
-                usercacheJdbc.UsercacheAction(usercacheform);
-                */
             }
-
             //Получение активного проекта пользователя
             Usercache usercache = GetUsercache();
-
             List<AggrContragent> contragentList = aggregateDataContragent.GetProjectContragent(usercache.active_proj);
             model.addAttribute("contragentList",contragentList);
+            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Contragents_Add";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToContragents -> ERROR: " + req_ex1);
@@ -220,15 +209,9 @@ public class WebController {
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
                 SetActiveProjectUserCache(Integer.parseInt(ProjectId));
-                /*
-                Usercacheform usercacheform = new Usercacheform();
-                usercacheform.setLogin(GetUserLogin());
-                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
-                usercacheform.setUsercacheAction("update");
-                usercacheJdbc.UsercacheAction(usercacheform);
-                */
             }
-
+            Usercache usercache = GetUsercache();
+            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Contragents";
         }catch (Exception req_ex1){
             logger.info("WebController.ContragentsEditor -> ERROR: " + req_ex1);
@@ -241,6 +224,8 @@ public class WebController {
     public String GoToFinsCompany(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.GoToFinsCompany -> ");
+            Usercache usercache = GetUsercache();
+            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Company_Info";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToFinsCompany -> ERROR: " + req_ex1);
@@ -253,6 +238,8 @@ public class WebController {
     public String GoToFinsCompanyEditor(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.GoToFinsCompanyEditor -> ");
+            Usercache usercache = GetUsercache();
+            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Company";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToFinsCompanyEditor -> ERROR: " + req_ex1);
@@ -267,16 +254,9 @@ public class WebController {
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
                 SetActiveProjectUserCache(Integer.parseInt(ProjectId));
-                /*
-                Usercacheform usercacheform = new Usercacheform();
-                usercacheform.setLogin(GetUserLogin());
-                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
-                usercacheform.setUsercacheAction("update");
-                usercacheJdbc.UsercacheAction(usercacheform);
-                */
             }
-
-
+            Usercache usercache = GetUsercache();
+            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Reports";
         }catch (Exception ex){
             logger.info("WebController.GoToReports -> ERROR: " + ex);
@@ -302,6 +282,7 @@ public class WebController {
             model.addAttribute("attrUserMdlName",appUser.getMiddleName());
             model.addAttribute("attrUserMail",appUser.getEmail());
             model.addAttribute("attrUserAdmFlg",AdminFlg);
+            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Account_Settings";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToUserSettings -> ERROR: " + req_ex1);
@@ -313,6 +294,8 @@ public class WebController {
     //Переход на экран настройки пользователя
     @RequestMapping(value = "/UserSettingsInfo")
     public String GoToUserSettingsInfo(Model model){
+        Usercache usercache = GetUsercache();
+        model.addAttribute("AccountMail",usercache.login);
         return "Fins_Account_Settings_Info";
     }
 
@@ -326,6 +309,7 @@ public class WebController {
             List<AggrSubUser> aggrSubUserList = aggregateDataSubUser.GetSubUserList(usercache.user_id);
 
             model.addAttribute("sub_user_list",aggrSubUserList);
+            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Account_Users_Info";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToFinsAccountUsersInfo -> ERROR: " + req_ex1);
@@ -336,6 +320,8 @@ public class WebController {
     //Переход на экран Fins_Account_User_Add
     @RequestMapping(value = "/FinsAccountUsersAdd")
     public String GoToFinsAccountUsersAdd(Model model){
+        Usercache usercache = GetUsercache();
+        model.addAttribute("AccountMail",usercache.login);
         return "Fins_Account_Users_Add";
     }
 

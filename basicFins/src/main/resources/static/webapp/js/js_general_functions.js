@@ -82,7 +82,6 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
     }catch (e) {
         SpinnerOff("doAjaxGetProjectListLeft");
         console.log("Error doAjaxGetProjectListLeft: " + e);
-        SpinnerOff("doAjaxGetUserCache");
     }
 
 };
@@ -109,7 +108,6 @@ function doAjaxGetUserCache(PageName) {
             }
         });
     }catch (e) {
-        SpinnerOff("doAjaxGetUserCache");
         console.log("Error doAjaxGetUserCache: " + e);
         SpinnerOff("doAjaxGetUserCache");
     }
