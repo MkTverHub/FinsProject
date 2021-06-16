@@ -31,7 +31,7 @@ public class UsercacheJdbc {
                 case "update" : {
                     logger.info("UsercacheJdbc.UsercacheAction.update -> " +  usercacheform.getActiveProject() + " " + usercacheform.getUserId() + " " + usercacheform.getLogin() + " " + usercacheform.getRole());
                     jdbcTemplate.update("update usercache set active_proj = ?, user_id = ?, role = ? where login = ?",
-                            usercacheform.getActiveProject(), usercacheform.getUserId(), usercacheform.getRole(),usercacheform.getLogin());
+                            usercacheform.getActiveProject(), usercacheform.getUserId(), usercacheform.getLogin(), usercacheform.getRole());
                 }break;
                 case "insert" : {
                     //Создание записи
