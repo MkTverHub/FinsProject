@@ -42,6 +42,8 @@ public class WebController {
     @Autowired
     AggregateDataContragent aggregateDataContragent;
     @Autowired
+    AggregateDataCompanyRepository aggregateDataCompanyRepository;
+    @Autowired
     FinancedataJdbc financedataJdbc;
     @Autowired
     FinsprojectJdbc finsprojectJdbc;
@@ -224,6 +226,10 @@ public class WebController {
     public String GoToFinsCompany(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.GoToFinsCompany -> ");
+
+            List<AggrCompany> aggrCompanyList = aggregateDataCompanyRepository.GetAllByOwner(GetUserLogin());
+            model.addAttribute("companyList",aggrCompanyList);
+
             Usercache usercache = GetUsercache();
             model.addAttribute("AccountMail",usercache.login);
             return "Fins_Company_Info";
