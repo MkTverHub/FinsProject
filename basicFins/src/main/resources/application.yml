@@ -21,15 +21,15 @@ spring:
     show-sql: true
 
   mail:
-    host: localhost
-    port: 25
-    username: root
-    password: Etei9of3cah9
-
     #host: localhost
-    #port: 1025
-    #username: hello
-    #password: hello
+    #port: 25
+    #username: root
+    #password: Etei9of3cah9
+
+    host: localhost
+    port: 1025
+    username: hello
+    password: hello
 
     properties:
       mail:
