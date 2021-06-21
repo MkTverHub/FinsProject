@@ -266,7 +266,7 @@
 
 
 <!--ПЛИТКА ДЛЯ ЭКРАНА Компании-->
-<div class="row" th:fragment="company_fragment_1(companyName)">
+<div class="row" th:fragment="company_fragment_1(company)">
     <div class="col-12 card-render-company">
         <!-- Рендер блока компании с ее сотрудниками -->
         <div class="card">
@@ -283,13 +283,13 @@
                                     <span>ПИК</span>
                                 </h4>
                                 <p class="card-text">
-                                    <span>ООО "ПрофСтройМастреПи</span>
+                                    <span th:utext="${company.name}"/>
                                 </p>
-                                <p class="card-text">ИНН: <span>3360174872</span>
+                                <p class="card-text">ИНН: <span th:utext="${company.inn}"/>
                                 </p>
-                                <p class="card-text">КПП: <span>377501142</span>
+                                <p class="card-text">КПП: <span th:utext="${company.kpp}"/>
                                 </p>
-                                <p class="card-text">Счет: <span>5321997070158280</span>
+                                <p class="card-text">Счет: <span th:utext="${company.fins_acc}"/>
                                 </p>
                                 <div class="dropdown-divider"/>
                                 <div class="d-flex d-lg-flex d-md-block align-items-center">
