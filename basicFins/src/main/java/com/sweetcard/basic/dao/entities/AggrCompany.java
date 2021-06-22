@@ -16,6 +16,7 @@ public class AggrCompany {
     private String fins_acc;
     private String owner_id;
     private String project_id;
+    private Integer employee_count;
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
 
@@ -43,4 +44,6 @@ public class AggrCompany {
     public String getProject_id() {return project_id;}
     public void setProject_id(String project_id) {this.project_id = project_id; }
 
+    public Integer getEmployee_count() { return employee_count; }
+    public void setEmployee_count(Integer employee_count) {this.employee_count = employee_count;}
 }
