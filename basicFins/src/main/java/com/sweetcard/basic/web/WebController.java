@@ -108,7 +108,7 @@ public class WebController {
 
     //Переход на страницу Финвнсовых операций (из верхней шапки)
     @RequestMapping(value = "/FinsOperations", method = RequestMethod.POST)
-    public String GoToFinsOperations(Model model){
+    public String GoToFinsOperations(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         logger.info("WebController.GoToFinsOperations -> ");
         Usercache usercache = GetUsercache();
         model.addAttribute("AccountMail",usercache.login);
@@ -227,6 +227,11 @@ public class WebController {
         try{
             logger.info("WebController.GoToFinsCompany -> ");
 
+            if (0 != ProjectId.compareTo("no_value")) {
+                //Переход из левой понели проектов кликом по проекту
+                SetActiveProjectUserCache(Integer.parseInt(ProjectId));
+            }
+
             List<AggrCompany> aggrCompanyList = aggregateDataCompanyRepository.GetAllByOwner(GetUserLogin());
             model.addAttribute("companyList",aggrCompanyList);
 
@@ -244,6 +249,12 @@ public class WebController {
     public String GoToFinsCompanyEditor(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.GoToFinsCompanyEditor -> ");
+
+            if (0 != ProjectId.compareTo("no_value")) {
+                //Переход из левой понели проектов кликом по проекту
+                SetActiveProjectUserCache(Integer.parseInt(ProjectId));
+            }
+
             Usercache usercache = GetUsercache();
             model.addAttribute("AccountMail",usercache.login);
             return "Fins_Company";
