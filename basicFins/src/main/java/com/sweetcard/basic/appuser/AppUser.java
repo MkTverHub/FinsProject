@@ -6,8 +6,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -31,6 +34,10 @@ public class AppUser implements UserDetails{
 
 
     //private Long id;
+    @Transient
+    private Date date = new Date();
+    @Transient
+    private SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.mm.yyyy hh:mm:ss");
 
     private Long parent_id;
     private String firstName;
@@ -44,6 +51,9 @@ public class AppUser implements UserDetails{
     private AppUserRole appUserRole;
     private Boolean locked = false;
     private Boolean enabled = false;
+    private String access_dt = formatForDateNow.format(date);
+    private String access_status = "demo";
+
 
     public AppUser(String firstName,
                    String lastName,
@@ -114,4 +124,10 @@ public class AppUser implements UserDetails{
     public boolean isEnabled() {
         return enabled;
     }
+
+    public String getAccess_dt() {return access_dt; }
+    public void setAccess_dt(String access_dt) {this.access_dt = access_dt; }
+
+    public String getAccess_status() {return access_status;}
+    public void setAccess_status(String access_status) {this.access_status = access_status;}
 }
