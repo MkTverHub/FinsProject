@@ -37,7 +37,7 @@ public class AppUser implements UserDetails{
     @Transient
     private Date date = new Date();
     @Transient
-    private SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.mm.yyyy hh:mm:ss");
+    static SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.mm.yyyy hh:mm:ss");
 
     private Long parent_id;
     private String firstName;

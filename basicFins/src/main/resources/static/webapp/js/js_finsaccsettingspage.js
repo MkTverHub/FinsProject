@@ -6,4 +6,4 @@ function StartPage() {
     doAjaxGetUserCache();
 }
 
-
+//-----------Ajax Functions------------

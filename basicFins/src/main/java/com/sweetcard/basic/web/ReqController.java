@@ -640,6 +640,25 @@ public class ReqController {
         }
     }
 
+    //--------------------Экран Настройки пользователя---------------------------------
+    //------Получить пользователя---------------------------------
+    @RequestMapping(value = "/GetUserInfo", method = RequestMethod.GET)
+    public @ResponseBody Response GetUserInfo() {
+        try{
+            logger.info("ReqController.GetUserInfo ");
+            AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
+
+            //Создать экземпляр ответа и отправить JSON строку
+            Response result = new Response();
+            Gson gson = new Gson();
+            result.setText(gson.toJson(appUser));
+            return result;
+        }catch (Exception ex_rep_1){
+            logger.info("ReqController.GetUserInfo -> Error: " + ex_rep_1);
+            return null;
+        }
+    }
+
 
     //--------------Общие методы для экранов--------------------------------
     //------Получение списка проектов (вызов при загрузке страницы) used: Fins_Operations,Fins_Projects
