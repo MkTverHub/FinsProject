@@ -80,6 +80,8 @@ public class ReqController {
     AggregateDataSubUser aggregateDataSubUser;
     @Autowired
     SubUserJdbc subUserJdbc;
+    @Autowired
+    UserJdbc userJdbc;
 
     @RequestMapping(value = "/SetContrAgentRequisits", method = RequestMethod.GET)
     public @ResponseBody Response GetRequisitsList(@RequestParam String ContragentId) {
@@ -642,19 +644,49 @@ public class ReqController {
 
     //--------------------Экран Настройки пользователя---------------------------------
     //------Получить пользователя---------------------------------
-    @RequestMapping(value = "/GetUserInfo", method = RequestMethod.GET)
-    public @ResponseBody Response GetUserInfo() {
+    @RequestMapping(value = "/OperationUser", method = RequestMethod.GET)
+    public @ResponseBody Response GetUserInfo(@RequestParam String DBOperation,
+                                              @RequestParam Integer UserId,
+                                              @RequestParam Integer UserParentId,
+                                              @RequestParam String UserFstName,
+                                              @RequestParam String UserLstName,
+                                              @RequestParam String UserMdlName,
+                                              @RequestParam String UserPhone,
+                                              @RequestParam String UserPosition,
+                                              @RequestParam String UserEmail,
+                                              @RequestParam String UserPassword,
+                                              @RequestParam String UserLocked,
+                                              @RequestParam String UserAccessDt,
+                                              @RequestParam String UserAccessStatus)
+    {
         try{
-            logger.info("ReqController.GetUserInfo ");
-            AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
-
+            logger.info("ReqController.OperationUser ");
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
             Gson gson = new Gson();
-            result.setText(gson.toJson(appUser));
+            switch(DBOperation) {
+                case "GetUser": {
+                    AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
+                    result.setText(gson.toJson(appUser));
+                }
+                break;
+                default: {
+                    UserForm userForm= new UserForm();
+                    userForm.setUserAction(DBOperation);
+                    userForm.setEmail(GetUserLogin());
+                    userForm.setFirstName(UserFstName);
+                    userForm.setLastName(UserLstName);
+                    userForm.setMiddleName(UserMdlName);
+                    userForm.setPhone(UserPhone);
+                    userJdbc.UserAction(userForm);
+                    AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
+                    result.setText(gson.toJson(appUser));
+                }
+            }
+
             return result;
         }catch (Exception ex_rep_1){
-            logger.info("ReqController.GetUserInfo -> Error: " + ex_rep_1);
+            logger.info("ReqController.OperationUser -> Error: " + ex_rep_1);
             return null;
         }
     }
