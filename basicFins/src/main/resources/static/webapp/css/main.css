@@ -454,3 +454,7 @@ button:focus {
     margin-top: 20px;
     border-radius: 8px;
 }
+
+.error-valid-field{
+  border: 1px solid #ff4f70;
+}
