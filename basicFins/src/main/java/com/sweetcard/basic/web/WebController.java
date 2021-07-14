@@ -100,9 +100,15 @@ public class WebController {
     //Получение формы регистрации
     @RequestMapping(value = "/RegConfirm", method = RequestMethod.POST)
     public String GoToUserRegConfirm(@ModelAttribute RegistrationForm registrationForm, Model model){
-        logger.info("WebController.GoToUserRegConfirm -> " + registrationForm.getFirstName() + " " + registrationForm.getLastName() + " " + registrationForm.getEmail() + " " + registrationForm.getPassword());
-        registrationService.register2(registrationForm);
-        return "UserRegConfirm";
+        String strPageName = "UserRegConfirm";
+        try {
+            logger.info("WebController.GoToUserRegConfirm -> " + registrationForm.getFirstName() + " " + registrationForm.getLastName() + " " + registrationForm.getEmail() + " " + registrationForm.getPassword());
+            registrationService.register2(registrationForm);
+        }catch (Exception e){
+            model.addAttribute("registrationform", new RegistrationForm());
+            strPageName = "UserRegistration";
+        }
+        return strPageName;
     }
 
 
