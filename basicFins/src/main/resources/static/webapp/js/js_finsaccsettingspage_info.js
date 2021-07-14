@@ -33,7 +33,6 @@ function doAjaxGetUserInfo() {
                 UserAccessStatus: ""
             }),
             success: function (data) {
-                console.log(data.text);
                 SetUserForm(data.text);
                 SpinnerOff("doAjaxGetUserInfo");
             }

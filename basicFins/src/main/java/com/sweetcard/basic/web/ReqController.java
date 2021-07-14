@@ -667,7 +667,9 @@ public class ReqController {
             switch(DBOperation) {
                 case "GetUser": {
                     AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
+                    appUser.Decode();
                     result.setText(gson.toJson(appUser));
+                    System.out.println(gson.toJson(appUser));
                 }
                 break;
                 default: {

@@ -128,6 +128,24 @@ public class AppUser implements UserDetails{
     public String getAccess_dt() {return access_dt; }
     public void setAccess_dt(String access_dt) {this.access_dt = access_dt; }
 
-    public String getAccess_status() {return access_status;}
+    public String getAccess_status() {
+        String strResult = access_status;
+        switch (access_status) {
+            case "demo": {
+                strResult = "Пробный период";
+            }break;
+        }
+        return strResult;
+    }
     public void setAccess_status(String access_status) {this.access_status = access_status;}
+
+    public void Decode(){
+        String strResult = access_status;
+        switch (access_status) {
+            case "demo": {
+                strResult = "Пробный период";
+            }break;
+        }
+        access_status = strResult;
+    }
 }

@@ -298,8 +298,10 @@ public class WebController {
             model.addAttribute("attrUserLstName",appUser.getLastName());
             model.addAttribute("attrUserMdlName",appUser.getMiddleName());
             model.addAttribute("attrUserMail",appUser.getEmail());
+            model.addAttribute("attrUserPhone",appUser.getPhone());
+            model.addAttribute("attrAccessStatus",appUser.getAccess_status());
+            model.addAttribute("attrAccessDt",appUser.getAccess_dt());
             model.addAttribute("attrUserAdmFlg",AdminFlg);
-            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Account_Settings";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToUserSettings -> ERROR: " + req_ex1);
