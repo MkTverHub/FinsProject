@@ -33,13 +33,48 @@ function doAjaxGetUserInfo() {
                 UserAccessStatus: ""
             }),
             success: function (data) {
-                console.log(data.text);
                 SetUserForm(data.text);
                 SpinnerOff("doAjaxGetUserInfo");
             }
         });
     }catch (e) {
         SpinnerOff("doAjaxGetUserInfo");
+        console.log("Error doAjaxGetUserInfo: " + data.text);
+    }
+};
+
+function doAjaxSaveUser() {
+    SpinnerOn("doAjaxSaveUser");
+    try {
+        $.ajax({
+            url: 'OperationUser',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                DBOperation: "update",
+                UserId: "0",
+                UserParentId: "0",
+                UserFstName: $('#fst_name_field').val(),
+                UserLstName: $('#lst_name_field').val(),
+                UserMdlName: $('#mdl_name_field').val(),
+                UserPhone: $('#phone_field').val(),
+                UserPosition: "",
+                UserEmail: "",
+                UserPassword: "",
+                UserLocked: "",
+                UserAccessDt: "",
+                UserAccessStatus: ""
+            }),
+            success: function (data) {
+                console.log(data.text);
+                SetUserForm(data.text);
+                SpinnerOff("doAjaxSaveUser");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxSaveUser");
         console.log("Error doAjaxGetUserInfo: " + data.text);
     }
 };
@@ -79,5 +114,11 @@ function UnSetROUserForm(){
 //--Кнопка: Изменить----------
 function EditUser() {
     UnSetROUserForm();
+}
+
+//--Кнопка: Сохранить----------
+function SaveUser() {
+    SetROUserForm();
+    doAjaxSaveUser();
 }
 
