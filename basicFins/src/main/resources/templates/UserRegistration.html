@@ -30,26 +30,27 @@
                     <div class="p-3">
                         <h2 class="mt-3 text-center">Регистрация</h2>
                         <p class="text-center">Введите пожалуйста Ваши данные для регистрации личного кабинета</p>
+                        <p class="text-center" th:if="${attrErrorFlg}" th:utext="${attrErrorMsg}"/>
                         <form class="mt-4" th:action="@{/RegConfirm}" th:object="${registrationform}" method="post">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Имя" th:field="*{firstName}">
+                                        <input th:class="${attrFieldClass}" type="text" placeholder="Имя" th:field="*{firstName}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Фамилия" th:field="*{lastName}">
+                                        <input th:class="${attrFieldClass}" type="text" placeholder="Фамилия" th:field="*{lastName}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Почта" th:field="*{email}">
+                                        <input th:class="${attrFieldClass}" type="text" placeholder="Почта" th:field="*{email}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input class="form-control" type="password" placeholder="Пароль" th:field="*{password}">
+                                        <input th:class="${attrFieldClass}" type="password" placeholder="Пароль" th:field="*{password}">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">

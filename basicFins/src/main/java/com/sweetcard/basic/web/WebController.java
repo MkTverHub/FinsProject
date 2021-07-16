@@ -94,6 +94,8 @@ public class WebController {
     public String GoToUserRegistration(Model model){
         logger.info("WebController.GoToUserRegistration -> ");
         model.addAttribute("registrationform", new RegistrationForm());
+        model.addAttribute("attrErrorFlg", "false");
+        model.addAttribute("attrFieldClass", "form-control");
         return "UserRegistration";
     }
 
@@ -104,7 +106,22 @@ public class WebController {
         try {
             logger.info("WebController.GoToUserRegConfirm -> " + registrationForm.getFirstName() + " " + registrationForm.getLastName() + " " + registrationForm.getEmail() + " " + registrationForm.getPassword());
             registrationService.register2(registrationForm);
+            model.addAttribute("attrErrorFlg", "false");
+            model.addAttribute("attrFieldClass", "form-control");
         }catch (Exception e){
+            String strErrorMsg = "Ошибка регистрации";
+            System.out.println(e);
+            if(e.toString().indexOf("Bad recipient address syntax") >= 0){
+                strErrorMsg = "Ошибка email адреса";
+                model.addAttribute("attrErrorMsg", strErrorMsg);
+            }
+            if(e.toString().indexOf("email already taken") >= 0){
+                strErrorMsg = "email адреса уже зарегестрирован";
+                model.addAttribute("attrErrorMsg", strErrorMsg);
+            }
+            model.addAttribute("attrErrorFlg", "true");
+            model.addAttribute("attrErrorMsg", strErrorMsg);
+            model.addAttribute("attrFieldClass", "form-control error-valid-field");
             model.addAttribute("registrationform", new RegistrationForm());
             strPageName = "UserRegistration";
         }
