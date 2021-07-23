@@ -208,60 +208,89 @@ function doAjaxGetContragentRequisits(ContragentId_In) {
 //Ajax формы операции DB Реквезита (Создать/Обновить/Удалить)
 function doAjaxRequisitDBOperation() {
     SpinnerOn("doAjaxRequisitDBOperation");
-    var strDBOperation = $('#requisit_db_action').attr('value');//update/insert/delete
-    if (strDBOperation == null){strDBOperation = '';}
-    var strRequisitContragentId = document.body.HashData.ActiveContragentId;
-    if (strRequisitContragentId == null){strRequisitContragentId = '';}
-    var strRequisitId = $('#requisit_id').attr('value');
-    if (strRequisitId == ''){strRequisitId = '0';}
-    if($('#requisit_main').prop('checked')){strMainFlg = 'true';}else{strMainFlg = 'false';}
-    var strRequisitName = $('#requisit_name').val();
-    var strRequisitDescription = $('#requisit_description').val();
-    var strRequisitINN = $('#requisit_ReqINN').val();
-    var strRequisitKPP = $('#requisit_ReqKPP').val();
-    var strRequisitFinsAcc = $('#requisit_ReqFinsAcc').val();
-    var strRequisitFinsBIK = $('#requisit_ReqBIK').val();
-    var strRequisitBankName = $('#requisit_ReqBankName').val();
-    var strRequisitCrspAcc = $('#requisit_ReqCrspAcc').val();
-    var strRequisitAddrIndex = $('#requisit_ReqAddrIndex').val();
-    var strRequisitAddrCity = $('#requisit_ReqAddrCity').val();
-    var strRequisitAddrString = $('#requisit_ReqAddrString').val();
-    var strRequisitPhoneNum = $('#requisit_ReqPhoneNum').val();
-    var strRequisitEmail = $('#requisit_ReqEmail').val();
-    var strRequisitWebSite = $('#requisit_ReqWebSite').val();
-    var strRequisitCardNum = $('#requisit_card_number').val();
-    $.ajax({
-        url : 'OperationFinsRequisit',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            DBOperation: strDBOperation,
-            ContragentId: strRequisitContragentId,
-            RequisitId: strRequisitId,
-            MainFlg: strMainFlg,
-            RequisitName: strRequisitName,
-            RequisitDescription: strRequisitDescription,
-            RequisitINN: strRequisitINN,
-            RequisitKPP: strRequisitKPP,
-            RequisitFinsAcc: strRequisitFinsAcc,
-            RequisitFinsBIK: strRequisitFinsBIK,
-            RequisitBankName: strRequisitBankName,
-            RequisitCrspAcc: strRequisitCrspAcc,
-            RequisitAddrIndex: strRequisitAddrIndex,
-            RequisitAddrCity: strRequisitAddrCity,
-            RequisitAddrString: strRequisitAddrString,
-            RequisitPhoneNum: strRequisitPhoneNum,
-            RequisitEmail: strRequisitEmail,
-            RequisitWebSite: strRequisitWebSite,
-            RequisitCardNum: strRequisitCardNum
-        }),
-        success: function (data) {
-            doAjaxGetContragentRequisits(document.body.HashData.ActiveContragentId);
-            SpinnerOff("doAjaxRequisitDBOperation");
+    try {
+        var strDBOperation = $('#requisit_db_action').attr('value');//update/insert/delete
+        if (strDBOperation == null) {
+            strDBOperation = '';
         }
-    });
+        var strRequisitContragentId = document.body.HashData.ActiveContragentId;
+        if (strRequisitContragentId == null) {
+            strRequisitContragentId = '';
+        }
+        var strRequisitId = $('#requisit_id').attr('value');
+        if (strRequisitId == '') {
+            strRequisitId = '0';
+        }
+        if ($('#requisit_main').prop('checked')) {
+            strMainFlg = 'true';
+        } else {
+            strMainFlg = 'false';
+        }
+        var strRequisitName = $('#requisit_name').val();
+        var strRequisitDescription = $('#requisit_description').val();
+        var strRequisitINN = $('#requisit_ReqINN').val();
+        var strRequisitKPP = $('#requisit_ReqKPP').val();
+        var strRequisitFinsAcc = $('#requisit_ReqFinsAcc').val();
+        var strRequisitFinsBIK = $('#requisit_ReqBIK').val();
+        var strRequisitBankName = $('#requisit_ReqBankName').val();
+        var strRequisitCrspAcc = $('#requisit_ReqCrspAcc').val();
+        var strRequisitAddrIndex = $('#requisit_ReqAddrIndex').val();
+        var strRequisitAddrCity = $('#requisit_ReqAddrCity').val();
+        var strRequisitAddrString = $('#requisit_ReqAddrString').val();
+        var strRequisitPhoneNum = $('#requisit_ReqPhoneNum').val();
+        var strRequisitEmail = $('#requisit_ReqEmail').val();
+        var strRequisitWebSite = $('#requisit_ReqWebSite').val();
+        var strRequisitCardNum = $('#requisit_card_number').val();
+
+        //Валидация
+        var strErrorFlg = 'N';
+        var strErrorMsg = '';
+        var arrValidResult = [strErrorFlg,arrValidResult];
+        arrValidResult = validator('ИНН','INN','#requisit_ReqINN',strRequisitINN,arrValidResult[1]);//Проверка ИНН
+        arrValidResult = validator('КПП','KPP','#requisit_ReqKPP',strRequisitKPP,arrValidResult[1]);//Проверка КПП
+        arrValidResult = validator('Счет','FINC_ACC','#requisit_ReqFinsAcc',strRequisitFinsAcc,arrValidResult[1]);//Проверка Счет
+        arrValidResult = validator('БИК','BIK','#requisit_ReqBIK',strRequisitFinsBIK,arrValidResult[1]);//Проверка БИК
+
+        if(arrValidResult[0] == 'Y'){
+            throw new SyntaxError(arrValidResult[1]);
+        }
+
+        $.ajax({
+            url: 'OperationFinsRequisit',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                DBOperation: strDBOperation,
+                ContragentId: strRequisitContragentId,
+                RequisitId: strRequisitId,
+                MainFlg: strMainFlg,
+                RequisitName: strRequisitName,
+                RequisitDescription: strRequisitDescription,
+                RequisitINN: strRequisitINN,
+                RequisitKPP: strRequisitKPP,
+                RequisitFinsAcc: strRequisitFinsAcc,
+                RequisitFinsBIK: strRequisitFinsBIK,
+                RequisitBankName: strRequisitBankName,
+                RequisitCrspAcc: strRequisitCrspAcc,
+                RequisitAddrIndex: strRequisitAddrIndex,
+                RequisitAddrCity: strRequisitAddrCity,
+                RequisitAddrString: strRequisitAddrString,
+                RequisitPhoneNum: strRequisitPhoneNum,
+                RequisitEmail: strRequisitEmail,
+                RequisitWebSite: strRequisitWebSite,
+                RequisitCardNum: strRequisitCardNum
+            }),
+            success: function (data) {
+                doAjaxGetContragentRequisits(document.body.HashData.ActiveContragentId);
+                SpinnerOff("doAjaxRequisitDBOperation");
+            }
+        });
+    }catch (e) {
+        alert(e);
+        SpinnerOff("doAjaxRequisitDBOperation");
+    }
 };
 
 

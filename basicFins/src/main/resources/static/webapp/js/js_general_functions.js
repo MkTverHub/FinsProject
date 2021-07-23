@@ -128,3 +128,42 @@ function SpinnerOff(AjaxChainName) {
         $("#spinner_main_div").addClass('f-d-n');
     }
 };
+
+//========================================================
+//Валидация
+function validator(field_name,field_key,field_id,field_value,msg) {
+    var ErrorFlg = 'N';
+    var regex = /g/;
+    switch(field_key) {
+        case 'INN':
+            regex = /\D/;
+            if(field_value.match(regex)){
+                msg = msg + '\n' + field_name + ' должен содержать только числа';
+                $(field_id).addClass("error-valid-field");
+            }
+        break;
+        case 'KPP':
+            regex = /\D/;
+            if(field_value.match(regex)){
+                msg = msg + '\n' + field_name + ' должен содержать только числа';
+                $(field_id).addClass("error-valid-field");
+            }
+        break;
+        case 'FINC_ACC':
+            regex = /\D/;
+            if(field_value.match(regex)){
+                msg = msg + '\n' + field_name + ' должен содержать только числа';
+                $(field_id).addClass("error-valid-field");
+            }
+        break;
+        case 'BIK':
+            regex = /\D/;
+            if(field_value.match(regex)){
+                msg = msg + '\n' + field_name + ' должен содержать только числа';
+                $(field_id).addClass("error-valid-field");
+            }
+        break;
+    }
+    if(msg != ''){ErrorFlg = 'Y'}
+    return[ErrorFlg,msg]
+}
