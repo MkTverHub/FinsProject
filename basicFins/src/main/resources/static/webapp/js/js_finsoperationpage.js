@@ -58,7 +58,6 @@ $(function(){
         strPaymentAccIn = $(this).find('.fieldpayaccin').html();
         strPaymentAccOut = $(this).find('.fieldpayaccout').html();
         strFinsArticle = $(this).find('.fieldfinsarticle').html();
-        //strProjectId = $(this).find('.fieldprojectid').html();
         strFinsContrAgent = $(this).find('.fieldfinscontragent').html();
         strFinsRequisites = $(this).find('.fieldrequisites').html();
 
@@ -69,8 +68,6 @@ $(function(){
         $('#fieldoperdateid').attr('value',strOperDt);
         $('#fieldamountid').attr('value',strFinsAmount);
         $('#fielddetailid').attr('value',strFinsDetail);
-        //$('#paymentaccinid').attr('value',strPaymentAccIn);
-        //$('#paymentaccoutid').attr('value',strPaymentAccOut);
         $('#paymentaccinid_list').attr('select_value',strPaymentAccIn);
         SetActiveSelect('#paymentaccinid_list',strPaymentAccIn);
         $('#paymentaccoutid_list').attr('select_value',strPaymentAccOut);
@@ -91,10 +88,6 @@ $(function(){
         $('#fieldoperdateid').val(strOperDt);
         $('#fieldamountid').val(strFinsAmount);
         $('#fielddetailid').val(strFinsDetail);
-        //$('#paymentaccinid').val(strPaymentAccIn);
-        //$('#paymentaccoutid').val(strPaymentAccOut);
-        //$('#finsarticleid').val(strFinsArticle);
-        //$('#projectidid').val(strProjectId);
         $('#finscontragentid').val(strFinsContrAgent);
         $('#requisitesid').val(strFinsRequisites);
 
@@ -126,7 +119,6 @@ $(function(){
             $('#divcontragentrequisitsid').hide();
             $('#divcontragentfieldid').hide();
         }
-
     });
 });
 
@@ -520,19 +512,14 @@ function doAjaxFinsOperation() {
         var strFinsRecordId = $('#recordid').attr('value');//Id записи
         var strFinsBlockFlg = $('#fieldlockflgid').attr('value');//Признак блокировки
         var strFinsOpertype = $('#finsopertypeid').attr('value');//Тип транзакции profit/expense/transfer
-        //var strProjectId = $('#projectidid').attr('value');//Id проекта
         var strFinsContrAgent = $('#finscontragentid').attr('value');//Id контрагента
         var strFinsRequisites = $('#requisitesid').attr('value');//Id реквезита
-        //var strOperDt = $('#fieldoperdateid').attr('value');
 
         //Доступные поля
         var strFinsAmount = $('#fieldamountid').val();//Сумма
         var strFinsDetail = $('#fielddetailid').val();//Детали
-        //var strPaymentAccIn = $('#paymentaccinid').val();//Счет поступления
-        //var strPaymentAccOut = $('#paymentaccoutid').val();//Счет списания
         var strPaymentAccIn = $('#paymentaccinid_list').attr('select_value');
         var strPaymentAccOut = $('#paymentaccoutid_list').attr('select_value');
-        //var strFinsArticle = $('#finsarticleid').val();//Статья
         var strFinsArticle = $('#finsarticleid_list').attr('select_value');
 
         $.ajax({
@@ -545,20 +532,16 @@ function doAjaxFinsOperation() {
                 RecordOperation: strRecordOperation,
                 Row_Id: strFinsRecordId,
                 Lock_Flg: strFinsBlockFlg,
-                //Operation_Dt: strOperDt,
                 Amount: strFinsAmount,
                 Detail: strFinsDetail,
                 Fins_Transaction_Type: strFinsOpertype,
                 Pay_Acc_In: strPaymentAccIn,
                 Pay_Acc_Out: strPaymentAccOut,
                 Fins_Article: strFinsArticle,
-                //ProjectId: strProjectId,
                 Contragent: strFinsContrAgent,
                 Requisite: strFinsRequisites
             }),
             success: function (data) {
-                //JSONStringToFinsOperationList(data.text);
-                //doAjaxGetProjectOperationList(strProjectId);
                 doAjaxGetActiveProjectContext();
                 SpinnerOff("doAjaxFinsOperation");
             }
