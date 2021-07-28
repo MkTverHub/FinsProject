@@ -244,15 +244,16 @@ function doAjaxRequisitDBOperation() {
 
         //Валидация
         var strErrorFlg = 'N';
-        var strErrorMsg = '';
-        var arrValidResult = [strErrorFlg,arrValidResult];
-        arrValidResult = validator('ИНН','INN','#requisit_ReqINN',strRequisitINN,arrValidResult[1]);//Проверка ИНН
-        arrValidResult = validator('КПП','KPP','#requisit_ReqKPP',strRequisitKPP,arrValidResult[1]);//Проверка КПП
-        arrValidResult = validator('Счет','FINC_ACC','#requisit_ReqFinsAcc',strRequisitFinsAcc,arrValidResult[1]);//Проверка Счет
-        arrValidResult = validator('БИК','BIK','#requisit_ReqBIK',strRequisitFinsBIK,arrValidResult[1]);//Проверка БИК
+        strErrorFlg = validator('№ карты','INN','#requisit_card_number',strRequisitCardNum,strErrorFlg);//Проверка № карты
+        strErrorFlg = validator('ИНН','INN','#requisit_ReqINN',strRequisitINN,strErrorFlg);//Проверка ИНН
+        strErrorFlg = validator('КПП','KPP','#requisit_ReqKPP',strRequisitKPP,strErrorFlg);//Проверка КПП
+        strErrorFlg = validator('Счет','FINC_ACC','#requisit_ReqFinsAcc',strRequisitFinsAcc,strErrorFlg);//Проверка Счет
+        strErrorFlg = validator('БИК','BIK','#requisit_ReqBIK',strRequisitFinsBIK,strErrorFlg);//Проверка БИК
+        strErrorFlg = validator('Корр. счет','REQ_CRS','#requisit_ReqCrspAcc',strRequisitFinsBIK,strErrorFlg);//Корреспондентский счет
+        strErrorFlg = validator('Индекс','REQ_ADDR_INDEX','#requisit_ReqAddrIndex',strRequisitFinsBIK,strErrorFlg);//Индекс
 
-        if(arrValidResult[0] == 'Y'){
-            throw new SyntaxError(arrValidResult[1]);
+        if(strErrorFlg == 'Y'){
+            throw new SyntaxError("Ошибка валидации");
         }
 
         $.ajax({
@@ -288,7 +289,7 @@ function doAjaxRequisitDBOperation() {
             }
         });
     }catch (e) {
-        alert(e);
+        console.log(e);
         SpinnerOff("doAjaxRequisitDBOperation");
     }
 };

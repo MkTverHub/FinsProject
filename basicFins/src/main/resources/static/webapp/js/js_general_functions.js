@@ -131,39 +131,63 @@ function SpinnerOff(AjaxChainName) {
 
 //========================================================
 //Валидация
-function validator(field_name,field_key,field_id,field_value,msg) {
-    var ErrorFlg = 'N';
+function validator(field_name,field_key,field_id,field_value,ErrorFlg) {
+    var ErrorMsg = '';
     var regex = /g/;
     switch(field_key) {
+        case 'CARD_NUM':
+            regex = /\D/;
+            if(field_value.match(regex)){
+                ErrorMsg = field_name + ' должен содержать только числа';
+                if(ErrorFlg == 'N'){ErrorFlg = 'Y';}
+            }
+        break;
         case 'INN':
             regex = /\D/;
             if(field_value.match(regex)){
-                msg = msg + '\n' + field_name + ' должен содержать только числа';
-                $(field_id).addClass("error-valid-field");
+                ErrorMsg = field_name + ' должен содержать только числа';
+                if(ErrorFlg == 'N'){ErrorFlg = 'Y';}
             }
         break;
         case 'KPP':
             regex = /\D/;
             if(field_value.match(regex)){
-                msg = msg + '\n' + field_name + ' должен содержать только числа';
-                $(field_id).addClass("error-valid-field");
+                ErrorMsg = field_name + ' должен содержать только числа';
+                if(ErrorFlg == 'N'){ErrorFlg = 'Y';}
             }
         break;
         case 'FINC_ACC':
             regex = /\D/;
             if(field_value.match(regex)){
-                msg = msg + '\n' + field_name + ' должен содержать только числа';
-                $(field_id).addClass("error-valid-field");
+                ErrorMsg = field_name + ' должен содержать только числа';
+                if(ErrorFlg == 'N'){ErrorFlg = 'Y';}
             }
         break;
         case 'BIK':
             regex = /\D/;
             if(field_value.match(regex)){
-                msg = msg + '\n' + field_name + ' должен содержать только числа';
-                $(field_id).addClass("error-valid-field");
+                ErrorMsg = field_name + ' должен содержать только числа';
+                if(ErrorFlg == 'N'){ErrorFlg = 'Y';}
+            }
+        break;
+        case 'REQ_CRS':
+            regex = /\D/;
+            if(field_value.match(regex)){
+                ErrorMsg = field_name + ' должен содержать только числа';
+                if(ErrorFlg == 'N'){ErrorFlg = 'Y';}
+            }
+        break;
+        case 'REQ_ADDR_INDEX':
+            regex = /\D/;
+            if(field_value.match(regex)){
+                ErrorMsg = field_name + ' должен содержать только числа';
+                if(ErrorFlg == 'N'){ErrorFlg = 'Y';}
             }
         break;
     }
-    if(msg != ''){ErrorFlg = 'Y'}
-    return[ErrorFlg,msg]
+    if(ErrorFlg == 'Y'){
+        $(field_id + "_ex_lbl").css("display", "block");
+        $(field_id + "_ex_lbl").text(ErrorMsg);
+    }
+    return ErrorFlg;
 }
