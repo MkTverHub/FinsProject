@@ -136,6 +136,39 @@ function validator(field_name,field_key,field_id,field_value,ErrorFlg) {
     var ErrorFlgLocal = 'N';
     var regex = /g/;
     switch(field_key) {
+        case 'CONTR_AGENT_NAME': //Имя контрагента
+            if(field_value.length > 36){
+                ErrorMsg = 'Данные превышают лимит';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'CONTR_AGENT_DESCRIPTION': //Описание контрагента
+            if(field_value.length > 255){
+                ErrorMsg = 'Данные превышают лимит';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'EMAIL': //EMAIL
+            regex = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
+            if(field_value.match(regex) == null){
+                ErrorMsg = 'Некорректный email';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'PHONE': //PHONE
+            regex = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/;
+            if(field_value.match(regex) == null){
+                ErrorMsg = 'Некорректный телефон';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'CONTR_TYPE': //CONTR_TYPE
+            if(field_value == ''){
+                ErrorMsg = 'Обязательно для заполнения';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+
         case 'CARD_NUM':
             regex = /\D/;
             if(field_value.match(regex)){

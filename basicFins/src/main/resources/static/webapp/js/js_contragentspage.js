@@ -155,33 +155,51 @@ function doAjaxGetContragentsList() {
 //Ajax формы операции DB Контрагента (Создать/Обновить/Удалить)
 function doAjaxContragentDBOperation() {
     SpinnerOn("doAjaxContragentDBOperation");
-    var strDBOperation = $('#cntragnt_db_action').attr('value');//update/insert/delete
-    var strContragentId = $('#cntragnt_id').attr('value');
-    var strContragentName = $('#cntragnt_name').val();
-    var strContragenDescription = $('#cntragnt_desqription').val();
-    var strContragenPhone = $('#cntragnt_phone').val();
-    var strContragenMail = $('#cntragnt_mail').val();
-    var strContragenType = $('#contragent_type_list').attr('select_value');
-    $.ajax({
-        url : 'OperationFinsContragent',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            DBOperation: strDBOperation,
-            ContragentId: strContragentId,
-            ContragentName: strContragentName,
-            ContragenDescription: strContragenDescription,
-            ContragenPhone: strContragenPhone,
-            ContragenMail: strContragenMail,
-            ContragenType:strContragenType
-        }),
-        success: function (data) {
-            doAjaxGetContragentsList();//Обновить таблицу контрагентов
-            SpinnerOff("doAjaxContragentDBOperation");
+    try {
+        var strDBOperation = $('#cntragnt_db_action').attr('value');//update/insert/delete
+        var strContragentId = $('#cntragnt_id').attr('value');
+        var strContragentName = $('#cntragnt_name').val();
+        var strContragenDescription = $('#cntragnt_desqription').val();
+        var strContragenPhone = $('#cntragnt_phone').val();
+        var strContragenMail = $('#cntragnt_mail').val();
+        var strContragenType = $('#contragent_type_list').attr('select_value');
+
+        //Валидация
+        var strErrorFlg = 'N';
+        strErrorFlg = validator('Название', 'CONTR_AGENT_NAME', '#cntragnt_name', strContragentName, strErrorFlg);//Проверка "Имя"
+        strErrorFlg = validator('Описание', 'CONTR_AGENT_DESCRIPTION', '#cntragnt_desqription', strContragenDescription, strErrorFlg);//Проверка "Описпнин"
+        strErrorFlg = validator('Почта', 'EMAIL', '#cntragnt_mail', strContragenMail, strErrorFlg);//Проверка "Почта"
+        strErrorFlg = validator('Телефон', 'PHONE', '#cntragnt_phone', strContragenPhone, strErrorFlg);//Проверка "Телефон"
+        strErrorFlg = validator('Вид', 'CONTR_TYPE', '#contragent_type_list', strContragenType, strErrorFlg);//Проверка "Вид"
+
+        if (strErrorFlg == 'Y') {
+            throw new SyntaxError("Ошибка валидации");
         }
-    });
+
+        $.ajax({
+            url: 'OperationFinsContragent',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                DBOperation: strDBOperation,
+                ContragentId: strContragentId,
+                ContragentName: strContragentName,
+                ContragenDescription: strContragenDescription,
+                ContragenPhone: strContragenPhone,
+                ContragenMail: strContragenMail,
+                ContragenType: strContragenType
+            }),
+            success: function (data) {
+                doAjaxGetContragentsList();//Обновить таблицу контрагентов
+                SpinnerOff("doAjaxContragentDBOperation");
+            }
+        });
+    }catch (e) {
+        console.log(e);
+        SpinnerOff("doAjaxContragentDBOperation");
+    }
 };
 
 //Ajax получение реквезитов Контрагента
