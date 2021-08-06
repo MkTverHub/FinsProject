@@ -166,11 +166,11 @@ function doAjaxContragentDBOperation() {
 
         //Валидация
         var strErrorFlg = 'N';
-        strErrorFlg = validator('Название', 'CONTR_AGENT_NAME', '#cntragnt_name', strContragentName, strErrorFlg);//Проверка "Имя"
-        strErrorFlg = validator('Описание', 'CONTR_AGENT_DESCRIPTION', '#cntragnt_desqription', strContragenDescription, strErrorFlg);//Проверка "Описпнин"
+        strErrorFlg = validator('Название', 'STRING_36', '#cntragnt_name', strContragentName, strErrorFlg);//Проверка "Имя"
+        strErrorFlg = validator('Описание', 'STRING_255', '#cntragnt_desqription', strContragenDescription, strErrorFlg);//Проверка "Описпнин"
         strErrorFlg = validator('Почта', 'EMAIL', '#cntragnt_mail', strContragenMail, strErrorFlg);//Проверка "Почта"
         strErrorFlg = validator('Телефон', 'PHONE', '#cntragnt_phone', strContragenPhone, strErrorFlg);//Проверка "Телефон"
-        strErrorFlg = validator('Вид', 'CONTR_TYPE', '#contragent_type_list', strContragenType, strErrorFlg);//Проверка "Вид"
+        strErrorFlg = validator('Вид', 'NOT_NULL', '#contragent_type_list', strContragenType, strErrorFlg);//Проверка "Вид"
 
         if (strErrorFlg == 'Y') {
             throw new SyntaxError("Ошибка валидации");
@@ -262,13 +262,21 @@ function doAjaxRequisitDBOperation() {
 
         //Валидация
         var strErrorFlg = 'N';
-        strErrorFlg = validator('№ карты','INN','#requisit_card_number',strRequisitCardNum,strErrorFlg);//Проверка № карты
-        strErrorFlg = validator('ИНН','INN','#requisit_ReqINN',strRequisitINN,strErrorFlg);//Проверка ИНН
-        strErrorFlg = validator('КПП','KPP','#requisit_ReqKPP',strRequisitKPP,strErrorFlg);//Проверка КПП
-        strErrorFlg = validator('Счет','FINC_ACC','#requisit_ReqFinsAcc',strRequisitFinsAcc,strErrorFlg);//Проверка Счет
-        strErrorFlg = validator('БИК','BIK','#requisit_ReqBIK',strRequisitFinsBIK,strErrorFlg);//Проверка БИК
-        strErrorFlg = validator('Корр. счет','REQ_CRS','#requisit_ReqCrspAcc',strRequisitFinsBIK,strErrorFlg);//Корреспондентский счет
-        strErrorFlg = validator('Индекс','REQ_ADDR_INDEX','#requisit_ReqAddrIndex',strRequisitFinsBIK,strErrorFlg);//Индекс
+        strErrorFlg = validator('Название','STRING_36','#requisit_name',strRequisitName,strErrorFlg);//Название
+        strErrorFlg = validator('Описание','STRING_255','#requisit_description',strRequisitDescription,strErrorFlg);//Описание
+        strErrorFlg = validator('№ карты','NUMBER_16','#requisit_card_number',strRequisitCardNum,strErrorFlg);//Проверка № карты
+        strErrorFlg = validator('ИНН','NUMBER_10_12','#requisit_ReqINN',strRequisitINN,strErrorFlg);//Проверка ИНН
+        strErrorFlg = validator('КПП','NUMBER_9','#requisit_ReqKPP',strRequisitKPP,strErrorFlg);//Проверка КПП
+        strErrorFlg = validator('Счет','NUMBER_20','#requisit_ReqFinsAcc',strRequisitFinsAcc,strErrorFlg);//Проверка Счет
+        strErrorFlg = validator('БИК','NUMBER_9','#requisit_ReqBIK',strRequisitFinsBIK,strErrorFlg);//Проверка БИК
+        strErrorFlg = validator('Банк','STRING_255','#requisit_ReqBankName',strRequisitBankName,strErrorFlg);//Проверка Банк
+        strErrorFlg = validator('Корр. счет','NUMBER_20','#requisit_ReqCrspAcc',strRequisitFinsBIK,strErrorFlg);//Корреспондентский счет
+        strErrorFlg = validator('Индекс','NUMBER_6','#requisit_ReqAddrIndex',strRequisitFinsBIK,strErrorFlg);//Индекс
+        strErrorFlg = validator('Город','STRING_255','#requisit_ReqAddrCity',strRequisitAddrCity,strErrorFlg);//Проверка Город
+        strErrorFlg = validator('Адрес','STRING_255','#requisit_ReqAddrString',strRequisitAddrString,strErrorFlg);//Проверка Адрес
+        strErrorFlg = validator('Телефон','PHONE','#requisit_ReqPhoneNum',strRequisitPhoneNum,strErrorFlg);//Телефон
+        strErrorFlg = validator('Почта','EMAIL','#requisit_ReqEmail',strRequisitEmail,strErrorFlg);//Почта
+
 
         if(strErrorFlg == 'Y'){
             throw new SyntaxError("Ошибка валидации");

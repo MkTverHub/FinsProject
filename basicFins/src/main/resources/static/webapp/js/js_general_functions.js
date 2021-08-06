@@ -136,15 +136,50 @@ function validator(field_name,field_key,field_id,field_value,ErrorFlg) {
     var ErrorFlgLocal = 'N';
     var regex = /g/;
     switch(field_key) {
-        case 'CONTR_AGENT_NAME': //Имя контрагента
+        case 'STRING_36': //Строка 36 символов
             if(field_value.length > 36){
                 ErrorMsg = 'Данные превышают лимит';
                 ErrorFlgLocal = 'Y';
             }
         break;
-        case 'CONTR_AGENT_DESCRIPTION': //Описание контрагента
+        case 'STRING_255': //Строка 255
             if(field_value.length > 255){
                 ErrorMsg = 'Данные превышают лимит';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'NUMBER_16': //16 цифр
+            regex = /^[\d]{16}$/;
+            if(field_value.match(regex) == null){
+                ErrorMsg = 'Нужно указать 16 цифр';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'NUMBER_9': //9 цифр
+            regex = /^[\d]{9}$/;
+            if(field_value.match(regex) == null){
+                ErrorMsg = 'Нужно указать 9 цифр';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'NUMBER_10_12': //10 или 12 цифр
+            regex = /^[\d]{16}$/;
+            if(field_value.match(regex) == null){
+                ErrorMsg = 'Нужно указать 10 или 12 цифр';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'NUMBER_20': //10 или 12 цифр
+            regex = /^[\d]{16}$/;
+            if(field_value.match(regex) == null){
+                ErrorMsg = 'Нужно указать 20 цифр';
+                ErrorFlgLocal = 'Y';
+            }
+        break;
+        case 'NUMBER_6': //10 или 12 цифр
+            regex = /^[\d]{6}$/;
+            if(field_value.match(regex) == null){
+                ErrorMsg = 'Нужно указать 6 цифр';
                 ErrorFlgLocal = 'Y';
             }
         break;
@@ -162,62 +197,13 @@ function validator(field_name,field_key,field_id,field_value,ErrorFlg) {
                 ErrorFlgLocal = 'Y';
             }
         break;
-        case 'CONTR_TYPE': //CONTR_TYPE
+        case 'NOT_NULL': //CONTR_TYPE
             if(field_value == ''){
                 ErrorMsg = 'Обязательно для заполнения';
                 ErrorFlgLocal = 'Y';
             }
         break;
 
-        case 'CARD_NUM':
-            regex = /\D/;
-            if(field_value.match(regex)){
-                ErrorMsg = field_name + ' должен содержать только числа';
-                ErrorFlgLocal = 'Y';
-            }
-        break;
-        case 'INN':
-            regex = /\D/;
-            if(field_value.match(regex)){
-                ErrorMsg = field_name + ' должен содержать только числа';
-                ErrorFlgLocal = 'Y';
-            }
-        break;
-        case 'KPP':
-            regex = /\D/;
-            if(field_value.match(regex)){
-                ErrorMsg = field_name + ' должен содержать только числа';
-                ErrorFlgLocal = 'Y';
-            }
-        break;
-        case 'FINC_ACC':
-            regex = /\D/;
-            if(field_value.match(regex)){
-                ErrorMsg = field_name + ' должен содержать только числа';
-                ErrorFlgLocal = 'Y';
-            }
-        break;
-        case 'BIK':
-            regex = /\D/;
-            if(field_value.match(regex)){
-                ErrorMsg = field_name + ' должен содержать только числа';
-                ErrorFlgLocal = 'Y';
-            }
-        break;
-        case 'REQ_CRS':
-            regex = /\D/;
-            if(field_value.match(regex)){
-                ErrorMsg = field_name + ' должен содержать только числа';
-                ErrorFlgLocal = 'Y';
-            }
-        break;
-        case 'REQ_ADDR_INDEX':
-            regex = /\D/;
-            if(field_value.match(regex)){
-                ErrorMsg = field_name + ' должен содержать только числа';
-                ErrorFlgLocal = 'Y';
-            }
-        break;
     }
 
     if(ErrorFlgLocal == 'Y'){
