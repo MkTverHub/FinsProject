@@ -210,6 +210,9 @@ function validator(field_name,field_key,field_id,field_value,ErrorFlg) {
         $(field_id + "_ex_lbl").css("display", "block");
         $(field_id + "_ex_lbl").text(ErrorMsg);
         $(field_id).addClass("error-valid-field");
+    }else{
+        $(field_id + "_ex_lbl").css("display", "none");
+        $(field_id).removeClass("error-valid-field");
     }
 
     if(ErrorFlgLocal == 'Y' || ErrorFlg == 'Y'){

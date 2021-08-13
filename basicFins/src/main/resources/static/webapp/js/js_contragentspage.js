@@ -51,8 +51,7 @@ $(function(){
 //Событие нажатия на кнопку "Сохранить" контрагента
 function SaveContragent(){
     doAjaxContragentDBOperation();
-    ClearContragentForm();
-    SetROContragentForm();
+
 };
 //Событие нажатия на кнопку "Удалить" контрагента
 function DeleteContragent(){
@@ -77,8 +76,6 @@ function ResetContragent(){
 //Событие нажатия на кнопку "Сохранить" Реквезит
 function SaveContragentReq(){
     doAjaxRequisitDBOperation();
-    ClearRequisitForm();
-    SetRORequisitForm();
 };
 //Событие нажатия на кнопку "Создать" Реквезит
 function InsertContragentReq(){
@@ -166,14 +163,16 @@ function doAjaxContragentDBOperation() {
 
         //Валидация
         var strErrorFlg = 'N';
-        strErrorFlg = validator('Название', 'STRING_36', '#cntragnt_name', strContragentName, strErrorFlg);//Проверка "Имя"
-        strErrorFlg = validator('Описание', 'STRING_255', '#cntragnt_desqription', strContragenDescription, strErrorFlg);//Проверка "Описпнин"
-        strErrorFlg = validator('Почта', 'EMAIL', '#cntragnt_mail', strContragenMail, strErrorFlg);//Проверка "Почта"
-        strErrorFlg = validator('Телефон', 'PHONE', '#cntragnt_phone', strContragenPhone, strErrorFlg);//Проверка "Телефон"
-        strErrorFlg = validator('Вид', 'NOT_NULL', '#contragent_type_list', strContragenType, strErrorFlg);//Проверка "Вид"
+        if(strDBOperation == 'update' || strDBOperation == 'insert' ) {
+            strErrorFlg = validator('Название', 'STRING_36', '#cntragnt_name', strContragentName, strErrorFlg);//Проверка "Имя"
+            strErrorFlg = validator('Описание', 'STRING_255', '#cntragnt_desqription', strContragenDescription, strErrorFlg);//Проверка "Описпнин"
+            strErrorFlg = validator('Почта', 'EMAIL', '#cntragnt_mail', strContragenMail, strErrorFlg);//Проверка "Почта"
+            strErrorFlg = validator('Телефон', 'PHONE', '#cntragnt_phone', strContragenPhone, strErrorFlg);//Проверка "Телефон"
+            strErrorFlg = validator('Вид', 'NOT_NULL', '#contragent_type_list', strContragenType, strErrorFlg);//Проверка "Вид"
 
-        if (strErrorFlg == 'Y') {
-            throw new SyntaxError("Ошибка валидации");
+            if (strErrorFlg == 'Y') {
+                throw new SyntaxError("Ошибка валидации");
+            }
         }
 
         $.ajax({
@@ -193,6 +192,8 @@ function doAjaxContragentDBOperation() {
             }),
             success: function (data) {
                 doAjaxGetContragentsList();//Обновить таблицу контрагентов
+                ClearContragentForm();
+                SetROContragentForm();
                 SpinnerOff("doAjaxContragentDBOperation");
             }
         });
@@ -260,26 +261,28 @@ function doAjaxRequisitDBOperation() {
         var strRequisitWebSite = $('#requisit_ReqWebSite').val();
         var strRequisitCardNum = $('#requisit_card_number').val();
 
-        //Валидация
         var strErrorFlg = 'N';
-        strErrorFlg = validator('Название','STRING_36','#requisit_name',strRequisitName,strErrorFlg);//Название
-        strErrorFlg = validator('Описание','STRING_255','#requisit_description',strRequisitDescription,strErrorFlg);//Описание
-        strErrorFlg = validator('№ карты','NUMBER_16','#requisit_card_number',strRequisitCardNum,strErrorFlg);//Проверка № карты
-        strErrorFlg = validator('ИНН','NUMBER_10_12','#requisit_ReqINN',strRequisitINN,strErrorFlg);//Проверка ИНН
-        strErrorFlg = validator('КПП','NUMBER_9','#requisit_ReqKPP',strRequisitKPP,strErrorFlg);//Проверка КПП
-        strErrorFlg = validator('Счет','NUMBER_20','#requisit_ReqFinsAcc',strRequisitFinsAcc,strErrorFlg);//Проверка Счет
-        strErrorFlg = validator('БИК','NUMBER_9','#requisit_ReqBIK',strRequisitFinsBIK,strErrorFlg);//Проверка БИК
-        strErrorFlg = validator('Банк','STRING_255','#requisit_ReqBankName',strRequisitBankName,strErrorFlg);//Проверка Банк
-        strErrorFlg = validator('Корр. счет','NUMBER_20','#requisit_ReqCrspAcc',strRequisitFinsBIK,strErrorFlg);//Корреспондентский счет
-        strErrorFlg = validator('Индекс','NUMBER_6','#requisit_ReqAddrIndex',strRequisitFinsBIK,strErrorFlg);//Индекс
-        strErrorFlg = validator('Город','STRING_255','#requisit_ReqAddrCity',strRequisitAddrCity,strErrorFlg);//Проверка Город
-        strErrorFlg = validator('Адрес','STRING_255','#requisit_ReqAddrString',strRequisitAddrString,strErrorFlg);//Проверка Адрес
-        strErrorFlg = validator('Телефон','PHONE','#requisit_ReqPhoneNum',strRequisitPhoneNum,strErrorFlg);//Телефон
-        strErrorFlg = validator('Почта','EMAIL','#requisit_ReqEmail',strRequisitEmail,strErrorFlg);//Почта
+        //Валидация
+        if(strDBOperation == 'update' || strDBOperation == 'insert' ) {
+            strErrorFlg = validator('Название', 'STRING_36', '#requisit_name', strRequisitName, strErrorFlg);//Название
+            strErrorFlg = validator('Описание', 'STRING_255', '#requisit_description', strRequisitDescription, strErrorFlg);//Описание
+            strErrorFlg = validator('№ карты', 'NUMBER_16', '#requisit_card_number', strRequisitCardNum, strErrorFlg);//Проверка № карты
+            strErrorFlg = validator('ИНН', 'NUMBER_10_12', '#requisit_ReqINN', strRequisitINN, strErrorFlg);//Проверка ИНН
+            strErrorFlg = validator('КПП', 'NUMBER_9', '#requisit_ReqKPP', strRequisitKPP, strErrorFlg);//Проверка КПП
+            strErrorFlg = validator('Счет', 'NUMBER_20', '#requisit_ReqFinsAcc', strRequisitFinsAcc, strErrorFlg);//Проверка Счет
+            strErrorFlg = validator('БИК', 'NUMBER_9', '#requisit_ReqBIK', strRequisitFinsBIK, strErrorFlg);//Проверка БИК
+            strErrorFlg = validator('Банк', 'STRING_255', '#requisit_ReqBankName', strRequisitBankName, strErrorFlg);//Проверка Банк
+            strErrorFlg = validator('Корр. счет', 'NUMBER_20', '#requisit_ReqCrspAcc', strRequisitFinsBIK, strErrorFlg);//Корреспондентский счет
+            strErrorFlg = validator('Индекс', 'NUMBER_6', '#requisit_ReqAddrIndex', strRequisitFinsBIK, strErrorFlg);//Индекс
+            strErrorFlg = validator('Город', 'STRING_255', '#requisit_ReqAddrCity', strRequisitAddrCity, strErrorFlg);//Проверка Город
+            strErrorFlg = validator('Адрес', 'STRING_255', '#requisit_ReqAddrString', strRequisitAddrString, strErrorFlg);//Проверка Адрес
+            strErrorFlg = validator('Телефон', 'PHONE', '#requisit_ReqPhoneNum', strRequisitPhoneNum, strErrorFlg);//Телефон
+            strErrorFlg = validator('Почта', 'EMAIL', '#requisit_ReqEmail', strRequisitEmail, strErrorFlg);//Почта
 
 
-        if(strErrorFlg == 'Y'){
-            throw new SyntaxError("Ошибка валидации");
+            if (strErrorFlg == 'Y') {
+                throw new SyntaxError("Ошибка валидации");
+            }
         }
 
         $.ajax({
@@ -311,6 +314,8 @@ function doAjaxRequisitDBOperation() {
             }),
             success: function (data) {
                 doAjaxGetContragentRequisits(document.body.HashData.ActiveContragentId);
+                ClearRequisitForm();
+                SetRORequisitForm();
                 SpinnerOff("doAjaxRequisitDBOperation");
             }
         });
@@ -426,14 +431,18 @@ function ClearContragentForm(){
     $('#cntragnt_db_action').attr('value','');//update/insert/delete
     $('#cntragnt_id').attr('value','');
     $('#cntragnt_name').attr('value','');
-    $('#cntragnt_desqription').attr('value','');
-    $('#cntragnt_mail').attr('value','');
-    $('#cntragnt_phone').attr('value','');
-
+    $('#cntragnt_name').removeClass('error-valid-field');
     $('#cntragnt_name').val('');
+    $('#cntragnt_desqription').attr('value','');
+    $('#cntragnt_desqription').removeClass('error-valid-field');
     $('#cntragnt_desqription').val('');
+    $('#cntragnt_mail').attr('value','');
+    $('#cntragnt_mail').removeClass('error-valid-field');
     $('#cntragnt_mail').val('');
+    $('#cntragnt_phone').attr('value','');
+    $('#cntragnt_phone').removeClass('error-valid-field');
     $('#cntragnt_phone').val('');
+
     ResetPickList('#contragent_type_list');
     $('#contragent_type_list option:contains("Выберете значение")').prop('selected', true);
 
@@ -445,20 +454,35 @@ function ClearRequisitForm(){
     $('#requisit_id').attr('value','');
     $('#requisit_main').prop('checked',false);
     $('#requisit_name').val('');
+    $('#requisit_name').removeClass('error-valid-field');
     $('#requisit_description').val('');
+    $('#requisit_description').removeClass('error-valid-field');
     $('#requisit_ReqINN').val('');
+    $('#requisit_ReqINN').removeClass('error-valid-field');
     $('#requisit_ReqKPP').val('');
+    $('#requisit_ReqKPP').removeClass('error-valid-field');
     $('#requisit_ReqFinsAcc').val('');
+    $('#requisit_ReqFinsAcc').removeClass('error-valid-field');
     $('#requisit_ReqBIK').val('');
+    $('#requisit_ReqBIK').removeClass('error-valid-field');
     $('#requisit_ReqBankName').val('');
+    $('#requisit_ReqBankName').removeClass('error-valid-field');
     $('#requisit_ReqCrspAcc').val('');
+    $('#requisit_ReqCrspAcc').removeClass('error-valid-field');
     $('#requisit_ReqAddrIndex').val('');
+    $('#requisit_ReqAddrIndex').removeClass('error-valid-field');
     $('#requisit_ReqAddrCity').val('');
+    $('#requisit_ReqAddrCity').removeClass('error-valid-field');
     $('#requisit_ReqAddrString').val('');
+    $('#requisit_ReqAddrString').removeClass('error-valid-field');
     $('#requisit_ReqPhoneNum').val('');
+    $('#requisit_ReqPhoneNum').removeClass('error-valid-field');
     $('#requisit_ReqEmail').val('');
+    $('#requisit_ReqEmail').removeClass('error-valid-field');
     $('#requisit_ReqWebSite').val('');
+    $('#requisit_ReqWebSite').removeClass('error-valid-field');
     $('#requisit_card_number').val('');
+    $('#requisit_card_number').removeClass('error-valid-field');
 };
 
 //Сделать форму Контрагента RO
