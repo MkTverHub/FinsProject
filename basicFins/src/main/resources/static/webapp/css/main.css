@@ -458,3 +458,10 @@ button:focus {
 .error-valid-field{
   border: 1px solid #ff4f70;
 }
+
+.fin-operation-color-red {
+  color: #E20338
+}
+.fin-operation-color-green {
+  color: #008736
+}
