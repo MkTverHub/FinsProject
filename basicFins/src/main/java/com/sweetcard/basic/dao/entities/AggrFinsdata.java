@@ -14,7 +14,9 @@ public class AggrFinsdata {
     private String detail;
     private String finsopertype;
     private String payaccin;
+    private String payaccin_name;
     private String payaccout;
+    private String payaccout_name;
     private Integer finsarticle;
     private Integer projectid;
     private Integer finscontragent;
@@ -53,9 +55,13 @@ public class AggrFinsdata {
         this.payaccin = payaccin;
     }
 
+    public void setPayaccin_name(String payaccin_name) {this.payaccin_name = payaccin_name;}
+
     public void setPayaccout(String payaccout) {
         this.payaccout = payaccout;
     }
+
+    public void setPayaccout_name(String payaccout_name) {this.payaccout_name = payaccout_name;}
 
     public void setFinsarticle(Integer finsarticle) {
         this.finsarticle = finsarticle;
@@ -97,9 +103,13 @@ public class AggrFinsdata {
         return payaccin;
     }
 
+    public String getPayaccin_name() {return payaccin_name;}
+
     public String getPayaccout() {
         return payaccout;
     }
+
+    public String getPayaccout_name() {return payaccout_name;}
 
     public Integer getFinsarticle() {
         return finsarticle;

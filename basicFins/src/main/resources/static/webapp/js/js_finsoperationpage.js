@@ -276,7 +276,9 @@ function JSONStringToFinsOperationList(JSONString) {
     var strFinsAmount = "";
     var strFinsDetail = "";
     var strPaymentAccIn = "";
+    var strPaymentAccInName = "";
     var strPaymentAccOut = "";
+    var strPaymentAccOutName = "";
     var strFinsArticle = "";
     var strProjectId = "";
     var strFinsContrAgent = "";
@@ -294,7 +296,9 @@ function JSONStringToFinsOperationList(JSONString) {
         if(value["detail"] == null){strFinsDetail = 'null';} else {strFinsDetail = value["detail"].toString();}
         if(value["finsopertype"] == null){strFinsOpertype = 'null';} else {strFinsOpertype = value["finsopertype"].toString();}
         if(value["payaccin"] == null){strPaymentAccIn = 'null';} else {strPaymentAccIn = value["payaccin"].toString();}
+        if(value["payaccin_name"] == null){strPaymentAccInName = 'null';} else {strPaymentAccInName = value["payaccin_name"].toString();}
         if(value["payaccout"] == null){strPaymentAccOut = 'null';} else {strPaymentAccOut = value["payaccout"].toString();}
+        if(value["payaccout_name"] == null){strPaymentAccOutName = 'null';} else {strPaymentAccOutName = value["payaccout_name"].toString();}
         if(value["finsarticle"] == null){strFinsArticle = 'null';} else {strFinsArticle = value["finsarticle"].toString();}
         if(value["projectid"] == null){strProjectId = 'null';} else {strProjectId = value["projectid"].toString();}
         if(value["finscontragent"] == null){strFinsContrAgent = 'null';} else {strFinsContrAgent = value["finscontragent"].toString();}
@@ -328,8 +332,8 @@ function JSONStringToFinsOperationList(JSONString) {
             + '<th class="fieldoperdate">' + strOperDate + '</th>'
             + '<th class="fieldamount f-d-n">' + strFinsAmount + '</th>'
             + '<th class="fieldamountprint">' + strFinsAmount + ' руб.' + '</th>'
-            + '<th class="fieldpayaccin">' + strPaymentAccIn + '</th>'
-            + '<th class="fieldpayaccout">' + strPaymentAccOut + '</th>'
+            + '<th class="fieldpayaccin">' + strPaymentAccIn + strPaymentAccInName + '</th>'
+            + '<th class="fieldpayaccout">' + strPaymentAccOut + strPaymentAccOutName + '</th>'
             + '<th class="fieldfinsarticle f-d-n">' + strFinsArticle + '</th>'
             + '<th class="fieldprojectid f-d-n">' + strProjectId + '</th>'
             + '<th class="fieldfinscontragent f-d-n">' + strFinsContrAgent + '</th>'

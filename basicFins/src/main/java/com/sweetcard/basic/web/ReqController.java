@@ -843,17 +843,11 @@ public class ReqController {
             List<AggrFinsdata> financedataList = financedataRepository.GetAllByProj(intProjectId);
             logger.info("ReqController.GetProjectFinsOperationList -> row_count: " + financedataList.size());
 
-            /*
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            for(int i = 0; financedataList.size() > i; i++){
-                Financedata financedata = financedataList.get(i);
-                System.out.println(dateFormat.parse(financedata.operdate.toString()));
-            }*/
-
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
             Gson gson = new Gson();
             result.setText(gson.toJson(financedataList));
+            logger.info("ReqController.GetProjectFinsOperationList -> gson: " + gson.toJson(financedataList));
             return result;
         }catch (Exception get_fins_oper_list_ex){
             logger.info("ReqController.GetProjectFinsOperationList -> Error: " + get_fins_oper_list_ex);

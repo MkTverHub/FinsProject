@@ -263,7 +263,7 @@ function doAjaxRequisitDBOperation() {
 
         var strErrorFlg = 'N';
         //Валидация
-        if(strDBOperation == 'update' || strDBOperation == 'insert' ) {
+        if(strDBOperation == 'update' || strDBOperation == 'insert' && 1==0) {
             strErrorFlg = validator('Название', 'STRING_36', '#requisit_name', strRequisitName, strErrorFlg);//Название
             strErrorFlg = validator('Описание', 'STRING_255', '#requisit_description', strRequisitDescription, strErrorFlg);//Описание
             strErrorFlg = validator('№ карты', 'NUMBER_16', '#requisit_card_number', strRequisitCardNum, strErrorFlg);//Проверка № карты

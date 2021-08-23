@@ -24,12 +24,14 @@ public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integ
     //Выбрать все селектом по проекту
     @Query(value = "SELECT \n" +
             "t1.id,t1.amount,t1.detail,t1.finscontragent,t1.fins_oper_type as finsopertype,t1.lock_flg as lockflg,\n" +
-            "to_char(t1.oper_date, 'yyyy-mm-dd hh24:mi:ss') as operdate,t1.pay_acc_in as payaccin,t1.pay_acc_out as payaccout,\n" +
+            "to_char(t1.oper_date, 'yyyy-mm-dd hh24:mi:ss') as operdate,t1.pay_acc_in as payaccin,cnt_in.first_name as payaccin_name, t1.pay_acc_out as payaccout,cnt_out.first_name as payaccout_name,\n" +
             "t1.project_id as projectid,t1.requisites,t1.fins_article as finsarticle,t2.name as contragent_name, t3.name as requisites_name, t4.text_val as article_name\n" +
             "FROM financedata t1\n" +
             "left join contragent t2 on t1.finscontragent = t2.id\n" +
             "left join requisits t3 on t1.requisites = t3.id\n" +
             "left join lov t4 on t1.fins_article = t4.id\n" +
+            "left join contact cnt_in on t1.pay_acc_in = cnt_in.fins_acc\n" +
+            "left join contact cnt_out on t1.pay_acc_out = cnt_in.fins_acc\n" +
             "\n" +
             "where t1.project_id = :fins_project_id", nativeQuery = true)
     List<AggrFinsdata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid);
