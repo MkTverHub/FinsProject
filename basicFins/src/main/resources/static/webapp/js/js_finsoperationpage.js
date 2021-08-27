@@ -269,6 +269,7 @@ function ClearFinsForm (){
 function JSONStringToFinsOperationList(JSONString) {
     var strFinsOpertype = "";
     var strFinsOpertypeRU = "";
+    var strFinsOpertypeColor = "";
     var strFinsOperationListContext = "";
     var strRowId = "";
     var strLockFlg = "";
@@ -311,15 +312,19 @@ function JSONStringToFinsOperationList(JSONString) {
         switch(strFinsOpertype) {
             case "profit":
                 strFinsOpertypeRU = "приход";
+                strFinsOpertypeColor = " fin-operation-color-green";
             break;
             case "expense":
                 strFinsOpertypeRU = "расход";
+                strFinsOpertypeColor = " fin-operation-color-red";
             break;
             case "transfer":
                 strFinsOpertypeRU = "перевод";
+                strFinsOpertypeColor = "";
             break;
             default:{
                 strFinsOpertypeRU = "null";
+                strFinsOpertypeColor = "";
             }
         }
 
@@ -331,7 +336,7 @@ function JSONStringToFinsOperationList(JSONString) {
             + '<th class="fieldlockflg f-d-n">' + strLockFlg + '</th>'
             + '<th class="fieldoperdate">' + strOperDate + '</th>'
             + '<th class="fieldamount f-d-n">' + strFinsAmount + '</th>'
-            + '<th class="fieldamountprint">' + strFinsAmount + ' руб.' + '</th>'
+            + '<th class="fieldamountprint' + strFinsOpertypeColor +'">' + strFinsAmount + ' руб.' + '</th>'
             + '<th class="fieldpayaccin">' + strPaymentAccIn + '<div><small>' + strPaymentAccInName + '</small></div></th>'
             + '<th class="fieldpayaccout">' + strPaymentAccOut + '<div><small>' + strPaymentAccOutName + '</small></div></th>'
             + '<th class="fieldfinsarticle f-d-n">' + strFinsArticle + '</th>'
