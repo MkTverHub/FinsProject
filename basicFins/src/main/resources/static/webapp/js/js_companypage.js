@@ -57,6 +57,7 @@ $(function(){
         $('#company_inn').val($(this).find('.company_inn').attr('value'));
         $('#company_kpp').val($(this).find('.company_kpp').attr('value'));
         $('#company_fins_acc').val($(this).find('.company_fins_acc').attr('value'));
+
     });
 });
 
@@ -99,6 +100,7 @@ $(function(){
         $('#contact_first_name_id').val($(this).find('.contact_first_name').attr('value'));
         $('#contact_balance_id').val($(this).find('.contact_balance').attr('value'));
         $('#contact_fins_acc_id').val($(this).find('.contact_fins_acc').attr('value'));
+        $('#contact_description_id').val($(this).find('.contact_description').attr('value'));
     });
 });
 
@@ -114,6 +116,7 @@ function doAjaxCompanytDBOperation() {
     var strCompanyINN = $('#company_inn').val();
     var strCompanyKPP = $('#company_kpp').val();
     var strCompanyFinsAcc = $('#company_fins_acc').val();
+
 
     $.ajax({
         url : 'OperationCompany',
@@ -147,6 +150,7 @@ function doAjaxContactDBOperation() {
     var strContactLastName = '';
     var strContactFinsAcc = $('#contact_fins_acc_id').val();
     var strContactBalance = $('#contact_balance_id').val();
+    var strContactDescription = $('#contact_description_id').val();
     var strCompanyId = document.body.HashData.ActiveCompanytId;
 
     $.ajax({
@@ -162,6 +166,7 @@ function doAjaxContactDBOperation() {
             ContactLastName: strContactLastName,
             ContactFinsAcc: strContactFinsAcc,
             ContactBalance: strContactBalance,
+            ContactDescription: strContactDescription,
             ContactCompanyId: strCompanyId
         }),
         success: function (data) {
@@ -261,13 +266,14 @@ function JSONStringToCompanyTable(JSONString) {
     $("#company_table_body_id").html(strCompanyTableContext);
 };
 
-//Парсинг JSON списка компаний в таблицу
+//Парсинг JSON списка сотрудников в таблицу
 function JSONStringToContactsTable(JSONString) {
     var strContactTableContext = '';
     var strContactId = '';
     var strContactFirstName = '';
     var strContactFinsAcc = '';
     var strContactBalance = '';
+    var strContactDescriptione = '';
 
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
@@ -276,7 +282,8 @@ function JSONStringToContactsTable(JSONString) {
         if(value['first_name'] == null){strContactFirstName = 'null';} else {strContactFirstName = value['first_name'].toString();}
         if(value['fins_acc'] == null){strContactFinsAcc = 'null';} else {strContactFinsAcc = value['fins_acc'].toString();}
         if(value['balance'] == null){strContactBalance = 'null';} else {strContactBalance = value['balance'].toString();}
-        strContactTableContext = strContactTableContext + '<th class="contact_id" value="' + strContactId + '">' + strContactId + '</th>' + '<th class="contact_first_name" value="' + strContactFirstName + '">' + strContactFirstName + '</th>' + '<th class="contact_fins_acc" value="' + strContactFinsAcc + '">' + strContactFinsAcc + '</th>' + '<th class="contact_balance" value="' + strContactBalance + '">' + strContactBalance + '</th>' + '</tr>';
+        if(value['description'] == null){strContactDescriptione = 'null';} else {strContactDescriptione = value['description'].toString();}
+        strContactTableContext = strContactTableContext + '<th class="contact_id" value="' + strContactId + '">' + strContactId + '</th>' + '<th class="contact_first_name" value="' + strContactFirstName + '">' + strContactFirstName + '</th>' + '<th class="contact_fins_acc" value="' + strContactFinsAcc + '">' + strContactFinsAcc + '</th>' + '<th class="contact_balance" value="' + strContactBalance + '">' + strContactBalance + '</th>' + '<th class="contact_description" value="' + strContactDescriptione + '">' + strContactDescriptione + '</th>' + '</tr>';
     });
 
     $("#contact_table_body_id").html(strContactTableContext);
@@ -300,6 +307,7 @@ function CleanContactForm() {
     $('#contact_first_name_id').val('');
     $('#contact_balance_id').val('');
     $('#contact_fins_acc_id').val('');
+    $('#contact_description_id').val('');
 };
 
 //Сделать форму Компания RO
@@ -325,6 +333,7 @@ function SetROContactForm(){
     $('#contact_first_name_id').attr('readonly', true);
     $('#contact_balance_id').attr('readonly', true);
     $('#contact_fins_acc_id').attr('readonly', true);
+    $('#contact_description_id').attr('readonly', true);
 }
 
 //Сделать форму Сотрудник not RO
@@ -332,4 +341,5 @@ function UnSetROContactForm(){
     $('#contact_first_name_id').attr('readonly', false);
     $('#contact_balance_id').attr('readonly', false);
     $('#contact_fins_acc_id').attr('readonly', false);
+    $('#contact_description_id').attr('readonly', false);
 }

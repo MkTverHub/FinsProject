@@ -14,5 +14,6 @@ public class Contact {
     @Column(name = "fins_acc") private String fins_acc;
     @Column(name = "par_row_id") private Integer par_row_id;
     @Column(name = "balance") private String balance;
+    @Column(name = "description") private String description;
 
 }

@@ -124,7 +124,6 @@ $(function(){
 
 //Событие нажатия на кнопку "Создать" финансовую операцию
 function NewFinsOperation(){
-    UnSetROForm();
     $('#finsedittypeid').attr('value','insert');
     $('#finsedittypeid').val('insert');
     ClearFinsForm();
@@ -199,6 +198,7 @@ $(function(){
 //Событие Нажатия на "Приход"
 $(function(){
     $("#arrivalbt").on('click', function(){
+        UnSetROForm();
         $('#finsopertypeid').attr('value','profit');
         $('#finsopertypeid').val('profit');
         $('#divpaymentaccoutid').hide();
@@ -211,6 +211,7 @@ $(function(){
 //Событие Нажатия на "Расход"
 $(function(){
     $("#expensebt").on('click', function(){
+        UnSetROForm();
         $('#finsopertypeid').attr('value','expense');
         $('#finsopertypeid').val('expense');
         $('#divpaymentaccoutid').show();
@@ -223,6 +224,7 @@ $(function(){
 //Событие Нажатия на "Перевод"
 $(function(){
     $("#transferbt").on('click', function(){
+        UnSetROForm();
         $('#finsopertypeid').attr('value','transfer');
         $('#finsopertypeid').val('transfer');
         $('#divpaymentaccoutid').show();
@@ -292,22 +294,25 @@ function JSONStringToFinsOperationList(JSONString) {
     $.each(obj, function (index, value) {
         if(value["id"] == null){strRowId = 'null';} else {strRowId = value["id"].toString();}
         if(value["lockflg"] == null){strLockFlg = 'null';} else {strLockFlg = value["lockflg"].toString();}
-        if(value["operdate"] == null){strOperDate = 'null';} else {strOperDate = value["operdate"].toString();}
-        if(value["amount"] == null){strFinsAmount = 'null';} else {strFinsAmount = value["amount"].toString();}
-        if(value["detail"] == null){strFinsDetail = 'null';} else {strFinsDetail = value["detail"].toString();}
-        if(value["finsopertype"] == null){strFinsOpertype = 'null';} else {strFinsOpertype = value["finsopertype"].toString();}
-        if(value["payaccin"] == null){strPaymentAccIn = 'null';} else {strPaymentAccIn = value["payaccin"].toString();}
-        if(value["payaccin_name"] == null){strPaymentAccInName = 'null';} else {strPaymentAccInName = value["payaccin_name"].toString();}
-        if(value["payaccout"] == null){strPaymentAccOut = 'null';} else {strPaymentAccOut = value["payaccout"].toString();}
-        if(value["payaccout_name"] == null){strPaymentAccOutName = 'null';} else {strPaymentAccOutName = value["payaccout_name"].toString();}
-        if(value["finsarticle"] == null){strFinsArticle = 'null';} else {strFinsArticle = value["finsarticle"].toString();}
-        if(value["projectid"] == null){strProjectId = 'null';} else {strProjectId = value["projectid"].toString();}
-        if(value["finscontragent"] == null){strFinsContrAgent = 'null';} else {strFinsContrAgent = value["finscontragent"].toString();}
-        if(value["requisites"] == null){strFinsRequisites = 'null';} else {strFinsRequisites = value["requisites"].toString();}
+        if(value["operdate"] == null){strOperDate = '';} else {strOperDate = value["operdate"].toString();}
+        if(value["amount"] == null){strFinsAmount = '';} else {
+            strFinsAmount = value["amount"].toString();
+            if(strFinsAmount.indexOf(".")==-1){strFinsAmount=strFinsAmount+".00";}
+        }
+        if(value["detail"] == null){strFinsDetail = '';} else {strFinsDetail = value["detail"].toString();}
+        if(value["finsopertype"] == null){strFinsOpertype = '';} else {strFinsOpertype = value["finsopertype"].toString();}
+        if(value["payaccin"] == null){strPaymentAccIn = '';} else {strPaymentAccIn = value["payaccin"].toString();}
+        if(value["payaccin_name"] == null){strPaymentAccInName = '';} else {strPaymentAccInName = value["payaccin_name"].toString();}
+        if(value["payaccout"] == null){strPaymentAccOut = '';} else {strPaymentAccOut = value["payaccout"].toString();}
+        if(value["payaccout_name"] == null){strPaymentAccOutName = '';} else {strPaymentAccOutName = value["payaccout_name"].toString();}
+        if(value["finsarticle"] == null){strFinsArticle = '';} else {strFinsArticle = value["finsarticle"].toString();}
+        if(value["projectid"] == null){strProjectId = '';} else {strProjectId = value["projectid"].toString();}
+        if(value["finscontragent"] == null){strFinsContrAgent = '';} else {strFinsContrAgent = value["finscontragent"].toString();}
+        if(value["requisites"] == null){strFinsRequisites = '';} else {strFinsRequisites = value["requisites"].toString();}
 
-        if(value["requisites_name"] == null){strRequisitesName = 'null';} else {strRequisitesName = value["requisites_name"].toString();}
-        if(value["contragent_name"] == null){strContrAgentName = 'null';} else {strContrAgentName = value["contragent_name"].toString();}
-        if(value["article_name"] == null){strArticleName = 'null';} else {strArticleName = value["article_name"].toString();}
+        if(value["requisites_name"] == null){strRequisitesName = '';} else {strRequisitesName = value["requisites_name"].toString();}
+        if(value["contragent_name"] == null){strContrAgentName = '';} else {strContrAgentName = value["contragent_name"].toString();}
+        if(value["article_name"] == null){strArticleName = '';} else {strArticleName = value["article_name"].toString();}
 
         switch(strFinsOpertype) {
             case "profit":

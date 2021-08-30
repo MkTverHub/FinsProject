@@ -487,6 +487,7 @@ public class ReqController {
                                                    @RequestParam String ContactLastName,
                                                    @RequestParam String ContactFinsAcc,
                                                    @RequestParam String ContactBalance,
+                                                   @RequestParam String ContactDescription,
                                                    @RequestParam String ContactCompanyId)
     {
         logger.info("ReqController.OperationContact -> " + DBOperation + "/" + ContactId + "/" + ContactFirstName + "/" + ContactLastName + "/" + ContactFinsAcc + "/" + ContactBalance + "/" + ContactCompanyId);
@@ -501,6 +502,7 @@ public class ReqController {
             contactform.setContactLastName(ContactLastName);
             contactform.setContactFinsAcc(ContactFinsAcc);
             contactform.setContactBalance(intBalance);
+            contactform.setContactDescription(ContactDescription);
             contactform.setContactParRowId(intContactCompanyId);
             contactJdbc.ContactAction(contactform);
 

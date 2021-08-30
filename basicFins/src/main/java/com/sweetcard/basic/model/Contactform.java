@@ -7,6 +7,7 @@ public class Contactform {
     private String strContactFinsAcc = "";
     private Integer intContactParRowId;
     private Integer intContactBalance;
+    private String strContactDescription = "";
     private String strContactAction= ""; //insert/update/delete
 
     /*----------------GET / SET Полей--------------*/
@@ -26,4 +27,6 @@ public class Contactform {
     public void setContactBalance(Integer ContactBalance) {this.intContactBalance = ContactBalance;}
     public String getContactAction() {return strContactAction;}
     public void setContactAction(String ContactAction) {this.strContactAction = ContactAction;}
+    public String getContactDescription() {return strContactDescription;}
+    public void setContactDescription(String strContactDescription) {this.strContactDescription = strContactDescription;}
 }

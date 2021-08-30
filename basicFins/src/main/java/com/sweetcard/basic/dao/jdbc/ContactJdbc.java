@@ -31,8 +31,8 @@ public class ContactJdbc {
                 case "update" : {
                     Integer intContactId = Integer.parseInt(contactform.getContactId());
                     logger.info("ContactJdbc.UpdateContact -> " + intContactId);
-                    jdbcTemplate.update("update contact set first_name = ?, last_name = ?, fins_acc = ?, balance = ? where id = ?",
-                            contactform.getContactFirstName() ,contactform.getContactLastName(), contactform.getContactFinsAcc(), contactform.getContactBalance(), intContactId);
+                    jdbcTemplate.update("update contact set first_name = ?, last_name = ?, fins_acc = ?, balance = ?, description = ? where id = ?",
+                            contactform.getContactFirstName() ,contactform.getContactLastName(), contactform.getContactFinsAcc(), contactform.getContactBalance(), contactform.getContactDescription(), intContactId);
 
 
                 }break;
@@ -42,12 +42,13 @@ public class ContactJdbc {
                     jdbcTemplate.update(new PreparedStatementCreator() {
                         @Override
                         public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                            PreparedStatement statement = con.prepareStatement("INSERT INTO contact (first_name , last_name, fins_acc, par_row_id, balance) VALUES (?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
+                            PreparedStatement statement = con.prepareStatement("INSERT INTO contact (first_name , last_name, fins_acc, par_row_id, balance, description) VALUES (?,?,?,?,?,?) ", Statement.RETURN_GENERATED_KEYS);
                             statement.setString(1, contactform.getContactFirstName());
                             statement.setString(2, contactform.getContactLastName());
                             statement.setString(3, contactform.getContactFinsAcc());
                             statement.setInt(4, contactform.getContactParRowId());
                             statement.setInt(5, contactform.getContactBalance());
+                            statement.setString(6, contactform.getContactDescription());
                             return statement;
                         }
                     }, holder);
