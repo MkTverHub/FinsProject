@@ -80,8 +80,9 @@ $(function(){
         //$('#projectidid').attr('value',strProjectId);
         $('#finscontragentid').attr('value',strFinsContrAgent);
         SetActiveSelect('#contr_agent_select_field',strFinsContrAgent);
+        doAjaxGetContragentRequisits(strFinsContrAgent,'SetActiveSelect','#contr_agent_requisits_list',strFinsRequisites);//Получить список реквезитов контрагента + сделать активный реквезит
         $('#requisitesid').attr('value',strFinsRequisites);
-        SetActiveSelect('#contr_agent_requisits_list',strFinsRequisites);
+        //SetActiveSelect('#contr_agent_requisits_list',strFinsRequisites);
 
         $('#finsedittypeid').val('update');//update/new/delete
         $('#recordid').val(strFinsRecordId);
@@ -160,7 +161,7 @@ $(function(){
         var strContragentId = $('#contr_agent_select_field').val();
         $('#finscontragentid').attr('value',strContragentId);
         $('#finscontragentid').val(strContragentId);
-        doAjaxGetContragentRequisits(strContragentId);//Получить список реквезитов контрагента
+        doAjaxGetContragentRequisits(strContragentId,'','','');//Получить список реквезитов контрагента
     });
 });
 
@@ -596,7 +597,7 @@ function doAjaxGetContragentsList() {
 };
 
 //Ajax получение списка реквезитов для контрагента
-function doAjaxGetContragentRequisits(ContragentId) {
+function doAjaxGetContragentRequisits(ContragentId,Operation,Selector,SelectValue) {
     SpinnerOn("doAjaxGetContragentRequisits");
     try {
         $.ajax({
@@ -610,6 +611,9 @@ function doAjaxGetContragentRequisits(ContragentId) {
             }),
             success: function (data) {
                 JSONStringToRequisitsPickList(data.text);
+                if(Operation == 'SetActiveSelect'){
+                    SetActiveSelect(Selector,SelectValue);
+                }
                 SpinnerOff("doAjaxGetContragentRequisits");
             }
         });
