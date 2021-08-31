@@ -55,8 +55,10 @@ $(function(){
         strOperDt = $(this).find('.fieldoperdate').html();
         strFinsAmount = $(this).find('.fieldamount').html();
         strFinsDetail = $(this).find('.fielddetail').html();
-        strPaymentAccIn = $(this).find('.fieldpayaccin').html();
-        strPaymentAccOut = $(this).find('.fieldpayaccout').html();
+        //strPaymentAccIn = $(this).find('.fieldpayaccin').html();
+        //strPaymentAccOut = $(this).find('.fieldpayaccout').html();
+        strPaymentAccIn = $(this).find('.fieldpayaccin').attr('acc_num');
+        strPaymentAccOut = $(this).find('.fieldpayaccout').attr('acc_num');
         strFinsArticle = $(this).find('.fieldfinsarticle').html();
         strFinsContrAgent = $(this).find('.fieldfinscontragent').html();
         strFinsRequisites = $(this).find('.fieldrequisites').html();
@@ -342,8 +344,8 @@ function JSONStringToFinsOperationList(JSONString) {
             + '<th class="fieldoperdate">' + strOperDate + '</th>'
             + '<th class="fieldamount f-d-n">' + strFinsAmount + '</th>'
             + '<th class="fieldamountprint' + strFinsOpertypeColor +'">' + strFinsAmount + ' руб.' + '</th>'
-            + '<th class="fieldpayaccin">' + strPaymentAccIn + '<div><small>' + strPaymentAccInName + '</small></div></th>'
-            + '<th class="fieldpayaccout">' + strPaymentAccOut + '<div><small>' + strPaymentAccOutName + '</small></div></th>'
+            + '<th class="fieldpayaccin" acc_num="' + strPaymentAccIn + '">' + strPaymentAccIn + '<div><small>' + strPaymentAccInName + '</small></div></th>'
+            + '<th class="fieldpayaccout" acc_num="' + strPaymentAccOut + '">' + strPaymentAccOut + '<div><small>' + strPaymentAccOutName + '</small></div></th>'
             + '<th class="fieldfinsarticle f-d-n">' + strFinsArticle + '</th>'
             + '<th class="fieldprojectid f-d-n">' + strProjectId + '</th>'
             + '<th class="fieldfinscontragent f-d-n">' + strFinsContrAgent + '</th>'
@@ -429,6 +431,7 @@ function JSONStringToFinsArticleList(JSONString) {
 
 //Функция установки выбранного значения
 function SetActiveSelect(ListSelector,SelectedVal){
+    console.log("SetActiveSelect " + ListSelector + " / " + SelectedVal);
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
 }
