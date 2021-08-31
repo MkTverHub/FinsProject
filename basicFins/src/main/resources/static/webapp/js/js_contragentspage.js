@@ -272,8 +272,8 @@ function doAjaxRequisitDBOperation() {
             strErrorFlg = validator('Счет', 'NUMBER_20', '#requisit_ReqFinsAcc', strRequisitFinsAcc, strErrorFlg);//Проверка Счет
             strErrorFlg = validator('БИК', 'NUMBER_9', '#requisit_ReqBIK', strRequisitFinsBIK, strErrorFlg);//Проверка БИК
             strErrorFlg = validator('Банк', 'STRING_255', '#requisit_ReqBankName', strRequisitBankName, strErrorFlg);//Проверка Банк
-            strErrorFlg = validator('Корр. счет', 'NUMBER_20', '#requisit_ReqCrspAcc', strRequisitFinsBIK, strErrorFlg);//Корреспондентский счет
-            strErrorFlg = validator('Индекс', 'NUMBER_6', '#requisit_ReqAddrIndex', strRequisitFinsBIK, strErrorFlg);//Индекс
+            strErrorFlg = validator('Корр. счет', 'NUMBER_20', '#requisit_ReqCrspAcc', strRequisitCrspAcc, strErrorFlg);//Корреспондентский счет
+            strErrorFlg = validator('Индекс', 'NUMBER_6', '#requisit_ReqAddrIndex', strRequisitAddrIndex, strErrorFlg);//Индекс
             strErrorFlg = validator('Город', 'STRING_255', '#requisit_ReqAddrCity', strRequisitAddrCity, strErrorFlg);//Проверка Город
             strErrorFlg = validator('Адрес', 'STRING_255', '#requisit_ReqAddrString', strRequisitAddrString, strErrorFlg);//Проверка Адрес
             strErrorFlg = validator('Телефон', 'PHONE', '#requisit_ReqPhoneNum', strRequisitPhoneNum, strErrorFlg);//Телефон

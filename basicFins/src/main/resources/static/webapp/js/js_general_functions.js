@@ -163,14 +163,14 @@ function validator(field_name,field_key,field_id,field_value,ErrorFlg) {
             }
         break;
         case 'NUMBER_10_12': //10 или 12 цифр
-            regex = /^[\d]{16}$/;
+            regex = /^[\d]{10}$|^[\d]{12}$/;
             if(field_value.match(regex) == null){
                 ErrorMsg = 'Нужно указать 10 или 12 цифр';
                 ErrorFlgLocal = 'Y';
             }
         break;
-        case 'NUMBER_20': //10 или 12 цифр
-            regex = /^[\d]{16}$/;
+        case 'NUMBER_20': //20 цифр
+            regex = /^[\d]{20}$/;
             if(field_value.match(regex) == null){
                 ErrorMsg = 'Нужно указать 20 цифр';
                 ErrorFlgLocal = 'Y';
