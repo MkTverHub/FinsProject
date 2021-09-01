@@ -300,7 +300,8 @@ function JSONStringToFinsOperationList(JSONString) {
         if(value["operdate"] == null){strOperDate = '';} else {strOperDate = value["operdate"].toString();}
         if(value["amount"] == null){strFinsAmount = '';} else {
             strFinsAmount = value["amount"].toString();
-            if(strFinsAmount.indexOf(".")==-1){strFinsAmount=strFinsAmount+".00";}
+            strFinsAmount = FormatString(strFinsAmount);
+
         }
         if(value["detail"] == null){strFinsDetail = '';} else {strFinsDetail = value["detail"].toString();}
         if(value["finsopertype"] == null){strFinsOpertype = '';} else {strFinsOpertype = value["finsopertype"].toString();}
@@ -664,10 +665,17 @@ function doAjaxGetProjectProfit() {
             }),
             success: function (data) {
                 var obj = jQuery.parseJSON(data.text);
-                $('#projectprofitid').html(obj.ProjectProfit);
-                $('#projectprofitid_sub').html(obj.ProjectIncome);
-                $('#projectexpenseid_sub').html(obj.ProjectExpense);
-                $('#projectsaldoid_sub').html(obj.ProjectProfit);
+                var strProjectProfit = obj.ProjectProfit;
+                var strProjectIncome = obj.ProjectIncome;
+                var strProjectExpense = obj.ProjectExpense;
+                strProjectProfit = FormatString(strProjectProfit);
+                strProjectIncome = FormatString(strProjectIncome);
+                strProjectExpense = FormatString(strProjectExpense);
+
+                $('#projectprofitid').html(strProjectProfit);
+                $('#projectprofitid_sub').html(strProjectIncome);
+                $('#projectexpenseid_sub').html(strProjectExpense);
+                $('#projectsaldoid_sub').html(strProjectProfit);
                 SpinnerOff("doAjaxGetProjectProfit");
             }
         });
@@ -702,3 +710,16 @@ function doAjaxGetLovList() {
         return "";
     }
 };
+
+//Форматировать число
+function FormatString(InputStr){
+    var arr1 = InputStr.toString().split(".");
+    if(arr1.length == 1){
+        InputStr = InputStr + ".00";
+    }else{
+        if(arr1[1].length == 1){
+            InputStr = InputStr + "0";
+        }
+    }
+    return InputStr;
+}
