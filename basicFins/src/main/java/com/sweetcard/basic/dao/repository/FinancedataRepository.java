@@ -22,22 +22,23 @@ public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integ
     List<AggrFinsdata> GetAll();
 
     //Выбрать все селектом по проекту
-    @Query(value = "SELECT \n" +
-            "t1.id,t1.amount,t1.detail,t1.finscontragent,t1.fins_oper_type as finsopertype,t1.lock_flg as lockflg,\n" +
-            "to_char(t1.oper_date, 'yyyy-mm-dd') as operdate,\n" +
-            "case when t1.fins_oper_type = 'expense' then t3.fins_acc else case when t1.fins_oper_type = 'profit' then t1.pay_acc_in else t1.pay_acc_in end end payaccin,\n" +
-            "case when t1.fins_oper_type = 'expense' then t2.name else case when t1.fins_oper_type = 'profit' then cnt_in.first_name else cnt_in.first_name end end payaccin_name,\n" +
-            "case when t1.fins_oper_type = 'expense' then t1.pay_acc_out else case when t1.fins_oper_type = 'profit' then t3.fins_acc else t1.pay_acc_out end end payaccout,\n"+
-            "case when t1.fins_oper_type = 'expense' then cnt_out.first_name else case when t1.fins_oper_type = 'profit' then t2.name else cnt_out.first_name end end payaccout_name,\n"+
-            "t1.project_id as projectid,t1.requisites,t1.fins_article as finsarticle,t2.name as contragent_name, t3.name as requisites_name, t4.text_val as article_name\n" +
-            "FROM financedata t1\n" +
-            "left join contragent t2 on t1.finscontragent = t2.id\n" +
-            "left join requisits t3 on t1.requisites = t3.id\n" +
-            "left join lov t4 on t1.fins_article = t4.id\n" +
-            "left join contact cnt_in on t1.pay_acc_in = cnt_in.fins_acc\n" +
-            "left join contact cnt_out on t1.pay_acc_out = cnt_out.fins_acc\n" +
-            "\n" +
-            "where t1.project_id = :fins_project_id", nativeQuery = true)
+    @Query(value = "SELECT\n" +
+            "  t1.id,t1.amount,t1.detail,t1.finscontragent,t1.fins_oper_type as finsopertype,t1.lock_flg as lockflg,\n" +
+            "  to_char(t1.oper_date, 'yyyy-mm-dd') as operdate,\n" +
+            "  case when t1.fins_oper_type = 'expense' then t3.fins_acc else case when t1.fins_oper_type = 'profit' then t1.pay_acc_in else t1.pay_acc_in end end payaccin,\n" +
+            "  case when t1.fins_oper_type = 'expense' then t2.name||' '||t2.description else case when t1.fins_oper_type = 'profit' then cnt_in.first_name||' '||cnt_in.description else cnt_in.first_name||' '||cnt_in.description end end payaccin_name,\n" +
+            "  case when t1.fins_oper_type = 'expense' then t1.pay_acc_out else case when t1.fins_oper_type = 'profit' then t3.fins_acc else t1.pay_acc_out end end payaccout,\n" +
+            "  case when t1.fins_oper_type = 'expense' then cnt_out.first_name||' '||cnt_out.description else case when t1.fins_oper_type = 'profit' then t2.name||' '||t2.description else cnt_out.first_name||' '||cnt_out.description end end payaccout_name,\n" +
+            "  t1.project_id as projectid,t1.requisites,t1.fins_article as finsarticle,t2.name as contragent_name, t3.name as requisites_name, t4.text_val as article_name\n" +
+            "FROM \n" +
+            "  financedata t1\n" +
+            "  left join contragent t2 on t1.finscontragent = t2.id\n" +
+            "  left join requisits t3 on t1.requisites = t3.id\n" +
+            "  left join lov t4 on t1.fins_article = t4.id\n" +
+            "  left join contact cnt_in on t1.pay_acc_in = cnt_in.fins_acc\n" +
+            "  left join contact cnt_out on t1.pay_acc_out = cnt_out.fins_acc\n" +
+            "where \n" +
+            "  t1.project_id = :fins_project_id", nativeQuery = true)
     List<AggrFinsdata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid);
 
     //Получиь чистую прибыль по проекту

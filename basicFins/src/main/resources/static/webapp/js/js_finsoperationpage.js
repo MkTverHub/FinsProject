@@ -53,7 +53,7 @@ $(function(){
         strFinsBlockFlg = $(this).find('.fieldlockflg').html();
         strFinsOpertype = $(this).find('.fieldfinsopertype').html();
         strOperDt = $(this).find('.fieldoperdate').html();
-        strFinsAmount = $(this).find('.fieldamount').html();
+        strFinsAmount = DisbandAmount($(this).find('.fieldamount').html());
         strFinsDetail = $(this).find('.fielddetail').html();
         //strPaymentAccIn = $(this).find('.fieldpayaccin').html();
         //strPaymentAccOut = $(this).find('.fieldpayaccout').html();
@@ -260,6 +260,9 @@ function ClearFinsForm (){
     $('#fielddetailid').val('');
     $('#finscontragentid').val('');
     $('#requisitesid').val('');
+    $('#arrivalbt').removeClass('active');
+    $('#transferbt').removeClass('active');
+    $('#expensebt').removeClass('active');
 
     //Сброс списков
     $('#paymentaccinid_list option:contains("Выберете значение")').prop('selected', true);
@@ -298,13 +301,12 @@ function JSONStringToFinsOperationList(JSONString) {
         if(value["id"] == null){strRowId = 'null';} else {strRowId = value["id"].toString();}
         if(value["lockflg"] == null){strLockFlg = 'null';} else {strLockFlg = value["lockflg"].toString();}
         if(value["operdate"] == null){strOperDate = '';} else {strOperDate = value["operdate"].toString();}
-        if(value["amount"] == null){strFinsAmount = '';} else {
-            strFinsAmount = value["amount"].toString();
-            strFinsAmount = FormatString(strFinsAmount);
-
-        }
         if(value["detail"] == null){strFinsDetail = '';} else {strFinsDetail = value["detail"].toString();}
         if(value["finsopertype"] == null){strFinsOpertype = '';} else {strFinsOpertype = value["finsopertype"].toString();}
+        if(value["amount"] == null){strFinsAmount = '';} else {
+            strFinsAmount = value["amount"].toString();
+            strFinsAmount = FormatAmount(strFinsAmount,strFinsOpertype);
+        }
         if(value["payaccin"] == null){strPaymentAccIn = '';} else {strPaymentAccIn = value["payaccin"].toString();}
         if(value["payaccin_name"] == null){strPaymentAccInName = '';} else {strPaymentAccInName = value["payaccin_name"].toString();}
         if(value["payaccout"] == null){strPaymentAccOut = '';} else {strPaymentAccOut = value["payaccout"].toString();}
@@ -320,15 +322,15 @@ function JSONStringToFinsOperationList(JSONString) {
 
         switch(strFinsOpertype) {
             case "profit":
-                strFinsOpertypeRU = "приход";
+                strFinsOpertypeRU = "Приход";
                 strFinsOpertypeColor = " fin-operation-color-green";
             break;
             case "expense":
-                strFinsOpertypeRU = "расход";
+                strFinsOpertypeRU = "Расход";
                 strFinsOpertypeColor = " fin-operation-color-red";
             break;
             case "transfer":
-                strFinsOpertypeRU = "перевод";
+                strFinsOpertypeRU = "Перевод";
                 strFinsOpertypeColor = "";
             break;
             default:{
@@ -668,9 +670,9 @@ function doAjaxGetProjectProfit() {
                 var strProjectProfit = obj.ProjectProfit;
                 var strProjectIncome = obj.ProjectIncome;
                 var strProjectExpense = obj.ProjectExpense;
-                strProjectProfit = FormatString(strProjectProfit);
-                strProjectIncome = FormatString(strProjectIncome);
-                strProjectExpense = FormatString(strProjectExpense);
+                strProjectProfit = FormatAmount(strProjectProfit,'none');
+                strProjectIncome = FormatAmount(strProjectIncome,'none');
+                strProjectExpense = FormatAmount(strProjectExpense,'none');
 
                 $('#projectprofitid').html(strProjectProfit);
                 $('#projectprofitid_sub').html(strProjectIncome);
@@ -712,14 +714,27 @@ function doAjaxGetLovList() {
 };
 
 //Форматировать число
-function FormatString(InputStr){
-    var arr1 = InputStr.toString().split(".");
+function FormatAmount(Amount,Type){
+    var arr1 = Amount.toString().split(".");
     if(arr1.length == 1){
-        InputStr = InputStr + ".00";
+        Amount = Amount + ".00";
     }else{
         if(arr1[1].length == 1){
-            InputStr = InputStr + "0";
+            Amount = Amount + "0";
         }
     }
-    return InputStr;
+    if(Type == 'profit'){
+        Amount = "+"+Amount;
+    }
+    if(Type == 'expense'){
+        Amount = "-"+Amount;
+    }
+    return Amount;
 }
+
+function DisbandAmount(Amount) {
+    var strVal1 = Amount;
+    strVal1 = strVal1.replace('+','').replace('-','');
+    return strVal1;
+}
+
