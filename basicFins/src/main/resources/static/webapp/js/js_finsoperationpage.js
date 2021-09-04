@@ -265,11 +265,11 @@ function ClearFinsForm (){
     $('#expensebt').removeClass('active');
 
     //Сброс списков
-    $('#paymentaccinid_list option:contains("Выберете значение")').prop('selected', true);
-    $('#paymentaccoutid_list option:contains("Выберете значение")').prop('selected', true);
-    $('#finsarticleid_list option:contains("Выберете значение")').prop('selected', true);
-    $('#contr_agent_select_field option:contains("Выберете значение")').prop('selected', true);
-    $('#contr_agent_requisits_list option:contains("Выберете значение")').prop('selected', true);
+    $('#paymentaccinid_list option:contains("Выберите значение")').prop('selected', true);
+    $('#paymentaccoutid_list option:contains("Выберите значение")').prop('selected', true);
+    $('#finsarticleid_list option:contains("Выберите значение")').prop('selected', true);
+    $('#contr_agent_select_field option:contains("Выберите значение")').prop('selected', true);
+    $('#contr_agent_requisits_list option:contains("Выберите значение")').prop('selected', true);
 
 };
 
@@ -371,7 +371,7 @@ function JSONStringToFinsOperationList(JSONString) {
 function JSONStringToContragentPickList(JSONString) {
     var strContragentId = '';
     var strContragentName = '';
-    var strContragentPickListContext = '<option value="0">Выберете значение</option>';
+    var strContragentPickListContext = '<option value="0">Выберите значение</option>';
 
     try{
         var obj = jQuery.parseJSON(JSONString);
@@ -391,7 +391,7 @@ function JSONStringToContragentPickList(JSONString) {
 function JSONStringToRequisitsPickList(JSONString) {
     var strRequisitId = '';
     var strRequisitName = '';
-    var strRequisitsPickListContext = '<option value="0">Выберете значение</option>';
+    var strRequisitsPickListContext = '<option value="0">Выберите значение</option>';
 
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
@@ -406,7 +406,7 @@ function JSONStringToRequisitsPickList(JSONString) {
 function JSONStringToContactFinsAccList(JSONString) {
     var strContactName = '';
     var strContactFinsAcc = '';
-    var strContactFinsAccListContext = '<option value="0">Выберете значение</option>';
+    var strContactFinsAccListContext = '<option value="0">Выберите значение</option>';
 
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
@@ -422,7 +422,7 @@ function JSONStringToContactFinsAccList(JSONString) {
 function JSONStringToFinsArticleList(JSONString) {
     var strFinsArticleId = '';
     var strFinsArticleValue = '';
-    var strFinsArticleListContext = '<option value="0">Выберете значение</option>';
+    var strFinsArticleListContext = '<option value="0">Выберите значение</option>';
 
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
@@ -729,12 +729,15 @@ function FormatAmount(Amount,Type){
     if(Type == 'expense'){
         Amount = "-"+Amount;
     }
+    if(Type == 'transfer'){
+        Amount = "→"+Amount;
+    }
     return Amount;
 }
 
 function DisbandAmount(Amount) {
     var strVal1 = Amount;
-    strVal1 = strVal1.replace('+','').replace('-','');
+    strVal1 = strVal1.replace('+','').replace('-','').replace('→','');
     return strVal1;
 }
 

@@ -61,7 +61,7 @@
                         <div class="card"> <!-- модуль c формой -->
                             <div class="card-body">
                                 <h4 class="card-title">Создать проект</h4>
-                                <h6 class="card-subtitle">Проект - это раздел для детального управления финансовыми операциями</h6>
+                                <h6 class="card-subtitle">Проект - это основной раздел для детального управления финансовыми операциями</h6>
                                 <!-- Форма с полями -->
                                 <form method="post">
                                     <div class="form-body">
@@ -103,35 +103,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Поле ввода -->
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <label class="col-lg-3 align-self-center">Приход</label>
-                                            <div class="col-lg-9 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <input type="text" id="project_income_id" class="form-control" readonly="true">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Поле ввода -->
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <label class="col-lg-3 align-self-center">Расход</label>
-                                            <div class="col-lg-9 align-self-center">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <input type="text" id="project_expense_id" class="form-control" readonly="true">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </form>
                                 <div class="form-actions">
                                     <div class="text-right">
@@ -159,7 +130,7 @@
                                     <div class="form-group">
                                         <label class="align-self-center">Список компаний:</label>
                                         <select name="s" id="company_picklist_id" class="form-control custom-select align-self-center">
-                                            <option value="0">Выберете</option>
+                                            <option value="0">Выберите</option>
                                         </select>
                                     </div>
                                     <button onclick="LinkCompanyToProject()" id="com_pickl_btton_id" class="btn waves-effect waves-light btn-light align-self-center">Добавить</button>
@@ -179,13 +150,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Список проектов</h4>
-                        <h6 class="card-subtitle">Полный список всех проектов. Вы можете изменить или удалить нужный проект, достаточно кликнув по нему.</h6>
+                        <h6 class="card-subtitle">Полный список всех проектов. Вы можете изменить или удалить нужный проект, достаточно кликнув по нему. Проект по умолчанию не удалить. Его можно изменить.</h6>
                         <div class="table-responsive">
                             <table id="finsproject_table_list" class="table no-wrap table-hover">
                                 <thead> <!-- Заголовок таблицы -->
                                 <tr>
-                                    <th>№</th>
-                                    <th>Имя</th>
+                                    <!--<th>№</th> -->
+                                    <th>Название</th>
                                     <th>Описание</th>
                                 </tr>
                                 </thead>
