@@ -9,6 +9,7 @@ public class Financedataform {
     private String strFinsRecordId = "";
     private String strFinsblockflg = "";
     private String strFinsoperdate = "";
+    private String strFinsoperdateUser = "";
     private String strFinsamount = "";
     private String strFinsdetail = "";
     private String strFinsOperType = "";//Тип транзакции profit/loss/transfer
@@ -36,6 +37,12 @@ public class Financedataform {
     }
     public void setFinsoperdate(String Finsoperdate) {
         this.strFinsoperdate = Finsoperdate;
+    }
+    public String getFinsoperdateUser() {
+        return strFinsoperdateUser;
+    }
+    public void setFinsoperdateUser(String FinsoperdateUser) {
+        this.strFinsoperdateUser = FinsoperdateUser;
     }
     public String getFinsamount() {
         return strFinsamount;

@@ -20,6 +20,8 @@ public class Financedata {
     private boolean lockflg;
     @Column(name = "oper_date", columnDefinition = "TIMESTAMP DEFAULT NOW()")
     public Date operdate;
+    @Column(name = "oper_date_user", columnDefinition = "TIMESTAMP DEFAULT NOW()")
+    public Date operdate_user;
     @Column(name = "amount")
     private Float amount;
     @Column(name = "detail")

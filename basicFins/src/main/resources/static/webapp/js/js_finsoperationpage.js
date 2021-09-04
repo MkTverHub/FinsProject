@@ -282,12 +282,15 @@ function JSONStringToFinsOperationList(JSONString) {
     var strRowId = "";
     var strLockFlg = "";
     var strOperDate = "";
+    var strOperDateUser = "";
     var strFinsAmount = "";
     var strFinsDetail = "";
     var strPaymentAccIn = "";
     var strPaymentAccInName = "";
+    var strPaymentAccInPosition = "";
     var strPaymentAccOut = "";
     var strPaymentAccOutName = "";
+    var strPaymentAccOutPosition = "";
     var strFinsArticle = "";
     var strProjectId = "";
     var strFinsContrAgent = "";
@@ -301,6 +304,7 @@ function JSONStringToFinsOperationList(JSONString) {
         if(value["id"] == null){strRowId = 'null';} else {strRowId = value["id"].toString();}
         if(value["lockflg"] == null){strLockFlg = 'null';} else {strLockFlg = value["lockflg"].toString();}
         if(value["operdate"] == null){strOperDate = '';} else {strOperDate = value["operdate"].toString();}
+        if(value["operdate_user"] == null){strOperDateUser = '';} else {strOperDateUser = value["operdate_user"].toString();}
         if(value["detail"] == null){strFinsDetail = '';} else {strFinsDetail = value["detail"].toString();}
         if(value["finsopertype"] == null){strFinsOpertype = '';} else {strFinsOpertype = value["finsopertype"].toString();}
         if(value["amount"] == null){strFinsAmount = '';} else {
@@ -309,8 +313,10 @@ function JSONStringToFinsOperationList(JSONString) {
         }
         if(value["payaccin"] == null){strPaymentAccIn = '';} else {strPaymentAccIn = value["payaccin"].toString();}
         if(value["payaccin_name"] == null){strPaymentAccInName = '';} else {strPaymentAccInName = value["payaccin_name"].toString();}
+        if(value["payaccin_position"] == null){strPaymentAccInPosition = '';} else {strPaymentAccInPosition = value["payaccin_position"].toString();}
         if(value["payaccout"] == null){strPaymentAccOut = '';} else {strPaymentAccOut = value["payaccout"].toString();}
         if(value["payaccout_name"] == null){strPaymentAccOutName = '';} else {strPaymentAccOutName = value["payaccout_name"].toString();}
+        if(value["payaccout_position"] == null){strPaymentAccOutPosition = '';} else {strPaymentAccOutPosition = value["payaccout_position"].toString();}
         if(value["finsarticle"] == null){strFinsArticle = '';} else {strFinsArticle = value["finsarticle"].toString();}
         if(value["projectid"] == null){strProjectId = '';} else {strProjectId = value["projectid"].toString();}
         if(value["finscontragent"] == null){strFinsContrAgent = '';} else {strFinsContrAgent = value["finscontragent"].toString();}
@@ -346,10 +352,11 @@ function JSONStringToFinsOperationList(JSONString) {
             + '<th class="fieldid f-d-n">' + strRowId + '</th>'
             + '<th class="fieldlockflg f-d-n">' + strLockFlg + '</th>'
             + '<th class="fieldoperdate">' + strOperDate + '</th>'
+            + '<th class="fieldoperdate_user">' + strOperDateUser + '</th>'
             + '<th class="fieldamount f-d-n">' + strFinsAmount + '</th>'
             + '<th class="fieldamountprint' + strFinsOpertypeColor +'">' + strFinsAmount + ' руб.' + '</th>'
-            + '<th class="fieldpayaccin" acc_num="' + strPaymentAccIn + '">' + strPaymentAccIn + '<div><small>' + strPaymentAccInName + '</small></div></th>'
-            + '<th class="fieldpayaccout" acc_num="' + strPaymentAccOut + '">' + strPaymentAccOut + '<div><small>' + strPaymentAccOutName + '</small></div></th>'
+            + '<th class="fieldpayaccin" acc_num="' + strPaymentAccIn + '">' + strPaymentAccIn + '<div><small>' + strPaymentAccInName + '</small></div>' + '<div><small>' + strPaymentAccInPosition + '</small></div></th>'
+            + '<th class="fieldpayaccout" acc_num="' + strPaymentAccOut + '">' + strPaymentAccOut + '<div><small>' + strPaymentAccOutName + '</small></div>' + '<div><small>' + strPaymentAccOutPosition + '</small></div></th>'
             + '<th class="fieldfinsarticle f-d-n">' + strFinsArticle + '</th>'
             + '<th class="fieldprojectid f-d-n">' + strProjectId + '</th>'
             + '<th class="fieldfinscontragent f-d-n">' + strFinsContrAgent + '</th>'
