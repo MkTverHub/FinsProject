@@ -203,7 +203,7 @@ public class ReqController {
     public @ResponseBody Response AjaxFinsOperationForm(@RequestParam String RecordOperation,
                                                 @RequestParam String Row_Id,
                                                 @RequestParam String Lock_Flg,
-                                                //@RequestParam String Operation_Dt,
+                                                @RequestParam String Operation_Dt_User,
                                                 @RequestParam String Amount,
                                                 @RequestParam String Detail,
                                                 @RequestParam String Fins_Transaction_Type,
@@ -225,6 +225,7 @@ public class ReqController {
                 financedataform.setFinsOperType(Fins_Transaction_Type);
                 financedataform.setFinsrecordid(Row_Id);
                 financedataform.setFinsblockflg(Lock_Flg);
+                financedataform.setFinsoperdateUser(Operation_Dt_User);
                 financedataform.setFinsamount(Amount);
                 financedataform.setFinsdetail(Detail);
                 financedataform.setPaymentAccIn(Pay_Acc_In);

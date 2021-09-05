@@ -38,6 +38,7 @@ $(function(){
     var strFinsBlockFlg = "";
     var strFinsOpertype = "";//Тип транзакции profit/expense/transfer
     var strOperDt = "";
+    var strOperDtUser = "";
     var strFinsAmount = "";
     var strFinsDetail = "";
     var strPaymentAccIn = "";
@@ -53,6 +54,7 @@ $(function(){
         strFinsBlockFlg = $(this).find('.fieldlockflg').html();
         strFinsOpertype = $(this).find('.fieldfinsopertype').html();
         strOperDt = $(this).find('.fieldoperdate').html();
+        strOperDtUser = $(this).find('.fieldoperdate_user').html();
         strFinsAmount = DisbandAmount($(this).find('.fieldamount').html());
         strFinsDetail = $(this).find('.fielddetail').html();
         //strPaymentAccIn = $(this).find('.fieldpayaccin').html();
@@ -68,6 +70,7 @@ $(function(){
         $('#fieldlockflgid').attr('value',strFinsBlockFlg);
         $('#finsopertypeid').attr('value',strFinsOpertype);//profit/expense/transfer
         $('#fieldoperdateid').attr('value',strOperDt);
+        $('#fieldoperdateuserid').attr('value',strOperDtUser);
         $('#fieldamountid').attr('value',strFinsAmount);
         $('#fielddetailid').attr('value',strFinsDetail);
         $('#paymentaccinid_list').attr('select_value',strPaymentAccIn);
@@ -89,6 +92,7 @@ $(function(){
         $('#fieldlockflgid').val(strFinsBlockFlg);
         $('#finsopertypeid').val(strFinsOpertype);//profit/expense/transfer
         $('#fieldoperdateid').val(strOperDt);
+        $('#fieldoperdateuserid').val(strOperDtUser);
         $('#fieldamountid').val(strFinsAmount);
         $('#fielddetailid').val(strFinsDetail);
         $('#finscontragentid').val(strFinsContrAgent);
@@ -245,6 +249,7 @@ function ClearFinsForm (){
     $('#fieldlockflgid').attr('value','');
     $('#finsopertypeid').attr('value','');
     $('#fieldoperdateid').attr('value','');
+    $('#fieldoperdateuserid').attr('value','');
     $('#fieldamountid').attr('value','');
     $('#fielddetailid').attr('value','');
     $('#paymentaccinid_list').attr('select_value','');
@@ -256,6 +261,7 @@ function ClearFinsForm (){
     $('#fieldlockflgid').val('');
     $('#finsopertypeid').val('');
     $('#fieldoperdateid').val('');
+    $('#fieldoperdateuserid').val('');
     $('#fieldamountid').val('');
     $('#fielddetailid').val('');
     $('#finscontragentid').val('');
@@ -442,13 +448,13 @@ function JSONStringToFinsArticleList(JSONString) {
 
 //Функция установки выбранного значения
 function SetActiveSelect(ListSelector,SelectedVal){
-    console.log("SetActiveSelect " + ListSelector + " / " + SelectedVal);
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
 }
 
 //Сделать форму RO
 function SetROForm(){
+    $('#fieldoperdateuserid').attr('readonly', true);
     $('#fieldamountid').attr('readonly', true);
     $('#paymentaccinid_list').attr('disabled', true);
     $('#paymentaccoutid_list').attr('disabled', true);
@@ -460,6 +466,7 @@ function SetROForm(){
 
 //Сделать форму not RO
 function UnSetROForm(){
+    $('#fieldoperdateuserid').attr('readonly', false);
     $('#fieldamountid').attr('readonly', false);
     $('#paymentaccinid_list').attr('disabled', false);
     $('#paymentaccoutid_list').attr('disabled', false);
@@ -544,6 +551,7 @@ function doAjaxFinsOperation() {
         var strFinsRequisites = $('#requisitesid').attr('value');//Id реквезита
 
         //Доступные поля
+        var strOperationDtUser = $('#fieldoperdateuserid').val();//Сумма
         var strFinsAmount = $('#fieldamountid').val();//Сумма
         var strFinsDetail = $('#fielddetailid').val();//Детали
         var strPaymentAccIn = $('#paymentaccinid_list').attr('select_value');
@@ -560,6 +568,7 @@ function doAjaxFinsOperation() {
                 RecordOperation: strRecordOperation,
                 Row_Id: strFinsRecordId,
                 Lock_Flg: strFinsBlockFlg,
+                Operation_Dt_User: strOperationDtUser,
                 Amount: strFinsAmount,
                 Detail: strFinsDetail,
                 Fins_Transaction_Type: strFinsOpertype,
