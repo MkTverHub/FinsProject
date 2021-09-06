@@ -202,7 +202,7 @@ $(function(){
 function JSONStringToCompanyPickList(JSONString) {
     var strCompanyId = '';
     var strCompanyName = '';
-    var strCompanyPickListContext = '<option value="0">Выберете значение</option>';
+    var strCompanyPickListContext = '<option value="0">Выберите значение</option>';
 
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {

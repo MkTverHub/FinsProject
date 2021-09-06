@@ -5,7 +5,7 @@
     <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
     <title>Fin</title>
     <script src="webapp/js/js_general_functions.js"></script>
-    <script src="webapp/js/js_companypageadd.js"></script><!--Подцепляем внешний скрипт-->
+    <script src="webapp/js/js_finslovpage.js"></script><!--Подцепляем внешний скрипт-->
 </head>
 
 <body>
@@ -38,45 +38,15 @@
     <!-- *************************************************************** -->
 
     <section class="page-wrap">
-        <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-7 align-self-center">
-                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Информация</h3>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb mt-2 p-0">
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">
-                                        <a href="#">Информация о компании</a>
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
-                            <form th:action="@{/FinsCompanyEditor}" method="post">
-                                <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать или изменить компанию</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+         
+        <div class="container">
+        <!-- 404 Error Text -->
+            <div class="text-center">
+                <div class="error mx-auto" data-text="404">404</div>
+                <p class="lead text-gray-800 mb-5">Страницы не существует</p>
+                <p class="text-gray-500 mb-0">Что-то пошло не так...</p>
+                <a href="/">← На главную</a>
             </div>
-
-            
-        <div class="container" th:each="c: ${companyList}">
-
-            <!-- *************************************************************** -->
-            <!-- Карточка с формой -->
-            <!-- *************************************************************** -->
-
-            <div class="row">
-                 <div th:replace="fragments\layouts\fragment_project_tile.html :: company_fragment_1(company=${c})"></div>
-            </div>
-
-            <!-- *************************************************************** -->
-            <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
-            <!-- *************************************************************** -->
-                
         </div>
     
     </section>
