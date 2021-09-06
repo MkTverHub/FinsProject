@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -26,6 +28,7 @@ public class FinancedataJdbc {
     public void RecordOperation(Financedataform finsform)
     {
         try {
+            String strUserLogin = GetUserLogin();
             String strEditType = finsform.getFinsedittype();//insert/update/delete
             String strRecordId = finsform.getFinsrecordid();
             String strFinsOperType = finsform.getFinsOperType();//Тип транзакции profit/expense/transfer
@@ -60,7 +63,7 @@ public class FinancedataJdbc {
             if (0 == strEditType.compareTo("update")) {
                 logger.info("FinancedataJdbc.RecordOperation (update): Record Id = " + intRecordId);
                 String strSQLUpdate = "update financedata set oper_date = now()::timestamp, fins_oper_type = '" + strFinsOperType + "'," +
-                        "oper_date_user = '" + strFinsOperDateUser + "',"+
+                        "oper_date_user = '" + strFinsOperDateUser + "', oper_login_user = '"+ strUserLogin + "'," +
                         "amount = " + flAmount + ", pay_acc_in = '" + strPaymentAccIn + "', pay_acc_out = '" + strPaymentAccOut + "'," +
                         "fins_article = " + intFinsArticle + ", detail = '" + strDetail + "'," +
                         "finscontragent = " + intContrAgent + ", requisites = " + intRequisites +
@@ -74,8 +77,8 @@ public class FinancedataJdbc {
             //Создание записи
             if (0 == strEditType.compareTo("insert")) {
                 logger.info("FinancedataJdbc.RecordOperation (new): ");
-                String strSQLInsert = "insert into financedata (oper_date,fins_oper_type,oper_date_user,amount,pay_acc_in,pay_acc_out,fins_article,detail,finscontragent,requisites,project_id) " +
-                        "values (now()::timestamp,'"+ strFinsOperType +"','" + strFinsOperDateUser + "',"+ flAmount + ",'" + strPaymentAccIn + "','" + strPaymentAccOut + "',"
+                String strSQLInsert = "insert into financedata (oper_date,fins_oper_type,oper_date_user,oper_login_user,amount,pay_acc_in,pay_acc_out,fins_article,detail,finscontragent,requisites,project_id) " +
+                        "values (now()::timestamp,'"+ strFinsOperType +"','" + strFinsOperDateUser + "','" + strUserLogin +"'," + flAmount + ",'" + strPaymentAccIn + "','" + strPaymentAccOut + "',"
                         + intFinsArticle + ",'" + strDetail + "'," + intContrAgent + "," + intRequisites + "," + intActivProjectId + ");";
                 logger.info("FinancedataJdbc.RecordOperation (insert): SQLInsert " + strSQLInsert);
                 jdbcTemplate.update(strSQLInsert);
@@ -101,6 +104,19 @@ public class FinancedataJdbc {
     //-----------------------------SETTERS------------------------------
     public void setActivProjectId(Integer ProjectId){
         intActivProjectId = ProjectId;
+    }
+
+
+    //Получить логин пользователя
+    private String GetUserLogin(){
+        String strUserName = "";
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            strUserName = ((UserDetails)principal).getUsername();
+        } else {
+            strUserName = principal.toString();
+        }
+        return strUserName;
     }
 
 }

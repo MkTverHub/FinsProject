@@ -22,6 +22,8 @@ public class Financedata {
     public Date operdate;
     @Column(name = "oper_date_user", columnDefinition = "TIMESTAMP DEFAULT NOW()")
     public Date operdate_user;
+    @Column(name = "oper_login_user")
+    public String oper_login_user;
     @Column(name = "amount")
     private Float amount;
     @Column(name = "detail")

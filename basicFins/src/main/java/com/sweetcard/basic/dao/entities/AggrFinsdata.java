@@ -11,6 +11,7 @@ public class AggrFinsdata {
     private boolean lockflg;
     private String operdate;
     private String operdate_user;
+    private String oper_login_user;
     private Float amount;
     private String detail;
     private String finsopertype;
@@ -41,6 +42,7 @@ public class AggrFinsdata {
         this.operdate = operdate;
     }
     public void setOperdate_user(String operdate_user) { this.operdate_user = operdate_user; }
+    public void setOper_login_user(String oper_login_user) {this.oper_login_user = oper_login_user;}
     public void setAmount(Float amount) {
         this.amount = amount;
     }
@@ -89,6 +91,8 @@ public class AggrFinsdata {
         return operdate;
     }
     public String getOperdate_user() { return operdate_user; }
+    public String getOper_login_user() {return oper_login_user;}
+
     public Float getAmount() {
         return amount;
     }

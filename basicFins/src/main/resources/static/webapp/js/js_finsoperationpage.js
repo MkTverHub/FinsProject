@@ -205,40 +205,45 @@ $(function(){
 //Событие Нажатия на "Приход"
 $(function(){
     $("#arrivalbt").on('click', function(){
-        UnSetROForm();
-        $('#finsopertypeid').attr('value','profit');
-        $('#finsopertypeid').val('profit');
-        $('#divpaymentaccoutid').hide();
-        $('#divpaymentaccinid').show();
-        $('#divcontragentrequisitsid').show();
-        $('#divcontragentfieldid').show();
+        if($('#arrivalbt').attr('disabled') != 'disabled') {
+            UnSetROForm();
+            $('#finsopertypeid').attr('value', 'profit');
+            $('#finsopertypeid').val('profit');
+            $('#divpaymentaccoutid').hide();
+            $('#divpaymentaccinid').show();
+            $('#divcontragentrequisitsid').show();
+            $('#divcontragentfieldid').show();
+        }
     });
 });
 
 //Событие Нажатия на "Расход"
 $(function(){
     $("#expensebt").on('click', function(){
-        UnSetROForm();
-        $('#finsopertypeid').attr('value','expense');
-        $('#finsopertypeid').val('expense');
-        $('#divpaymentaccoutid').show();
-        $('#divpaymentaccinid').hide();
-        $('#divcontragentrequisitsid').show();
-        $('#divcontragentfieldid').show();
+        if($('#expensebt').attr('disabled') != 'disabled') {
+            UnSetROForm();
+            $('#finsopertypeid').attr('value', 'expense');
+            $('#finsopertypeid').val('expense');
+            $('#divpaymentaccoutid').show();
+            $('#divpaymentaccinid').hide();
+            $('#divcontragentrequisitsid').show();
+            $('#divcontragentfieldid').show();
+        }
     });
 });
 
 //Событие Нажатия на "Перевод"
 $(function(){
     $("#transferbt").on('click', function(){
-        UnSetROForm();
-        $('#finsopertypeid').attr('value','transfer');
-        $('#finsopertypeid').val('transfer');
-        $('#divpaymentaccoutid').show();
-        $('#divpaymentaccinid').show();
-        $('#divcontragentrequisitsid').hide();
-        $('#divcontragentfieldid').hide();
-
+        if($('#transferbt').attr('disabled') != 'disabled'){
+            UnSetROForm();
+            $('#finsopertypeid').attr('value','transfer');
+            $('#finsopertypeid').val('transfer');
+            $('#divpaymentaccoutid').show();
+            $('#divpaymentaccinid').show();
+            $('#divcontragentrequisitsid').hide();
+            $('#divcontragentfieldid').hide();
+        }
     });
 });
 
@@ -289,6 +294,7 @@ function JSONStringToFinsOperationList(JSONString) {
     var strLockFlg = "";
     var strOperDate = "";
     var strOperDateUser = "";
+    var strOperLoginUser = "";
     var strFinsAmount = "";
     var strFinsDetail = "";
     var strPaymentAccIn = "";
@@ -311,6 +317,7 @@ function JSONStringToFinsOperationList(JSONString) {
         if(value["lockflg"] == null){strLockFlg = 'null';} else {strLockFlg = value["lockflg"].toString();}
         if(value["operdate"] == null){strOperDate = '';} else {strOperDate = value["operdate"].toString();}
         if(value["operdate_user"] == null){strOperDateUser = '';} else {strOperDateUser = value["operdate_user"].toString();}
+        if(value["oper_login_user"] == null){strOperLoginUser = '';} else {strOperLoginUser = value["oper_login_user"].toString();}
         if(value["detail"] == null){strFinsDetail = '';} else {strFinsDetail = value["detail"].toString();}
         if(value["finsopertype"] == null){strFinsOpertype = '';} else {strFinsOpertype = value["finsopertype"].toString();}
         if(value["amount"] == null){strFinsAmount = '';} else {
@@ -357,7 +364,6 @@ function JSONStringToFinsOperationList(JSONString) {
             + '<th class="fieldfinsopertyperu">' + strFinsOpertypeRU + '</th>'
             + '<th class="fieldid f-d-n">' + strRowId + '</th>'
             + '<th class="fieldlockflg f-d-n">' + strLockFlg + '</th>'
-            + '<th class="fieldoperdate">' + strOperDate + '</th>'
             + '<th class="fieldoperdate_user">' + strOperDateUser + '</th>'
             + '<th class="fieldamount f-d-n">' + strFinsAmount + '</th>'
             + '<th class="fieldamountprint' + strFinsOpertypeColor +'">' + strFinsAmount + ' руб.' + '</th>'
@@ -369,10 +375,12 @@ function JSONStringToFinsOperationList(JSONString) {
             + '<th class="fieldrequisites f-d-n">' + strFinsRequisites + '</th>'
 
             + '<th class="fieldfinsarticle_name">' + strArticleName + '</th>'
-            + '<th class="fieldfinscontragent_name">' + strContrAgentName + '</th>'
-            + '<th class="fieldrequisites_name">' + strRequisitesName + '</th>'
+            + '<th class="fieldfinscontragent_name f-d-n">' + strContrAgentName + '</th>'
+            + '<th class="fieldrequisites_name f-d-n">' + strRequisitesName + '</th>'
 
             + '<th class="fielddetail">' + strFinsDetail + '</th>'
+            + '<th class="fieldoperdate">' + strOperDate + '</th>'
+            + '<th class="fieldoperlogin">' + strOperLoginUser + '</th>'
             + '</tr>';
     });
 
@@ -462,6 +470,10 @@ function SetROForm(){
     $('#finsarticleid_list').attr('disabled', true);
     $('#fielddetailid').attr('readonly', true);
     $('#contr_agent_requisits_list').attr('disabled', true);
+
+    $('#expensebt').attr('disabled', true);
+    $('#transferbt').attr('disabled', true);
+    $('#arrivalbt').attr('disabled', true);
 }
 
 //Сделать форму not RO
@@ -474,6 +486,10 @@ function UnSetROForm(){
     $('#finsarticleid_list').attr('disabled', false);
     $('#fielddetailid').attr('readonly', false);
     $('#contr_agent_requisits_list').attr('disabled', false);
+
+    $('#expensebt').attr('disabled', true);
+    $('#transferbt').attr('disabled', true);
+    $('#arrivalbt').attr('disabled', true);
 }
 
 
