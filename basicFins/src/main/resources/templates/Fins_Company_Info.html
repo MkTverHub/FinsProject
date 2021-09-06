@@ -63,13 +63,13 @@
             </div>
 
             
-        <div class="container" th:each="c: ${companyList}">
+        <div class="container">
 
             <!-- *************************************************************** -->
             <!-- Карточка с формой -->
             <!-- *************************************************************** -->
 
-            <div class="row">
+            <div class="row" th:each="c: ${companyList}">
                  <div th:replace="fragments\layouts\fragment_project_tile.html :: company_fragment_1(company=${c})"></div>
             </div>
 
