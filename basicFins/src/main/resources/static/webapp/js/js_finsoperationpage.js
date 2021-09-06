@@ -133,6 +133,9 @@ $(function(){
 function NewFinsOperation(){
     $('#finsedittypeid').attr('value','insert');
     $('#finsedittypeid').val('insert');
+    $('#arrivalbt').removeAttr('disabled');
+    $('#expensebt').removeAttr('disabled');
+    $('#transferbt').removeAttr('disabled');
     ClearFinsForm();
 };
 
