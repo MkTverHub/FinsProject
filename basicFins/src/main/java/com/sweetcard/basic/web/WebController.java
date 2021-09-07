@@ -316,7 +316,6 @@ public class WebController {
 
             String AdminFlg = "false";
             if(0==usercache.role.compareTo("USER")){AdminFlg="true";}
-
             model.addAttribute("attrUserFstName",appUser.getFirstName());
             model.addAttribute("attrUserLstName",appUser.getLastName());
             model.addAttribute("attrUserMdlName",appUser.getMiddleName());
@@ -384,12 +383,14 @@ public class WebController {
 
     //Получить UserCach
     private Usercache GetUsercache(){
+        AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
         Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
         if(usercache == null){
             logger.info("ReqController.GetUserCache -> get null");
             Usercacheform usercacheform = new Usercacheform();
             usercacheform.setLogin(GetUserLogin());
             usercacheform.setActiveProject(0);
+            usercacheform.setRole(appUser.getRole().name());
             usercacheform.setUsercacheAction("insert");
             usercacheJdbc.UsercacheAction(usercacheform);
             usercache = usercacheRepository.GetUsercache(GetUserLogin());
