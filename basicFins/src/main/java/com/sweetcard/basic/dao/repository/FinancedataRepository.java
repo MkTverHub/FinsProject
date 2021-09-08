@@ -16,6 +16,7 @@ import java.util.List;
  * Created by Admin on 21.02.2020.
  */
 public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integer> {
+    String strSpecSymbol = "\\:";
 
     //Выбрать все селектом
     @Query(value = "SELECT * FROM financedata", nativeQuery = true)
@@ -46,7 +47,8 @@ public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integ
     List<AggrFinsdata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid);
 
     //Получиь чистую прибыль по проекту
-    @Query(value = "select (select  case when sum(amount) is null then 0 else sum(amount) end as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit') - (select  case when sum(amount) is null then 0 else sum(amount) end as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense')", nativeQuery = true)
+    @Query(value = "select ROUND(AVG((select  case when sum(amount) is null then 0 else sum(amount) end as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit') - (select  case when sum(amount) is null then 0 else sum(amount) end as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense'))" + strSpecSymbol + strSpecSymbol + "numeric,2)", nativeQuery = true)
+
     String GetProjectProfit(@Param("fins_project_id") Integer finsprojectid);
 
     //Получить приход по проекту

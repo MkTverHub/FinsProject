@@ -29,7 +29,7 @@
             <div class="col-lg-5 col-md-7 bg-white ufive-input">
                 <div class="p-3">
                     <h2 class="mt-3 text-center">Авторизация</h2>
-                    <p class="text-center">Неверные логин/пароль</p>
+                    <!--<p class="text-center">Неверные логин/пароль</p>-->
                     <form th:action="@{/login}" method="post" class="mt-4" >
                         <div class="row">
                             <div class="col-lg-12">
@@ -38,6 +38,7 @@
                                     <input class="form-control error-valid-field" name="username" id="uname" type="text"
                                            placeholder="Введите вашу почту">
                                 </div>
+                                <div>Неверные данные</div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
@@ -45,6 +46,7 @@
                                     <input class="form-control error-valid-field" name="password" id="pwd" type="password"
                                            placeholder="Введите ваш пароль">
                                 </div>
+                                <div>Неверные данные</div>
                             </div>
                             <div class="col-lg-12 text-center">
                                 <button type="submit" class="btn btn-block btn-dark">Войти</button>

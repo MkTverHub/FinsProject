@@ -43,6 +43,45 @@ function doAjaxGetUserInfo() {
     }
 };
 
+//Ajax сохранения пользака
+function doAjaxSaveUserInfo() {
+    SpinnerOn("doAjaxSaveUserInfo");
+    try {
+        var strUserFstName =  $('#fst_name_field').val();
+        var strUserLstName = $('#lst_name_field').val();
+        var strUserPhone =  $('#phone_field').val();
+        $.ajax({
+            url: 'OperationUser',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                DBOperation: "update",
+                UserId: "0",
+                UserParentId: "0",
+                UserFstName: strUserFstName,
+                UserLstName: strUserLstName,
+                UserMdlName: "",
+                UserPhone: strUserPhone,
+                UserPosition: "",
+                UserEmail: "",
+                UserPassword: "",
+                UserLocked: "",
+                UserAccessDt: "",
+                UserAccessStatus: ""
+            }),
+            success: function (data) {
+                SetUserForm(data.text);
+                SpinnerOff("doAjaxSaveUserInfo");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetUserInfo");
+        console.log("Error doAjaxGetUserInfo: " + data.text);
+    }
+};
+
 //--------Функции заполнения------------
 function SetUserForm(JSONString) {
     try {
@@ -58,7 +97,7 @@ function SetUserForm(JSONString) {
     }
 };
 
-//Сделать форму Контрагента RO
+//Сделать форму RO
 function SetROUserForm(){
     $('#lst_name_field').attr('readonly', true);
     $('#fst_name_field').attr('readonly', true);
@@ -66,7 +105,7 @@ function SetROUserForm(){
     $('#phone_field').attr('readonly', true);
 }
 
-//Сделать форму Контрагента RO
+//Сделать форму NO RO
 function UnSetROUserForm(){
     $('#lst_name_field').attr('readonly', false);
     $('#fst_name_field').attr('readonly', false);
@@ -80,3 +119,8 @@ function EditUser() {
     UnSetROUserForm();
 }
 
+//--Кнопка: Сохранить----------
+function SaveUser() {
+    doAjaxSaveUserInfo();
+    SetROUserForm();
+}
