@@ -63,9 +63,21 @@ public class WebController {
     AggregateDataSubUser aggregateDataSubUser;
 
     //Здесь вход на app
-    @GetMapping({"/", "/index","/FinsOperations"})
+    @GetMapping({"/", "/index","/Fins_Index"})
     public String greeting(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model)
     {
+        try {
+            return "Fins_index";
+        }catch (Exception ex){
+            logger.info("WebController.Fins_Index -> ERROR:" + ex);
+            return "Fins_index";
+        }
+    }
+
+    //Переход на страницу Финвнсовых операций (из верхней шапки)
+    //@RequestMapping(value = "/FinsOperations", method = RequestMethod.POST)
+    @RequestMapping(value = "/FinsOperations")
+    public String GoToFinsOperations(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try {
             model.addAttribute("ModelProjectId", ProjectId);
             if (0 != ProjectId.compareTo("no_value")) {
@@ -129,14 +141,7 @@ public class WebController {
     }
 
 
-    //Переход на страницу Финвнсовых операций (из верхней шапки)
-    @RequestMapping(value = "/FinsOperations", method = RequestMethod.POST)
-    public String GoToFinsOperations(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
-        logger.info("WebController.GoToFinsOperations -> ");
-        Usercache usercache = GetUsercache();
-        model.addAttribute("AccountMail",usercache.login);
-        return "Fins_Operations";
-    }
+
 
     //Переход на страницу Проектов
     //@RequestMapping(value = "/Projects", method = RequestMethod.POST)
