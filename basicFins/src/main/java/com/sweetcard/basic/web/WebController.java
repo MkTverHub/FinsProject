@@ -326,6 +326,24 @@ public class WebController {
 
     }
 
+    //Переход на экран Пнель пользователя
+    @RequestMapping(value = "/EmployeePanel")
+    public String GoToEmployeePanel(Model model){
+        try{
+            logger.info("WebController.GoToEmployeePanel -> ");
+            //Получение usercache
+            Usercache usercache = GetUsercache();
+            AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
+
+
+            return "Fins_Users_Info";
+        }catch (Exception req_ex1){
+            logger.info("WebController.GoToEmployeePanel -> ERROR: " + req_ex1);
+            return "error";
+        }
+
+    }
+
     //Переход на экран настройки пользователя
     @RequestMapping(value = "/UserSettings")
     public String GoToUserSettings(Model model){
