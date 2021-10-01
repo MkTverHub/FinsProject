@@ -47,6 +47,21 @@
                         </nav>
                     </div>
                 </div>
+                <div class="col-5 align-self-center">
+                    <div class="customize-input float-right">
+
+                        <form th:action="@{/ProjectsEditor}" method="post">
+
+                            <div class="ml-auto mt-md-3 mt-lg-0">
+                                <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-primary"><i>
+                                   <span class="opacity-7 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                                   </span> 
+                                </i>Пункт управления</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -57,21 +72,6 @@
             <!-- Раздел для создания проекта -->
             <!-- *************************************************************** -->
             <div class="row">
-                <div class="col-12">
-                    <div class="card text-center">
-                        <div class="card-header">
-                            <h3 class="card-title mb-0">Проект - это ваш бизнес</h3>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Все финансовые операции будут доступны на одном экране. Полный контроль транзакций.</p>
-                            <form th:action="@{/ProjectsEditor}" method="post">
-                                <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-success">Создать или изменить проект</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-
                 <!-- Плитки проектов-->
                 <div class="col-md-4" th:each="p: ${finsprojectList}">
                     <div th:replace="fragments\layouts\fragment_project_tile.html :: project_tile_fragment_1(projectId=${p.id},projectName=${p.name},projectDescription=${p.description},projectCreated=${p.created},projectAmountIn=${p.amount_in},projectAmountOut=${p.amount_out},projectBalance=${p.balance})"></div>
