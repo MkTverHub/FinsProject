@@ -335,6 +335,10 @@ public class WebController {
             Usercache usercache = GetUsercache();
             AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
 
+            List<AggrFinsproject> aggrFinsprojectList = aggregateDataFinsprojectRepository.GetAllUserProjects(GetUserLogin());
+            model.addAttribute("finsprojectList",aggrFinsprojectList);
+            model.addAttribute("AccountMail",usercache.login);
+
 
             return "Fins_Users_Info";
         }catch (Exception req_ex1){
