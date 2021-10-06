@@ -40,6 +40,8 @@ public class WebController {
     @Autowired
     RequisitRepository requisitRepository;
     @Autowired
+    AggregateDataContactRepository aggregateDataContactRepository;
+    @Autowired
     AggregateDataContragent aggregateDataContragent;
     @Autowired
     AggregateDataCompanyRepository aggregateDataCompanyRepository;
@@ -326,7 +328,7 @@ public class WebController {
 
     }
 
-    //Переход на экран Пнель пользователя
+    //Переход на экран Панель пользователя
     @RequestMapping(value = "/EmployeePanel")
     public String GoToEmployeePanel(Model model){
         try{
@@ -335,10 +337,10 @@ public class WebController {
             Usercache usercache = GetUsercache();
             AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
 
-            List<AggrFinsproject> aggrFinsprojectList = aggregateDataFinsprojectRepository.GetAllUserProjects(GetUserLogin());
-            model.addAttribute("finsprojectList",aggrFinsprojectList);
             model.addAttribute("AccountMail",usercache.login);
 
+            List<AggrContact> AggrContactList = aggregateDataContactRepository.GetAll();
+            model.addAttribute("contactList",AggrContactList);
 
             return "Fins_Users_Info";
         }catch (Exception req_ex1){

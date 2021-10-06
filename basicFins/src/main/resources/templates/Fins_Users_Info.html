@@ -68,43 +68,11 @@
                             <div class="col-md-12">
                                 <h3 class="card-title mb-3">Сотрудник</h3>
                             </div>
-                            <div class="col-md-5">
-                                <div class="p-3 card border rounded pt-4 pb-4 mb-3">
-                                    <h4 class="card-title mb-3">Информация:</h4>
-                                    <p class="card-text">Имя: <span>Иванов</span></p>
-                                    <p class="card-text">Фамилия: <span>Иванов</span></p>
-                                    <p class="card-text">Отчество: <span>Иванович</span></p>
-                                    <p class="card-text">Телефон: <span>8800808080</span></p>
-                                    <p class="card-text">Почта: <span>mail@mail.ru</span></p>
-                                    <p class="card-text">Должность: <span>Менеджер</span></p>
-                                    <div class="dropdown-divider"></div>
-                                
-                                    <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                        <div>
-                                            <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">0.00</h2>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">деньги</h6>
-                                        </div>
-                                        <div class="ml-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7">₽</span>
-                                        </div>
-                                    </div>
 
-                                </div>
+                            <div class="col-md-5" th:each="p: ${contactList}">
+                                <div th:replace="fragments\layouts\fragment_project_tile.html :: contact_tile_fragment_1()"></div>
                             </div>
 
-
-                            <div class="col-md-7">
-                                <div class="row">
-
-                                    <!-- Плитки проектов-->
-                                    <div class="col-md-6" th:each="p: ${finsprojectList}">
-                                        <div th:replace="fragments\layouts\fragment_project_tile.html :: project_tile_fragment_2(projectId=${p.id},projectName=${p.name},projectDescription=${p.description},projectCreated=${p.created},projectAmountIn=${p.amount_in},projectAmountOut=${p.amount_out},projectBalance=${p.balance})"></div>
-                                    </div>
-
-
-
-                                </div>  
-                            </div>
                         </div>
                     </div>
                 </div>
