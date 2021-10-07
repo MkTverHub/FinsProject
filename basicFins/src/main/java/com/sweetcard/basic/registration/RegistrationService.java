@@ -92,7 +92,7 @@ public class RegistrationService {
         confirmationTokenService.setConfirmedAt(token);
         appUserService.enableAppUser(
                 confirmationToken.getAppUser().getEmail());
-        return "Подтверждено";
+        return "<div style=\"background-color:#F2F3F7;padding:50px 20px;color:#5f76e8;border-radius:24px;font-family:'helvetica',sans-serif;font-size:17px;\"><h2>Статус активации личного кaбинета: <span style=\"padding:50px 20px;color:#35D073;\">Успешно</span></h2></div>";
     }
 
     private String buildEmail(String name, String link) {
