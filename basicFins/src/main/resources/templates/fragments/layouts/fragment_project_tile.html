@@ -69,10 +69,11 @@
 <!--ПЛИТКА ДЛЯ ЭКРАНА ПАНЕЛИ ПОЛЬЗОВАТЕЛЯ-->
 
     <!--<div class="col-md-5">-->
-        <div class="p-3 card border rounded pt-4 pb-4 mb-3" th:fragment="contact_tile_fragment_1(fst_name,lst_name,descripton)">
+        <div class="p-3 card border pt-4 pb-4 mb-3" th:fragment="contact_tile_fragment_1(fst_name,lst_name,descripton)">
             <h4 class="card-title mb-3">Информация:</h4>
-            <p class="card-text">Имя: <span th:utext="${fst_name}"/></p>
-            <p class="card-text">Фамилия: <span th:utext="${lst_name}"/></p>
+            <p class="card-text">ФИО: <span th:utext="${fst_name}"/></p>
+            <p class="card-text">Телефон: <span th:utext=""/></p>
+            <p class="card-text">Почта: <span th:utext=""/></p>
             <p class="card-text">Должность: <span th:utext="${descripton}"/></p>
             <div class="dropdown-divider"></div>
 
