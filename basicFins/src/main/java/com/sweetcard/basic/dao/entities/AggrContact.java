@@ -18,6 +18,7 @@ public class AggrContact implements Serializable {
     private Integer par_row_id;
     private String balance;
     private String description;
+    private String profit;
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
@@ -28,6 +29,7 @@ public class AggrContact implements Serializable {
     public Integer getPar_row_id() {return par_row_id;}
     public String getBalance() {return balance;}
     public String getDescription() {return description;}
+    public String getProfit() {return profit;}
 
     public void setFirst_name(String first_name) {this.first_name = first_name;}
     public void setLast_name(String last_name) {this.last_name = last_name;}
@@ -35,4 +37,5 @@ public class AggrContact implements Serializable {
     public void setPar_row_id(Integer par_row_id) {this.par_row_id = par_row_id;}
     public void setBalance(String balance) {this.balance = balance;}
     public void setDescription(String description) {this.description = description;}
+    public void setProfit(String profit) {this.profit = profit;}
 }

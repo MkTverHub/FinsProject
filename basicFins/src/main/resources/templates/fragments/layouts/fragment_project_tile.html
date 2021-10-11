@@ -69,17 +69,17 @@
 <!--ПЛИТКА ДЛЯ ЭКРАНА ПАНЕЛИ ПОЛЬЗОВАТЕЛЯ-->
 
     <!--<div class="col-md-5">-->
-        <div class="p-3 card border pt-4 pb-4 mb-3" th:fragment="contact_tile_fragment_1(fst_name,lst_name,descripton)">
+        <div class="p-3 card border pt-4 pb-4 mb-3" th:fragment="contact_tile_fragment_1(fst_name,lst_name,descripton,profit)">
             <h4 class="card-title mb-3">Информация:</h4>
             <p class="card-text">ФИО: <span th:utext="${fst_name}"/></p>
-            <p class="card-text">Телефон: <span th:utext=""/></p>
-            <p class="card-text">Почта: <span th:utext=""/></p>
+            <p class="card-text">Телефон: <span/></p>
+            <p class="card-text">Почта: <span/></p>
             <p class="card-text">Должность: <span th:utext="${descripton}"/></p>
             <div class="dropdown-divider"></div>
 
             <div class="d-flex d-lg-flex d-md-block align-items-center">
                 <div>
-                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">0.00</h2>
+                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium" th:utext="${profit}"/>
                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">деньги</h6>
                 </div>
                 <div class="ml-auto mt-md-3 mt-lg-0">

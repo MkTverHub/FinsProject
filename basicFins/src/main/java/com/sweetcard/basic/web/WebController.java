@@ -330,7 +330,7 @@ public class WebController {
 
     //Переход на экран Панель пользователя
     @RequestMapping(value = "/EmployeePanel")
-    public String GoToEmployeePanel(Model model){
+    public String GoToEmployeePanel(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.GoToEmployeePanel -> ");
             //Получение usercache
@@ -339,7 +339,11 @@ public class WebController {
 
             model.addAttribute("AccountMail",usercache.login);
 
-            List<AggrContact> AggrContactList = aggregateDataContactRepository.GetAll();
+            if(ProjectId.compareTo("no_value")==0){
+                ProjectId = usercache.active_proj.toString();
+            }
+            logger.info("WebController.GoToEmployeePanel -> ProjectId = " + ProjectId);
+            List<AggrContact> AggrContactList = aggregateDataContactRepository.GetAllProject(Integer.parseInt(ProjectId));
             model.addAttribute("contactList",AggrContactList);
 
             return "Fins_Users_Info";
