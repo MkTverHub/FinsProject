@@ -465,3 +465,129 @@ button:focus {
 .fin-operation-color-green {
   color: #008736
 }
+
+.table-footer-purpose {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+  min-height: 60px;
+}
+.table-row-coming-purpose span {
+    line-height: 25px;
+}
+.money{
+    white-space: nowrap;
+}
+.money-yes {
+    color: #008736;
+}
+.money-no {
+    color: #E20338;
+}
+.money-result {
+    color: #5f76e8;
+}
+.money-view {
+    width: 100%;
+    display: inline-block;
+}
+.money-muted {
+    opacity: .4;
+}
+.table-purpose {
+    width: 100%;
+}
+.table-head-purpose {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 2;
+}
+.table-row-purpose{
+    box-sizing: border-box;
+    display: flex;
+    align-items: inherit;
+    width: 100%;
+}
+.table-cell-purpose{
+    font-weight: normal;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    box-sizing: border-box;
+    position: relative;
+}
+.table-cell-name-purpose {
+    width: 30%;
+    flex-grow: 4;
+}
+.table-cell-info-purpose {
+    width: 4%;
+    flex-shrink: 0;
+}
+.table-txt-right-purpose {
+    text-align: right;   
+}
+.table-coming-purpose {
+    width: 14%;
+    flex-shrink: 0;
+}
+.table-expenditure-purpose {
+    width: 14%;
+    flex-shrink: 0;
+}
+.table-total-purpose {
+    width: 14%;
+    flex-shrink: 0;
+}
+ .table-profi-purpose {
+    width: 14%;
+    flex-shrink: 0;
+}
+.table-row-line-purpose {
+    position: relative;
+    height: 1px;
+    background-color: #eee;
+}
+.table-row-purpose {
+    box-sizing: border-box;
+    display: flex;
+    align-items: inherit;
+    width: 100%;
+}
+.table-row-cell-name-purpose{
+    width: 30%;
+    flex-grow: 4;
+}
+.table-row-cell-info-purpose {
+    width: 11%;
+    flex-shrink: 0;
+    color: #c2c2c2;
+}
+.table-row-coming-purpose {
+    width: 14%;
+    flex-shrink: 0;
+}
+.table-row-expenditure-purpose {
+    width: 14%;
+    flex-shrink: 0;
+}
+.table-row-total-purpose {
+    width: 14%;
+    flex-shrink: 0;
+}
+.table-row-profi-purpose {
+    width: 14%;
+    flex-shrink: 0;
+}
+.sum-color-green {
+    color: #008736;
+}
+.sum-color-red {
+    color: #E20338;
+}
