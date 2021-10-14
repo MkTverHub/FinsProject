@@ -337,8 +337,11 @@ public class WebController {
             Usercache usercache = GetUsercache();
             AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
 
-            model.addAttribute("AccountMail",usercache.login);
+            if(ProjectId.compareTo("no_value")==0){
+                ProjectId = usercache.active_proj.toString();
+            }
 
+            model.addAttribute("AccountMail",usercache.login);
             List<AggrContact> AggrContactList = aggregateDataContactRepository.GetAllProject(Integer.parseInt(ProjectId));
             model.addAttribute("contactList",AggrContactList);
 
@@ -348,6 +351,46 @@ public class WebController {
             return "error";
         }
 
+    }
+
+    //Переход на экран Цели Инфо
+    @RequestMapping(value = "/FinsPurposeInfo")
+    public String GoToFinsPurposeInfo(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
+        try{
+            logger.info("WebController.FinsPurposeInfo -> ");
+            //Получение usercache
+            Usercache usercache = GetUsercache();
+            AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
+
+            if(ProjectId.compareTo("no_value")==0){
+                ProjectId = usercache.active_proj.toString();
+            }
+
+            return "Fins_Purpose_Info";
+        }catch (Exception req_ex1){
+            logger.info("WebController.FinsPurposeInfo -> ERROR: " + req_ex1);
+            return "error";
+        }
+    }
+
+    //Переход на экран Цели Редактор
+    @RequestMapping(value = "/FinsPurposeAdd")
+    public String GoToFinsPurposeAdd(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
+        try{
+            logger.info("WebController.FinsPurposeAdd -> ");
+            //Получение usercache
+            Usercache usercache = GetUsercache();
+            AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
+
+            if(ProjectId.compareTo("no_value")==0){
+                ProjectId = usercache.active_proj.toString();
+            }
+
+            return "Fins_Purpose_Add";
+        }catch (Exception req_ex1){
+            logger.info("WebController.FinsPurposeAdd -> ERROR: " + req_ex1);
+            return "error";
+        }
     }
 
     //Переход на экран настройки пользователя
