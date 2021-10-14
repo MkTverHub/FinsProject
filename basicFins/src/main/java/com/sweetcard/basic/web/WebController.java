@@ -339,10 +339,6 @@ public class WebController {
 
             model.addAttribute("AccountMail",usercache.login);
 
-            if(ProjectId.compareTo("no_value")==0){
-                ProjectId = usercache.active_proj.toString();
-            }
-            logger.info("WebController.GoToEmployeePanel -> ProjectId = " + ProjectId);
             List<AggrContact> AggrContactList = aggregateDataContactRepository.GetAllProject(Integer.parseInt(ProjectId));
             model.addAttribute("contactList",AggrContactList);
 
