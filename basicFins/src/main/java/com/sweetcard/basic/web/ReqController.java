@@ -82,6 +82,10 @@ public class ReqController {
     SubUserJdbc subUserJdbc;
     @Autowired
     UserJdbc userJdbc;
+    @Autowired
+    PurposeJdbc purposeJdbc;
+    @Autowired
+    PurposeRepository purposeRepository;
 
     @RequestMapping(value = "/SetContrAgentRequisits", method = RequestMethod.GET)
     public @ResponseBody Response GetRequisitsList(@RequestParam String ContragentId) {
@@ -557,6 +561,29 @@ public class ReqController {
 
         }catch (Exception lov_oper_ex){
             logger.info("ReqController.OperationLov -> Error: " + lov_oper_ex);
+            Response result = new Response();
+            result.setText("");
+            result.setCount(0);
+            return result;
+        }
+    }
+
+    //--------------------Экран ЦЕЛИ---------------------------------
+    //------Получение списка компаний-----------------------------------
+    @RequestMapping(value = "/GetPurposeList", method = RequestMethod.GET)
+    public @ResponseBody Response GetPurposeList() {
+        try{
+            logger.info("ReqController.GetPurposeList");
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            purposeJdbc.setActiveProjectId(usercache.active_proj);
+            List<Purpose> purposeList = purposeRepository.GetAllByProject(usercache.active_proj);
+            //Создать экземпляр ответа и отправить JSON строку
+            Response result = new Response();
+            Gson gson = new Gson();
+            result.setText(gson.toJson(purposeList));
+            return result;
+        }catch (Exception get_purpose_list_ex){
+            logger.info("ReqController.GetPurposeList -> Error: " + get_purpose_list_ex);
             Response result = new Response();
             result.setText("");
             result.setCount(0);
