@@ -590,6 +590,46 @@ public class ReqController {
             return result;
         }
     }
+    //-------Объединенная точка работы с формой ЦЕЛИ
+    @RequestMapping(value = "/OperationPurpose", method = RequestMethod.GET)
+    public @ResponseBody Response OperationPurpose(@RequestParam String DBOperation,
+                                                   @RequestParam String PurposeParRowId,
+                                                   @RequestParam String PurposeId,
+                                                   @RequestParam String PurposeName,
+                                                   @RequestParam String PurposeDescription,
+                                                   @RequestParam String PurposeExpense,
+                                                   @RequestParam String PurposeProfit)
+    {
+        logger.info("ReqController.OperationPurpose -> " + DBOperation + "/" + PurposeParRowId + "/" + PurposeId + "/" + PurposeName + "/" + PurposeDescription + "/" + PurposeExpense  + "/" + PurposeProfit);
+        try{
+            //Установка Id активного проекта
+            Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            /*
+            if(usercache.active_proj != 0) {
+                lovJdbc.setActiveProjectId(usercache.active_proj);
+                LovForm lovForm = new LovForm();
+                lovForm.setLovAction(DBOperation);
+                lovForm.setLovId(LovId);
+                lovForm.setLovVal(LovValue);
+                lovForm.setLovDescription(LovDescription);
+                lovForm.setLovOptions(LovOptions);
+                lovForm.setLovType(LovType);
+                lovJdbc.LovAction(lovForm);
+            }
+            */
+            //Просто устой ответ
+            Response result = new Response();
+            return result;
+
+        }catch (Exception lov_oper_ex){
+            logger.info("ReqController.OperationPurpose -> Error: " + lov_oper_ex);
+            Response result = new Response();
+            result.setText("");
+            result.setCount(0);
+            return result;
+        }
+    }
+
 
     //--------------------Экран Дочерних пользователей---------------------------------
     //------Получение списка Дочерних пользователей-----------------------------------

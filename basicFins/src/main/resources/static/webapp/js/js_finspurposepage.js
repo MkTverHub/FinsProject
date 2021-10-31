@@ -38,35 +38,42 @@ function doAjaxGetPurposeList() {
 };
 
 //Ajax формы операции DB lov (Создать/Обновить/Удалить)
-function doAjaxLovDBOperation() {
-    SpinnerOn("doAjaxLovDBOperation");
-    var strDBOperation = $('#lov_db_action').attr('value');//update/insert/delete
-    var strLovId = '';
-    if($('#lov_record_id').attr('value') == null){strLovId = '';}else{strLovId = $('#lov_record_id').attr('value');}
-    var strLovVal = $('#lov_value').val();
-    var strLovDescription = $('#lov_description').val();
-    var strLovOptions = $('#lov_options_list').attr('select_value');
-    var strLovType = $('#lov_type_list').attr('select_value');
+function doAjaxPurposeDBOperation() {
+    SpinnerOn("doAjaxPurposeDBOperation");
+    try {
+        var strDBOperation = $('#purpose_db_action').attr('value');//update/insert/delete
+        var strPurposeId = '';
+        if($('#purpose_id').attr('value') == null){strPurposeId = '';}else{strPurposeId = $('#purpose_id').attr('value');}
+        var strPurposeName = $('#purpose_name').val();
+        var strPurposeDescription = $('#purpose_description').val();
+        var strPurposeProfit = $('#purpose_profit').val();
+        var strPurposeExpense = $('#purpose_expense').val();
 
-    $.ajax({
-        url : 'OperationLov',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-            DBOperation: strDBOperation,
-            LovId: strLovId,
-            LovValue: strLovVal,
-            LovDescription: strLovDescription,
-            LovOptions: strLovOptions,
-            LovType: strLovType
-        }),
-        success: function (data) {
-            doAjaxGetLovList();
-            SpinnerOff("doAjaxLovDBOperation");
-        }
-    });
+        $.ajax({
+            url : 'OperationPurpose',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data : ({
+                DBOperation: strDBOperation,
+                PurposeParRowId: '',
+                PurposeId: strPurposeId,
+                PurposeName: strPurposeName,
+                PurposeDescription: strPurposeDescription,
+                PurposeExpense: strPurposeExpense,
+                PurposeProfit: strPurposeProfit
+            }),
+            success: function (data) {
+                //doAjaxGetLovList();
+                SpinnerOff("doAjaxPurposeDBOperation");
+            }
+        });
+
+    }catch (e) {
+        SpinnerOff("doAjaxPurposeDBOperation");
+        console.log("Error doAjaxPurposeDBOperation: " + e);
+    }
 };
 
 //Чистка формы Lov
@@ -84,32 +91,33 @@ function CleanLovForm() {
 
 //-------------Функции событий-----------------
 //Событие нажатия на кнопку "Создать" lov
-function InsertLOV(){
+function InsertPurpose(){
     UnSetROForm();
-    CleanLovForm();
-    $('#lov_db_action').attr('value','insert');//update/insert/delete
+    //CleanLovForm();
+    $('#purpose_db_action').attr('value','insert');//update/insert/delete
 };
 //Событие нажатия на кнопку "Удалить" lov
 function DeleteLOV(){
-    $('#lov_db_action').attr('value','delete');
-    doAjaxLovDBOperation();
-    CleanLovForm();
-    SetROForm();
+    //$('#lov_db_action').attr('value','delete');
+    //doAjaxLovDBOperation();
+    //CleanLovForm();
+    //SetROForm();
 };
 //Событие нажатия на кнопку "Сохранить" lov
-function SaveLOV(){
-    doAjaxLovDBOperation();
-    CleanLovForm();
-    SetROForm();
+function SavePurpose(){
+    doAjaxPurposeDBOperation();
+    //CleanLovForm();
+    //SetROForm();
 };
 //Событие нажатия на кнопку "Отменить" lov
 function ResetLOV(){
-    CleanLovForm();
-    SetROForm();
+    //CleanLovForm();
+    //SetROForm();
 };
 
 //Событие нажатия на строку lov
 $(function(){
+    /*
     $("#finslov_table_body").on("click", ".lov_t_row_class", function () {
         console.log("Click");
         UnSetROForm();
@@ -121,36 +129,46 @@ $(function(){
         SetActiveSelect('#lov_type_list',$(this).find('.type_t_cell_class').attr('value'));
 
     });
+     */
 });
 
 //Событие выбора значения выпадающего "Характеристики"
 $(function(){
+    /*
     $("#lov_options_list").change( function(){
         var strSelectValue = $('#lov_options_list').val();
         $('#lov_options_list').attr('select_value',strSelectValue);
     });
+
+     */
 });
 
 //Событие выбора значения выпадающего "Тип"
 $(function(){
+    /*
     $("#lov_type_list").change( function(){
         var strSelectValue = $('#lov_type_list').val();
         $('#lov_type_list').attr('select_value',strSelectValue);
     });
+
+     */
 });
 
 //-------------Функции обработки-----------------
 //Функция установки выбранного значения
 function SetActiveSelect(ListSelector,SelectedVal){
+    /*
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
     $(ListSelector).attr('select_value',SelectedVal);
+     */
 }
 //Функция сброса списка
 function ResetPickList(ListSelector){
+    /*
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[selected]').attr('select_value', null);
-
+     */
 }
 
 //Сделать форму RO
@@ -162,8 +180,12 @@ function SetROForm(){
 }
 //Сделать форму not RO
 function UnSetROForm(){
-    $('#lov_value').attr('readonly', false);
-    $('#lov_description').attr('readonly', false);
-    $('#lov_options_list').attr('disabled', false);
-    $('#lov_type_list').attr('disabled', false);
+    $('#purpose_name').attr('readonly', false);
+    $('#purpose_description').attr('readonly', false);
+    $('#purpose_profit').attr('readonly', false);
+    $('#purpose_expense').attr('readonly', false);
+    $('#purpose_name').attr('disabled', false);
+    $('#purpose_description').attr('disabled', false);
+    $('#purpose_profit').attr('disabled', false);
+    $('#purpose_expense').attr('disabled', false);
 }

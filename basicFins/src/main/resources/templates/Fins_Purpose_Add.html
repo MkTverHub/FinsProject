@@ -76,12 +76,12 @@
 
                                         <!-- Системное. Действия insert/update/delete-->
                                         <div class="form-group f-d-n">
-                                            <input type="text" class="form-control" id="cntragnt_db_action">
+                                            <input type="text" class="form-control" id="purpose_db_action">
                                         </div>
 
                                         <!-- Системное. Id-->
                                         <div class="form-group f-d-n">
-                                            <input type="text" class="form-control" id="cntragnt_id">
+                                            <input type="text" class="form-control" id="purpose_id">
                                         </div>
 
                                         <!-- Поле ввода Название-->
@@ -91,8 +91,8 @@
                                                 <div class="col-lg-9 align-self-center">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <input type="text" id="cntragnt_name" class="form-control" readonly="readonly">
-                                                            <div class="invalid-feedback" id="cntragnt_name_ex_lbl">Поле заполнено неверно</div>
+                                                            <input type="text" id="purpose_name" class="form-control" readonly="readonly">
+                                                            <div class="invalid-feedback" id="purpose_name_ex_lbl">Поле заполнено неверно</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -106,8 +106,8 @@
                                                 <div class="col-lg-9 align-self-center">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <input type="text" id="cntragnt_desqription" class="form-control" readonly="readonly">
-                                                            <div class="invalid-feedback" id="cntragnt_desqription_ex_lbl">Поле заполнено неверно</div>
+                                                            <input type="text" id="purpose_description" class="form-control" readonly="readonly">
+                                                            <div class="invalid-feedback" id="purpose_description_ex_lbl">Поле заполнено неверно</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -121,8 +121,8 @@
                                                 <div class="col-lg-9 align-self-center">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <input type="text" id="cntragnt_mail" class="form-control" readonly="readonly">
-                                                            <div class="invalid-feedback" id="cntragnt_mail_ex_lbl">Поле заполнено неверно</div>
+                                                            <input type="text" id="purpose_profit" class="form-control" readonly="readonly">
+                                                            <div class="invalid-feedback" id="purpose_profit_ex_lbl">Поле заполнено неверно</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -136,8 +136,8 @@
                                                 <div class="col-lg-9 align-self-center">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <input type="text" id="cntragnt_phone" class="form-control" readonly="readonly">
-                                                            <div class="invalid-feedback" id="cntragnt_phone_ex_lbl">Поле заполнено неверно</div>
+                                                            <input type="text" id="purpose_expense" class="form-control" readonly="readonly">
+                                                            <div class="invalid-feedback" id="purpose_expense_ex_lbl">Поле заполнено неверно</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -149,10 +149,10 @@
                                 <!-- Кнопки для записи в БД -->
                                 <div class="form-actions">
                                     <div class="text-right">
-                                        <button onclick="" class="btn waves-effect waves-light btn-outline-primary btn-modif-size">Создать</button>
-                                        <button onclick="" class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Сохранить</button>
+                                        <button onclick="InsertPurpose();" class="btn waves-effect waves-light btn-outline-primary btn-modif-size">Создать</button>
+                                        <button onclick="SavePurpose();" class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Сохранить</button>
                                         <button onclick="" class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Отменить</button>
-                                        <button onclick="" class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Удалить</button>
+                                        <button onclick="DeletetPurpose();" class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Удалить</button>
                                     </div>
                                 </div>
                             </div>
