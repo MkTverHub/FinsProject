@@ -604,19 +604,22 @@ public class ReqController {
         try{
             //Установка Id активного проекта
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
-            /*
             if(usercache.active_proj != 0) {
-                lovJdbc.setActiveProjectId(usercache.active_proj);
-                LovForm lovForm = new LovForm();
-                lovForm.setLovAction(DBOperation);
-                lovForm.setLovId(LovId);
-                lovForm.setLovVal(LovValue);
-                lovForm.setLovDescription(LovDescription);
-                lovForm.setLovOptions(LovOptions);
-                lovForm.setLovType(LovType);
-                lovJdbc.LovAction(lovForm);
+                Integer intId = 0;
+                if(PurposeId.compareTo("")!=0){
+                    intId = Integer.parseInt(PurposeId);
+                }
+
+                purposeJdbc.setActiveProjectId(usercache.active_proj);
+                PurposeForm purposeForm = new PurposeForm();
+                purposeForm.setPurposeAction(DBOperation);
+                purposeForm.setId(intId);
+                purposeForm.setName(PurposeName);
+                purposeForm.setDescription(PurposeDescription);
+                purposeForm.setExpense(PurposeExpense);
+                purposeForm.setProfit(PurposeProfit);
+                purposeJdbc.PurposeAction(purposeForm);
             }
-            */
             //Просто устой ответ
             Response result = new Response();
             return result;

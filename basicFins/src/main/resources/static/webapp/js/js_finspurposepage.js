@@ -26,8 +26,7 @@ function doAjaxGetPurposeList() {
             }),
             success: function (data) {
                 console.log("doAjaxGetPurposeList: " + data.text);
-                //JSONStringToLovTable(data.text);
-                //$("#finslov_table_body").html(JsonToTableBody("lov","id",["id","text_val","description","options","type"],data.text));
+                $("#plate_body").html(JsonToPlateList(data.text));
                 SpinnerOff("GetPurposeList");
             }
         });
@@ -188,4 +187,29 @@ function UnSetROForm(){
     $('#purpose_description').attr('disabled', false);
     $('#purpose_profit').attr('disabled', false);
     $('#purpose_expense').attr('disabled', false);
+}
+
+//Сформировать плитки целей
+function JsonToPlateList(strJsonContext){
+    try {
+        var strBody = "";
+        var strPlate = "";
+        var obj = $.parseJSON(strJsonContext);
+        $.each(obj, function (index, value) {
+            strPlate = "<div class=\"col-md-4\"><div class=\"card border py-4\"><div class=\"card-body\"><div class=\"d-flex d-lg-flex d-md-block align-items-center mb-1\"><div><div class=\"mb-3\"><h4 class=\"text-muted font-weight-normal mb-2 w-100\">";
+            strPlate = strPlate + value["name"];
+            strPlate = strPlate + "</h4><h6 class=\"text-muted font-weight-normal mb-2 w-100\">";
+            strPlate = strPlate + value["description"];
+            strPlate = strPlate + "</h6><div class=\"dropdown-divider\"/></div><div class=\"mb-1\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный приход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-green\">";
+            strPlate = strPlate + value["profit"];
+            strPlate = strPlate + "</h2></div></div><div class=\"mb-2\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный расход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-red\">";
+            strPlate = strPlate + value["expense"];
+            strPlate = strPlate + "</h2></div></div></div><div class=\"ml-auto mt-md-3 mt-lg-0\"><span class=\"opacity-7 text-muted\"><svg xmlns=\"http://www.w3.org/2000/svg\"width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-user-plus\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"8.5\" cy=\"7\" r=\"4\"/><line x1=\"20\" y1=\"8\" x2=\"20\" y2=\"14\"/><line x1=\"23\" y1=\"11\" x2=\"17\" y2=\"11\"/></svg></span></div></div><div class=\"d-flex d-lg-flex d-md-block align-items-center\"><button class=\"btn waves-effect waves-light btn-light align-self-center\">Изменить</button></div></div></div></div>";
+            strBody = strPlate;
+        });
+        return strBody;
+    }catch (e) {
+        console.log("Error JsonToPlateList: " + e);
+        return "";
+    }
 }
