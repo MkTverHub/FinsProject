@@ -26,7 +26,7 @@ function doAjaxGetPurposeList() {
             }),
             success: function (data) {
                 console.log("doAjaxGetPurposeList: " + data.text);
-                $("#plate_body").html(JsonToPlateList(data.text));
+                $("#plate_body").replaceWith(JsonToPlateList(data.text));
                 SpinnerOff("GetPurposeList");
             }
         });
@@ -89,6 +89,11 @@ function CleanLovForm() {
 
 
 //-------------Функции событий-----------------
+//Выделить плитку
+function SelectPlatePurpose(varId) {
+    console.log(varId);
+}
+
 //Событие нажатия на кнопку "Создать" lov
 function InsertPurpose(){
     UnSetROForm();
@@ -189,6 +194,8 @@ function UnSetROForm(){
     $('#purpose_expense').attr('disabled', false);
 }
 
+
+
 //Сформировать плитки целей
 function JsonToPlateList(strJsonContext){
     try {
@@ -196,15 +203,17 @@ function JsonToPlateList(strJsonContext){
         var strPlate = "";
         var obj = $.parseJSON(strJsonContext);
         $.each(obj, function (index, value) {
-            strPlate = "<div class=\"col-md-4\"><div class=\"card border py-4\"><div class=\"card-body\"><div class=\"d-flex d-lg-flex d-md-block align-items-center mb-1\"><div><div class=\"mb-3\"><h4 class=\"text-muted font-weight-normal mb-2 w-100\">";
+            strPlate = strPlate +"<div class=\"col-md-4\"><div class=\"card border py-4\"><div class=\"card-body\"><div class=\"d-flex d-lg-flex d-md-block align-items-center mb-1\"><div><div class=\"mb-3\"><h4 class=\"text-muted font-weight-normal mb-2 w-100\" id=\"plate_name_id_"+ value["id"]  +"\">";
             strPlate = strPlate + value["name"];
-            strPlate = strPlate + "</h4><h6 class=\"text-muted font-weight-normal mb-2 w-100\">";
+            strPlate = strPlate + "</h4><h6 class=\"text-muted font-weight-normal mb-2 w-100\" id=\"palte_description_id_"+ value["id"]  +"\">";
             strPlate = strPlate + value["description"];
-            strPlate = strPlate + "</h6><div class=\"dropdown-divider\"/></div><div class=\"mb-1\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный приход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-green\">";
+            strPlate = strPlate + "</h6><div class=\"dropdown-divider\"/></div><div class=\"mb-1\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный приход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-green\" id=\"palte_profit_id_"+ value["id"]  +"\">";
             strPlate = strPlate + value["profit"];
-            strPlate = strPlate + "</h2></div></div><div class=\"mb-2\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный расход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-red\">";
+            strPlate = strPlate + "</h2></div></div><div class=\"mb-2\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный расход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-red\" id=\"palte_expense_id_"+ value["id"]  +"\">";
             strPlate = strPlate + value["expense"];
-            strPlate = strPlate + "</h2></div></div></div><div class=\"ml-auto mt-md-3 mt-lg-0\"><span class=\"opacity-7 text-muted\"><svg xmlns=\"http://www.w3.org/2000/svg\"width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-user-plus\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"8.5\" cy=\"7\" r=\"4\"/><line x1=\"20\" y1=\"8\" x2=\"20\" y2=\"14\"/><line x1=\"23\" y1=\"11\" x2=\"17\" y2=\"11\"/></svg></span></div></div><div class=\"d-flex d-lg-flex d-md-block align-items-center\"><button class=\"btn waves-effect waves-light btn-light align-self-center\">Изменить</button></div></div></div></div>";
+            strPlate = strPlate + "</h2></div></div></div><div class=\"ml-auto mt-md-3 mt-lg-0\"><span class=\"opacity-7 text-muted\"><svg xmlns=\"http://www.w3.org/2000/svg\"width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-user-plus\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"8.5\" cy=\"7\" r=\"4\"/><line x1=\"20\" y1=\"8\" x2=\"20\" y2=\"14\"/><line x1=\"23\" y1=\"11\" x2=\"17\" y2=\"11\"/></svg></span></div></div><div class=\"d-flex d-lg-flex d-md-block align-items-center\">" +
+                "<button onclick=\"SelectPlatePurpose('" + value["id"] + "')\" class=\"btn waves-effect waves-light btn-light align-self-center\">Изменить</button></div></div></div></div>";
+
             strBody = strPlate;
         });
         return strBody;
