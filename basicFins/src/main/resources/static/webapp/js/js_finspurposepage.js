@@ -121,6 +121,7 @@ function ResetLOV(){
 
 //Событие нажатия на плитку события
 $(function(){
+    /*
     $("#main_palate_container").on("click", ".card-body", function () {
         UnSetROForm()
         $('#purpose_db_action').attr('value',"update");
@@ -130,7 +131,7 @@ $(function(){
         $('#purpose_profit').val($(this).find('.plate_profit_field_class').attr('value'));
         $('#purpose_expense').val($(this).find('.plate_expense_field_class').attr('value'));
     });
-
+    */
 });
 
 //Событие выбора значения выпадающего "Характеристики"
