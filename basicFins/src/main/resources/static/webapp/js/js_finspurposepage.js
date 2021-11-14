@@ -123,24 +123,12 @@ function ResetLOV(){
 $(function(){
 
     $("#main_palate_container").on("click", ".card-body", function () {
-        console.log("Click");
         UnSetROForm()
         $('#purpose_db_action').attr('value',"update");
         $('#purpose_name').val($(this).find('.plate_name_field_class').attr('value'));
         $('#purpose_description').val($(this).find('.plate_description_field_class').attr('value'));
         $('#purpose_profit').val($(this).find('.plate_profit_field_class').attr('value'));
         $('#purpose_expense').val($(this).find('.plate_expense_field_class').attr('value'));
-
-
-        /*
-        UnSetROForm();
-        $('#lov_db_action').attr('value',"update");
-        $('#lov_record_id').attr('value',$(this).find('.id_t_cell_class').attr('value'));
-        $('#lov_value').val($(this).find('.text_val_t_cell_class').attr('value'));
-        $('#lov_description').val($(this).find('.description_t_cell_class').attr('value'));
-        SetActiveSelect('#lov_options_list',$(this).find('.options_t_cell_class').attr('value'));
-        SetActiveSelect('#lov_type_list',$(this).find('.type_t_cell_class').attr('value'));
-        */
     });
 
 });
@@ -212,7 +200,7 @@ function JsonToPlateList(strJsonContext){
         var strPlate = "";
         var obj = $.parseJSON(strJsonContext);
         $.each(obj, function (index, value) {
-            strPlate = strPlate +"<div class=\"col-md-4\"><div class=\"card border py-4\"><div class=\"card-body\"><div class=\"d-flex d-lg-flex d-md-block align-items-center mb-1\"><div><div class=\"mb-3\"><h4 class=\"text-muted font-weight-normal mb-2 w-100 plate_name_field_class\" id=\"plate_name_id_"+ value["id"]+ "\" value=\"" + value["name"] +"\">";
+            strPlate = strPlate +"<div class=\"col-md-4\"><div class=\"card border py-4\"><div class=\"card-body\"><div class=\"d-flex d-lg-flex d-md-block align-items-center mb-1\"><div><div class=\"mb-3\">"+"<h4 class=\"text-muted font-weight-normal mb-2 w-100 plate_id_field_class\" id=\"plate_id_id_"+ value["id"]+ "\" value=\"" + value["id"] +"\">"+"<h4 class=\"text-muted font-weight-normal mb-2 w-100 plate_name_field_class\" id=\"plate_name_id_"+ value["id"]+ "\" value=\"" + value["name"] +"\">";
             strPlate = strPlate + value["name"];
             strPlate = strPlate + "</h4><h6 class=\"text-muted font-weight-normal mb-2 w-100 plate_description_field_class\" id=\"plate_description_id_"+ value["description"]+ "\" value=\"" + value["name"] +"\">";
             strPlate = strPlate + value["description"];
