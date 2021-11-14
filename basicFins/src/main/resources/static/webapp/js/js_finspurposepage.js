@@ -121,10 +121,10 @@ function ResetLOV(){
 
 //Событие нажатия на плитку события
 $(function(){
-
     $("#main_palate_container").on("click", ".card-body", function () {
         UnSetROForm()
         $('#purpose_db_action').attr('value',"update");
+        $('#purpose_id').attr('value',$(this).find('.plate_id_field_class').attr('value'));
         $('#purpose_name').val($(this).find('.plate_name_field_class').attr('value'));
         $('#purpose_description').val($(this).find('.plate_description_field_class').attr('value'));
         $('#purpose_profit').val($(this).find('.plate_profit_field_class').attr('value'));
