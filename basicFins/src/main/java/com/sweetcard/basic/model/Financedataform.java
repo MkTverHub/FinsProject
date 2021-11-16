@@ -19,6 +19,7 @@ public class Financedataform {
     private String strProjectId = "";
     private String strRequisites = "";
     private String strFinsContrAgent = "";
+    private Integer purpose_id;
 
 
     /*----------------GET / SET Полей--------------*/
@@ -109,6 +110,9 @@ public class Financedataform {
     public void setFinsedittype(String Finsedittype) {
         this.strFinsEditType = Finsedittype;
     }
+    //Цели
+    public Integer getPurpose_id() {return purpose_id; }
+    public void setPurpose_id(Integer purpose_id) { this.purpose_id = purpose_id; }
 
     /*-------Другие методы----------*/
     //Чистим значения (при удалении записи)
@@ -124,5 +128,6 @@ public class Financedataform {
         strProjectId = "";
         strRequisites = "";
         strFinsContrAgent = "";
+        purpose_id = 0;
     }
 }

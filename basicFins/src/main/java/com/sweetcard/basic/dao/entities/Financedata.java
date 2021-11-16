@@ -42,4 +42,6 @@ public class Financedata {
     private Integer finscontragent;
     @Column(name = "requisites")
     private Integer requisites;
+    @Column(name = "purpose_id")
+    private Integer purpose_id;
 }
