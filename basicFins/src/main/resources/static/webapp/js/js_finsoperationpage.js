@@ -6,6 +6,7 @@ function StartPage() {
     doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
     doAjaxGetContragentsList();//Получение списка контрагентов
     doAjaxGetLovList();
+    doAjaxGetPurposeList();
     SetROForm();//Сделать форму RO
 
 };
@@ -202,6 +203,14 @@ $(function(){
     $("#finsarticleid_list").change( function(){
         var strSelectValue = $('#finsarticleid_list').val();
         $('#finsarticleid_list').attr('select_value',strSelectValue);
+    });
+});
+
+//Событие выбора значения выпадающего "Цель"
+$(function(){
+    $("#purpose_list_id").change( function(){
+        var strSelectValue = $(this).val();
+        $('#purpose_list_id').attr('select_value',strSelectValue);
     });
 });
 
@@ -455,6 +464,22 @@ function JSONStringToFinsArticleList(JSONString) {
         strFinsArticleListContext = strFinsArticleListContext + '<option value = "' + strFinsArticleId + '">' + strFinsArticleValue + '</option>';
     });
     $("#finsarticleid_list").html(strFinsArticleListContext);
+}
+
+//Парсинг JSON списка целей (Поле "Цель")
+function JSONStringToFinsPurposeList(JSONString) {
+    console.log(JSONString)
+    var strFinsPurposeId = '';
+    var strFinsPurposeName = '';
+    var strFinsPurposeListContext = '<option value="0" key="0">Выберите значение</option>';
+
+    var obj = jQuery.parseJSON(JSONString);
+    $.each(obj, function (index, value) {
+        strFinsPurposeId = value['id'].toString();
+        if(value['name'] == null){strFinsPurposeName = 'null';} else {strFinsPurposeName = value['name'].toString();}
+        strFinsPurposeListContext = strFinsPurposeListContext + '<option value = "' + strFinsPurposeId + '" key="' + strFinsPurposeId +'">' + strFinsPurposeName + '</option>';
+    });
+    $("#purpose_list_id").html(strFinsPurposeListContext);
 }
 
 //Функция установки выбранного значения
@@ -747,6 +772,32 @@ function doAjaxGetLovList() {
         return "";
     }
 };
+
+//Ajax получение списка целей
+function doAjaxGetPurposeList() {
+    SpinnerOn("doAjaxGetPurposeList");
+    try {
+        $.ajax({
+            url: 'GetPurposeList',
+            type: 'GET',
+            dataType: 'json',
+            contentType: 'application/json',
+            mimeType: 'application/json',
+            data: ({
+                //
+            }),
+            success: function (data) {
+                JSONStringToFinsPurposeList(data.text)//Формирование выпадающего списка целей
+                SpinnerOff("doAjaxGetPurposeList");
+            }
+        });
+    }catch (e) {
+        SpinnerOff("doAjaxGetPurposeList");
+        console.log("Error doAjaxGetPurposeList: " + e);
+        return "";
+    }
+}
+
 
 //Форматировать число
 function FormatAmount(Amount,Type){
