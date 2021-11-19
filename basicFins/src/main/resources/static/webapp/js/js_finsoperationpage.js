@@ -322,6 +322,8 @@ function JSONStringToFinsOperationList(JSONString) {
     var strArticleName = "";
     var strContrAgentName = "";
     var strRequisitesName = "";
+    var strPurposeName = "";
+    var strPurposeId = "";
 
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
@@ -350,6 +352,8 @@ function JSONStringToFinsOperationList(JSONString) {
         if(value["requisites_name"] == null){strRequisitesName = '';} else {strRequisitesName = value["requisites_name"].toString();}
         if(value["contragent_name"] == null){strContrAgentName = '';} else {strContrAgentName = value["contragent_name"].toString();}
         if(value["article_name"] == null){strArticleName = '';} else {strArticleName = value["article_name"].toString();}
+        if(value["purpose_id"] == null){strPurposeId = '';} else {strPurposeId = value["purpose_id"].toString();}
+        if(value["purpose_name"] == null){strPurposeName = '';} else {strPurposeName = value["purpose_name"].toString();}
 
         switch(strFinsOpertype) {
             case "profit":
@@ -387,6 +391,8 @@ function JSONStringToFinsOperationList(JSONString) {
             + '<th class="fieldrequisites f-d-n">' + strFinsRequisites + '</th>'
 
             + '<th class="fieldfinsarticle_name">' + strArticleName + '</th>'
+            + '<th class="fieldpurposeid f-d-n">' + strPurposeId + '</th>'
+            + '<th class="fieldpurposename">' + strPurposeName + '</th>'
             + '<th class="fieldfinscontragent_name f-d-n">' + strContrAgentName + '</th>'
             + '<th class="fieldrequisites_name f-d-n">' + strRequisitesName + '</th>'
 
@@ -468,7 +474,6 @@ function JSONStringToFinsArticleList(JSONString) {
 
 //Парсинг JSON списка целей (Поле "Цель")
 function JSONStringToFinsPurposeList(JSONString) {
-    console.log(JSONString)
     var strFinsPurposeId = '';
     var strFinsPurposeName = '';
     var strFinsPurposeListContext = '<option value="0" key="0">Выберите значение</option>';
@@ -522,8 +527,6 @@ function UnSetROForm(){
 
 
 //-----------Ajax Functions------------
-
-
 //Ajax получение UserCache. Заполнение Контекста экрана в зависимости от активного проекта
 function doAjaxGetActiveProjectContext() {
     SpinnerOn("doAjaxGetActiveProjectContext");
@@ -593,6 +596,7 @@ function doAjaxFinsOperation() {
         var strFinsOpertype = $('#finsopertypeid').attr('value');//Тип транзакции profit/expense/transfer
         var strFinsContrAgent = $('#finscontragentid').attr('value');//Id контрагента
         var strFinsRequisites = $('#requisitesid').attr('value');//Id реквезита
+        var strPurposeId = $('#purpose_list_id').attr('select_value');
 
         //Доступные поля
         var strOperationDtUser = $('#fieldoperdateuserid').val();//Сумма
@@ -601,6 +605,7 @@ function doAjaxFinsOperation() {
         var strPaymentAccIn = $('#paymentaccinid_list').attr('select_value');
         var strPaymentAccOut = $('#paymentaccoutid_list').attr('select_value');
         var strFinsArticle = $('#finsarticleid_list').attr('select_value');
+
 
         $.ajax({
             url: 'FinsOperationForm',
@@ -620,9 +625,11 @@ function doAjaxFinsOperation() {
                 Pay_Acc_Out: strPaymentAccOut,
                 Fins_Article: strFinsArticle,
                 Contragent: strFinsContrAgent,
-                Requisite: strFinsRequisites
+                Requisite: strFinsRequisites,
+                PurposeId: strPurposeId
             }),
             success: function (data) {
+                console.log(data);
                 doAjaxGetActiveProjectContext();
                 SpinnerOff("doAjaxFinsOperation");
             }

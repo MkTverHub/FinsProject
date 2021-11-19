@@ -29,7 +29,7 @@ public class AggrFinsdata {
     private String contragent_name;
     private String article_name;
     private Integer purpose_id;
-    private Integer purpose_name;
+    private String purpose_name;
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -85,7 +85,7 @@ public class AggrFinsdata {
         this.article_name = article_name;
     }
     public void setPurpose_id(Integer purpose_id) { this.purpose_id = purpose_id; }
-    public void setPurpose_name(Integer purpose_name) { this.purpose_name = purpose_name; }
+    public void setPurpose_name(String purpose_name) { this.purpose_name = purpose_name; }
 
     public boolean isLockflg() {
         return lockflg;
@@ -137,5 +137,5 @@ public class AggrFinsdata {
         return article_name;
     }
     public Integer getPurpose_id() { return purpose_id; }
-    public Integer getPurpose_name() { return purpose_name; }
+    public String getPurpose_name() { return purpose_name; }
 }

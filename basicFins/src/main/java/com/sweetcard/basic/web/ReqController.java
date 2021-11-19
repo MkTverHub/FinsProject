@@ -216,14 +216,19 @@ public class ReqController {
                                                 @RequestParam String Fins_Article,
                                                 //@RequestParam String ProjectId,
                                                 @RequestParam String Contragent,
-                                                @RequestParam String Requisite){
+                                                @RequestParam String Requisite,
+                                                @RequestParam String PurposeId){
         try{
             //Установка Id активного проекта
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
             if(usercache.active_proj != 0) {
+                Integer intPurposeId = 0;
+                if(PurposeId != null && PurposeId.compareTo("") != 0){
+                    intPurposeId = Integer.parseInt(PurposeId);
+                }
+
 
                 financedataJdbc.setActivProjectId(usercache.active_proj);
-
                 Financedataform financedataform = new Financedataform();
                 financedataform.setFinsedittype(RecordOperation);
                 financedataform.setFinsOperType(Fins_Transaction_Type);
@@ -238,6 +243,7 @@ public class ReqController {
                 //financedataform.setProjectId(ProjectId);
                 financedataform.setFinscontragent(Contragent);
                 financedataform.setRequisites(Requisite);
+                financedataform.setPurpose_id(intPurposeId);
                 switch (RecordOperation) {
                     case ("update"): {
                         logger.info("ReqController.FinsOperation -> Case update: ");
@@ -840,7 +846,7 @@ public class ReqController {
 
 
 
-    //------Получение отчетов
+    //------Получение отчетов------------------
     @RequestMapping(value = "/GetReport", method = RequestMethod.GET)
     public @ResponseBody Response GetReport(@RequestParam String ReportName) {
         try{
