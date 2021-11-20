@@ -17,21 +17,6 @@ function StartPage() {
 /*ВАЖНО: jqury слушает только элементы существующие на момент инициализации скрипта,
 т.к. проекты создаются из ajax, то слушатель нужно поставить на родительский элемент div,
 который существует изначально на странице */
-//Не актуально, переделано на ссылки
-$(function(){
-    /*
-    var strProjectId = "";
-    $("#projectlistpanel").on("click", ".finsproject_list_row", function () {
-        strProjectId = $(this).attr("projnum");
-        $('#projectidid').attr("value",strProjectId);
-        $('#projectidid').val(strProjectId);
-        doAjaxUserCacheOperation(strProjectId);//Апдейт активного проекта
-        doAjaxGetProjectListLeft(strProjectId);//Перестроить левое меню списка проектов
-        doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
-        doAjaxGetLovList()//Получение выпадающего списка "Статья"
-    });
-    */
-});
 
 //Событие нажатия на финансовую операцию
 $(function(){
@@ -45,9 +30,9 @@ $(function(){
     var strPaymentAccIn = "";
     var strPaymentAccOut = "";
     var strFinsArticle = "";
-    //var strProjectId = "";
     var strFinsContrAgent = "";
     var strFinsRequisites = "";
+    var strFinsPurposeId = "";
 
     $("#financetable").on("click", ".fincrowlink", function () {
         UnSetROForm();
@@ -58,13 +43,12 @@ $(function(){
         strOperDtUser = $(this).find('.fieldoperdate_user').html();
         strFinsAmount = DisbandAmount($(this).find('.fieldamount').html());
         strFinsDetail = $(this).find('.fielddetail').html();
-        //strPaymentAccIn = $(this).find('.fieldpayaccin').html();
-        //strPaymentAccOut = $(this).find('.fieldpayaccout').html();
         strPaymentAccIn = $(this).find('.fieldpayaccin').attr('acc_num');
         strPaymentAccOut = $(this).find('.fieldpayaccout').attr('acc_num');
         strFinsArticle = $(this).find('.fieldfinsarticle').html();
         strFinsContrAgent = $(this).find('.fieldfinscontragent').html();
         strFinsRequisites = $(this).find('.fieldrequisites').html();
+        strFinsPurposeId = $(this).find('.fieldpurposeid').html();
 
         $('#finsedittypeid').attr('value','update');//update/new/delete
         $('#recordid').attr('value',strFinsRecordId);
@@ -78,15 +62,12 @@ $(function(){
         SetActiveSelect('#paymentaccinid_list',strPaymentAccIn);
         $('#paymentaccoutid_list').attr('select_value',strPaymentAccOut);
         SetActiveSelect('#paymentaccoutid_list',strPaymentAccOut);
-        //$('#finsarticleid').attr('value',strFinsArticle);
         $('#finsarticleid_list').attr('select_value',strFinsArticle);
         SetActiveSelect('#finsarticleid_list',strFinsArticle);
-        //$('#projectidid').attr('value',strProjectId);
         $('#finscontragentid').attr('value',strFinsContrAgent);
         SetActiveSelect('#contr_agent_select_field',strFinsContrAgent);
         doAjaxGetContragentRequisits(strFinsContrAgent,'SetActiveSelect','#contr_agent_requisits_list',strFinsRequisites);//Получить список реквезитов контрагента + сделать активный реквезит
         $('#requisitesid').attr('value',strFinsRequisites);
-        //SetActiveSelect('#contr_agent_requisits_list',strFinsRequisites);
 
         $('#finsedittypeid').val('update');//update/new/delete
         $('#recordid').val(strFinsRecordId);
@@ -98,6 +79,8 @@ $(function(){
         $('#fielddetailid').val(strFinsDetail);
         $('#finscontragentid').val(strFinsContrAgent);
         $('#requisitesid').val(strFinsRequisites);
+
+        SetActiveSelect('#purpose_list_id',strFinsPurposeId);
 
         //Подсвет Приход,Расход,Перевод
         if(strFinsOpertype == 'profit'){
@@ -283,6 +266,7 @@ function ClearFinsForm (){
     $('#fielddetailid').val('');
     $('#finscontragentid').val('');
     $('#requisitesid').val('');
+    $('#purpose_list_id').attr('select_value','');
     $('#arrivalbt').removeClass('active');
     $('#transferbt').removeClass('active');
     $('#expensebt').removeClass('active');
@@ -293,6 +277,7 @@ function ClearFinsForm (){
     $('#finsarticleid_list option:contains("Выберите значение")').prop('selected', true);
     $('#contr_agent_select_field option:contains("Выберите значение")').prop('selected', true);
     $('#contr_agent_requisits_list option:contains("Выберите значение")').prop('selected', true);
+    $('#purpose_list_id option:contains("Выберите значение")').prop('selected', true);
 
 };
 
@@ -491,6 +476,8 @@ function JSONStringToFinsPurposeList(JSONString) {
 function SetActiveSelect(ListSelector,SelectedVal){
     $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
     $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
+    $(ListSelector).attr('select_value',SelectedVal);
+
 }
 
 //Сделать форму RO
@@ -503,6 +490,7 @@ function SetROForm(){
     $('#finsarticleid_list').attr('disabled', true);
     $('#fielddetailid').attr('readonly', true);
     $('#contr_agent_requisits_list').attr('disabled', true);
+    $('#purpose_list_id').attr('disabled', true);
 
     $('#expensebt').attr('disabled', true);
     $('#transferbt').attr('disabled', true);
@@ -519,6 +507,7 @@ function UnSetROForm(){
     $('#finsarticleid_list').attr('disabled', false);
     $('#fielddetailid').attr('readonly', false);
     $('#contr_agent_requisits_list').attr('disabled', false);
+    $('#purpose_list_id').attr('disabled', false);
 
     $('#expensebt').attr('disabled', true);
     $('#transferbt').attr('disabled', true);
