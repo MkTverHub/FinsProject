@@ -12,6 +12,6 @@ public class Purpose {
     @Column(name = "par_row_id") private Integer par_row_id;
     @Column(name = "name") public String name;
     @Column(name = "description") public String description;
-    @Column(name = "expense") public String expense;
-    @Column(name = "profit") public String profit;
+    @Column(name = "expense") public Float expense;
+    @Column(name = "profit") public Float profit;
 }

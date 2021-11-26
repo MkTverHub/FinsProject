@@ -27,12 +27,15 @@ public class PurposeJdbc {
             String strOperationType = purposeForm.getPurposeAction();
             logger.info("Purpose.PurposeAction: " + strOperationType);
 
+            Float flExpense = Float.parseFloat(purposeForm.getExpense());
+            Float flProfit = Float.parseFloat(purposeForm.getProfit());
+
             switch(strOperationType){
                 case "update" : {
                     Integer intPurposeId = purposeForm.getId();
                     logger.info("PurposeJdbc.UpdatePurpose -> " + intPurposeId);
                     jdbcTemplate.update("update Purpose set par_row_id = ?, name = ?, description = ?, expense = ?, profit = ? where id = ?",
-                            intActiveProjectId,purposeForm.getName(), purposeForm.getDescription(), purposeForm.getExpense(), purposeForm.getProfit(), intPurposeId);
+                            intActiveProjectId,purposeForm.getName(), purposeForm.getDescription(), flExpense, flProfit, intPurposeId);
                 }break;
                 case "insert" : {
                     //Создание записи
@@ -44,8 +47,8 @@ public class PurposeJdbc {
                             statement.setInt(1, intActiveProjectId);
                             statement.setString(2, purposeForm.getName());
                             statement.setString(3, purposeForm.getDescription());
-                            statement.setString(4,purposeForm.getExpense());
-                            statement.setString(5, purposeForm.getProfit());
+                            statement.setFloat(4,flExpense);
+                            statement.setFloat(5, flProfit);
                             return statement;
                         }
                     }, holder);
