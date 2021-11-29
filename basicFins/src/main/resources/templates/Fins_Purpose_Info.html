@@ -101,46 +101,23 @@
                                           Успех
                                      </div> 
                                 </div>
-                            </div> 
+                            </div>
+
+
+                            <!--Список целей-->
                             <div class="table-body-purpose">
                                 <div class="table-row-line-purpose"></div>
 
-                                <!-- Выносим в отдельную плитку для рендера списка целей -->
-                                <div class="table-row-purpose">
-                                     <div class="table-cell-purpose table-row-cell-name-purpose">
-                                          <div class="table-row-cell-name-purpose-in">Производство тубареток</div>
-                                          <div class="table-row-cell-name-purpose-in-desc"><small>Описание</small></div>
-                                      </div>
-                                      <div class="table-cell-purpose table-row-cell-info-purpose">
-                                          <div>Возможный:</div>
-                                          <div>Реальный:</div>
-                                          <div>Результат:</div>
-                                      </div> 
-                                      <div class="table-cell-purpose table-txt-right-purpose table-row-coming-purpose">
-                                          <span class="money money-yes money-view money-muted money-plan">+ 25 000.00 ₽</span>
-                                          <span class="money money-yes money-view money-fact">+ 5 000.00 ₽</span>
-                                          <span class="money money-result money-view money-muted money-fact">+ 20 000.00 ₽</span>
-                                      </div>
-                                       <div class="table-cell-purpose table-txt-right-purpose table-row-expenditure-purpose">
-                                          <span class="money money-no money-view money-muted money-plan">+ 25 000.00 ₽</span>
-                                          <span class="money money-no money-view money-fact">+ 5 000.00 ₽</span>
-                                          <span class="money money-result money-view money-muted money-fact">+ 20 000.00 ₽</span>
-                                      </div>
-                                       <div class="table-cell-purpose table-txt-right-purpose table-row-total-purpose">
-                                          <span class="money money-yes money-view money-muted money-plan">+ 25 000.00 ₽</span>
-                                          <span class="money money-yes money-view money-fact">+ 5 000.00 ₽</span>
-                                          <span class="money money-result money-view money-muted money-fact">+ 20 000.00 ₽</span>
-                                      </div>
-                                       <div class="table-cell-purpose table-txt-right-purpose table-row-profi-purpose">
-                                          <span class="money money-yes money-view money-muted money-plan">+ 25 %</span>
-                                          <span class="money money-yes money-view money-fact">+ 5 %</span>
-                                          <span class="money money-result money-view money-muted money-fact">+ 10 % </span>
-                                      </div>
+                                <div class="table-row-purpose" th:each="p: ${aggrPurposeList}">
+                                    <div th:replace="fragments\layouts\fragment_project_tile.html :: purpose_fragment_1(purpose=${p})"></div>
                                 </div>
-                                <!-- end. Выносим в отдельную плитку для рендера списка целей -->
 
                                 <div class="table-row-line-purpose"></div>
                             </div>
+
+
+
+
                             <div class="table-footer-purpose">
                                 <div class="table-cell-purpose table-row-cell-name-purpose">
                                     <div class="table-row-cell-name-purpose-in">Итого</div>

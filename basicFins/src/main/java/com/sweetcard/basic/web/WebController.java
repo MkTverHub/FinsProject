@@ -46,6 +46,8 @@ public class WebController {
     @Autowired
     AggregateDataCompanyRepository aggregateDataCompanyRepository;
     @Autowired
+    AggregateDataPurposeRepository aggregateDataPurposeRepository;
+    @Autowired
     FinancedataJdbc financedataJdbc;
     @Autowired
     FinsprojectJdbc finsprojectJdbc;
@@ -365,6 +367,10 @@ public class WebController {
             if(ProjectId.compareTo("no_value")==0){
                 ProjectId = usercache.active_proj.toString();
             }
+
+            List<AggrPurpose> aggrPurposeList = aggregateDataPurposeRepository.GetPurposeData(1,1);
+            model.addAttribute("aggrPurposeList",aggrPurposeList);
+            logger.info("WebController.FinsPurposeInfo -> aggrPurposeList: " + aggrPurposeList.size());
 
             return "Fins_Purpose_Info";
         }catch (Exception req_ex1){

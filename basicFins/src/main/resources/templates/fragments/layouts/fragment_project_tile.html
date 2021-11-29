@@ -373,4 +373,39 @@
     </div>
 </div>
 
+<!--Список целей-->
+<div class="table-row-purpose" th:fragment="purpose_fragment_1(purpose)">
+    <div class="table-cell-purpose table-row-cell-name-purpose" th:fragment="purpose_fragment_1(purpose)">
+        <div class="table-row-cell-name-purpose-in" th:utext="${purpose.name}"/>
+        <div class="table-row-cell-name-purpose-in-desc">
+            <small th:utext="${purpose.description}"/>
+        </div>
+    </div>
+    <div class="table-cell-purpose table-row-cell-info-purpose">
+        <div>Возможный:</div>
+        <div>Реальный:</div>
+        <div>Результат:</div>
+    </div>
+    <div class="table-cell-purpose table-txt-right-purpose table-row-coming-purpose">
+        <span class="money money-yes money-view money-muted money-plan" th:utext="${purpose.profit_probable}"/>
+        <span class="money money-yes money-view money-fact" th:utext="${purpose.profit_real}"/>
+        <span class="money money-result money-view money-muted money-fact" th:utext="${purpose.profit_total}"/>
+    </div>
+    <div class="table-cell-purpose table-txt-right-purpose table-row-expenditure-purpose">
+        <span class="money money-no money-view money-muted money-plan">???</span>
+        <span class="money money-no money-view money-fact">???</span>
+        <span class="money money-result money-view money-muted money-fact">???</span>
+    </div>
+    <div class="table-cell-purpose table-txt-right-purpose table-row-total-purpose">
+        <span class="money money-yes money-view money-muted money-plan">???</span>
+        <span class="money money-yes money-view money-fact">???</span>
+        <span class="money money-result money-view money-muted money-fact">???</span>
+    </div>
+    <div class="table-cell-purpose table-txt-right-purpose table-row-profi-purpose">
+        <span class="money money-yes money-view money-muted money-plan">???</span>
+        <span class="money money-yes money-view money-fact">???</span>
+        <span class="money money-result money-view money-muted money-fact">???</span>
+    </div>
+</div>
+
 </html>
