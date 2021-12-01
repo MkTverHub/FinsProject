@@ -367,8 +367,9 @@ public class WebController {
             if(ProjectId.compareTo("no_value")==0){
                 ProjectId = usercache.active_proj.toString();
             }
+            Integer intProjectId = Integer.parseInt(ProjectId);
 
-            List<AggrPurpose> aggrPurposeList = aggregateDataPurposeRepository.GetPurposeData(1,1);
+            List<AggrPurpose> aggrPurposeList = aggregateDataPurposeRepository.GetPurposeData(intProjectId);
             model.addAttribute("aggrPurposeList",aggrPurposeList);
             logger.info("WebController.FinsPurposeInfo -> aggrPurposeList: " + aggrPurposeList.size());
 
