@@ -20,6 +20,9 @@ public class AggrPurpose {
     private String balance_probable;
     private String balance_real;
     private String balance_total;
+    private String percent_probable;
+    private String percent_real;
+    private String percent_total;
 
     private String total_probable;
     private String total_real;
@@ -35,6 +38,7 @@ public class AggrPurpose {
     public void setName(String name) { this.name = name; }
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
     public String getProfit_probable() { return profit_probable; }
     public String getProfit_real() { return profit_real; }
     public String getProfit_total() { return profit_total; }
@@ -45,10 +49,9 @@ public class AggrPurpose {
     public String getExpense_probable() { return expense_probable; }
     public String getExpense_real() { return expense_real; }
     public String getExpense_total() { return expense_total; }
-
-    //public String getBalance_probable() { return balance_probable; }
-    //public String getBalance_real() { return balance_real; }
-    //public String getBalance_total() { return balance_total; }
+    public String getBalance_probable() { return balance_probable; }
+    public String getBalance_real() { return balance_real; }
+    public String getBalance_total() { return balance_total; }
     //public String getTotal_probable() { return total_probable; }
     //public String getTotal_real() { return total_real; }
 
@@ -56,9 +59,18 @@ public class AggrPurpose {
     public void setExpense_real(String expense_real) { this.expense_real = expense_real; }
     public void setExpense_total(String expense_total) { this.expense_total = expense_total; }
 
-    //public void setBalance_probable(String balance_probable) { this.balance_probable = balance_probable; }
-    //public void setBalance_real(String balance_real) { this.balance_real = balance_real; }
-    //public void setBalance_total(String balance_total) { this.balance_total = balance_total; }
+    public void setBalance_probable(String balance_probable) { this.balance_probable = balance_probable; }
+    public void setBalance_real(String balance_real) { this.balance_real = balance_real; }
+    public void setBalance_total(String balance_total) { this.balance_total = balance_total; }
     //public void setTotal_probable(String total_probable) { this.total_probable = total_probable; }
     //public void setTotal_real(String total_real) { this.total_real = total_real; }
+
+
+    public void setPercent_probable(String percent_probable) { this.percent_probable = percent_probable;}
+    public void setPercent_real(String percent_real) { this.percent_real = percent_real;}
+    public void setPercent_total(String percent_total) { this.percent_total = percent_total;}
+
+    public String getPercent_probable() {return percent_probable; }
+    public String getPercent_real() {return percent_real;}
+    public String getPercent_total() { return percent_total; }
 }
