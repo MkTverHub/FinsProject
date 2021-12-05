@@ -22,9 +22,9 @@ public interface AggregateDataPurposeRepository extends JpaRepository<AggrPurpos
             " ROUND(AVG(t.balance_probable)"+strSpecSymbol+strSpecSymbol+"numeric,2) as balance_probable,\n" +
             " ROUND(AVG(t.balance_real)"+strSpecSymbol+strSpecSymbol+"numeric,2) as balance_real,\n" +
             " ROUND(AVG(t.balance_total)"+strSpecSymbol+strSpecSymbol+"numeric,2) as balance_total,\n" +
-            " ROUND(AVG(t.percent_probable)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_probable,\n" +
-            " ROUND(AVG(t.percent_real)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_real,\n" +
-            " ROUND(AVG(((t.balance_total-t.expense_total)/t.expense_total)*100)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_total\n" +
+            " ROUND(AVG(((t.profit_probable-t.expense_probable)/t.expense_probable)*100)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_probable,\n" +
+            " ROUND(AVG(((t.profit_real-t.expense_real)/t.expense_real)*100)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_real,\n" +
+            " ROUND(AVG(((t.profit_total-t.expense_total)/t.expense_total)*100)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_total\n" +
             "from\n" +
             "(\n" +
             "select\n" +
@@ -39,9 +39,7 @@ public interface AggregateDataPurposeRepository extends JpaRepository<AggrPurpos
             "        (t_data.expense_probable - t_data.expense_real) as expense_total,\n" +
             "        (t_data.profit_probable-t_data.expense_probable) as balance_probable,\n" +
             "        (t_data.profit_real-t_data.expense_real) as balance_real,\n" +
-            "        (t_data.profit_real - t_data.profit_probable)-(t_data.profit_probable-t_data.expense_probable) as balance_total,\n" +
-            "        ((t_data.profit_probable-t_data.expense_probable)/t_data.expense_probable)*100 as percent_probable,\n" +
-            "        ((t_data.profit_real-t_data.expense_real)/t_data.expense_real)*100 as percent_real\n" +
+            "        (t_data.profit_real - t_data.profit_probable)-(t_data.profit_probable-t_data.expense_probable) as balance_total\n" +
             "    from\n" +
             "        ( select\n" +
             "            prp.id,\n" +
@@ -58,7 +56,7 @@ public interface AggregateDataPurposeRepository extends JpaRepository<AggrPurpos
             "            left join (select sum(amount) as amount,purpose_id from financedata where fins_oper_type = 'expense' group by purpose_id) t_expense_real \n" +
             "                on prp.id = t_expense_real.purpose_id\n" +
             "        where\n" +
-            "            prp.par_row_id = :project_id \n" +
+            "            prp.par_row_id = 1 \n" +
             "        ) t_data \n" +
             "    group by\n" +
             "        t_data.id,\n" +
