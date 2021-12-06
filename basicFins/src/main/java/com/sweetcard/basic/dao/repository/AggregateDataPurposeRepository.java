@@ -22,9 +22,9 @@ public interface AggregateDataPurposeRepository extends JpaRepository<AggrPurpos
             " ROUND(AVG(t.balance_probable)"+strSpecSymbol+strSpecSymbol+"numeric,2) as balance_probable,\n" +
             " ROUND(AVG(t.balance_real)"+strSpecSymbol+strSpecSymbol+"numeric,2) as balance_real,\n" +
             " ROUND(AVG(t.balance_total)"+strSpecSymbol+strSpecSymbol+"numeric,2) as balance_total,\n" +
-            " ROUND(AVG(((t.profit_probable-t.expense_probable)/t.expense_probable)*100)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_probable,\n" +
-            " ROUND(AVG(((t.profit_real-t.expense_real)/t.expense_real)*100)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_real,\n" +
-            " ROUND(AVG(((t.profit_total-t.expense_total)/t.expense_total)*100)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_total\n" +
+            " ROUND(AVG(case when t.expense_probable=0 then 0 else ((t.profit_probable-t.expense_probable)/t.expense_probable)*100 end)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_probable,\n" +
+            " ROUND(AVG(case when t.expense_real=0 then 0 else ((t.profit_real-t.expense_real)/t.expense_real)*100 end)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_real,\n" +
+            " ROUND(AVG(case when t.expense_total=0 then 0 else ((t.profit_total-t.expense_total)/t.expense_total)*100 end)"+strSpecSymbol+strSpecSymbol+"numeric,2) as percent_total\n" +
             "from\n" +
             "(\n" +
             "select\n" +
@@ -74,6 +74,7 @@ public interface AggregateDataPurposeRepository extends JpaRepository<AggrPurpos
             " t.profit_real,\n" +
             " t.profit_probable,\n" +
             " t.expense_probable,\n" +
-            " t.expense_real", nativeQuery = true)
+            " t.expense_real,\n" +
+            " t.expense_total", nativeQuery = true)
     List<AggrPurpose> GetPurposeData(@Param("project_id") Integer project_id_in);
 }
