@@ -64,8 +64,9 @@ function doAjaxPurposeDBOperation() {
                 PurposeProfit: strPurposeProfit
             }),
             success: function (data) {
-                //doAjaxGetLovList();
+                doAjaxGetPurposeList();
                 SpinnerOff("doAjaxPurposeDBOperation");
+                location.reload();
             }
         });
 
@@ -76,22 +77,20 @@ function doAjaxPurposeDBOperation() {
 };
 
 //Чистка формы Lov
-function CleanLovForm() {
-    $('#lov_db_action').attr('value','');
-    $('#lov_record_id').attr('value','');
-    $('#lov_value').val('');
-    $('#lov_description').val('');
-    ResetPickList('#lov_options_list');
-    ResetPickList('#lov_type_list');
-    $('#lov_options_list option:contains("Выберете значение")').prop('selected', true);
-    $('#lov_type_list option:contains("Выберете значение")').prop('selected', true);
+function CleanPurposeForm() {
+    $('#purpose_db_action').attr('value','update');
+    $('#purpose_id').attr('value','');
+    $('#purpose_name').val('');
+    $('#purpose_description').val('');
+    $('#purpose_profit').val('');
+    $('#purpose_expense').val('');
 };
 
 
 //-------------Функции событий-----------------
 //Выделить плитку
 function SelectPlatePurpose(varId) {
-    console.log(varId);
+    //console.log(varId);
 }
 
 //Событие нажатия на кнопку "Создать" lov
@@ -102,21 +101,22 @@ function InsertPurpose(){
 };
 //Событие нажатия на кнопку "Удалить" lov
 function DeleteLOV(){
-    //$('#lov_db_action').attr('value','delete');
-    //doAjaxLovDBOperation();
-    //CleanLovForm();
-    //SetROForm();
+    $('#purpose_db_action').attr('value','delete');//update/insert/delete
+    doAjaxPurposeDBOperation();
+    CleanPurposeForm()
+    SetROForm();
 };
 //Событие нажатия на кнопку "Сохранить" lov
 function SavePurpose(){
     doAjaxPurposeDBOperation();
-    //CleanLovForm();
-    //SetROForm();
+    CleanPurposeForm()
+    SetROForm();
+
 };
 //Событие нажатия на кнопку "Отменить" lov
 function ResetLOV(){
-    //CleanLovForm();
-    //SetROForm();
+    CleanPurposeForm()
+    SetROForm();
 };
 
 //Событие нажатия на плитку события
@@ -132,51 +132,19 @@ $(function(){
     });
 });
 
-//Событие выбора значения выпадающего "Характеристики"
-$(function(){
-    /*
-    $("#lov_options_list").change( function(){
-        var strSelectValue = $('#lov_options_list').val();
-        $('#lov_options_list').attr('select_value',strSelectValue);
-    });
-
-     */
-});
-
-//Событие выбора значения выпадающего "Тип"
-$(function(){
-    /*
-    $("#lov_type_list").change( function(){
-        var strSelectValue = $('#lov_type_list').val();
-        $('#lov_type_list').attr('select_value',strSelectValue);
-    });
-
-     */
-});
 
 //-------------Функции обработки-----------------
-//Функция установки выбранного значения
-function SetActiveSelect(ListSelector,SelectedVal){
-    /*
-    $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
-    $(ListSelector).find('[value = "' + SelectedVal + '"]').prop('selected', true);
-    $(ListSelector).attr('select_value',SelectedVal);
-     */
-}
-//Функция сброса списка
-function ResetPickList(ListSelector){
-    /*
-    $(ListSelector).find('[selected]').prop('selected', false);//Сбросить текущее активное значение
-    $(ListSelector).find('[selected]').attr('select_value', null);
-     */
-}
 
 //Сделать форму RO
 function SetROForm(){
-    $('#lov_value').attr('readonly', true);
-    $('#lov_description').attr('readonly', true);
-    $('#lov_options_list').attr('disabled', true);
-    $('#lov_type_list').attr('disabled', true);
+    $('#purpose_name').attr('readonly', true);
+    $('#purpose_description').attr('readonly', true);
+    $('#purpose_profit').attr('readonly', true);
+    $('#purpose_expense').attr('readonly', true);
+    $('#purpose_name').attr('disabled', true);
+    $('#purpose_description').attr('disabled', true);
+    $('#purpose_profit').attr('disabled', true);
+    $('#purpose_expense').attr('disabled', true);
 }
 //Сделать форму not RO
 function UnSetROForm(){
