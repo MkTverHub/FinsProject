@@ -606,7 +606,7 @@ public class ReqController {
                                                    @RequestParam String PurposeExpense,
                                                    @RequestParam String PurposeProfit)
     {
-        logger.info("ReqController.OperationPurpose -> " + DBOperation + "/" + PurposeParRowId + "/" + PurposeId + "/" + PurposeName + "/" + PurposeDescription + "/" + PurposeExpense  + "/" + PurposeProfit);
+        //logger.info("ReqController.OperationPurpose -> " + DBOperation + "/" + PurposeParRowId + "/" + PurposeId + "/" + PurposeName + "/" + PurposeDescription + "/" + PurposeExpense  + "/" + PurposeProfit);
         try{
             //Установка Id активного проекта
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
@@ -614,6 +614,12 @@ public class ReqController {
                 Integer intId = 0;
                 if(PurposeId.compareTo("")!=0){
                     intId = Integer.parseInt(PurposeId);
+                }
+                if(PurposeExpense.compareTo("")==0){
+                    PurposeExpense="0";
+                }
+                if(PurposeProfit.compareTo("")==0){
+                    PurposeProfit="0";
                 }
 
                 purposeJdbc.setActiveProjectId(usercache.active_proj);
