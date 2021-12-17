@@ -591,3 +591,25 @@ button:focus {
 .sum-color-red {
     color: #E20338;
 }
+.fin-operation-show-all-box {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    height: 100%;
+}
+
+.fin-operation-show-all-btn {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    padding: 5px 10px;
+    width: 150px;
+    opacity: 0.7;
+    line-height: 27px;
+    border: 1px solid;
+    border-color: #afafaf;
+    margin-top: 20px;
+    border-radius: 8px;
+}

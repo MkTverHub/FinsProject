@@ -57,19 +57,6 @@
                     </div>
                 </div>
 
-                <!-- Общий фильтр по дате -->
-                <div class="col-5 align-self-center">
-                    <div class="customize-input float-right">
-                        <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                            <option selected="">За все время</option>
-                            <option value="1">Сегодня</option>
-                            <option value="2">Вчера</option>
-                            <option value="3">Последние 7 дней</option>
-                            <option value="4">Последние 30 дней</option>
-                        </select>
-                    </div>
-                </div>
-
             </div>
         </div>
 
@@ -301,7 +288,7 @@
 
 
                 <!-- *************************************************************** -->
-                <!-- Какрточка с информацие -->
+                <!-- Карточка с информацией -->
                 <!-- *************************************************************** -->
                 <div class="col-sm-12 col-md-4">
                     <div class="card">
@@ -368,7 +355,7 @@
             </div>
     
             <!-- *************************************************************** -->
-            <!-- ТАБЛИЦА - ПОДРОБНАЯ ИФНОРМАЦИЯ -->
+            <!-- ТАБЛИЦА - ПОДРОБНАЯ ИНФОРМАЦИЯ -->
             <!-- *************************************************************** -->
 
             <div class="row">
@@ -378,18 +365,6 @@
                             <h4 class="card-title">Подробная информация</h4>
                             <h6 class="card-subtitle">Cписок всех финансовых операции по текущему проекту. Вы можете изменить или удалить нужную запись, достаточно кликнув по ней.</h6>
                             <div class="row mb-1">
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="dataTables_length" id="zero_config_length">
-                                        <label>Показать 
-                                            <select name="zero_config_length" aria-controls="zero_config" class="form-control form-control-sm">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select> 
-                                        </label>
-                                    </div>
-                                </div>
                                 <div class="col-sm-12 col-md-6">
                                     <div id="zero_config_filter" class="dataTables_filter">
                                         <label>Поиск:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="zero_config"></label>
@@ -411,6 +386,7 @@
                                         <th>Счет поступления</th>
                                         <th>Счет списания</th>
                                         <th>Статья</th>
+                                        <th>Цель</th>
                                         <th>Детали</th>
                                         <th>Дата создания</th>
                                         <th>Кто создал</th>   
@@ -420,25 +396,9 @@
                                 </table>
                             </div>
                             <div class="row mt-3">
-                                <div class="col-sm-12 col-md-5">
-                                    <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Показано <span>1</span> из <span>5</span> страниц</div>
-                                </div>
-                                <div class="col-sm-12 col-md-7">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                        <ul class="pagination">
-                                            <li class="paginate_button page-item previous disabled" id="dataTable_previous">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link"><</a>
-                                            </li>
-                                            <li class="paginate_button page-item active">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                            </li>
-                                            <li class="paginate_button page-item">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">2</a>
-                                            </li>
-                                            <li class="paginate_button page-item next disabled" id="dataTable_next">
-                                                <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">></a>
-                                            </li>
-                                        </ul>
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="fin-operation-show-all-box">
+                                    	<button type="button" class="fin-operation-show-all-btn">Показать еще</button>
                                     </div>
                                 </div>
                             </div>
@@ -448,20 +408,20 @@
             </div>
 
             <!-- *************************************************************** -->
-            <!-- конец центрального блока -->
+            <!-- Конец центрального блока -->
             <!-- *************************************************************** -->
 
         </div>
     </section>
 
     <!-- *************************************************************** -->
-    <!-- конец главной обертки для всего сайта -->
+    <!-- Конец главной обертки для всего сайта -->
     <!-- *************************************************************** -->
 
 </div>
 
 
-<!-----------IVRIBIN User Script----------------------------->
+<!----------- User Script----------------------------->
 <!--
     Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
 -->
