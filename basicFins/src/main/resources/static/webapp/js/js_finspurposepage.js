@@ -100,7 +100,7 @@ function InsertPurpose(){
     $('#purpose_db_action').attr('value','insert');//update/insert/delete
 };
 //Событие нажатия на кнопку "Удалить" lov
-function DeleteLOV(){
+function DeletetPurpose(){
     $('#purpose_db_action').attr('value','delete');//update/insert/delete
     doAjaxPurposeDBOperation();
     CleanPurposeForm()
@@ -114,7 +114,7 @@ function SavePurpose(){
 
 };
 //Событие нажатия на кнопку "Отменить" lov
-function ResetLOV(){
+function ResetPurpose(){
     CleanPurposeForm()
     SetROForm();
 };
