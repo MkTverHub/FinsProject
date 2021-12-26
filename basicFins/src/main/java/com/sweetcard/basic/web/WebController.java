@@ -360,19 +360,16 @@ public class WebController {
     public String GoToFinsPurposeInfo(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try{
             logger.info("WebController.FinsPurposeInfo -> ");
-            //Получение usercache
-            Usercache usercache = GetUsercache();
-            AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
 
             if (0 != ProjectId.compareTo("no_value")) {
                 //Переход из левой понели проектов кликом по проекту
                 SetActiveProjectUserCache(Integer.parseInt(ProjectId));
             }
 
-            Integer intProjectId = Integer.parseInt(ProjectId);
-
-            List<AggrPurpose> aggrPurposeList = aggregateDataPurposeRepository.GetPurposeData(intProjectId);
+            Usercache usercache = GetUsercache();
+            List<AggrPurpose> aggrPurposeList = aggregateDataPurposeRepository.GetPurposeData(usercache.active_proj);
             model.addAttribute("aggrPurposeList",aggrPurposeList);
+            model.addAttribute("AccountMail",usercache.login);
             logger.info("WebController.FinsPurposeInfo -> aggrPurposeList: " + aggrPurposeList.size());
 
             return "Fins_Purpose_Info";
@@ -396,6 +393,7 @@ public class WebController {
                 SetActiveProjectUserCache(Integer.parseInt(ProjectId));
             }
 
+            model.addAttribute("AccountMail",usercache.login);
             return "Fins_Purpose_Add";
         }catch (Exception req_ex1){
             logger.info("WebController.FinsPurposeAdd -> ERROR: " + req_ex1);
