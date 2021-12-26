@@ -56,7 +56,7 @@ public interface AggregateDataPurposeRepository extends JpaRepository<AggrPurpos
             "            left join (select sum(amount) as amount,purpose_id from financedata where fins_oper_type = 'expense' group by purpose_id) t_expense_real \n" +
             "                on prp.id = t_expense_real.purpose_id\n" +
             "        where\n" +
-            "            prp.par_row_id = 1 \n" +
+            "            prp.par_row_id = :fins_project_id \n" +
             "        ) t_data \n" +
             "    group by\n" +
             "        t_data.id,\n" +
@@ -76,5 +76,5 @@ public interface AggregateDataPurposeRepository extends JpaRepository<AggrPurpos
             " t.expense_probable,\n" +
             " t.expense_real,\n" +
             " t.expense_total", nativeQuery = true)
-    List<AggrPurpose> GetPurposeData(@Param("project_id") Integer project_id_in);
+    List<AggrPurpose> GetPurposeData(@Param("fins_project_id") Integer finsprojectid);
 }
