@@ -389,8 +389,9 @@ public class WebController {
             Usercache usercache = GetUsercache();
             AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
 
-            if(ProjectId.compareTo("no_value")==0){
-                ProjectId = usercache.active_proj.toString();
+            if (0 != ProjectId.compareTo("no_value")) {
+                //Переход из левой понели проектов кликом по проекту
+                SetActiveProjectUserCache(Integer.parseInt(ProjectId));
             }
 
             return "Fins_Purpose_Add";

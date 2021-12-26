@@ -4,7 +4,7 @@
 
 //Функция при загрузки страницы
 function StartPage() {
-    doAjaxGetUserCache("FinsLOVEditor");//Получение списка проектов в левой панели
+    doAjaxGetUserCache("FinsPurposeAdd");//Получение списка проектов в левой панели
     doAjaxGetPurposeList();
     //SetROForm();
 };
