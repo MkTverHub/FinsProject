@@ -173,9 +173,9 @@ function JsonToPlateList(strJsonContext){
             strPlate = strPlate + "</h4><h6 class=\"text-muted font-weight-normal mb-2 w-100 plate_description_field_class\" id=\"plate_description_id_"+ value["description"]+ "\" value=\"" + value["description"] +"\">";
             strPlate = strPlate + value["description"];
             strPlate = strPlate + "</h6><div class=\"dropdown-divider\"/></div><div class=\"mb-1\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный приход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-green plate_profit_field_class\" id=\"plate_profit_id_"+ value["id"]+ "\" value=\"" + value["profit"] +"\">";
-            strPlate = strPlate + value["profit"];
+            strPlate = strPlate + value["profit"].toFixed(2);
             strPlate = strPlate + "</h2></div></div><div class=\"mb-2\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный расход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-red plate_expense_field_class\" id=\"plate_expense_id_"+ value["id"]+ "\" value=\"" + value["expense"] +"\">";
-            strPlate = strPlate + value["expense"];
+            strPlate = strPlate + value["expense"].toFixed(2);
             strPlate = strPlate + "</h2></div></div></div><div class=\"ml-auto mt-md-3 mt-lg-0\"><span class=\"opacity-7 text-muted\"><svg xmlns=\"http://www.w3.org/2000/svg\"width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-user-plus\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/><circle cx=\"8.5\" cy=\"7\" r=\"4\"/><line x1=\"20\" y1=\"8\" x2=\"20\" y2=\"14\"/><line x1=\"23\" y1=\"11\" x2=\"17\" y2=\"11\"/></svg></span></div></div><div class=\"d-flex d-lg-flex d-md-block align-items-center\">" +
                 "<button onclick=\"SelectPlatePurpose('" + value["id"] + "')\" class=\"btn waves-effect waves-light btn-light align-self-center\">Изменить</button></div></div></div></div>";
 
