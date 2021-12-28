@@ -169,7 +169,7 @@ function JsonToPlateList(strJsonContext){
         $.each(obj, function (index, value) {
             strPlate = strPlate +"<div class=\"col-md-4\"><div class=\"card border py-4\"><div class=\"card-body\"><div class=\"d-flex d-lg-flex d-md-block align-items-center mb-1\"><div><div class=\"mb-3\">"+"<h4 class=\"text-muted font-weight-normal mb-2 w-100 plate_id_field_class\" id=\"plate_id_id_"+ value["id"]+ "\" value=\"" + value["id"] +"\">"+"<h4 class=\"text-muted font-weight-normal mb-2 w-100 plate_name_field_class\" id=\"plate_name_id_"+ value["id"]+ "\" value=\"" + value["name"] +"\">";
             strPlate = strPlate + value["name"];
-            strPlate = strPlate + "</h4><h6 class=\"text-muted font-weight-normal mb-2 w-100 plate_description_field_class\" id=\"plate_description_id_"+ value["description"]+ "\" value=\"" + value["name"] +"\">";
+            strPlate = strPlate + "</h4><h6 class=\"text-muted font-weight-normal mb-2 w-100 plate_description_field_class\" id=\"plate_description_id_"+ value["description"]+ "\" value=\"" + value["description"] +"\">";
             strPlate = strPlate + value["description"];
             strPlate = strPlate + "</h6><div class=\"dropdown-divider\"/></div><div class=\"mb-1\"><h5 class=\"text-muted font-weight-normal mb-1 w-100 text-truncate\">Возможный приход</h5><div class=\"d-inline-flex align-items-center\"><h2 class=\"mb-1 font-weight-medium sum-color-green plate_profit_field_class\" id=\"plate_profit_id_"+ value["id"]+ "\" value=\"" + value["profit"] +"\">";
             strPlate = strPlate + value["profit"];
