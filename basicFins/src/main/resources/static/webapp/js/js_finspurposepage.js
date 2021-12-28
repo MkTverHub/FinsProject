@@ -167,6 +167,7 @@ function JsonToPlateList(strJsonContext){
         var strPlate = "";
         var obj = $.parseJSON(strJsonContext);
         $.each(obj, function (index, value) {
+            console.log(value["profit"]);
             strPlate = strPlate +"<div class=\"col-md-4\"><div class=\"card border py-4\"><div class=\"card-body\"><div class=\"d-flex d-lg-flex d-md-block align-items-center mb-1\"><div><div class=\"mb-3\">"+"<h4 class=\"text-muted font-weight-normal mb-2 w-100 plate_id_field_class\" id=\"plate_id_id_"+ value["id"]+ "\" value=\"" + value["id"] +"\">"+"<h4 class=\"text-muted font-weight-normal mb-2 w-100 plate_name_field_class\" id=\"plate_name_id_"+ value["id"]+ "\" value=\"" + value["name"] +"\">";
             strPlate = strPlate + value["name"];
             strPlate = strPlate + "</h4><h6 class=\"text-muted font-weight-normal mb-2 w-100 plate_description_field_class\" id=\"plate_description_id_"+ value["description"]+ "\" value=\"" + value["description"] +"\">";
