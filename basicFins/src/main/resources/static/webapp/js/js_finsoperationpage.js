@@ -283,112 +283,114 @@ function ClearFinsForm (){
 
 //Парсинг строки JSON в список финансовых операций и заполнение таблицы
 function JSONStringToFinsOperationList(JSONString) {
-    var strFinsOpertype = "";
-    var strFinsOpertypeRU = "";
-    var strFinsOpertypeColor = "";
-    var strFinsOperationListContext = "";
-    var strRowId = "";
-    var strLockFlg = "";
-    var strOperDate = "";
-    var strOperDateUser = "";
-    var strOperLoginUser = "";
-    var strFinsAmount = "";
-    var strFinsDetail = "";
-    var strPaymentAccIn = "";
-    var strPaymentAccInName = "";
-    var strPaymentAccInPosition = "";
-    var strPaymentAccOut = "";
-    var strPaymentAccOutName = "";
-    var strPaymentAccOutPosition = "";
-    var strFinsArticle = "";
-    var strProjectId = "";
-    var strFinsContrAgent = "";
-    var strFinsRequisites = "";
-    var strArticleName = "";
-    var strContrAgentName = "";
-    var strRequisitesName = "";
-    var strPurposeName = "";
-    var strPurposeId = "";
+    try{
+        var strFinsOpertype = "";
+        var strFinsOpertypeRU = "";
+        var strFinsOpertypeColor = "";
+        var strFinsOperationListContext = "";
+        var strRowId = "";
+        var strLockFlg = "";
+        var strOperDate = "";
+        var strOperDateUser = "";
+        var strOperLoginUser = "";
+        var strFinsAmount = "";
+        var strFinsDetail = "";
+        var strPaymentAccIn = "";
+        var strPaymentAccInName = "";
+        var strPaymentAccInPosition = "";
+        var strPaymentAccOut = "";
+        var strPaymentAccOutName = "";
+        var strPaymentAccOutPosition = "";
+        var strFinsArticle = "";
+        var strProjectId = "";
+        var strFinsContrAgent = "";
+        var strFinsRequisites = "";
+        var strArticleName = "";
+        var strContrAgentName = "";
+        var strRequisitesName = "";
+        var strPurposeName = "";
+        var strPurposeId = "";
 
-    var obj = jQuery.parseJSON(JSONString);
-    $.each(obj, function (index, value) {
-        if(value["id"] == null){strRowId = 'null';} else {strRowId = value["id"].toString();}
-        if(value["lockflg"] == null){strLockFlg = 'null';} else {strLockFlg = value["lockflg"].toString();}
-        if(value["operdate"] == null){strOperDate = '';} else {strOperDate = value["operdate"].toString();}
-        if(value["operdate_user"] == null){strOperDateUser = '';} else {strOperDateUser = value["operdate_user"].toString();}
-        if(value["oper_login_user"] == null){strOperLoginUser = '';} else {strOperLoginUser = value["oper_login_user"].toString();}
-        if(value["detail"] == null){strFinsDetail = '';} else {strFinsDetail = value["detail"].toString();}
-        if(value["finsopertype"] == null){strFinsOpertype = '';} else {strFinsOpertype = value["finsopertype"].toString();}
-        if(value["amount"] == null){strFinsAmount = '';} else {
-            strFinsAmount = value["amount"].toString();
-            strFinsAmount = FormatAmount(strFinsAmount,strFinsOpertype);
-        }
-        if(value["payaccin"] == null){strPaymentAccIn = '';} else {strPaymentAccIn = value["payaccin"].toString();}
-        if(value["payaccin_name"] == null){strPaymentAccInName = '';} else {strPaymentAccInName = value["payaccin_name"].toString();}
-        if(value["payaccin_position"] == null){strPaymentAccInPosition = '';} else {strPaymentAccInPosition = value["payaccin_position"].toString();}
-        if(value["payaccout"] == null){strPaymentAccOut = '';} else {strPaymentAccOut = value["payaccout"].toString();}
-        if(value["payaccout_name"] == null){strPaymentAccOutName = '';} else {strPaymentAccOutName = value["payaccout_name"].toString();}
-        if(value["payaccout_position"] == null){strPaymentAccOutPosition = '';} else {strPaymentAccOutPosition = value["payaccout_position"].toString();}
-        if(value["finsarticle"] == null){strFinsArticle = '';} else {strFinsArticle = value["finsarticle"].toString();}
-        if(value["projectid"] == null){strProjectId = '';} else {strProjectId = value["projectid"].toString();}
-        if(value["finscontragent"] == null){strFinsContrAgent = '';} else {strFinsContrAgent = value["finscontragent"].toString();}
-        if(value["requisites"] == null){strFinsRequisites = '';} else {strFinsRequisites = value["requisites"].toString();}
-
-        if(value["requisites_name"] == null){strRequisitesName = '';} else {strRequisitesName = value["requisites_name"].toString();}
-        if(value["contragent_name"] == null){strContrAgentName = '';} else {strContrAgentName = value["contragent_name"].toString();}
-        if(value["article_name"] == null){strArticleName = '';} else {strArticleName = value["article_name"].toString();}
-        if(value["purpose_id"] == null){strPurposeId = '';} else {strPurposeId = value["purpose_id"].toString();}
-        if(value["purpose_name"] == null){strPurposeName = '';} else {strPurposeName = value["purpose_name"].toString();}
-
-        switch(strFinsOpertype) {
-            case "profit":
-                strFinsOpertypeRU = "Приход";
-                strFinsOpertypeColor = " fin-operation-color-green";
-            break;
-            case "expense":
-                strFinsOpertypeRU = "Расход";
-                strFinsOpertypeColor = " fin-operation-color-red";
-            break;
-            case "transfer":
-                strFinsOpertypeRU = "Перевод";
-                strFinsOpertypeColor = "";
-            break;
-            default:{
-                strFinsOpertypeRU = "null";
-                strFinsOpertypeColor = "";
+        var obj = jQuery.parseJSON(JSONString);
+        $.each(obj, function (index, value) {
+            if(value["id"] == null){strRowId = 'null';} else {strRowId = value["id"].toString();}
+            if(value["lockflg"] == null){strLockFlg = 'null';} else {strLockFlg = value["lockflg"].toString();}
+            if(value["operdate"] == null){strOperDate = '';} else {strOperDate = value["operdate"].toString();}
+            if(value["operdate_user"] == null){strOperDateUser = '';} else {strOperDateUser = value["operdate_user"].toString();}
+            if(value["oper_login_user"] == null){strOperLoginUser = '';} else {strOperLoginUser = value["oper_login_user"].toString();}
+            if(value["detail"] == null){strFinsDetail = '';} else {strFinsDetail = value["detail"].toString();}
+            if(value["finsopertype"] == null){strFinsOpertype = '';} else {strFinsOpertype = value["finsopertype"].toString();}
+            if(value["amount"] == null){strFinsAmount = '';} else {
+                strFinsAmount = value["amount"].toString();
+                strFinsAmount = FormatAmount(strFinsAmount,strFinsOpertype);
             }
-        }
+            if(value["payaccin"] == null){strPaymentAccIn = '';} else {strPaymentAccIn = value["payaccin"].toString();}
+            if(value["payaccin_name"] == null){strPaymentAccInName = '';} else {strPaymentAccInName = value["payaccin_name"].toString();}
+            if(value["payaccin_position"] == null){strPaymentAccInPosition = '';} else {strPaymentAccInPosition = value["payaccin_position"].toString();}
+            if(value["payaccout"] == null){strPaymentAccOut = '';} else {strPaymentAccOut = value["payaccout"].toString();}
+            if(value["payaccout_name"] == null){strPaymentAccOutName = '';} else {strPaymentAccOutName = value["payaccout_name"].toString();}
+            if(value["payaccout_position"] == null){strPaymentAccOutPosition = '';} else {strPaymentAccOutPosition = value["payaccout_position"].toString();}
+            if(value["finsarticle"] == null){strFinsArticle = '';} else {strFinsArticle = value["finsarticle"].toString();}
+            if(value["projectid"] == null){strProjectId = '';} else {strProjectId = value["projectid"].toString();}
+            if(value["finscontragent"] == null){strFinsContrAgent = '';} else {strFinsContrAgent = value["finscontragent"].toString();}
+            if(value["requisites"] == null){strFinsRequisites = '';} else {strFinsRequisites = value["requisites"].toString();}
 
-        strFinsOperationListContext = strFinsOperationListContext
-            + '<tr class="fincrowlink">'
-            + '<th class="fieldfinsopertype f-d-n">' + strFinsOpertype + '</th>'
-            + '<th class="fieldfinsopertyperu">' + strFinsOpertypeRU + '</th>'
-            + '<th class="fieldid f-d-n">' + strRowId + '</th>'
-            + '<th class="fieldlockflg f-d-n">' + strLockFlg + '</th>'
-            + '<th class="fieldoperdate_user">' + strOperDateUser + '</th>'
-            + '<th class="fieldamount f-d-n">' + strFinsAmount + '</th>'
-            + '<th class="fieldamountprint' + strFinsOpertypeColor +'">' + strFinsAmount + ' руб.' + '</th>'
-            + '<th class="fieldpayaccin" acc_num="' + strPaymentAccIn + '">' + strPaymentAccIn + '<div><small>' + strPaymentAccInName + '</small></div>' + '<div><small>' + strPaymentAccInPosition + '</small></div></th>'
-            + '<th class="fieldpayaccout" acc_num="' + strPaymentAccOut + '">' + strPaymentAccOut + '<div><small>' + strPaymentAccOutName + '</small></div>' + '<div><small>' + strPaymentAccOutPosition + '</small></div></th>'
-            + '<th class="fieldfinsarticle f-d-n">' + strFinsArticle + '</th>'
-            + '<th class="fieldprojectid f-d-n">' + strProjectId + '</th>'
-            + '<th class="fieldfinscontragent f-d-n">' + strFinsContrAgent + '</th>'
-            + '<th class="fieldrequisites f-d-n">' + strFinsRequisites + '</th>'
+            if(value["requisites_name"] == null){strRequisitesName = '';} else {strRequisitesName = value["requisites_name"].toString();}
+            if(value["contragent_name"] == null){strContrAgentName = '';} else {strContrAgentName = value["contragent_name"].toString();}
+            if(value["article_name"] == null){strArticleName = '';} else {strArticleName = value["article_name"].toString();}
+            if(value["purpose_id"] == null){strPurposeId = '';} else {strPurposeId = value["purpose_id"].toString();}
+            if(value["purpose_name"] == null){strPurposeName = '';} else {strPurposeName = value["purpose_name"].toString();}
 
-            + '<th class="fieldfinsarticle_name">' + strArticleName + '</th>'
-            + '<th class="fieldpurposeid f-d-n">' + strPurposeId + '</th>'
-            + '<th class="fieldpurposename">' + strPurposeName + '</th>'
-            + '<th class="fieldfinscontragent_name f-d-n">' + strContrAgentName + '</th>'
-            + '<th class="fieldrequisites_name f-d-n">' + strRequisitesName + '</th>'
+            switch(strFinsOpertype) {
+                case "profit":
+                    strFinsOpertypeRU = "Приход";
+                    strFinsOpertypeColor = " fin-operation-color-green";
+                break;
+                case "expense":
+                    strFinsOpertypeRU = "Расход";
+                    strFinsOpertypeColor = " fin-operation-color-red";
+                break;
+                case "transfer":
+                    strFinsOpertypeRU = "Перевод";
+                    strFinsOpertypeColor = "";
+                break;
+                default:{
+                    strFinsOpertypeRU = "null";
+                    strFinsOpertypeColor = "";
+                }
+            }
 
-            + '<th class="fielddetail">' + strFinsDetail + '</th>'
-            + '<th class="fieldoperdate">' + strOperDate + '</th>'
-            + '<th class="fieldoperlogin">' + strOperLoginUser + '</th>'
-            + '</tr>';
-    });
+            strFinsOperationListContext = strFinsOperationListContext
+                + '<tr class="fincrowlink">'
+                + '<th class="fieldfinsopertype f-d-n">' + strFinsOpertype + '</th>'
+                + '<th class="fieldfinsopertyperu">' + strFinsOpertypeRU + '</th>'
+                + '<th class="fieldid f-d-n">' + strRowId + '</th>'
+                + '<th class="fieldlockflg f-d-n">' + strLockFlg + '</th>'
+                + '<th class="fieldoperdate_user">' + strOperDateUser + '</th>'
+                + '<th class="fieldamount f-d-n">' + strFinsAmount + '</th>'
+                + '<th class="fieldamountprint' + strFinsOpertypeColor +'">' + strFinsAmount + ' руб.' + '</th>'
+                + '<th class="fieldpayaccin" acc_num="' + strPaymentAccIn + '">' + strPaymentAccIn + '<div><small>' + strPaymentAccInName + '</small></div>' + '<div><small>' + strPaymentAccInPosition + '</small></div></th>'
+                + '<th class="fieldpayaccout" acc_num="' + strPaymentAccOut + '">' + strPaymentAccOut + '<div><small>' + strPaymentAccOutName + '</small></div>' + '<div><small>' + strPaymentAccOutPosition + '</small></div></th>'
+                + '<th class="fieldfinsarticle f-d-n">' + strFinsArticle + '</th>'
+                + '<th class="fieldprojectid f-d-n">' + strProjectId + '</th>'
+                + '<th class="fieldfinscontragent f-d-n">' + strFinsContrAgent + '</th>'
+                + '<th class="fieldrequisites f-d-n">' + strFinsRequisites + '</th>'
 
+                + '<th class="fieldfinsarticle_name">' + strArticleName + '</th>'
+                + '<th class="fieldpurposeid f-d-n">' + strPurposeId + '</th>'
+                + '<th class="fieldpurposename">' + strPurposeName + '</th>'
+                + '<th class="fieldfinscontragent_name f-d-n">' + strContrAgentName + '</th>'
+                + '<th class="fieldrequisites_name f-d-n">' + strRequisitesName + '</th>'
+
+                + '<th class="fielddetail">' + strFinsDetail + '</th>'
+                + '<th class="fieldoperdate">' + strOperDate + '</th>'
+                + '<th class="fieldoperlogin">' + strOperLoginUser + '</th>'
+                + '</tr>';
+        });
+    }catch (e_1) {
+        console.log("JSONStringToFinsOperationList ERROR: " + e_1);
+    }
     $("#financetable").html(strFinsOperationListContext);
-    <!--sd-->
 }
 
 //Парсинг JSON списка контрагентов в выпадающий список
@@ -459,17 +461,21 @@ function JSONStringToFinsArticleList(JSONString) {
 
 //Парсинг JSON списка целей (Поле "Цель")
 function JSONStringToFinsPurposeList(JSONString) {
-    var strFinsPurposeId = '';
-    var strFinsPurposeName = '';
-    var strFinsPurposeListContext = '<option value="0" key="0">Выберите значение</option>';
+    try{
+        var strFinsPurposeId = '';
+        var strFinsPurposeName = '';
+        var strFinsPurposeListContext = '<option value="0" key="0">Выберите значение</option>';
 
-    var obj = jQuery.parseJSON(JSONString);
-    $.each(obj, function (index, value) {
-        strFinsPurposeId = value['id'].toString();
-        if(value['name'] == null){strFinsPurposeName = 'null';} else {strFinsPurposeName = value['name'].toString();}
-        strFinsPurposeListContext = strFinsPurposeListContext + '<option value = "' + strFinsPurposeId + '" key="' + strFinsPurposeId +'">' + strFinsPurposeName + '</option>';
-    });
-    $("#purpose_list_id").html(strFinsPurposeListContext);
+        var obj = jQuery.parseJSON(JSONString);
+        $.each(obj, function (index, value) {
+            strFinsPurposeId = value['id'].toString();
+            if(value['name'] == null){strFinsPurposeName = 'null';} else {strFinsPurposeName = value['name'].toString();}
+            strFinsPurposeListContext = strFinsPurposeListContext + '<option value = "' + strFinsPurposeId + '" key="' + strFinsPurposeId +'">' + strFinsPurposeName + '</option>';
+        });
+        $("#purpose_list_id").html(strFinsPurposeListContext);
+    }catch (e_1) {
+        console.log("JSONStringToFinsPurposeList ERROR: " + e_1);
+    }
 }
 
 //Функция установки выбранного значения
