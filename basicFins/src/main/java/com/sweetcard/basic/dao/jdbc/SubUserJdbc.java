@@ -70,7 +70,7 @@ public class SubUserJdbc {
             return intResult;
 
         }catch (Exception exp_sql){
-            logger.info("ContragentJdbc.Contragentaction -> ERROR: " + exp_sql);
+            logger.info("SubUserJdbc.SubUserAction -> ERROR: " + exp_sql);
             return null;
         }
     }
