@@ -409,10 +409,11 @@ public class WebController {
             //Получение usercache
             Usercache usercache = GetUsercache();
             AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
-
             String AdminFlg = "false";
-            logger.info("WebController.GoToUserSettings -> Role: " + appUser.getRole().name());
             if(0==usercache.role.compareTo("USER")){AdminFlg="true";}
+
+            logger.info("WebController.GoToUserSettings -> usercache.role: " + usercache.role.compareTo("USER"));
+
             model.addAttribute("attrUserFstName",appUser.getFirstName());
             model.addAttribute("attrUserLstName",appUser.getLastName());
             model.addAttribute("attrUserMdlName",appUser.getMiddleName());
