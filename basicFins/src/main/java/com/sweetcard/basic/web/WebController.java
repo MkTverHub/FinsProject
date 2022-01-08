@@ -426,7 +426,6 @@ public class WebController {
             logger.info("WebController.GoToUserSettings -> ERROR: " + req_ex1);
             return "error";
         }
-
     }
 
     //Переход на экран настройки пользователя
@@ -448,7 +447,14 @@ public class WebController {
 
             model.addAttribute("sub_user_list",aggrSubUserList);
             model.addAttribute("AccountMail",usercache.login);
-            return "Fins_Account_Users_Info";
+
+            if(0==usercache.role.compareTo("USER")){
+                return "Fins_Account_Users_Info";
+            }else{
+                logger.info("WebController.GoToFinsAccountUsersInfo -> ERROR: No USER role");
+                return "error";
+            }
+
         }catch (Exception req_ex1){
             logger.info("WebController.GoToFinsAccountUsersInfo -> ERROR: " + req_ex1);
             return "error";
