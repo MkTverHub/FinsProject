@@ -85,13 +85,7 @@ public class WebController {
         try {
             model.addAttribute("ModelProjectId", ProjectId);
             if (0 != ProjectId.compareTo("no_value")) {
-                Integer intUserId = appUserRepository.GetUserIdbyEmail(GetUserLogin());
-                Usercacheform usercacheform = new Usercacheform();
-                usercacheform.setLogin(GetUserLogin());
-                usercacheform.setUserId(intUserId);
-                usercacheform.setActiveProject(Integer.parseInt(ProjectId));
-                usercacheform.setUsercacheAction("update");
-                usercacheJdbc.UsercacheAction(usercacheform);
+                SetActiveProjectUserCache(Integer.parseInt(ProjectId));
             }
 
             Usercache usercache = GetUsercache();
@@ -513,6 +507,7 @@ public class WebController {
             usercacheform.setRole(appUser.getRole().name());
             usercacheform.setUsercacheAction("update");
             usercacheJdbc.UsercacheAction(usercacheform);
+            logger.info("WebController.SetActiveProjectUserCache -> update: " + usercacheform.getRole());
         }catch (Exception ex_cach){
             logger.info("WebController.SetActiveProjectUserCache -> ERROR: " + ex_cach);
         }
