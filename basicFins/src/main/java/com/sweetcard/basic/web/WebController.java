@@ -405,7 +405,6 @@ public class WebController {
     @RequestMapping(value = "/UserSettings")
     public String GoToUserSettings(Model model){
         try{
-            logger.info("WebController.GoToUserSettings -> ");
             //Получение usercache
             Usercache usercache = GetUsercache();
             AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
