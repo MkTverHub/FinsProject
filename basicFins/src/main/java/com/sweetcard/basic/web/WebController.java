@@ -499,11 +499,13 @@ public class WebController {
     //Обновить активный проект в Usercache
     private void SetActiveProjectUserCache(Integer ProjectId){
         try{
+            AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
             Integer intUserId = appUserRepository.GetUserIdbyEmail(GetUserLogin());
             Usercacheform usercacheform = new Usercacheform();
             usercacheform.setLogin(GetUserLogin());
             usercacheform.setUserId(intUserId);
             usercacheform.setActiveProject(ProjectId);
+            usercacheform.setRole(appUser.getRole().name());
             usercacheform.setUsercacheAction("update");
             usercacheJdbc.UsercacheAction(usercacheform);
         }catch (Exception ex_cach){
