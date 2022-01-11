@@ -405,7 +405,7 @@ public class WebController {
             String AdminFlg = "false";
             if(0==usercache.role.compareTo("USER")){AdminFlg="true";}
 
-            logger.info("WebController.GoToUserSettings -> usercache.role: " + usercache.role.compareTo("USER"));
+            logger.info("WebController.GoToUserSettings -> usercache.role: " + usercache.role);
 
             model.addAttribute("attrUserFstName",appUser.getFirstName());
             model.addAttribute("attrUserLstName",appUser.getLastName());
