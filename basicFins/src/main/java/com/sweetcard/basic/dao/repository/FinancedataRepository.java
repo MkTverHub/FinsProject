@@ -44,8 +44,8 @@ public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integ
             "              left join contact cnt_out on t1.pay_acc_out = cnt_out.fins_acc\n" +
             "              left join purpose prp on t1.purpose_id = prp.id\n" +
             "            where\n" +
-            "              t1.project_id = :fins_project_id", nativeQuery = true)
-    List<AggrFinsdata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid);
+            "              t1.project_id = :fins_project_id limit :limit_value offset :offset_value", nativeQuery = true)
+    List<AggrFinsdata> GetAllByProj(@Param("fins_project_id") Integer finsprojectid, @Param("limit_value") Integer limit_value, @Param("offset_value") Integer offset_value);
 
     //Получиь чистую прибыль по проекту
     @Query(value = "select ROUND(AVG((select  case when sum(amount) is null then 0 else sum(amount) end as profit from financedata where project_id = :fins_project_id and fins_oper_type = 'profit') - (select  case when sum(amount) is null then 0 else sum(amount) end as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense'))" + strSpecSymbol + strSpecSymbol + "numeric,2)", nativeQuery = true)

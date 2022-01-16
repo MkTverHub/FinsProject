@@ -141,7 +141,13 @@ function ResetFinsOperation(){
 
 //Событие нажатия на кнопку "Сохранить" финансовую операцию
 function SaveFinsOperation(){
-    doAjaxFinsOperation();
+    ClearFinsForm ();
+    SetROForm();
+};
+
+//Событие нажатия на кнопку "Вперед (Финс. опер.)"
+function NextFinsOperationRowGroup(){
+    doAjaxGetActiveProjectContext();
     ClearFinsForm ();
     SetROForm();
 };
@@ -538,7 +544,9 @@ function doAjaxGetActiveProjectContext() {
             success: function (data) {
                 var obj = jQuery.parseJSON(data.text);
                 var strActiveProjectId = obj.active_proj;
-                doAjaxGetProjectOperationList(strActiveProjectId);
+                var strCount = $('#fins_operation_count_id').val();
+                var strCounter = $('#fins_operation_counter_id').val();
+                doAjaxGetProjectOperationList(strActiveProjectId,strCount,strCounter);
                 doAjaxGetProjectProfit();
                 doAjaxGetContactFinsAccProject(strActiveProjectId);
                 SpinnerOff("doAjaxGetActiveProjectContext");
@@ -554,7 +562,7 @@ function doAjaxGetActiveProjectContext() {
 
 
 //Ajax получение списка операций по проекту
-function doAjaxGetProjectOperationList(ProjectNum) {
+function doAjaxGetProjectOperationList(ProjectNum,Count,Counter) {
     SpinnerOn("doAjaxGetProjectOperationList");
     try {
         $.ajax({
@@ -564,7 +572,10 @@ function doAjaxGetProjectOperationList(ProjectNum) {
             contentType: 'application/json',
             mimeType: 'application/json',
             data: ({
-                FinsProjectId: ProjectNum
+                FinsProjectId: ProjectNum,
+                RowCount: Count,
+                RowCounter: Counter
+
             }),
             success: function (data) {
                 if (data.text != null) {

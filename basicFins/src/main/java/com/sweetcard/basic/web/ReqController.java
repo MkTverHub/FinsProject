@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -120,10 +121,21 @@ public class ReqController {
     //--------------------Экран Финансовых операций---------------------
     //-------Получить список финансовых операций в рамках проекта
     @RequestMapping(value = "/GetProjFinsOperList", method = RequestMethod.GET)
-    public @ResponseBody Response GetProjFinsOperList(@RequestParam String FinsProjectId){
+    public @ResponseBody Response GetProjFinsOperList(@RequestParam String FinsProjectId,@RequestParam String RowCount,@RequestParam String RowCounter){
         logger.info("ReqController.GetProjFinsOperList -> " + FinsProjectId);
         try{
-            return GetProjectFinsOperationList(FinsProjectId);
+            Integer intRowCount = 10;
+            Integer intRowCounter = 0;
+            try {
+                intRowCount = Integer.parseInt(RowCount);
+                intRowCounter = Integer.parseInt(RowCounter);
+            }
+            catch (Exception ex_counter){
+                intRowCount = 10;
+                intRowCounter = 0;
+                logger.info("ReqController.GetProjFinsOperList -> ex_counter: " + ex_counter);
+            }
+            return GetProjectFinsOperationList(FinsProjectId,intRowCount,intRowCounter);
         }catch (Exception ex_1){
             logger.info("ReqController.GetProjFinsOperList -> Error: " + ex_1);
             Response result = new Response();
@@ -918,15 +930,17 @@ public class ReqController {
     }
 
     //Получить Ajax Response с списком всех финансовых операций проекта в виде JSON строки
-    private Response GetProjectFinsOperationList(String FinsProjectId){
+    private Response GetProjectFinsOperationList(String FinsProjectId,Integer intRowCount, Integer intRowCounter){
         try{
             logger.info("ReqController.GetProjectFinsOperationList -> Project: " + FinsProjectId);
             //Получение логина пользователя
             String strUserLogin = GetUserLogin();
             Integer intProjectId = Integer.parseInt(FinsProjectId);
             //Получить список финансовых операций по проекту
-            List<AggrFinsdata> financedataList = financedataRepository.GetAllByProj(intProjectId);
-            logger.info("ReqController.GetProjectFinsOperationList -> row_count: " + financedataList.size());
+            Integer intLimit = intRowCount;
+            Integer intOffset = intRowCounter*intRowCount;
+            List<AggrFinsdata> financedataList = financedataRepository.GetAllByProj(intProjectId,intLimit,intOffset);
+            logger.info("ReqController.GetProjectFinsOperationList -> row_count: " + financedataList.size() + " Limit: " + intLimit + " Offset: " + intOffset);
 
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();
