@@ -2,6 +2,8 @@
 
 //Функция при загрузки страницы
 function StartPage() {
+    $("#fins_operation_count_id").val("5");
+    $("#fins_operation_counter_id").val("0");
     doAjaxGetUserCache("FinsOperations");//Получение списка проектов в левой панели
     doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
     doAjaxGetContragentsList();//Получение списка контрагентов
@@ -66,7 +68,10 @@ $(function(){
         SetActiveSelect('#finsarticleid_list',strFinsArticle);
         $('#finscontragentid').attr('value',strFinsContrAgent);
         SetActiveSelect('#contr_agent_select_field',strFinsContrAgent);
+
+        //Отклчил спинер внутри, чтобы не обновлялся экран при нажатии на строку
         doAjaxGetContragentRequisits(strFinsContrAgent,'SetActiveSelect','#contr_agent_requisits_list',strFinsRequisites);//Получить список реквезитов контрагента + сделать активный реквезит
+
         $('#requisitesid').attr('value',strFinsRequisites);
 
         $('#finsedittypeid').val('update');//update/new/delete
@@ -147,6 +152,34 @@ function SaveFinsOperation(){
 
 //Событие нажатия на кнопку "Вперед (Финс. опер.)"
 function NextFinsOperationRowGroup(){
+    try{
+        var intCounter = $("#fins_operation_counter_id").val();
+        intCounter++;
+        $("#fins_operation_counter_id").val(intCounter);
+    }catch (err_1){
+        console.log("NextFinsOperationRowGroup err_1: " + err_1)
+        $("#fins_operation_count_id").val("5");
+        $("#fins_operation_counter_id").val("0");
+    }
+    doAjaxGetActiveProjectContext();
+    ClearFinsForm ();
+    SetROForm();
+};
+
+//Событие нажатия на кнопку "Назад (Финс. опер.)"
+function BackFinsOperationRowGroup(){
+    try{
+        var intCounter = $("#fins_operation_counter_id").val();
+        intCounter = intCounter - 1;
+        if(intCounter < 0){
+            intCounter = 0;
+        }
+        $("#fins_operation_counter_id").val(intCounter);
+    }catch (err_1){
+        console.log("NextFinsOperationRowGroup err_1: " + err_1)
+        $("#fins_operation_count_id").val("5");
+        $("#fins_operation_counter_id").val("0");
+    }
     doAjaxGetActiveProjectContext();
     ClearFinsForm ();
     SetROForm();
@@ -351,15 +384,15 @@ function JSONStringToFinsOperationList(JSONString) {
                 case "profit":
                     strFinsOpertypeRU = "Приход";
                     strFinsOpertypeColor = " fin-operation-color-green";
-                break;
+                    break;
                 case "expense":
                     strFinsOpertypeRU = "Расход";
                     strFinsOpertypeColor = " fin-operation-color-red";
-                break;
+                    break;
                 case "transfer":
                     strFinsOpertypeRU = "Перевод";
                     strFinsOpertypeColor = "";
-                break;
+                    break;
                 default:{
                     strFinsOpertypeRU = "null";
                     strFinsOpertypeColor = "";
@@ -674,7 +707,8 @@ function doAjaxGetContragentsList() {
 
 //Ajax получение списка реквезитов для контрагента
 function doAjaxGetContragentRequisits(ContragentId,Operation,Selector,SelectValue) {
-    SpinnerOn("doAjaxGetContragentRequisits");
+    //Отклчил спинер внутри, чтобы не обновлялся экран при нажатии на строку
+    //SpinnerOn("doAjaxGetContragentRequisits");
     try {
         $.ajax({
             url: 'GetContragentRequisits',
@@ -690,11 +724,11 @@ function doAjaxGetContragentRequisits(ContragentId,Operation,Selector,SelectValu
                 if(Operation == 'SetActiveSelect'){
                     SetActiveSelect(Selector,SelectValue);
                 }
-                SpinnerOff("doAjaxGetContragentRequisits");
+                //SpinnerOff("doAjaxGetContragentRequisits");
             }
         });
     }catch (e) {
-        SpinnerOff("doAjaxGetContragentRequisits");
+        //SpinnerOff("doAjaxGetContragentRequisits");
         console.log("Error doAjaxGetContragentRequisits: " + e);
         return "";
     }
