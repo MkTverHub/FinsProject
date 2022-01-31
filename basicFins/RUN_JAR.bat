@@ -1,0 +1,1 @@
+java -jar basicFins-1.0-SNAPSHOT.jar

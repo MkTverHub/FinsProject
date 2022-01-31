@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <title>Fin</title>
+    <script src="webapp/js/js_general_functions.js"></script>
+    <script src="webapp/js/js_finsreportspage.js"></script><!--Подцепляем внешний скрипт-->
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+
+    <!--Фрагмент спиннера-->
+    <div th:replace="fragments\layouts\fragment_agrigate_layouts_spiner.html :: spinner_fragment_1"/>
+
+    <!--Фрагмент модального окна-->
+    <div th:replace="fragments\layouts\fragment_agrigate_layouts_modal.html :: modal_fragment_1"/>
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1(AccountMail=${AccountMail})"></header>
+
+    
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Статистика</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mt-2 p-0">
+                                    <li class="breadcrumb-item text-muted active" aria-current="page"><a href="#">Информация по вашему проекту</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-5 align-self-center">
+                        <div class="customize-input float-right">
+                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
+                                <option selected="">За все время</option>
+                                <option value="1">Сегодня</option>
+                                <option value="2">Вчера</option>
+                                <option value="3">Последние 7 дней</option>
+                                <option value="4">Последние 30 дней</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        <div class="container-fluid">
+
+                <!-- *************************************************************** -->
+                <!-- Карточка с Отчетами -->
+                <!-- *************************************************************** -->
+                <div class="card-group">
+                    <div class="card mr-4">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium"><span id="projectprofitid_sub">0.00</span></h2>
+                                        <span class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Приход</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted">₽</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mr-4">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium"><span id="projectexpenseid_sub">0.00</span></h2>
+                                        <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Расход</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted">₽</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mr-4">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <h2 class="text-dark mb-1 font-weight-medium"><span id="projectsaldoid_sub">0.00</span></h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Сальдо</h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted">₽</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card ">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><span id="projectprofitid">0.00</span></h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Деньги
+                                    </h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted">₽</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Отчет по контрагентам</h4>
+                                <canvas id="myChart2" width="200" height="50"></canvas><!------------Первый отчет------------->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Отчет по проектам</h4>
+                                <canvas id="myChart3" width="200" height="80"></canvas><!------------Второй отчет------------->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Отчет по компаниям</h4>
+                                <canvas id="myChart" width="200" height="80"></canvas><!------------Третий отчет------------->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Годовой отчет</h4>
+                                <canvas id="myChart4" width="200" height="80"></canvas><!------------Четвертый отчет------------->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <!-- *************************************************************** -->
+        <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+        <!-- *************************************************************** -->
+                
+        </div>
+    
+    </section>
+
+</div>
+
+
+</body>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        StartPage();
+    });
+</script>
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+
+
+
+<!------------Скрипт отчетов----------------------------->
+<script src="webapp/js/js_сhart.min.js"></script>
+
+
+
+<!------------Настройка отчетов----------------------------->
+
+<script> //=========================Первый Отчет =============================
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+               'rgba(97, 116, 213, 1)',
+                'rgba(95, 118, 232, 1)',
+                'rgba(118, 139, 244, 1)',
+                'rgba(115, 133, 223, 1)',
+                'rgba(177, 189, 250, 1)',
+                'rgba(199, 208, 255, 1)'
+            ],
+            borderColor: [
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+<script> //========================== Второй отчет====================================
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'My First dataset',
+             backgroundColor: 'rgba(97, 116, 213, 1)',
+            borderColor: 'rgba(97, 116, 213, 0.1)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+    });
+</script>
+
+<script> //====================Третий отчет=========================
+    var ctx = document.getElementById('myChart3').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'pie',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March'],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: [
+                'rgba(97, 116, 213, 1)',
+                'rgba(97, 116, 213, 0.6)',
+                'rgba(97, 116, 213, 0.2)'
+            ],
+            borderColor: 'rgb(255, 255, 255)',
+            data: [10, 20, 35]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+    });
+</script>
+
+
+
+
+</html>

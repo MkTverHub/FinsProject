@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <title>Fin</title>
+    <script src="webapp/js/js_finsprojectpage.js"></script><!--Подцепляем внешний скрипт-->
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+
+    <!--Фрагмент спиннера-->
+    <div th:replace="fragments\layouts\fragment_agrigate_layouts_spiner.html :: spinner_fragment_1"/>
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1(AccountMail=${AccountMail})"></header>
+
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Проекты</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mt-2 p-0">
+                                    <li class="breadcrumb-item text-muted active" aria-current="page"><a href="index.html">Создать или изменить проект</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        <div class="container">
+
+                <!-- *************************************************************** -->
+                <!-- Карточка с формой -->
+                <!-- *************************************************************** -->
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-7">
+                        <div class="card"> <!-- модуль c формой -->
+                            <div class="card-body">
+                                <h4 class="card-title">Проект</h4>
+                                <h6 class="card-subtitle">Основной раздел для детального управления финансовыми операциями</h6>
+                                <!-- Форма с полями -->
+                                <form method="post">
+                                    <div class="form-body">
+                                        <!-- Системное. Тип операции-->
+                                        <div class="form-group f-d-n">
+                                            Edit Type: <input type="text" class="form-control" id="fins_project_operation_type">
+                                        </div>
+                                        <!-- Системное. Поле ввода Id-->
+                                        <div class="form-group f-d-n">
+                                            Id: <input type="text" class="form-control" id="fins_project_record_id">
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Название:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                     <div class="row">
+                                                         <div class="col-md-12">
+                                                             <input type="text" id="fins_project_name" class="form-control">
+                                                         </div>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                         <!-- Поле ввода -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Описание:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                     <div class="row">
+                                                         <div class="col-md-12">
+                                                             <input type="text" id="fins_project_desqription" class="form-control">
+                                                         </div>
+                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <div class="form-actions">
+                                    <div class="text-right">
+                                        <button onclick="createFinsProject();" class="btn waves-effect waves-light btn-outline-primary btn-modif-size">Создать</button>
+                                        <button onclick="saveFinsProject();" class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Сохранить</button>
+                                        <button onclick="resetFinsProject();" class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Отменить</button>
+                                    <button onclick="deleteFinsProject();" class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Удалить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- модуль c формой .end -->
+
+                    </div>
+
+                    <div class="col-md-5">
+                        <!-- Системное. Поле ввода Id-->
+                        <!--<div class="form-group f-d-n">
+                            Id: <input type="text" class="form-control" id="fins_project_commany_id">
+                        </div>-->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Добавить компанию</h4>
+                                <h6 class="card-subtitle">Компанию необходимо добавить к проекту для расчета финансовых операций</h6>
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <label class="align-self-center">Список компаний:</label>
+                                        <select name="s" id="company_picklist_id" class="form-control custom-select align-self-center">
+                                            <option value="0">Выберите</option>
+                                        </select>
+                                    </div>
+                                    <button onclick="LinkCompanyToProject()" id="com_pickl_btton_id" class="btn waves-effect waves-light btn-light align-self-center">Добавить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+        <!-- *************************************************************** -->
+        <!-- Таблица - Список проектов -->
+        <!-- *************************************************************** -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Список проектов</h4>
+                        <h6 class="card-subtitle">Полный список всех проектов. Вы можете изменить или удалить нужный проект, достаточно кликнув по записи и выполнить нужное действие. Проект по умолчанию удалить нельзя.</h6>
+                        <div class="table-responsive">
+                            <table id="finsproject_table_list" class="table no-wrap table-hover">
+                                <thead> <!-- Заголовок таблицы -->
+                                <tr>
+                                    <th>ID</th> 
+                                    <th>Название</th>
+                                    <th>Описание</th>
+                                </tr>
+                                </thead>
+                                <!--<tbody id="finsproject_table_body">
+                                    <tr th:each="fproj: ${finsproject}" th:id="${fproj.id}+_rowid" class="finsprojectrowlink">
+                                        <th th:text="${fproj.id}" class="fieldid"></th>
+                                        <th th:text="${fproj.name}" class="fieldname"></th>
+                                        <th th:text="${fproj.description}" class="fielddescription"></th>
+                                    </tr>
+                                </tbody>-->
+
+                                <tbody id="finsproject_table_body">
+                                    <!--Тело таблицы формируется скриптом при загрузки страницы, обращением ajax к контроллеру-->
+                                </tbody>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- *************************************************************** -->
+        <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+        <!-- *************************************************************** -->
+                
+        </div>
+    
+    </section>
+
+</div>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        StartPage();
+    });
+</script>
+
+</body>
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+</html>

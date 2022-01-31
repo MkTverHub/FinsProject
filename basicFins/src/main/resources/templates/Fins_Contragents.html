@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <title>Fin</title>
+    <script src="webapp/js/js_general_functions.js"></script>
+    <script src="webapp/js/js_contragentspage.js"></script><!--Подцепляем внешний скрипт-->
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+
+    <!--Фрагмент спиннера-->
+    <div th:replace="fragments\layouts\fragment_agrigate_layouts_spiner.html :: spinner_fragment_1"/>
+
+    <!--Фрагмент модального окна-->
+    <div th:replace="fragments\layouts\fragment_agrigate_layouts_modal.html :: modal_fragment_1"/>
+
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1(AccountMail=${AccountMail})"></header>
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Контрагенты</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-2 p-0">
+                                <li class="breadcrumb-item text-muted active" aria-current="page"><a href="#">Добавить или изменить контрагента</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+
+            <!-- *************************************************************** -->
+            <!-- Карточка с формой -->
+            <!-- *************************************************************** -->
+
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="card"> <!-- модуль c формой -->
+                        <div class="card-body">
+                            <!-- Форма с полями Контрагент-->
+                            <form id="id_contragentform" action="#" method="post">
+                                <div class="form-body">
+                                    <!-- Поле ввода -->
+                                    <div class="form-group mb-3">
+                                        <h4 class="card-title">Контрагент</h4>
+                                        <h6 class="card-subtitle">Необходимо добавить контрагентов, с которыми будете работать</h6>
+                                    </div>
+
+                                    <!-- Системное. Действия insert/update/delete-->
+                                    <div class="form-group f-d-n">
+                                        <input type="text" class="form-control" id="cntragnt_db_action">
+                                    </div>
+
+                                    <!-- Системное. Id-->
+                                    <div class="form-group f-d-n">
+                                        <input type="text" class="form-control" id="cntragnt_id">
+                                    </div>
+
+                                    <!-- Поле ввода Название-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Название:</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_name" class="form-control" >
+                                                        <div class="invalid-feedback" id="cntragnt_name_ex_lbl">Поле заполнено неверно</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Описание-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Описание:</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_desqription" class="form-control">
+                                                        <div class="invalid-feedback" id="cntragnt_desqription_ex_lbl">Поле заполнено неверно</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Почта-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Почта:</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_mail" class="form-control">
+                                                        <div class="invalid-feedback" id="cntragnt_mail_ex_lbl">Поле заполнено неверно</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Поле ввода Телефон-->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Телефон:</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="cntragnt_phone" class="form-control" >
+                                                        <div class="invalid-feedback" id="cntragnt_phone_ex_lbl">Поле заполнено неверно</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Добавить поле -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-3 align-self-center">Вид:</label>
+                                            <div class="col-lg-9 align-self-center">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <select id="contragent_type_list" class="form-control custom-select" select_value="">
+                                                            <option value="">Выберете значение</option>
+                                                            <option value="Покупатель">Покупатель</option>
+                                                            <option value="Поставщик">Поставщик</option>
+                                                            <option value="Заказчик">Заказчик</option>
+                                                            <option value="Подрядчик">Подрядчик</option>
+                                                            <option value="Кредитор">Кредитор</option>
+                                                            <option value="Арендодатель">Арендодатель</option>
+                                                            <option value="Арендатор">Арендатор</option>
+                                                            <option value="Страховщик">Страховщик</option>
+                                                            <option value="Страхуемый">Страхуемый</option>
+                                                            <option value="Подрядчик">Подрядчик</option>
+                                                            <option value="Грузоотправитель">Грузоотправитель</option>
+                                                            <option value="Грузоперевозчик">Грузоперевозчик</option>
+                                                            <option value="Даритель">Даритель</option>
+                                                            <option value="Одаряемый">Одаряемый</option>
+                                                            <option value="Комитент">Комитент</option>
+                                                            <option value="Комиссионер">Комиссионер</option>
+                                                            <option value="Залогодатель">Залогодатель</option>
+                                                            <option value="Залогодержатель">Залогодержатель</option>
+                                                            <option value="Другое">Другое</option>
+                                                        </select>
+                                                        <div class="invalid-feedback" id="contragent_type_list_ex_lbl">Поле заполнено неверно</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                            <!-- Кнопки для записи в БД -->
+                            <div class="form-actions">
+                                <div class="text-right">
+                                    <button onClick='InsertContragent()' class="btn waves-effect waves-light btn-outline-primary btn-modif-size">Создать</button>
+                                    <button onClick='SaveContragent()' class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Сохранить</button>
+                                    <button onClick='ResetContragent()' class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Отменить</button>
+                                    <button onClick='DeleteContragent()' class="btn waves-effect waves-light btn-outline-secondary btn-modif-size">Удалить</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- модуль c формой .end -->
+                </div>
+
+                <!--Форма реквизита-->
+                <div class="col-sm-12 col-md-6">
+                    <div class="card"> <!-- модуль c формой -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8 align-self-center">
+                                    <h4 class="card-title">Реквизиты:</h4>
+                                    <h6 class="card-subtitle">Финансовая информация ваших контрагентов</h6>
+                                </div>
+                                <div class="col-md-4 align-self-center">
+                                    <div class="text-right">
+                                        <button class="btn waves-effect waves-light btn-rounded btn-light ml-1" type="button" data-toggle="collapse" data-target="#collapseRequisites" aria-expanded="true" aria-controls="collapseRequisites">
+                                            Реквизиты
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Форма реквизитов-->
+                            <div class="collapse hide mt-3" id="collapseRequisites" style="">
+                                <!-- Форма с полями -->
+                                <form id="id_requisits_form" method="post">
+                                    <div class="form-body">
+                                   
+                                        <!-- Скрытое Поле ввода Действия inser/update/delete -->
+                                        <div class="form-group f-d-n">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">DB_Action</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_db_action" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Скрытое Поле Id  -->
+                                        <div class="form-group f-d-n">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Id</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_id" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Скрытое Поле Id Контрагента  -->
+                                        <div class="form-group f-d-n">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">ContragentId</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_contragent_id" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            
+                                        <!-- Поле ввода Название-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Название:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_name" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_name_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Описание-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Описание:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_description" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_description_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Добавить поле Номер карты -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">№ карты:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_card_number" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_card_number_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group mt-5">
+                                            <h5 class="text-dark w-100 text-truncate font-weight-medium mb-0">Реквизиты контрагента</h5>
+                                            <small>Нужны для выставления счета</small>
+                                        </div>
+
+                                        <!-- Поле ввода ИНН-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">ИНН:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqINN" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqINN_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода КПП-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">КПП:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqKPP" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqKPP_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group mt-5">
+                                            <h6 class="text-dark w-100 text-truncate font-weight-medium mb-0">Реквизиты</h6>
+                                        </div>
+
+                                        <!-- Поле ввода Счет-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Счет:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqFinsAcc" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqFinsAcc_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода БИК-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">БИК:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqBIK" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqBIK_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Банк-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Банк:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqBankName" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqBankName_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Корр. счет-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Корр. счет:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqCrspAcc" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqCrspAcc_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group mt-5">
+                                            <h6 class="text-dark w-100 text-truncate font-weight-medium mb-0">Юридический адрес</h6>
+                                        </div>
+
+                                        <!-- Поле ввода Индекс-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Индекс:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqAddrIndex" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqAddrIndex_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Город-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Город:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqAddrCity" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqAddrCity_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Адрес-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Адрес:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqAddrString" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqAddrString_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group mt-5">
+                                            <h6 class="text-dark w-100 text-truncate font-weight-medium mb-0">Контактная информация</h6>
+                                        </div>
+
+                                        <!-- Поле ввода Телефон-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Телефон:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqPhoneNum" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqPhoneNum_ex_lbl">Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода Почта-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Почта:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqEmail" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqEmail_ex_lbl">>Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Поле ввода -->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Сайт:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <input type="text" id="requisit_ReqWebSite" class="form-control">
+                                                            <div class="invalid-feedback" id="requisit_ReqWebSite_ex_lbl">>Поле заполнено неверно</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                         <!-- Поле Инфо -->
+                                        <div class="form-group mt-5">
+                                            <h5 class="text-dark w-100 text-truncate font-weight-medium mb-0">Основные реквизиты</h5>
+                                            <small>Нужны для расчета в финансовых операция</small>
+                                        </div>
+
+                                        <!-- Поле ввода Основной-->
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label class="col-lg-3 align-self-center">Основной:</label>
+                                                <div class="col-lg-9 align-self-center">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="btn-group" data-toggle="buttons">
+                                                                <label class="btn">
+                                                                    <div class="custom-control custom-checkbox mr-sm-2">
+                                                                        <input type="checkbox" class="custom-control-input" id="requisit_main">
+                                                                        <label class="custom-control-label" for="requisit_main"></label>
+                                                                        <div class="invalid-feedback">Поле заполнено неверно</div>
+                                                                    </div>
+                                                                </label>   
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                                <!-- Кнопки для записи в БД -->
+                                <div class="form-actions">
+                                    <div class="text-right">
+                                        <button onClick='InsertContragentReq()' class="btn waves-effect waves-light btn-outline-primary">Создать</button>
+                                        <button onClick='SaveContragentReq()' class="btn waves-effect waves-light btn-outline-secondary">Сохранить</button>
+                                        <button onClick='ResetContragentReq()' class="btn waves-effect waves-light btn-outline-secondary">Отменить</button>
+                                        <button onClick='DeleteContragentReq()' class="btn waves-effect waves-light btn-outline-secondary">Удалить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- модуль c формой .end -->
+                </div>
+
+            </div>
+    
+
+            <!-- ************************************************************** -->
+            <!-- Таблица - Список контрагентов -->
+            <!-- *************************************************************** -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="card-title">Список контрагентов</h4>
+                                    <h6 class="card-subtitle">Список всех контрагентов. Вы можете изменить или удалить контрагента, достаточно выбрав его из списка и выполнить нужное действие.</h6>
+                                </div>
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table id="tb_contragentlist" class="table no-wrap table-hover">
+                                    <thead> <!-- Заголовок таблицы -->
+                                    <tr>
+                                        <th>ID</th> 
+                                        <th>Наименование</th>
+                                        <th>Описание</th>
+                                        <th>Телефон</th>
+                                        <th>Почта</th>
+                                        <th>Тип</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="contr_agent_table_body">
+                                        <!--Ajax контекст-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--
+            <div class="hidden-element">
+                <Скрытая Форма сабмита нажатия на контрагента (все поля, чтобы контекст формы сохранялся после обновления)
+                <form id="id_selected_contragent_form" method="post">
+                    <input id="field_selected_contragent_num" class="form-control" type="text"  th:field="*{Contragentid}">
+                    <input type="text" id="selected_cntragnt_name" class="form-control" th:field="*{Contragentname}">
+                    <input type="text" id="selected_cntragnt_desqription" class="form-control" th:field="*{Contragentdescription}">
+                    <input type="text" id="selected_cntragnt_mail" class="form-control" th:field="*{Contragentemail}">
+                    <input type="text" id="selected_cntragnt_phone" class="form-control" th:field="*{Contragentphone}">
+                </form>
+            </div>
+            -->
+
+            <!-- *************************************************************** -->
+            <!-- Таблица - Список реквизитов -->
+            <!-- *************************************************************** -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="card-title">Реквизиты контрагента</h4>
+                                    <h6 class="card-subtitle">Список реквизитов контрагента. Вы можете изменить или удалить реквзизты, достаточно выбрав запись и перейдя в форму "Рекзвизиты" и выполнить нужное действие.</h6>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tb_cntragnt_requisits" class="table no-wrap table-hover">
+                                    <thead> <!-- Заголовок таблицы -->
+                                    <tr>
+                                        <th>ID</th> 
+                                        <th>Основной</th>
+                                        <th>Имя</th>
+                                        <th>Описание</th>
+                                        <th>ИНН</th>
+                                        <th>КПП</th>
+                                        <th>Счет</th>
+                                        <th>БИК</th>
+                                        <th>БАНК</th>
+                                        <th>Кор. счет</th>
+                                        <th>Адрес индекс</th>
+                                        <th>Город</th>
+                                        <th>Адрес</th>
+                                        <th>Телефон</th>
+                                        <th>Мыло</th>
+                                        <th>Номер карты</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="contragent_req_body">
+
+
+                                    <tr class="fincrowlink requisitslist_row">
+                                        <th text="${r.id}" value="${r.id}" class="cntr_req_id"></th><!--id-->
+                                        <th text="${r.name}" value="${r.name}" class="cntr_req_name"></th><!--Имя-->
+                                        <th text="${r.description}" value="${r.description}" class="cntr_req_description"></th><!--Описание-->
+                                        <th text="${r.inn}" value="${r.inn}" class="cntr_req_inn"></th><!--ИНН-->
+                                        <th text="${r.kpp}" value="${r.kpp}" class="cntr_req_kpp"></th><!--КПП-->
+                                        <th text="${r.fins_acc}" value="${r.fins_acc}" class="cntr_req_acc"></th><!--Счет-->
+                                        <th text="${r.bik}" value="${r.bik}" class="cntr_req_bik"></th><!--БИК-->
+                                        <th text="${r.bank_name}" value="${r.bank_name}" class="cntr_req_bank_name"></th><!--БАНК-->
+                                        <th text="${r.crsp_acc}" value="${r.crsp_acc}" class="cntr_req_crsp_acc"></th><!--Кор. счет-->
+                                        <th text="${r.addr_index}" value="${r.addr_index}" class="cntr_req_addr_index"></th><!--Адрес индекс-->
+                                        <th text="${r.addr_city}" value="${r.addr_city}" class="cntr_req_addr_city"></th><!--Город-->
+                                        <th text="${r.addr_string}" value="${r.addr_string}" class="cntr_req_addr_string"></th><!--Адрес-->
+                                        <th text="${r.phone_num}" value="${r.phone_num}" class="cntr_req_phone_num"></th><!--Телефон-->
+                                        <th text="${r.email_addr}" value="${r.email_addr}" class="cntr_req_email_addr"></th><!--Мыло-->
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+
+<!-----------IVRIBIN User Script----------------------------->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        StartPage();
+    });
+</script>
+
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+</html>

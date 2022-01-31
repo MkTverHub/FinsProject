@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fbb93aff-60b0-44c2-8af6-56f2d609c56b" name="Default" comment="22.12.2020">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_activation_jakarta_activation_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_jakarta_mail_1_6_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jakarta_el_3_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_1_3_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_mail_2_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_4_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace (2).xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace (3).xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace (4).xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RUN_JAR.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_11_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_11_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_11_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_19.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_13_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_13_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_16.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_41.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_16.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_16.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_41.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_4_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_7_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_27_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_14_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_27_0_GA.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_16.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_30.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_2_1_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_1_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_2_1_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_1_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_3_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_1_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_4_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_1_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_4_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_acl_5_1_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_1_4_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_1_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_taglibs_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_1_4_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_4_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_1_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_1_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_1_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_1_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_1_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_1_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_5_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_1_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_3_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_4_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_12_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_12_RELEASE.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_27.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/config.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/config/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/dao/entities/entities.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/dao/repository/repository.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/model/ReportType1form.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/service.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Fins_email_confirm.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/config/WebConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/config/WebSecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/core/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/core/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Company.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Contact.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Contact.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Contragent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Contragent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Financedata.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Financedata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Finsproject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Finsproject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Lov.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Lov.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Requisits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Requisits.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/CompanyJdbc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/CompanyJdbc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/CompanyJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/CompanyJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/ContragentJdbc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/ContragentJdbc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/ContragentJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/ContragentJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinancedataJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinancedataJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinsprojectJdbc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinsprojectJdbc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinsprojectJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinsprojectJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/LovJdbc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/LovJdbc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/LovJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/LovJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/RequisitJdbc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/RequisitJdbc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/RequisitJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/RequisitJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/ContragentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/ContragentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/FinancedataRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/FinancedataRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/FinsprojectRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/FinsprojectRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/LovRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/repository/LovRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/model/Cntragntreqform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/model/Cntragntreqform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/model/Contragentform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/model/Contragentform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/ReqController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/ReqController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/WebController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/images/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/images/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/images/logo-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/images/logo-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/images/logo-text.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/images/logo-text.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_companypage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_companypage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_contragentspage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_contragentspage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finslovpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finslovpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsoperationpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsoperationpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsprojectpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsprojectpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsprojectpageadd.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsprojectpageadd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsreportspage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsreportspage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_general_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_general_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Account_Settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Account_Settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Company.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Company.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Contragents.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Contragents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_LOV.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_LOV.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Operations.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Operations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Projects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Reports.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/layouts/fragment_agrigate_layouts_header_menu_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/layouts/fragment_agrigate_layouts_header_menu_top.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/layouts/fragment_agrigate_layouts_left_menu_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/layouts/fragment_agrigate_layouts_left_menu_sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="basicFins" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Enum" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="IVRIBIN &lt;60433837+ivribin@users.noreply.github.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="workOffline" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="1.8" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="9" />
+  </component>
+  <component name="ProjectId" id="1hvXqnyZ95kTo7xJnWI8IiCWjAw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600889153940" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/webapp/js" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\webapp\js" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sweetcard.basic.dao.entities" />
+      <recent name="com.sweetcard.basic.config" />
+      <recent name="com.sweetcard.basic.dao.config" />
+      <recent name="com.sweetcard.basic.service" />
+      <recent name="com.sweetcard.basic.dao.repository" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\IVRIBIN\GitHub\FinsProject\basicFins\src\main\resources\static\webapp\js" />
+      <recent name="D:\Documents\IVRIBIN\GitHub\FinsProject\basicFins\src\main\resources\templates" />
+      <recent name="D:\Documents\IVRIBIN\GitHub\FinsProject\basicFins\src\main\resources" />
+      <recent name="D:\Documents\IVRIBIN\IdeaProjects\basicFins\src\main\resources\templates" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\static\webapp\js" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean package" />
+      <command value="mvn spring-boot:run" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="HEIGHT" value="0" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="WIDTH" value="0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="basic" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="basicFins" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sweetcard.basic.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="basicFins" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sweetcard.basic.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbb93aff-60b0-44c2-8af6-56f2d609c56b" name="Default" comment="" />
+      <created>1580314077757</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580314077757</updated>
+      <workItem from="1580314081681" duration="3197000" />
+      <workItem from="1580330581704" duration="146000" />
+      <workItem from="1580409480706" duration="6109000" />
+      <workItem from="1580479248086" duration="627000" />
+      <workItem from="1580638269778" duration="38000" />
+      <workItem from="1580648764445" duration="12111000" />
+      <workItem from="1580679100983" duration="592000" />
+      <workItem from="1580728139696" duration="5525000" />
+      <workItem from="1580822174464" duration="2341000" />
+      <workItem from="1580826401170" duration="8212000" />
+      <workItem from="1581078080281" duration="250000" />
+      <workItem from="1581078344697" duration="6323000" />
+      <workItem from="1581770668743" duration="1372000" />
+      <workItem from="1581782530402" duration="4033000" />
+      <workItem from="1581786603870" duration="1201000" />
+      <workItem from="1581850347197" duration="8931000" />
+      <workItem from="1582101960951" duration="27685000" />
+      <workItem from="1582637687340" duration="6262000" />
+      <workItem from="1582657539135" duration="15336000" />
+      <workItem from="1582727358585" duration="42900000" />
+      <workItem from="1583228364901" duration="9145000" />
+      <workItem from="1583331432099" duration="12363000" />
+      <workItem from="1583665865636" duration="52000" />
+      <workItem from="1583759939080" duration="31000" />
+      <workItem from="1583760005437" duration="21874000" />
+      <workItem from="1584089406911" duration="59000" />
+      <workItem from="1584185684725" duration="4649000" />
+      <workItem from="1584208141743" duration="2785000" />
+      <workItem from="1584274804628" duration="6902000" />
+      <workItem from="1584527613372" duration="30000" />
+      <workItem from="1584614380584" duration="18583000" />
+      <workItem from="1584715416556" duration="28791000" />
+      <workItem from="1584965018790" duration="18400000" />
+      <workItem from="1585290498947" duration="29000" />
+      <workItem from="1585306524256" duration="7595000" />
+      <workItem from="1585749889067" duration="1524000" />
+      <workItem from="1586201847349" duration="4283000" />
+      <workItem from="1586375677544" duration="3886000" />
+      <workItem from="1586444380867" duration="54000" />
+      <workItem from="1586449857207" duration="5186000" />
+      <workItem from="1586630157646" duration="4816000" />
+      <workItem from="1586773981063" duration="985000" />
+      <workItem from="1586969610495" duration="2368000" />
+      <workItem from="1587403940316" duration="494000" />
+      <workItem from="1587567220827" duration="761000" />
+      <workItem from="1587668954043" duration="3949000" />
+      <workItem from="1587995623578" duration="288000" />
+      <workItem from="1588101686341" duration="5229000" />
+      <workItem from="1588190895676" duration="6727000" />
+      <workItem from="1588776937545" duration="3933000" />
+      <workItem from="1589308511856" duration="1369000" />
+      <workItem from="1589462181204" duration="643000" />
+      <workItem from="1589572328782" duration="4548000" />
+      <workItem from="1589577410061" duration="4069000" />
+      <workItem from="1589832801272" duration="1671000" />
+      <workItem from="1590005794995" duration="6538000" />
+      <workItem from="1590656265070" duration="49000" />
+      <workItem from="1590694740867" duration="1604000" />
+      <workItem from="1591291005133" duration="14227000" />
+      <workItem from="1592419542027" duration="15618000" />
+      <workItem from="1592511057445" duration="6978000" />
+      <workItem from="1592518289461" duration="1876000" />
+      <workItem from="1592942039926" duration="4507000" />
+      <workItem from="1593028854916" duration="8828000" />
+      <workItem from="1593593307087" duration="17976000" />
+      <workItem from="1594066704561" duration="6485000" />
+      <workItem from="1594370796214" duration="9025000" />
+      <workItem from="1595364283349" duration="3358000" />
+      <workItem from="1595533582711" duration="5617000" />
+      <workItem from="1595966988470" duration="2370000" />
+      <workItem from="1595969464515" duration="472000" />
+      <workItem from="1596137770940" duration="2962000" />
+      <workItem from="1597693642777" duration="788000" />
+      <workItem from="1597949496719" duration="2991000" />
+      <workItem from="1598614435591" duration="25000" />
+      <workItem from="1600721818325" duration="142000" />
+      <workItem from="1600888067224" duration="1496000" />
+      <workItem from="1600889727060" duration="967000" />
+      <workItem from="1600891935940" duration="143000" />
+      <workItem from="1600892739791" duration="2763000" />
+      <workItem from="1600944675652" duration="1132000" />
+      <workItem from="1601011787471" duration="19288000" />
+      <workItem from="1601406864344" duration="9967000" />
+      <workItem from="1601655642175" duration="6023000" />
+      <workItem from="1602328112010" duration="14264000" />
+      <workItem from="1602704838216" duration="831000" />
+      <workItem from="1602706120715" duration="1612000" />
+      <workItem from="1602937627700" duration="17760000" />
+      <workItem from="1603222509251" duration="5991000" />
+      <workItem from="1603621267686" duration="11442000" />
+      <workItem from="1603910908240" duration="10789000" />
+      <workItem from="1603982488832" duration="3128000" />
+      <workItem from="1604342589753" duration="6091000" />
+      <workItem from="1604499600756" duration="6860000" />
+      <workItem from="1604771932745" duration="616000" />
+      <workItem from="1605035699498" duration="8026000" />
+      <workItem from="1605134336517" duration="4077000" />
+      <workItem from="1605211832438" duration="4500000" />
+      <workItem from="1605627033702" duration="364000" />
+      <workItem from="1605962234019" duration="5332000" />
+      <workItem from="1606149418326" duration="3384000" />
+      <workItem from="1606487070948" duration="3092000" />
+      <workItem from="1606490184511" duration="876000" />
+      <workItem from="1606561041118" duration="2890000" />
+      <workItem from="1606597679332" duration="7854000" />
+      <workItem from="1606771319122" duration="22000" />
+      <workItem from="1606771383375" duration="38000" />
+      <workItem from="1606771491480" duration="856000" />
+      <workItem from="1606822244304" duration="617000" />
+      <workItem from="1606938393400" duration="28428000" />
+      <workItem from="1607374697202" duration="4328000" />
+      <workItem from="1607628374342" duration="7396000" />
+      <workItem from="1608664019870" duration="13175000" />
+      <workItem from="1608842078354" duration="779000" />
+      <workItem from="1608984503662" duration="9894000" />
+      <workItem from="1610475766595" duration="4031000" />
+      <workItem from="1610560622306" duration="4802000" />
+      <workItem from="1610649874008" duration="7651000" />
+      <workItem from="1610824864643" duration="2429000" />
+      <workItem from="1610887792905" duration="10746000" />
+      <workItem from="1610991789823" duration="1707000" />
+      <workItem from="1611062504196" duration="3501000" />
+      <workItem from="1611480339052" duration="15652000" />
+      <workItem from="1612271008028" duration="3487000" />
+      <workItem from="1612523946053" duration="1180000" />
+      <workItem from="1612525140584" duration="7971000" />
+      <workItem from="1612893651328" duration="8017000" />
+      <workItem from="1613214330378" duration="1968000" />
+      <workItem from="1613217088448" duration="26927000" />
+      <workItem from="1613575107520" duration="4311000" />
+      <workItem from="1613763195067" duration="1845000" />
+      <workItem from="1614346291515" duration="2406000" />
+      <workItem from="1614681847754" duration="6671000" />
+      <workItem from="1614927760928" duration="2472000" />
+      <workItem from="1615118620102" duration="2606000" />
+      <workItem from="1615121548445" duration="786000" />
+      <workItem from="1615403548861" duration="1949000" />
+      <workItem from="1615405930416" duration="804000" />
+      <workItem from="1616007346582" duration="1812000" />
+      <workItem from="1616010245930" duration="818000" />
+      <workItem from="1616325188513" duration="12339000" />
+      <workItem from="1616621963974" duration="3158000" />
+      <workItem from="1616922243196" duration="8919000" />
+      <workItem from="1617532474858" duration="4808000" />
+      <workItem from="1617733095186" duration="800000" />
+      <workItem from="1617822948523" duration="509000" />
+      <workItem from="1617905818431" duration="5391000" />
+      <workItem from="1619634003911" duration="7948000" />
+      <workItem from="1619810759655" duration="3594000" />
+      <workItem from="1619814459522" duration="8701000" />
+      <workItem from="1620160224047" duration="22160000" />
+    </task>
+    <task id="LOCAL-00094" summary="19.01.2021">
+      <created>1611064414871</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1611064414871</updated>
+    </task>
+    <task id="LOCAL-00095" summary="19.01.2021">
+      <created>1611064442851</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1611064442851</updated>
+    </task>
+    <task id="LOCAL-00096" summary="19.01.2021">
+      <created>1611064477684</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1611064477684</updated>
+    </task>
+    <task id="LOCAL-00097" summary="28.01.2021">
+      <created>1611863330357</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1611863330358</updated>
+    </task>
+    <task id="LOCAL-00098" summary="28.01.2021">
+      <created>1611866583093</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1611866583093</updated>
+    </task>
+    <task id="LOCAL-00099" summary="29.01.2021">
+      <created>1611911275466</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1611911275466</updated>
+    </task>
+    <task id="LOCAL-00100" summary="31.01.2020 (Привязка контрагентов к проекту, Часть 1)">
+      <created>1612112781967</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1612112781967</updated>
+    </task>
+    <task id="LOCAL-00101" summary="31.02.2020 (Привязка контрагентов к проекту, Часть 2)">
+      <created>1612272049991</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1612272049991</updated>
+    </task>
+    <task id="LOCAL-00102" summary="09.02.2021">
+      <created>1612894769057</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1612894769057</updated>
+    </task>
+    <task id="LOCAL-00103" summary="09.02.2021 2">
+      <created>1612894834537</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1612894834537</updated>
+    </task>
+    <task id="LOCAL-00104" summary="09.02.2021 2">
+      <created>1612894885976</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1612894885976</updated>
+    </task>
+    <task id="LOCAL-00105" summary="09.02.2021 3">
+      <created>1612902166062</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1612902166062</updated>
+    </task>
+    <task id="LOCAL-00106" summary="13.02.2021 1">
+      <created>1613229978265</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1613229978266</updated>
+    </task>
+    <task id="LOCAL-00107" summary="14.02.2021 1">
+      <created>1613313717424</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1613313717424</updated>
+    </task>
+    <task id="LOCAL-00108" summary="17.02.2021 1">
+      <created>1613575243114</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1613575243114</updated>
+    </task>
+    <task id="LOCAL-00109" summary="17.02.2021 2">
+      <created>1613577612571</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1613577612571</updated>
+    </task>
+    <task id="LOCAL-00110" summary="19.02.2021 1">
+      <created>1613764054010</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1613764054011</updated>
+    </task>
+    <task id="LOCAL-00111" summary="19.02.2021 1">
+      <created>1613764544928</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1613764544928</updated>
+    </task>
+    <task id="LOCAL-00112" summary="26.02.2021 1">
+      <created>1614346658635</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1614346658636</updated>
+    </task>
+    <task id="LOCAL-00113" summary="26.02.2021 1">
+      <created>1614348501745</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1614348501745</updated>
+    </task>
+    <task id="LOCAL-00114" summary="02.03.2021 1">
+      <created>1614687791549</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1614687791549</updated>
+    </task>
+    <task id="LOCAL-00115" summary="05.03.2021">
+      <created>1614929571169</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1614929571169</updated>
+    </task>
+    <task id="LOCAL-00116" summary="07.03.2021">
+      <created>1615119527114</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1615119527115</updated>
+    </task>
+    <task id="LOCAL-00117" summary="07.03.2021">
+      <created>1615121102485</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1615121102486</updated>
+    </task>
+    <task id="LOCAL-00118" summary="07.03.2021">
+      <created>1615122059976</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1615122059976</updated>
+    </task>
+    <task id="LOCAL-00119" summary="10.03.2021">
+      <created>1615405286135</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1615405286135</updated>
+    </task>
+    <task id="LOCAL-00120" summary="10.03.2021 2">
+      <created>1615406645090</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1615406645090</updated>
+    </task>
+    <task id="LOCAL-00121" summary="17.03.2021 1">
+      <created>1616008394293</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1616008394294</updated>
+    </task>
+    <task id="LOCAL-00122" summary="17.03.2021 1">
+      <created>1616008822664</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1616008822664</updated>
+    </task>
+    <task id="LOCAL-00123" summary="17.03.2021 1">
+      <created>1616010461237</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1616010461238</updated>
+    </task>
+    <task id="LOCAL-00124" summary="21.03.2021 1">
+      <created>1616326879253</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1616326879254</updated>
+    </task>
+    <task id="LOCAL-00125" summary="21.03.2021 Spinner">
+      <created>1616331843394</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1616331843394</updated>
+    </task>
+    <task id="LOCAL-00126" summary="21.03.2021 Spinner">
+      <created>1616332490313</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1616332490313</updated>
+    </task>
+    <task id="LOCAL-00127" summary="21.03.2021 Modal">
+      <created>1616337700981</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1616337700981</updated>
+    </task>
+    <task id="LOCAL-00128" summary="21.03.2021 Modal">
+      <created>1616338625926</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1616338625926</updated>
+    </task>
+    <task id="LOCAL-00129" summary="25.03.2021 Дефолтный проект">
+      <created>1616624834156</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1616624834156</updated>
+    </task>
+    <task id="LOCAL-00130" summary="28.03.2021 Привязка спиннера к ajax">
+      <created>1616931924105</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1616931924106</updated>
+    </task>
+    <task id="LOCAL-00131" summary="04.04.2021 Левая панель">
+      <created>1617544602351</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1617544602351</updated>
+    </task>
+    <task id="LOCAL-00132" summary="08.04.2021 Баги">
+      <created>1617911010184</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1617911010184</updated>
+    </task>
+    <task id="LOCAL-00133" summary="28.04.2021 субрегистрация">
+      <created>1619641522107</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1619641522107</updated>
+    </task>
+    <task id="LOCAL-00134" summary="30.04.2021 субрегистрация муки часть 2">
+      <created>1619731231898</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1619731231898</updated>
+    </task>
+    <task id="LOCAL-00135" summary="30.04.2021 субрегистрация муки часть 3">
+      <created>1619815974680</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1619815974681</updated>
+    </task>
+    <task id="LOCAL-00136" summary="01.05.2021 субрегистрация муки часть 4">
+      <created>1619900777256</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1619900777256</updated>
+    </task>
+    <task id="LOCAL-00137" summary="02.05.2021 субрегистрация муки часть 5">
+      <created>1619983917139</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1619983917139</updated>
+    </task>
+    <task id="LOCAL-00138" summary="04.05.2021 субрегистрация муки часть 6">
+      <created>1620161432374</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1620161432374</updated>
+    </task>
+    <task id="LOCAL-00139" summary="06.05.2021 субрегистрация муки часть 7 (взлетело создание)">
+      <created>1620301793269</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1620301793269</updated>
+    </task>
+    <task id="LOCAL-00140" summary="07.05.2021 субрегистрация муки часть 8">
+      <created>1620422077010</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1620422077011</updated>
+    </task>
+    <task id="LOCAL-00141" summary="11.05.2021 субрегистрация муки часть 9">
+      <created>1620681600625</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1620681600625</updated>
+    </task>
+    <task id="LOCAL-00142" summary="12.05.2021 субрегистрация муки часть 10">
+      <created>1620768791995</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1620768791995</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="19.02.2021 1" />
+    <MESSAGE value="26.02.2021 1" />
+    <MESSAGE value="02.03.2021 1" />
+    <MESSAGE value="05.03.2021" />
+    <MESSAGE value="07.03.2021" />
+    <MESSAGE value="10.03.2021" />
+    <MESSAGE value="10.03.2021 2" />
+    <MESSAGE value="17.03.2021 1" />
+    <MESSAGE value="21.03.2021 1" />
+    <MESSAGE value="21.03.2021 Spinner" />
+    <MESSAGE value="21.03.2021 Modal" />
+    <MESSAGE value="25.03.2021 Дефолтный проект" />
+    <MESSAGE value="28.03.2021 Привязка спиннера к ajax" />
+    <MESSAGE value="04.04.2021 Левая панель" />
+    <MESSAGE value="08.04.2021 Баги" />
+    <MESSAGE value="28.04.2021 субрегистрация" />
+    <MESSAGE value="30.04.2021 субрегистрация муки часть 2" />
+    <MESSAGE value="30.04.2021 субрегистрация муки часть 3" />
+    <MESSAGE value="01.05.2021 субрегистрация муки часть 4" />
+    <MESSAGE value="02.05.2021 субрегистрация муки часть 5" />
+    <MESSAGE value="04.05.2021 субрегистрация муки часть 6" />
+    <MESSAGE value="06.05.2021 субрегистрация муки часть 7 (взлетело создание)" />
+    <MESSAGE value="07.05.2021 субрегистрация муки часть 8" />
+    <MESSAGE value="11.05.2021 субрегистрация муки часть 9" />
+    <MESSAGE value="12.05.2021 субрегистрация муки часть 10" />
+    <option name="LAST_COMMIT_MESSAGE" value="12.05.2021 субрегистрация муки часть 10" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="$PROJECT_DIR$" />
+    <option value="clean package" />
+    <option value="spring-boot:run" />
+  </component>
+</project>

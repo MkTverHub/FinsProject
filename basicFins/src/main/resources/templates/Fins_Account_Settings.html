@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <title>Fin</title>
+    <script src="webapp/js/js_finsaccsettingspage.js"></script><!--Подцепляем внешний скрипт-->
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+
+    <!--Фрагмент спиннера-->
+    <!--<div th:replace="fragments\layouts\fragment_agrigate_layouts_spiner.html :: spinner_fragment_1"/>-->
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1(AccountMail=${attrUserMail})"></header>
+
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Настройки аккаунта</h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mt-2 p-0">
+                                    <li class="breadcrumb-item text-muted active" aria-current="page"><a href="#">Подробнее</a></li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header" id="react_root">
+                            Информация
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Аккаунт: <span th:utext="${attrUserMail}"/></h4>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>ФИО:</td>
+                                        <td th:utext="${attrUserLstName}+' '+${attrUserFstName}+' '+${attrUserMdlName}"/>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Телефон:</td>
+                                        <td th:utext="${attrUserPhone}"/>
+                                        
+                                    </tr>
+                                     <tr>
+                                        <td>Статус оплаты:</td>
+                                        <td th:utext="${attrAccessStatus}"/>
+                                    </tr>
+                                    <tr>
+                                        <td>Дата окончания оплаты:</td>
+                                        <td th:utext="${attrAccessDt}"/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div class="font-weight-normal mb-0 w-100 text-truncate">
+                                    <form th:action="@{/UserSettingsInfo}" method="post">
+                                        <button type="submit" class="btn waves-effect waves-light btn-dark">Настройки аккаунта</button>
+                                    </form>
+                                </div>
+                                <div class="ml-auto mt-md-1" th:if="${attrUserAdmFlg}">
+                                    <form th:action="@{/FinsAccountUsersInfo}" method="post">
+                                        <button type="submit" class="btn waves-effect waves-light btn-dark">Пользователи</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="col-md-6">
+                    <div class="jumbotron card">
+                        <h3>Добавить пользователя</h3>
+                        <p class="lead">Пользователь - это сотрудник, который получит доступ к вашим проектам</p>
+                        <p class="lead">
+                            <button type="submit" class="btn btn-outline-dark">Добавить</button>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="jumbotron card">
+                        <h3>Добавить компанию</h3>
+                        <p class="lead">Компанию и сотрудников необходимо добавить для правильного финансового учета с контрагентами</p>
+                        <p class="lead">
+                            <form th:action="@{/FinsCompany}" method="post">
+                                <button type="submit" class="btn btn-outline-dark">Добавить</button>
+                            </form>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="jumbotron card">
+                        <h3>Добавить статьи</h3>
+                        <p class="lead">Статьи - это финансовые метки, по которым Вы можете более детально разбить финансовые операции</p>
+                        <p class="lead">
+                            <form th:action="@{/FinsLOV}" method="post">
+                                <button type="submit" class="btn btn-outline-dark">Добавить</button>
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    </section>
+
+</div>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        StartPage();
+    });
+</script>
+
+</body>
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+
+<!-- Загрузка React. -->
+<!-- Внимание: во время развертывания, замените "development.js" на "production.min.js". -->
+<!-- <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>-->
+<!-- <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>-->
+
+<!--Интепритация JSX в браузере, для продакшен отключить и подложить компилированный JSX-->
+<!--<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>-->
+<!--<script type="text/babel" src="webapp/js/react_jsx/js_finsaccsettingpage_react.js"></script>-->
+
+<!--React component JSX-->
+<!-- <script src="webapp/js/js_finsaccsettingpage_react.js"></script>-->
+
+</html>

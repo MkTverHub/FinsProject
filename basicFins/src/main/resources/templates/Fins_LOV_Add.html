@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <user_fragment_1 th:replace="fragments\master\fragment_agrigate_master_head.html :: master_head_1"></user_fragment_1>
+    <script src="webapp/js/js_general_functions.js"></script>
+    <script src="webapp/js/js_finslovpage_add.js"></script><!--Подцепляем внешний скрипт-->
+    <title>Fin</title>
+</head>
+
+<body>
+
+<!-- *************************************************************** -->
+<!-- Главная обертка для всего сайта -->
+<!-- *************************************************************** -->
+<div class="vip-wrapper">
+
+    <!--Фрагмент спиннера-->
+    <div th:replace="fragments\layouts\fragment_agrigate_layouts_spiner.html :: spinner_fragment_1"/>
+
+    <!--Фрагмент модального окна-->
+    <div th:replace="fragments\layouts\fragment_agrigate_layouts_modal.html :: modal_fragment_1"/>
+    
+    <!-- *************************************************************** -->
+    <!-- Верхнее Меню -->
+    <!-- *************************************************************** -->
+    <header th:replace="fragments\layouts\fragment_agrigate_layouts_header_menu_top.html :: header_fragment_1(AccountMail=${AccountMail})"></header>
+
+    
+
+    <!-- *************************************************************** -->
+    <!-- Левое Меню -->
+    <!-- *************************************************************** -->
+
+    <section th:replace="fragments\layouts\fragment_agrigate_layouts_left_menu_sidebar.html :: left_menu_sidebar_1"></section>
+
+    <!-- *************************************************************** -->
+    <!-- Центральная часть -->
+    <!-- *************************************************************** -->
+
+    <section class="page-wrap">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Статьи</h3>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-2 p-0">
+                                <li class="breadcrumb-item text-muted active" aria-current="page"><a href="#">Список статьей</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-5 align-self-center">
+                    <div class="customize-input float-right">
+
+                        <form th:action="@{/FinsLOVEditor}" method="post">
+
+                            <div class="ml-auto mt-md-3 mt-lg-0">
+                                <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-primary"><i>
+                                   <span class="opacity-7 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                                   </span> 
+                                </i>Пункт управления</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
+        <div class="container">
+
+                <!-- *************************************************************** -->
+                <!-- Карточка для создания ловов -->
+                <!-- *************************************************************** -->
+                <div class="row">
+                    <!-- Плитки Статьи-->
+                    <div class="col-md-6" th:each="p: ${lovList}">
+                        <div th:replace="fragments\layouts\fragment_project_tile.html :: lov_tile_fragment_1(text_val=${p.text_val},description=${p.description},options=${p.options},type=${p.type})"></div>
+                    </div>
+                    
+                </div>
+        <!-- *************************************************************** -->
+        <!-- КОНЕЦ ЦЕНТРАЛЬНОГО БЛОКА -->
+        <!-- *************************************************************** -->
+                
+        </div>
+    
+    </section>
+
+</div>
+
+
+</body>
+
+<!-----------IVRIBIN User Script----------------------------->
+<!--
+    Ajax в внешнем файле, чтобы работал нужно объявлять файл в начале html
+-->
+
+<script type="text/javascript">
+    //Событие загрузки страницы
+    $(document).ready(function(){
+        StartPage();
+    });
+</script>
+
+<!------------FRAMEWORK Script----------------------------->
+<script_fragment  th:replace="fragments\master\fragment_agrigate_master_script.html :: master_script_1"></script_fragment>
+
+</html>

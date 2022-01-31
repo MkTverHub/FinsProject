@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fbb93aff-60b0-44c2-8af6-56f2d609c56b" name="Default" comment="22.12.2020">
+      <change afterPath="$PROJECT_DIR$/hs_err_pid19876.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid30964.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid34348.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/replay_pid19876.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/replay_pid34348.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sweetcard/basic/model/ReportType1form.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/basicFins-1.0-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Contragent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Contragent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Financedata.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Financedata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Requisits.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/entities/Requisits.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/ContragentJdbc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/ContragentJdbc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/ContragentJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/ContragentJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinancedataJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/FinancedataJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/RequisitJdbc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/RequisitJdbc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/RequisitJdbc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/dao/jdbc/RequisitJdbc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/model/Cntragntreqform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/model/Cntragntreqform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/model/Contragentform.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/model/Contragentform.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/ReqController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/ReqController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/WebController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sweetcard/basic/web/WebController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_contragentspage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_contragentspage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finslovpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finslovpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsoperationpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsoperationpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsprojectpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsprojectpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsreportspage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_finsreportspage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/webapp/js/js_general_functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/webapp/js/js_general_functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Account_Settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Account_Settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Company.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Company.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Contragents.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Contragents.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_LOV.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_LOV.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Operations.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Operations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Projects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/Fins_Reports.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/Fins_Reports.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/layouts/fragment_agrigate_layouts_header_menu_top.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/layouts/fragment_agrigate_layouts_header_menu_top.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/fragments/layouts/fragment_agrigate_layouts_left_menu_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/layouts/fragment_agrigate_layouts_left_menu_sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="basicFins" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="IVRIBIN &lt;60433837+ivribin@users.noreply.github.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="workOffline" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="1.8" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="9" />
+  </component>
+  <component name="ProjectId" id="1hvXqnyZ95kTo7xJnWI8IiCWjAw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600889153940" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/webapp/js" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Documents\IVRIBIN\GitHub\FinsProject\basicFins\src\main\resources\static\webapp\js" />
+      <recent name="D:\Documents\IVRIBIN\IdeaProjects\basicFins\src\main\resources\templates" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\static\webapp\js" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\templates" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\static\webapp" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sweetcard.basic.dao.entities" />
+      <recent name="com.sweetcard.basic.config" />
+      <recent name="com.sweetcard.basic.dao.config" />
+      <recent name="com.sweetcard.basic.service" />
+      <recent name="com.sweetcard.basic.dao.repository" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\webapp\js" />
+      <recent name="D:\My Docs\Java Projects\basicFins\src\main\resources\templates" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean package" />
+      <command value="mvn spring-boot:run" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="HEIGHT" value="0" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="WIDTH" value="0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="basic" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.sweetcard.basic.Application" />
+      <option name="WORKING_DIRECTORY" value="file://C:/Program Files/Apache Software Foundation/Tomcat 9.0" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbb93aff-60b0-44c2-8af6-56f2d609c56b" name="Default" comment="" />
+      <created>1580314077757</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580314077757</updated>
+      <workItem from="1580314081681" duration="3197000" />
+      <workItem from="1580330581704" duration="146000" />
+      <workItem from="1580409480706" duration="6109000" />
+      <workItem from="1580479248086" duration="627000" />
+      <workItem from="1580638269778" duration="38000" />
+      <workItem from="1580648764445" duration="12111000" />
+      <workItem from="1580679100983" duration="592000" />
+      <workItem from="1580728139696" duration="5525000" />
+      <workItem from="1580822174464" duration="2341000" />
+      <workItem from="1580826401170" duration="8212000" />
+      <workItem from="1581078080281" duration="250000" />
+      <workItem from="1581078344697" duration="6323000" />
+      <workItem from="1581770668743" duration="1372000" />
+      <workItem from="1581782530402" duration="4033000" />
+      <workItem from="1581786603870" duration="1201000" />
+      <workItem from="1581850347197" duration="8931000" />
+      <workItem from="1582101960951" duration="27685000" />
+      <workItem from="1582637687340" duration="6262000" />
+      <workItem from="1582657539135" duration="15336000" />
+      <workItem from="1582727358585" duration="42900000" />
+      <workItem from="1583228364901" duration="9145000" />
+      <workItem from="1583331432099" duration="12363000" />
+      <workItem from="1583665865636" duration="52000" />
+      <workItem from="1583759939080" duration="31000" />
+      <workItem from="1583760005437" duration="21874000" />
+      <workItem from="1584089406911" duration="59000" />
+      <workItem from="1584185684725" duration="4649000" />
+      <workItem from="1584208141743" duration="2785000" />
+      <workItem from="1584274804628" duration="6902000" />
+      <workItem from="1584527613372" duration="30000" />
+      <workItem from="1584614380584" duration="18583000" />
+      <workItem from="1584715416556" duration="28791000" />
+      <workItem from="1584965018790" duration="18400000" />
+      <workItem from="1585290498947" duration="29000" />
+      <workItem from="1585306524256" duration="7595000" />
+      <workItem from="1585749889067" duration="1524000" />
+      <workItem from="1586201847349" duration="4283000" />
+      <workItem from="1586375677544" duration="3886000" />
+      <workItem from="1586444380867" duration="54000" />
+      <workItem from="1586449857207" duration="5186000" />
+      <workItem from="1586630157646" duration="4816000" />
+      <workItem from="1586773981063" duration="985000" />
+      <workItem from="1586969610495" duration="2368000" />
+      <workItem from="1587403940316" duration="494000" />
+      <workItem from="1587567220827" duration="761000" />
+      <workItem from="1587668954043" duration="3949000" />
+      <workItem from="1587995623578" duration="288000" />
+      <workItem from="1588101686341" duration="5229000" />
+      <workItem from="1588190895676" duration="6727000" />
+      <workItem from="1588776937545" duration="3933000" />
+      <workItem from="1589308511856" duration="1369000" />
+      <workItem from="1589462181204" duration="643000" />
+      <workItem from="1589572328782" duration="4548000" />
+      <workItem from="1589577410061" duration="4069000" />
+      <workItem from="1589832801272" duration="1671000" />
+      <workItem from="1590005794995" duration="6538000" />
+      <workItem from="1590656265070" duration="49000" />
+      <workItem from="1590694740867" duration="1604000" />
+      <workItem from="1591291005133" duration="14227000" />
+      <workItem from="1592419542027" duration="15618000" />
+      <workItem from="1592511057445" duration="6978000" />
+      <workItem from="1592518289461" duration="1876000" />
+      <workItem from="1592942039926" duration="4507000" />
+      <workItem from="1593028854916" duration="8828000" />
+      <workItem from="1593593307087" duration="17976000" />
+      <workItem from="1594066704561" duration="6485000" />
+      <workItem from="1594370796214" duration="9025000" />
+      <workItem from="1595364283349" duration="3358000" />
+      <workItem from="1595533582711" duration="5617000" />
+      <workItem from="1595966988470" duration="2370000" />
+      <workItem from="1595969464515" duration="472000" />
+      <workItem from="1596137770940" duration="2962000" />
+      <workItem from="1597693642777" duration="788000" />
+      <workItem from="1597949496719" duration="2991000" />
+      <workItem from="1598614435591" duration="25000" />
+      <workItem from="1600721818325" duration="142000" />
+      <workItem from="1600888067224" duration="1496000" />
+      <workItem from="1600889727060" duration="967000" />
+      <workItem from="1600891935940" duration="143000" />
+      <workItem from="1600892739791" duration="2763000" />
+      <workItem from="1600944675652" duration="1132000" />
+      <workItem from="1601011787471" duration="19288000" />
+      <workItem from="1601406864344" duration="9967000" />
+      <workItem from="1601655642175" duration="6023000" />
+      <workItem from="1602328112010" duration="14264000" />
+      <workItem from="1602704838216" duration="831000" />
+      <workItem from="1602706120715" duration="1612000" />
+      <workItem from="1602937627700" duration="17760000" />
+      <workItem from="1603222509251" duration="5991000" />
+      <workItem from="1603621267686" duration="11442000" />
+      <workItem from="1603910908240" duration="10789000" />
+      <workItem from="1603982488832" duration="3128000" />
+      <workItem from="1604342589753" duration="6091000" />
+      <workItem from="1604499600756" duration="6860000" />
+      <workItem from="1604771932745" duration="616000" />
+      <workItem from="1605035699498" duration="8026000" />
+      <workItem from="1605134336517" duration="4077000" />
+      <workItem from="1605211832438" duration="4500000" />
+      <workItem from="1605627033702" duration="364000" />
+      <workItem from="1605962234019" duration="5332000" />
+      <workItem from="1606149418326" duration="3384000" />
+      <workItem from="1606487070948" duration="3092000" />
+      <workItem from="1606490184511" duration="876000" />
+      <workItem from="1606561041118" duration="2890000" />
+      <workItem from="1606597679332" duration="7854000" />
+      <workItem from="1606771319122" duration="22000" />
+      <workItem from="1606771383375" duration="38000" />
+      <workItem from="1606771491480" duration="856000" />
+      <workItem from="1606822244304" duration="617000" />
+      <workItem from="1606938393400" duration="28428000" />
+      <workItem from="1607374697202" duration="4328000" />
+      <workItem from="1607628374342" duration="7396000" />
+      <workItem from="1608664019870" duration="13175000" />
+      <workItem from="1608842078354" duration="779000" />
+      <workItem from="1608984503662" duration="9894000" />
+      <workItem from="1610475766595" duration="4031000" />
+      <workItem from="1610560622306" duration="4802000" />
+      <workItem from="1610649874008" duration="7651000" />
+      <workItem from="1610824864643" duration="7353000" />
+    </task>
+    <task id="LOCAL-00048" summary="23.12.2020">
+      <created>1608751970725</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1608751970725</updated>
+    </task>
+    <task id="LOCAL-00049" summary="23.12.2020">
+      <created>1608757348806</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1608757348806</updated>
+    </task>
+    <task id="LOCAL-00050" summary="23.12.2020">
+      <created>1608757373172</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1608757373173</updated>
+    </task>
+    <task id="LOCAL-00051" summary="23.12.2020">
+      <created>1608757396452</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1608757396453</updated>
+    </task>
+    <task id="LOCAL-00052" summary="23.12.2020">
+      <created>1608757414250</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1608757414250</updated>
+    </task>
+    <task id="LOCAL-00053" summary="23.12.2020">
+      <created>1608757433113</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1608757433113</updated>
+    </task>
+    <task id="LOCAL-00054" summary="23.12.2020">
+      <created>1608757453544</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1608757453544</updated>
+    </task>
+    <task id="LOCAL-00055" summary="24.12.2020">
+      <created>1608840925721</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1608840925721</updated>
+    </task>
+    <task id="LOCAL-00056" summary="24.12.2020">
+      <created>1608840948437</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1608840948437</updated>
+    </task>
+    <task id="LOCAL-00057" summary="24.12.2020">
+      <created>1608840966427</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1608840966427</updated>
+    </task>
+    <task id="LOCAL-00058" summary="26.12.2020">
+      <created>1608987515530</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1608987515531</updated>
+    </task>
+    <task id="LOCAL-00059" summary="26.12.2020">
+      <created>1608987556111</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1608987556111</updated>
+    </task>
+    <task id="LOCAL-00060" summary="26.12.2020">
+      <created>1608987578299</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1608987578299</updated>
+    </task>
+    <task id="LOCAL-00061" summary="26.12.2020">
+      <created>1608987601465</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1608987601465</updated>
+    </task>
+    <task id="LOCAL-00062" summary="26.12.2020">
+      <created>1608989441294</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1608989441295</updated>
+    </task>
+    <task id="LOCAL-00063" summary="26.12.2020">
+      <created>1608989458003</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1608989458003</updated>
+    </task>
+    <task id="LOCAL-00064" summary="26.12.2020">
+      <created>1608989474086</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1608989474087</updated>
+    </task>
+    <task id="LOCAL-00065" summary="27.12.2020">
+      <created>1609070909225</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1609070909225</updated>
+    </task>
+    <task id="LOCAL-00066" summary="27.12.2020">
+      <created>1609070927608</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1609070927608</updated>
+    </task>
+    <task id="LOCAL-00067" summary="27.12.2020">
+      <created>1609071938426</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1609071938426</updated>
+    </task>
+    <task id="LOCAL-00068" summary="27.12.2020">
+      <created>1609071956048</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1609071956048</updated>
+    </task>
+    <task id="LOCAL-00069" summary="27.12.2020">
+      <created>1609071977979</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1609071977979</updated>
+    </task>
+    <task id="LOCAL-00070" summary="12.01.2021">
+      <created>1610476804618</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1610476804619</updated>
+    </task>
+    <task id="LOCAL-00071" summary="12.01.2021">
+      <created>1610477128809</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1610477128809</updated>
+    </task>
+    <task id="LOCAL-00072" summary="12.01.2021">
+      <created>1610477260046</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1610477260046</updated>
+    </task>
+    <task id="LOCAL-00073" summary="12.01.2021">
+      <created>1610478527959</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1610478527959</updated>
+    </task>
+    <task id="LOCAL-00074" summary="12.01.2021">
+      <created>1610478544415</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1610478544415</updated>
+    </task>
+    <task id="LOCAL-00075" summary="12.01.2021">
+      <created>1610478562203</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1610478562203</updated>
+    </task>
+    <task id="LOCAL-00076" summary="13.01.2021">
+      <created>1610563482029</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1610563482030</updated>
+    </task>
+    <task id="LOCAL-00077" summary="13.01.2021">
+      <created>1610563498047</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1610563498047</updated>
+    </task>
+    <task id="LOCAL-00078" summary="13.01.2021">
+      <created>1610563523750</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1610563523750</updated>
+    </task>
+    <task id="LOCAL-00079" summary="14.01.2021">
+      <created>1610654018666</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1610654018667</updated>
+    </task>
+    <task id="LOCAL-00080" summary="14.01.2021">
+      <created>1610654041397</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1610654041397</updated>
+    </task>
+    <task id="LOCAL-00081" summary="14.01.2021">
+      <created>1610654058613</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1610654058613</updated>
+    </task>
+    <task id="LOCAL-00082" summary="14.01.2021">
+      <created>1610656722558</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1610656722558</updated>
+    </task>
+    <task id="LOCAL-00083" summary="14.01.2021">
+      <created>1610656747817</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1610656747817</updated>
+    </task>
+    <task id="LOCAL-00084" summary="14.01.2021">
+      <created>1610656764496</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1610656764496</updated>
+    </task>
+    <task id="LOCAL-00085" summary="14.01.2021">
+      <created>1610657548079</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1610657548079</updated>
+    </task>
+    <task id="LOCAL-00086" summary="17.01.2021">
+      <created>1610830896914</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1610830896914</updated>
+    </task>
+    <task id="LOCAL-00087" summary="17.01.2021">
+      <created>1610830913925</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1610830913925</updated>
+    </task>
+    <task id="LOCAL-00088" summary="17.01.2021">
+      <created>1610830933596</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1610830933596</updated>
+    </task>
+    <task id="LOCAL-00089" summary="17.01.2021">
+      <created>1610830948613</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1610830948613</updated>
+    </task>
+    <task id="LOCAL-00090" summary="17.01.2021">
+      <created>1610830967584</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1610830967584</updated>
+    </task>
+    <task id="LOCAL-00091" summary="17.01.2021">
+      <created>1610830987675</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1610830987675</updated>
+    </task>
+    <task id="LOCAL-00092" summary="17.01.2021">
+      <created>1610831004286</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1610831004286</updated>
+    </task>
+    <task id="LOCAL-00093" summary="17.01.2021">
+      <created>1610831786374</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1610831786374</updated>
+    </task>
+    <task id="LOCAL-00094" summary="17.01.2021">
+      <created>1610831815031</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1610831815031</updated>
+    </task>
+    <task id="LOCAL-00095" summary="17.01.2021">
+      <created>1610832221210</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1610832221210</updated>
+    </task>
+    <task id="LOCAL-00096" summary="17.01.2021">
+      <created>1610832236557</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1610832236557</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="фрагментация хедера" />
+    <MESSAGE value="фрагментация ебаной тучи" />
+    <MESSAGE value="фрагменты" />
+    <MESSAGE value="бага 1" />
+    <MESSAGE value="вавава" />
+    <MESSAGE value="ывывыв" />
+    <MESSAGE value="02122020" />
+    <MESSAGE value="оптимизация скриптов" />
+    <MESSAGE value="fgfgfgfg" />
+    <MESSAGE value="jhjhhjhj" />
+    <MESSAGE value="аапапапа" />
+    <MESSAGE value="плиткаа" />
+    <MESSAGE value="плитка" />
+    <MESSAGE value="ggg" />
+    <MESSAGE value="10.12.2020" />
+    <MESSAGE value="смсмсмссмс" />
+    <MESSAGE value="22.12.2020" />
+    <MESSAGE value="23.12.2020" />
+    <MESSAGE value="24.12.2020" />
+    <MESSAGE value="26.12.2020" />
+    <MESSAGE value="27.12.2020" />
+    <MESSAGE value="12.01.2021" />
+    <MESSAGE value="13.01.2021" />
+    <MESSAGE value="14.01.2021" />
+    <MESSAGE value="17.01.2021" />
+    <option name="LAST_COMMIT_MESSAGE" value="17.01.2021" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="$PROJECT_DIR$" />
+    <option value="clean package" />
+    <option value="spring-boot:run" />
+  </component>
+</project>
