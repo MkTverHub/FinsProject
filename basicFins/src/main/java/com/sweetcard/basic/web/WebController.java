@@ -404,30 +404,17 @@ public class WebController {
             AppUser appUser = appUserRepository.GetMainUser(usercache.user_id);
             String AdminFlg = "false";
             if(0==usercache.role.compareTo("USER")){AdminFlg="true";}
-
             logger.info("WebController.GoToUserSettings -> usercache.role: " + usercache.role);
 
-            logger.info("WebController.GoToUserSettings -> " + appUser.getAccess_status());
-
-            if(appUser.getFirstName() == null){model.addAttribute("attrUserFstName","");}else{model.addAttribute("attrUserFstName",appUser.getFirstName());}
-
-            logger.info("WebController.GoToUserSettings -> 0");
             model.addAttribute("attrUserFstName",appUser.getFirstName());
-            logger.info("WebController.GoToUserSettings -> 1");
             model.addAttribute("attrUserLstName",appUser.getLastName());
-            logger.info("WebController.GoToUserSettings -> 2");
             model.addAttribute("attrUserMdlName",appUser.getMiddleName());
-            logger.info("WebController.GoToUserSettings -> 3");
             model.addAttribute("attrUserMail",appUser.getEmail());
-            logger.info("WebController.GoToUserSettings -> 4");
             model.addAttribute("attrUserPhone",appUser.getPhone());
-            logger.info("WebController.GoToUserSettings -> 5");
             model.addAttribute("attrAccessStatus",appUser.getAccess_status());
-            logger.info("WebController.GoToUserSettings -> 6");
             model.addAttribute("attrAccessDt",appUser.getAccess_dt());
-            logger.info("WebController.GoToUserSettings -> 7");
+            logger.info("WebController.GoToUserSettings -> usercache.AdminFlg: " + AdminFlg);
             model.addAttribute("attrUserAdmFlg",AdminFlg);
-            logger.info("WebController.GoToUserSettings -> 8");
 
             return "Fins_Account_Settings";
         }catch (Exception req_ex1){
