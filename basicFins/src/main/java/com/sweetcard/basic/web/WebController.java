@@ -84,6 +84,7 @@ public class WebController {
     public String GoToFinsOperations(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model){
         try {
             model.addAttribute("ModelProjectId", ProjectId);
+            model.addAttribute("attrUserAdmFlg", "");
             if (0 != ProjectId.compareTo("no_value")) {
                 SetActiveProjectUserCache(Integer.parseInt(ProjectId));
             }
@@ -107,6 +108,7 @@ public class WebController {
         model.addAttribute("attrErrorFlg", "false");
         model.addAttribute("attrFieldClass", "form-control");
         model.addAttribute("attrFieldClassEx", "invalid-feedback");
+        model.addAttribute("attrUserAdmFlg", "");
         return "UserRegistration";
     }
 
@@ -147,6 +149,7 @@ public class WebController {
             model.addAttribute("attrFieldClass", "form-control error-valid-field");
             model.addAttribute("attrFieldClassEx", "invalid-feedback-display");
             model.addAttribute("registrationform", new RegistrationForm());
+            model.addAttribute("attrUserAdmFlg", "");
 
             strPageName = "UserRegistration";
 
@@ -167,6 +170,7 @@ public class WebController {
             model.addAttribute("finsprojectList",aggrFinsprojectList);
             Usercache usercache = GetUsercache();
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
         }catch (Exception ex1){
             //SQL aggregateDataFinsprojectRepository.GetAllUserProjects падает, если в нет записей в операциях
         }
@@ -182,6 +186,7 @@ public class WebController {
         logger.info("WebController.GoToProjectsEditor -> " + project_id);
         Usercache usercache = GetUsercache();
         model.addAttribute("AccountMail",usercache.login);
+        model.addAttribute("attrUserAdmFlg", "");
         return "Fins_Projects";
     }
 
@@ -200,6 +205,7 @@ public class WebController {
             List<Lov> lovList = lovRepository.GetAllByProject(usercache.active_proj);
             model.addAttribute("lovList",lovList);
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
         }catch (Exception ex1){
             //SQL aggregateDataFinsprojectRepository.GetAllUserProjects падает, если в нет записей в операциях
         }
@@ -215,6 +221,7 @@ public class WebController {
         }
         Usercache usercache = GetUsercache();
         model.addAttribute("AccountMail",usercache.login);
+        model.addAttribute("attrUserAdmFlg", "");
         return "Fins_LOV";
     }
 
@@ -235,6 +242,7 @@ public class WebController {
             List<AggrContragent> contragentList = aggregateDataContragent.GetProjectContragent(usercache.active_proj);
             model.addAttribute("contragentList",contragentList);
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
             return "Fins_Contragents_Add";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToContragents -> ERROR: " + req_ex1);
@@ -256,6 +264,7 @@ public class WebController {
             }
             Usercache usercache = GetUsercache();
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
             return "Fins_Contragents";
         }catch (Exception req_ex1){
             logger.info("WebController.ContragentsEditor -> ERROR: " + req_ex1);
@@ -279,6 +288,7 @@ public class WebController {
 
             Usercache usercache = GetUsercache();
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
             return "Fins_Company_Info";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToFinsCompany -> ERROR: " + req_ex1);
@@ -299,6 +309,7 @@ public class WebController {
 
             Usercache usercache = GetUsercache();
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
             return "Fins_Company";
         }catch (Exception req_ex1){
             logger.info("WebController.GoToFinsCompanyEditor -> ERROR: " + req_ex1);
@@ -316,6 +327,7 @@ public class WebController {
             }
             Usercache usercache = GetUsercache();
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
             return "Fins_Reports";
         }catch (Exception ex){
             logger.info("WebController.GoToReports -> ERROR: " + ex);
@@ -340,6 +352,7 @@ public class WebController {
             model.addAttribute("AccountMail",usercache.login);
             List<AggrContact> AggrContactList = aggregateDataContactRepository.GetAllProject(Integer.parseInt(ProjectId));
             model.addAttribute("contactList",AggrContactList);
+            model.addAttribute("attrUserAdmFlg", "");
 
             return "Fins_Users_Info";
         }catch (Exception req_ex1){
@@ -364,6 +377,7 @@ public class WebController {
             List<AggrPurpose> aggrPurposeList = aggregateDataPurposeRepository.GetPurposeData(usercache.active_proj);
             model.addAttribute("aggrPurposeList",aggrPurposeList);
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
             logger.info("WebController.FinsPurposeInfo -> aggrPurposeList: " + aggrPurposeList.size());
 
             return "Fins_Purpose_Info";
@@ -388,6 +402,7 @@ public class WebController {
             }
 
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
             return "Fins_Purpose_Add";
         }catch (Exception req_ex1){
             logger.info("WebController.FinsPurposeAdd -> ERROR: " + req_ex1);
@@ -428,6 +443,7 @@ public class WebController {
     public String GoToUserSettingsInfo(Model model){
         Usercache usercache = GetUsercache();
         model.addAttribute("AccountMail",usercache.login);
+        model.addAttribute("attrUserAdmFlg", "");
         return "Fins_Account_Settings_Info";
     }
 
@@ -442,6 +458,7 @@ public class WebController {
 
             model.addAttribute("sub_user_list",aggrSubUserList);
             model.addAttribute("AccountMail",usercache.login);
+            model.addAttribute("attrUserAdmFlg", "");
 
             if(0==usercache.role.compareTo("USER")){
                 return "Fins_Account_Users_Info";
@@ -482,10 +499,12 @@ public class WebController {
     //Получить UserCach
     private Usercache GetUsercache(){
         AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
+        Integer intUserId = appUserRepository.GetUserIdbyEmail(GetUserLogin());
         Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
         if(usercache == null){
             logger.info("ReqController.GetUserCache -> get null, insert");
             Usercacheform usercacheform = new Usercacheform();
+            usercacheform.setUserId(intUserId);
             usercacheform.setLogin(GetUserLogin());
             usercacheform.setActiveProject(0);
             usercacheform.setRole(appUser.getRole().name());
