@@ -49,6 +49,7 @@ function doAjaxSaveUserInfo() {
     try {
         var strUserFstName =  $('#fst_name_field').val();
         var strUserLstName = $('#lst_name_field').val();
+        var strUserMdlName = $('#mdl_name_field').val();
         var strUserPhone =  $('#phone_field').val();
         $.ajax({
             url: 'OperationUser',
@@ -62,7 +63,7 @@ function doAjaxSaveUserInfo() {
                 UserParentId: "0",
                 UserFstName: strUserFstName,
                 UserLstName: strUserLstName,
-                UserMdlName: "",
+                UserMdlName: strUserMdlName,
                 UserPhone: strUserPhone,
                 UserPosition: "",
                 UserEmail: "",
