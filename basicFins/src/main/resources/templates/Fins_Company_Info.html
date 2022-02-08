@@ -56,14 +56,15 @@
                         <div class="customize-input float-right">
 
                             <form th:action="@{/FinsCompanyEditor}" method="post">
-
                                 <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <button type="submit" class="btn waves-effect waves-light btn-rounded btn-outline-primary"><i>
-                                       <span class="opacity-7 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                                    <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-primary"><i>
+                                       <span class="opacity-7 text-muted">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="20" height="20" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><path xmlns="http://www.w3.org/2000/svg" d="M1,4.75H3.736a3.728,3.728,0,0,0,7.195,0H23a1,1,0,0,0,0-2H10.931a3.728,3.728,0,0,0-7.195,0H1a1,1,0,0,0,0,2ZM7.333,2a1.75,1.75,0,1,1-1.75,1.75A1.752,1.752,0,0,1,7.333,2Z" fill="#9eabc0" data-original="#000000"/><path xmlns="http://www.w3.org/2000/svg" d="M23,11H20.264a3.727,3.727,0,0,0-7.194,0H1a1,1,0,0,0,0,2H13.07a3.727,3.727,0,0,0,7.194,0H23a1,1,0,0,0,0-2Zm-6.333,2.75A1.75,1.75,0,1,1,18.417,12,1.752,1.752,0,0,1,16.667,13.75Z" fill="#9eabc0" data-original="#000000"/><path xmlns="http://www.w3.org/2000/svg" d="M23,19.25H10.931a3.728,3.728,0,0,0-7.195,0H1a1,1,0,0,0,0,2H3.736a3.728,3.728,0,0,0,7.195,0H23a1,1,0,0,0,0-2ZM7.333,22a1.75,1.75,0,1,1,1.75-1.75A1.753,1.753,0,0,1,7.333,22Z" fill="#9eabc0" data-original="#000000"/></g></svg>
+
                                        </span> 
                                     </i>Пункт управления</button>
-                                </div>
-
+                                </div>    
                             </form>
                         </div>
                     </div>
@@ -88,6 +89,14 @@
         </div>
     
     </section>
+
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <div th:replace="fragments\layouts\fragmetn_agrigate_layouts_footer.html :: footer_fragment_1"/>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
 
 </div>
 
