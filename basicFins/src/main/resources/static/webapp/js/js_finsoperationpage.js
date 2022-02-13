@@ -196,6 +196,14 @@ $(function(){
     });
 });
 
+//Событие выбора значения выпадающего списка контрагента ПОИСК
+$(function(){
+    $("#contr_agent_select_field_2").change( function(){
+        var strContragentId = $('#contr_agent_select_field').val();
+        $("#contr_agent_select_field_2").attr("select_value",strContragentId)
+    });
+});
+
 //Событие выбора значения выпадающего списка реквизитов
 $(function(){
     $("#contr_agent_requisits_list").change( function(){
@@ -450,6 +458,7 @@ function JSONStringToContragentPickList(JSONString) {
         console.log("JSONStringToContragentPickList ERROR: " + e_1);
     }
     $("#contr_agent_select_field").html(strContragentPickListContext);
+    $("#contr_agent_select_field_2").html(strContragentPickListContext);
 
 }
 
