@@ -491,6 +491,8 @@ function JSONStringToContactFinsAccList(JSONString) {
     });
     $("#paymentaccoutid_list").html(strContactFinsAccListContext);
     $("#paymentaccinid_list").html(strContactFinsAccListContext);
+    $("#paymentacc_select_id_list").html(strContactFinsAccListContext);
+
 }
 
 //Парсинг JSON списка LOV (Поле "Статья")
