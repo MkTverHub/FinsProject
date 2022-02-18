@@ -245,6 +245,22 @@ $(function(){
     });
 });
 
+//Событие выбора значения выпадающего "Тип операции" на фильтре поиска
+$(function(){
+    $("#operation_type_field_ss1").change( function(){
+        var strSelectValue = $(this).val();
+        $('#operation_type_field_ss1').attr('select_value',strSelectValue);
+    });
+});
+
+//Событие выбора значения выпадающего "Контрагенты" на фильтре поиска
+$(function(){
+    $("#contr_agent_select_field_ss1").change( function(){
+        var strSelectValue = $(this).val();
+        $('#contr_agent_select_field_ss1').attr('select_value',strSelectValue);
+    });
+});
+
 //Событие Нажатия на "Приход"
 $(function(){
     $("#arrivalbt").on('click', function(){
@@ -289,6 +305,16 @@ $(function(){
         }
     });
 });
+
+//Нажатие на кнопку поиска на фильтре Финс операций
+function SearchSpecification1() {
+    var strSQLSpec = "";
+    var strOperationType = $('#operation_type_field_ss1').attr('select_value');
+    console.log(strOperationType);
+
+}
+
+
 
 //------------Общие функции----------------------------------
 //Очистить форму финансовой операции
@@ -458,7 +484,7 @@ function JSONStringToContragentPickList(JSONString) {
         console.log("JSONStringToContragentPickList ERROR: " + e_1);
     }
     $("#contr_agent_select_field").html(strContragentPickListContext);
-    $("#contr_agent_select_field_2").html(strContragentPickListContext);
+    $("#contr_agent_select_field_ss1").html(strContragentPickListContext);
 
 }
 

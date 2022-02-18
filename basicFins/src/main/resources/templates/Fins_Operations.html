@@ -405,11 +405,11 @@
                                                                 <div class="col-md-12">
                                                                     <label>Тип операции</label>
                                                                     <div class="customize-input">
-                                                                        <select class="custom-select form-control">
-                                                                            <option selected="">Все</option>
-                                                                            <option value="1">Расход</option>
-                                                                            <option value="2">Перевод</option>
-                                                                            <option value="3">Приход</option>
+                                                                        <select class="custom-select form-control" id="operation_type_field_ss1" select_value="All">
+                                                                            <option selected="All">Все</option>
+                                                                            <option value="expensebt">Расход</option>
+                                                                            <option value="transferbt">Перевод</option>
+                                                                            <option value="arrivalbt">Приход</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -420,7 +420,7 @@
                                                                 <div class="col-md-12">
                                                                     <label>Контрагенты</label>
                                                                     <div class="customize-input">
-                                                                        <select class="custom-select form-control" id="contr_agent_select_field_2" select_value="0">
+                                                                        <select class="custom-select form-control" id="contr_agent_select_field_ss1" select_value="0">
                                                                             <!--<option selected="">Выбрать</option>-->
                                                                         </select>
                                                                     </div>
@@ -428,15 +428,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    <!-- Кнопки для поиска записи в БД -->
-                                                    <div class="form-actions">
-                                                        <div class="text-right">
-                                                            <button type="submit" class="btn btn-info">Поиск</button>
-                                                            <button type="submit" class="btn btn-info">Сброс</button>
-                                                        </div>
-                                                    </div>
                                                 </form>
+
+                                            <!-- Кнопки для поиска записи в БД -->
+                                            <div class="form-actions">
+                                                <div class="text-right">
+                                                    <button onClick='SearchSpecification1()' class="btn btn-info">Поиск</button>
+                                                    <button type="submit" class="btn btn-info">Сброс</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
