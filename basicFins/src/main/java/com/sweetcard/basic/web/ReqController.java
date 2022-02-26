@@ -121,7 +121,7 @@ public class ReqController {
     //--------------------Экран Финансовых операций---------------------
     //-------Получить список финансовых операций в рамках проекта
     @RequestMapping(value = "/GetProjFinsOperList", method = RequestMethod.GET)
-    public @ResponseBody Response GetProjFinsOperList(@RequestParam String FinsProjectId,@RequestParam String RowCount,@RequestParam String RowCounter){
+    public @ResponseBody Response GetProjFinsOperList(@RequestParam String FinsProjectId,@RequestParam String RowCount,@RequestParam String RowCounter, @RequestParam String OperTypeSS){
         logger.info("ReqController.GetProjFinsOperList -> " + FinsProjectId);
         try{
             Integer intRowCount = 10;
@@ -135,7 +135,7 @@ public class ReqController {
                 intRowCounter = 0;
                 logger.info("ReqController.GetProjFinsOperList -> ex_counter: " + ex_counter);
             }
-            return GetProjectFinsOperationList(FinsProjectId,intRowCount,intRowCounter);
+            return GetProjectFinsOperationList(FinsProjectId,intRowCount,intRowCounter,OperTypeSS);
         }catch (Exception ex_1){
             logger.info("ReqController.GetProjFinsOperList -> Error: " + ex_1);
             Response result = new Response();
@@ -930,17 +930,31 @@ public class ReqController {
     }
 
     //Получить Ajax Response с списком всех финансовых операций проекта в виде JSON строки
-    private Response GetProjectFinsOperationList(String FinsProjectId,Integer intRowCount, Integer intRowCounter){
+    private Response GetProjectFinsOperationList(String FinsProjectId,Integer intRowCount, Integer RowCounter, String OperTypeSS){
         try{
-            logger.info("ReqController.GetProjectFinsOperationList -> Project: " + FinsProjectId);
+            logger.info("ReqController.GetProjectFinsOperationList -> Project: " + FinsProjectId + " OperTypeSS: " + OperTypeSS);
             //Получение логина пользователя
             String strUserLogin = GetUserLogin();
             Integer intProjectId = Integer.parseInt(FinsProjectId);
             //Получить список финансовых операций по проекту
             Integer intLimit = intRowCount;
-            Integer intOffset = intRowCounter*intRowCount;
+            Integer intOffset = RowCounter*intRowCount;
             List<AggrFinsdata> financedataList = financedataRepository.GetAllByProj(intProjectId,intLimit,intOffset);
-            logger.info("ReqController.GetProjectFinsOperationList -> row_count: " + financedataList.size() + " Limit: " + intLimit + " Offset: " + intOffset);
+
+            logger.info("ReqController.GetProjectFinsOperationList -> Size: " + financedataList.size());
+            if(OperTypeSS.compareTo("All") != 0)
+            {
+                logger.info("ReqController.GetProjectFinsOperationList -> OperTypeSS = " + OperTypeSS);
+                for(int i1=0; i1 < financedataList.size(); i1++){
+                    String strCheckOperType = financedataList.get(i1).getFinsopertype();
+                    if(financedataList.get(i1).getFinsopertype().compareTo(OperTypeSS)!=0){
+                        financedataList.remove(i1);
+                        i1--;
+                    }
+                }
+            }
+
+
 
             //Создать экземпляр ответа и отправить JSON строку
             Response result = new Response();

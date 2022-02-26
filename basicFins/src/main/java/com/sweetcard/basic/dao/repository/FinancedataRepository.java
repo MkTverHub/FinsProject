@@ -60,7 +60,6 @@ public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integ
     @Query(value = "select  case when sum(amount) is null then 0 else sum(amount) end as expense from financedata where project_id = :fins_project_id and fins_oper_type = 'expense'", nativeQuery = true)
     String GetProjectExpense (@Param("fins_project_id") Integer finsprojectid);
 
-    //----Отчетность----------
-    //Получить profit по годам
+
 
 }

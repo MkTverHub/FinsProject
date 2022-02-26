@@ -310,6 +310,7 @@ $(function(){
 function SearchSpecification1() {
     var strSQLSpec = "";
     var strOperationType = $('#operation_type_field_ss1').attr('select_value');
+    doAjaxGetActiveProjectContext();
     console.log(strOperationType);
 
 }
@@ -617,9 +618,10 @@ function doAjaxGetActiveProjectContext() {
                 var strActiveProjectId = obj.active_proj;
                 var strCount = $('#fins_operation_count_id').val();
                 var strCounter = $('#fins_operation_counter_id').val();
+                var strOperTypeSS =  $('#operation_type_field_ss1').attr("select_value");
                 if(strCount=""){strCount="5";}
                 if(strCounter=""){strCounter="0";}
-                doAjaxGetProjectOperationList(strActiveProjectId,strCount,strCounter);
+                doAjaxGetProjectOperationList(strActiveProjectId,strCount,strCounter,strOperTypeSS);
                 doAjaxGetProjectProfit();
                 doAjaxGetContactFinsAccProject(strActiveProjectId);
                 SpinnerOff("doAjaxGetActiveProjectContext");
@@ -635,7 +637,7 @@ function doAjaxGetActiveProjectContext() {
 
 
 //Ajax получение списка операций по проекту
-function doAjaxGetProjectOperationList(ProjectNum,Count,Counter) {
+function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS) {
     SpinnerOn("doAjaxGetProjectOperationList");
     try {
         $.ajax({
@@ -647,7 +649,8 @@ function doAjaxGetProjectOperationList(ProjectNum,Count,Counter) {
             data: ({
                 FinsProjectId: ProjectNum,
                 RowCount: Count,
-                RowCounter: Counter
+                RowCounter: Counter,
+                OperTypeSS: OperTypeSS
 
             }),
             success: function (data) {
