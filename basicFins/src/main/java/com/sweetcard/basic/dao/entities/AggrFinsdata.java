@@ -17,9 +17,11 @@ public class AggrFinsdata {
     private String finsopertype;
     private String payaccin;
     private String payaccin_name;
+    private Integer payaccin_cnt_agnt_id;
     private String payaccin_position;
     private String payaccout;
     private String payaccout_name;
+    private Integer payaccout_cnt_agnt_id;
     private String payaccout_position;
     private Integer finsarticle;
     private Integer projectid;
@@ -57,11 +59,13 @@ public class AggrFinsdata {
         this.payaccin = payaccin;
     }
     public void setPayaccin_name(String payaccin_name) {this.payaccin_name = payaccin_name;}
+    public void setPayaccin_cnt_agnt_id(Integer payaccin_cnt_agnt_id) {this.payaccin_cnt_agnt_id = payaccin_cnt_agnt_id;}
     public void setPayaccin_position(String payaccin_position) {this.payaccin_position = payaccin_position;}
     public void setPayaccout(String payaccout) {
         this.payaccout = payaccout;
     }
     public void setPayaccout_name(String payaccout_name) {this.payaccout_name = payaccout_name;}
+    public void setPayaccout_cnt_agnt_id(Integer payaccout_cnt_agnt_id) {this.payaccout_cnt_agnt_id = payaccout_cnt_agnt_id;}
     public void setPayaccout_position(String payaccout_position) {this.payaccout_position = payaccout_position;}
     public void setFinsarticle(Integer finsarticle) {
         this.finsarticle = finsarticle;
@@ -109,11 +113,13 @@ public class AggrFinsdata {
         return payaccin;
     }
     public String getPayaccin_name() {return payaccin_name;}
+    public Integer getPayaccin_cnt_agnt_id() {return payaccin_cnt_agnt_id;}
     public String getPayaccin_position() {return payaccin_position; }
     public String getPayaccout() {
         return payaccout;
     }
     public String getPayaccout_name() {return payaccout_name;}
+    public Integer getPayaccout_cnt_agnt_id() {return payaccout_cnt_agnt_id;}
     public String getPayaccout_position() { return payaccout_position; }
     public Integer getFinsarticle() {
         return finsarticle;

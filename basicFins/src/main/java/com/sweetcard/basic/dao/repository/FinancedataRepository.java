@@ -30,9 +30,11 @@ public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integ
             "              t1.oper_login_user as oper_login_user,\n" +
             "              case when t1.fins_oper_type = 'expense' then t3.fins_acc else case when t1.fins_oper_type = 'profit' then t1.pay_acc_in else t1.pay_acc_in end end payaccin,\n" +
             "              case when t1.fins_oper_type = 'expense' then t2.name else case when t1.fins_oper_type = 'profit' then cnt_in.first_name else cnt_in.first_name end end payaccin_name,\n" +
+            "              case when t1.fins_oper_type = 'expense' then t2.id else case when t1.fins_oper_type = 'profit' then 0 else 0 end end payaccin_cnt_agnt_id,\n" +
             "              case when t1.fins_oper_type = 'expense' then t2.description else case when t1.fins_oper_type = 'profit' then cnt_in.description else cnt_in.description end end payaccin_position,\n" +
             "              case when t1.fins_oper_type = 'expense' then t1.pay_acc_out else case when t1.fins_oper_type = 'profit' then t3.fins_acc else t1.pay_acc_out end end payaccout,\n" +
             "              case when t1.fins_oper_type = 'expense' then cnt_out.first_name else case when t1.fins_oper_type = 'profit' then t2.name else cnt_out.first_name end end payaccout_name,\n" +
+            "              case when t1.fins_oper_type = 'expense' then 0 else case when t1.fins_oper_type = 'profit' then t2.id else 0 end end payaccout_cnt_agnt_id,\n" +
             "              case when t1.fins_oper_type = 'expense' then cnt_out.description else case when t1.fins_oper_type = 'profit' then t2.description else cnt_out.description end end payaccout_position,\n" +
             "              t1.project_id as projectid,t1.requisites,t1.fins_article as finsarticle,t2.name as contragent_name, t3.name as requisites_name, t4.text_val as article_name,prp.id as purpose_id,prp.name as purpose_name\n" +
             "            FROM\n" +
