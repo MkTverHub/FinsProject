@@ -18,10 +18,12 @@ public class AggrFinsdata {
     private String payaccin;
     private String payaccin_name;
     private Integer payaccin_cnt_agnt_id;
+    private Integer payaccin_contact_id;
     private String payaccin_position;
     private String payaccout;
     private String payaccout_name;
     private Integer payaccout_cnt_agnt_id;
+    private Integer payaccout_contact_id;
     private String payaccout_position;
     private Integer finsarticle;
     private Integer projectid;
@@ -29,6 +31,7 @@ public class AggrFinsdata {
     private Integer requisites;
     private String requisites_name;
     private String contragent_name;
+    private Integer article_id;
     private String article_name;
     private Integer purpose_id;
     private String purpose_name;
@@ -60,12 +63,14 @@ public class AggrFinsdata {
     }
     public void setPayaccin_name(String payaccin_name) {this.payaccin_name = payaccin_name;}
     public void setPayaccin_cnt_agnt_id(Integer payaccin_cnt_agnt_id) {this.payaccin_cnt_agnt_id = payaccin_cnt_agnt_id;}
+    public void setPayaccin_contact_id(Integer payaccin_contact_id) {this.payaccin_contact_id = payaccin_contact_id;}
     public void setPayaccin_position(String payaccin_position) {this.payaccin_position = payaccin_position;}
     public void setPayaccout(String payaccout) {
         this.payaccout = payaccout;
     }
     public void setPayaccout_name(String payaccout_name) {this.payaccout_name = payaccout_name;}
     public void setPayaccout_cnt_agnt_id(Integer payaccout_cnt_agnt_id) {this.payaccout_cnt_agnt_id = payaccout_cnt_agnt_id;}
+    public void setPayaccout_contact_id(Integer payaccout_contact_id) {this.payaccout_contact_id = payaccout_contact_id; }
     public void setPayaccout_position(String payaccout_position) {this.payaccout_position = payaccout_position;}
     public void setFinsarticle(Integer finsarticle) {
         this.finsarticle = finsarticle;
@@ -85,6 +90,7 @@ public class AggrFinsdata {
     public void setContragent_name(String contragent_name) {
         this.contragent_name = contragent_name;
     }
+    public void setArticle_id(Integer article_id) {this.article_id = article_id;}
     public void setArticle_name(String article_name) {
         this.article_name = article_name;
     }
@@ -114,12 +120,14 @@ public class AggrFinsdata {
     }
     public String getPayaccin_name() {return payaccin_name;}
     public Integer getPayaccin_cnt_agnt_id() {return payaccin_cnt_agnt_id;}
+    public Integer getPayaccin_contact_id() {return payaccin_contact_id;}
     public String getPayaccin_position() {return payaccin_position; }
     public String getPayaccout() {
         return payaccout;
     }
     public String getPayaccout_name() {return payaccout_name;}
     public Integer getPayaccout_cnt_agnt_id() {return payaccout_cnt_agnt_id;}
+    public Integer getPayaccout_contact_id() {return payaccout_contact_id;}
     public String getPayaccout_position() { return payaccout_position; }
     public Integer getFinsarticle() {
         return finsarticle;
@@ -139,6 +147,7 @@ public class AggrFinsdata {
     public String getContragent_name() {
         return contragent_name;
     }
+    public Integer getArticle_id() {return article_id;}
     public String getArticle_name() {
         return article_name;
     }

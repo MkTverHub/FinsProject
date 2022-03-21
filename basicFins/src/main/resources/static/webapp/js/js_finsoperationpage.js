@@ -261,6 +261,30 @@ $(function(){
     });
 });
 
+//Событие выбора значения выпадающего "Статья" на фильтре поиска
+$(function(){
+    $("#article_ss1").change( function(){
+        var strSelectValue = $('#article_ss1').val();
+        $('#article_ss1').attr('select_value',strSelectValue);
+    });
+});
+
+//Событие выбора значения выпадающего "Цель" на фильтре поиска
+$(function(){
+    $("#purpose_ss1").change( function(){
+        var strSelectValue = $(this).val();
+        $('#purpose_ss1').attr('select_value',strSelectValue);
+    });
+});
+
+//Событие выбора значения выпадающего "Цель" на фильтре поиска
+$(function(){
+    $("#contact_ss1").change( function(){
+        var strSelectValue = $(this).val();
+        $('#contact_ss1').attr('select_value',strSelectValue);
+    });
+});
+
 //Событие Нажатия на "Приход"
 $(function(){
     $("#arrivalbt").on('click', function(){
@@ -506,18 +530,23 @@ function JSONStringToRequisitsPickList(JSONString) {
 function JSONStringToContactFinsAccList(JSONString) {
     var strContactName = '';
     var strContactFinsAcc = '';
+    var strContactId = '';
     var strContactFinsAccListContext = '<option value="0">Выберите значение</option>';
+
+    var strContactListContext = '<option value="0">Выберите значение</option>';//Список для фильтра поиска
 
     var obj = jQuery.parseJSON(JSONString);
     $.each(obj, function (index, value) {
         if(value['first_name'] == null){strContactName = 'null';} else {strContactName = value['first_name'].toString();}
         if(value['fins_acc'] == null){strContactFinsAcc = 'null';} else {strContactFinsAcc = value['fins_acc'].toString();}
+        if(value['id'] == null){strContactId = '0';} else {strContactId = value['id'].toString();}
         strContactFinsAccListContext = strContactFinsAccListContext + '<option value = "' + strContactFinsAcc + '">' + strContactName + '</option>';
+        strContactListContext = strContactListContext + '<option value = "' + strContactId + '">' + strContactName + '</option>';
     });
     $("#paymentaccoutid_list").html(strContactFinsAccListContext);
     $("#paymentaccinid_list").html(strContactFinsAccListContext);
     $("#paymentacc_select_id_list").html(strContactFinsAccListContext);
-
+    $("#contact_ss1").html(strContactListContext);
 }
 
 //Парсинг JSON списка LOV (Поле "Статья")
@@ -533,6 +562,9 @@ function JSONStringToFinsArticleList(JSONString) {
         strFinsArticleListContext = strFinsArticleListContext + '<option value = "' + strFinsArticleId + '">' + strFinsArticleValue + '</option>';
     });
     $("#finsarticleid_list").html(strFinsArticleListContext);
+
+    $("#article_ss1").html(strFinsArticleListContext);
+
 }
 
 //Парсинг JSON списка целей (Поле "Цель")
@@ -549,6 +581,7 @@ function JSONStringToFinsPurposeList(JSONString) {
             strFinsPurposeListContext = strFinsPurposeListContext + '<option value = "' + strFinsPurposeId + '" key="' + strFinsPurposeId +'">' + strFinsPurposeName + '</option>';
         });
         $("#purpose_list_id").html(strFinsPurposeListContext);
+        $("#purpose_ss1").html(strFinsPurposeListContext);
     }catch (e_1) {
         console.log("JSONStringToFinsPurposeList ERROR: " + e_1);
     }
@@ -618,9 +651,15 @@ function doAjaxGetActiveProjectContext() {
                 var strCounter = $('#fins_operation_counter_id').val();
                 var strOperTypeSS =  $('#operation_type_field_ss1').attr("select_value");
                 var intContragentIdSS =  $('#contr_agent_select_field_ss1').attr("select_value");
+                var strAmountFromSS = $('#amount_from_ss1').val();
+                var strAmountToSS = $('#amount_to_ss1').val();
+                var intArticleIdSS = $('#article_ss1').attr("select_value");
+                var intPurposeIdSS = $('#purpose_ss1').attr("select_value");
+                var intContactIdSS = $('#contact_ss1').attr("select_value");
+
                 if(strCount=""){strCount="5";}
                 if(strCounter=""){strCounter="0";}
-                doAjaxGetProjectOperationList(strActiveProjectId,strCount,strCounter,strOperTypeSS,intContragentIdSS);
+                doAjaxGetProjectOperationList(strActiveProjectId,strCount,strCounter,strOperTypeSS,intContragentIdSS,strAmountFromSS,strAmountToSS,intArticleIdSS,intPurposeIdSS,intContactIdSS);
                 doAjaxGetProjectProfit();
                 doAjaxGetContactFinsAccProject(strActiveProjectId);
                 SpinnerOff("doAjaxGetActiveProjectContext");
@@ -636,7 +675,7 @@ function doAjaxGetActiveProjectContext() {
 
 
 //Ajax получение списка операций по проекту
-function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS,ContragentIdSS) {
+function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS) {
     SpinnerOn("doAjaxGetProjectOperationList");
     try {
         $.ajax({
@@ -650,7 +689,12 @@ function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS,Contr
                 RowCount: Count,
                 RowCounter: Counter,
                 OperTypeSS: OperTypeSS,
-                ContragentIdSS: ContragentIdSS
+                ContragentIdSS: ContragentIdSS,
+                AmountFromSS: AmountFromSS,
+                AmountToSS: AmountToSS,
+                ArticleIdSS: ArticleIdSS,
+                PurposeIdSS: PurposeIdSS,
+                ContactIdSS: ContactIdSS
             }),
             success: function (data) {
                 if (data.text != null) {

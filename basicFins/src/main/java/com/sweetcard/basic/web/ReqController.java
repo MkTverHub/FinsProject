@@ -121,7 +121,7 @@ public class ReqController {
     //--------------------Экран Финансовых операций---------------------
     //-------Получить список финансовых операций в рамках проекта
     @RequestMapping(value = "/GetProjFinsOperList", method = RequestMethod.GET)
-    public @ResponseBody Response GetProjFinsOperList(@RequestParam String FinsProjectId,@RequestParam String RowCount,@RequestParam String RowCounter, @RequestParam String OperTypeSS, @RequestParam Integer ContragentIdSS){
+    public @ResponseBody Response GetProjFinsOperList(@RequestParam String FinsProjectId,@RequestParam String RowCount,@RequestParam String RowCounter, @RequestParam String OperTypeSS, @RequestParam Integer ContragentIdSS, @RequestParam String AmountFromSS, @RequestParam String AmountToSS, @RequestParam Integer ArticleIdSS, @RequestParam Integer PurposeIdSS, @RequestParam Integer ContactIdSS){
         logger.info("ReqController.GetProjFinsOperList -> " + FinsProjectId);
         try{
             Integer intRowCount = 10;
@@ -135,7 +135,7 @@ public class ReqController {
                 intRowCounter = 0;
                 logger.info("ReqController.GetProjFinsOperList -> ex_counter: " + ex_counter);
             }
-            return GetProjectFinsOperationList(FinsProjectId,intRowCount,intRowCounter,OperTypeSS,ContragentIdSS);
+            return GetProjectFinsOperationList(FinsProjectId,intRowCount,intRowCounter,OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS);
         }catch (Exception ex_1){
             logger.info("ReqController.GetProjFinsOperList -> Error: " + ex_1);
             Response result = new Response();
@@ -930,9 +930,9 @@ public class ReqController {
     }
 
     //Получить Ajax Response с списком всех финансовых операций проекта в виде JSON строки
-    private Response GetProjectFinsOperationList(String FinsProjectId,Integer intRowCount, Integer RowCounter, String OperTypeSS, Integer ContragentIdSS){
+    private Response GetProjectFinsOperationList(String FinsProjectId,Integer intRowCount, Integer RowCounter, String OperTypeSS, Integer ContragentIdSS, String AmountFromSS, String AmountToSS, Integer ArticleIdSS, Integer PurposeIdSS, Integer ContactIdSS){
         try{
-            logger.info("ReqController.GetProjectFinsOperationList -> Project: " + FinsProjectId + " OperTypeSS: " + OperTypeSS + ", ContragentIdSS: " + ContragentIdSS);
+            logger.info("ReqController.GetProjectFinsOperationList -> Project: " + FinsProjectId + " OperTypeSS: " + OperTypeSS + ", ContragentIdSS: " + ContragentIdSS + ", AmountFromSS: " + AmountFromSS + ", AmountToSS: " + AmountToSS + ", ArticleIdSS: " + ArticleIdSS + ", PurposeIdSS: " + PurposeIdSS + ", ContactIdSS: " + ContactIdSS);
             //Получение логина пользователя
             String strUserLogin = GetUserLogin();
             Integer intProjectId = Integer.parseInt(FinsProjectId);
@@ -941,11 +941,26 @@ public class ReqController {
             Integer intOffset = RowCounter*intRowCount;
             List<AggrFinsdata> financedataList = financedataRepository.GetAllByProj(intProjectId,intLimit,intOffset);
 
-            logger.info("ReqController.GetProjectFinsOperationList -> Size: " + financedataList.size());
+            //logger.info("ReqController.GetProjectFinsOperationList -> Size: " + financedataList.size());
 
+
+            Float flAmountFromSS = null;
+            Float flAmountToSS = null;
+            try{
+                if(AmountFromSS != null){
+                    if(AmountFromSS.length() > 0){
+                        flAmountFromSS = Float.valueOf(AmountFromSS);
+                    }
+                }
+                if(AmountToSS != null){
+                    if(AmountToSS.length() > 0){
+                        flAmountToSS = Float.valueOf(AmountToSS);
+                    }
+                }
+            }catch (Exception ex_str_to_fl){
+                logger.info("ReqController.GetProjectFinsOperationList -> flAmountFromSS or flAmountToSS Error:" + ex_str_to_fl);
+            }
             for(int i1=0; i1 < financedataList.size(); i1++){
-                Integer intContragentId_Out = financedataList.get(i1).getPayaccout_cnt_agnt_id();
-                Integer intContragentId_In = financedataList.get(i1).getPayaccin_cnt_agnt_id();
                 if(OperTypeSS.compareTo("All") != 0){
                     if(financedataList.get(i1).getFinsopertype().compareTo(OperTypeSS)!=0){
                         financedataList.remove(i1);
@@ -958,7 +973,36 @@ public class ReqController {
                         i1--;
                     }
                 }
-
+                if(ArticleIdSS > 0){
+                    if(financedataList.get(i1).getArticle_id() != ArticleIdSS){
+                        financedataList.remove(i1);
+                        i1--;
+                    }
+                }
+                if(PurposeIdSS > 0){
+                    if(financedataList.get(i1).getPurpose_id() != PurposeIdSS){
+                        financedataList.remove(i1);
+                        i1--;
+                    }
+                }
+                if(ContactIdSS > 0){
+                    if(financedataList.get(i1).getPayaccout_cnt_agnt_id() != ContactIdSS && financedataList.get(i1).getPayaccin_cnt_agnt_id() != ContactIdSS){
+                        financedataList.remove(i1);
+                        i1--;
+                    }
+                }
+                if(flAmountFromSS != null){
+                    if(financedataList.get(i1).getAmount() < flAmountFromSS){
+                        financedataList.remove(i1);
+                        i1--;
+                    }
+                }
+                if(flAmountToSS != null){
+                    if(financedataList.get(i1).getAmount() > flAmountToSS){
+                        financedataList.remove(i1);
+                        i1--;
+                    }
+                }
             }
 
 
