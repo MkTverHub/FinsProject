@@ -656,10 +656,13 @@ function doAjaxGetActiveProjectContext() {
                 var intArticleIdSS = $('#article_ss1').attr("select_value");
                 var intPurposeIdSS = $('#purpose_ss1').attr("select_value");
                 var intContactIdSS = $('#contact_ss1').attr("select_value");
+                var strDateFromSS = $('#date_from_ss1').val();
+                var strDateToSS = $('#date_to_ss1').val();
 
                 if(strCount=""){strCount="5";}
                 if(strCounter=""){strCounter="0";}
-                doAjaxGetProjectOperationList(strActiveProjectId,strCount,strCounter,strOperTypeSS,intContragentIdSS,strAmountFromSS,strAmountToSS,intArticleIdSS,intPurposeIdSS,intContactIdSS);
+
+                doAjaxGetProjectOperationList(strActiveProjectId,strCount,strCounter,strOperTypeSS,intContragentIdSS,strAmountFromSS,strAmountToSS,intArticleIdSS,intPurposeIdSS,intContactIdSS,strDateFromSS,strDateToSS);
                 doAjaxGetProjectProfit();
                 doAjaxGetContactFinsAccProject(strActiveProjectId);
                 SpinnerOff("doAjaxGetActiveProjectContext");
@@ -675,7 +678,7 @@ function doAjaxGetActiveProjectContext() {
 
 
 //Ajax получение списка операций по проекту
-function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS) {
+function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS,DateFromSS,DateToSS) {
     SpinnerOn("doAjaxGetProjectOperationList");
     try {
         $.ajax({
@@ -694,7 +697,9 @@ function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS,Contr
                 AmountToSS: AmountToSS,
                 ArticleIdSS: ArticleIdSS,
                 PurposeIdSS: PurposeIdSS,
-                ContactIdSS: ContactIdSS
+                ContactIdSS: ContactIdSS,
+                DateFromSS: DateFromSS,
+                DateToSS: DateToSS
             }),
             success: function (data) {
                 if (data.text != null) {

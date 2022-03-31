@@ -20,9 +20,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.persistence.criteria.CriteriaBuilder;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+//import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 
@@ -121,7 +127,7 @@ public class ReqController {
     //--------------------Экран Финансовых операций---------------------
     //-------Получить список финансовых операций в рамках проекта
     @RequestMapping(value = "/GetProjFinsOperList", method = RequestMethod.GET)
-    public @ResponseBody Response GetProjFinsOperList(@RequestParam String FinsProjectId,@RequestParam String RowCount,@RequestParam String RowCounter, @RequestParam String OperTypeSS, @RequestParam Integer ContragentIdSS, @RequestParam String AmountFromSS, @RequestParam String AmountToSS, @RequestParam Integer ArticleIdSS, @RequestParam Integer PurposeIdSS, @RequestParam Integer ContactIdSS){
+    public @ResponseBody Response GetProjFinsOperList(@RequestParam String FinsProjectId,@RequestParam String RowCount,@RequestParam String RowCounter, @RequestParam String OperTypeSS, @RequestParam Integer ContragentIdSS, @RequestParam String AmountFromSS, @RequestParam String AmountToSS, @RequestParam Integer ArticleIdSS, @RequestParam Integer PurposeIdSS, @RequestParam Integer ContactIdSS, @RequestParam String DateFromSS, @RequestParam String DateToSS){
         logger.info("ReqController.GetProjFinsOperList -> " + FinsProjectId);
         try{
             Integer intRowCount = 10;
@@ -135,7 +141,7 @@ public class ReqController {
                 intRowCounter = 0;
                 logger.info("ReqController.GetProjFinsOperList -> ex_counter: " + ex_counter);
             }
-            return GetProjectFinsOperationList(FinsProjectId,intRowCount,intRowCounter,OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS);
+            return GetProjectFinsOperationList(FinsProjectId,intRowCount,intRowCounter,OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS,DateFromSS,DateToSS);
         }catch (Exception ex_1){
             logger.info("ReqController.GetProjFinsOperList -> Error: " + ex_1);
             Response result = new Response();
@@ -930,9 +936,9 @@ public class ReqController {
     }
 
     //Получить Ajax Response с списком всех финансовых операций проекта в виде JSON строки
-    private Response GetProjectFinsOperationList(String FinsProjectId,Integer intRowCount, Integer RowCounter, String OperTypeSS, Integer ContragentIdSS, String AmountFromSS, String AmountToSS, Integer ArticleIdSS, Integer PurposeIdSS, Integer ContactIdSS){
+    private Response GetProjectFinsOperationList(String FinsProjectId,Integer intRowCount, Integer RowCounter, String OperTypeSS, Integer ContragentIdSS, String AmountFromSS, String AmountToSS, Integer ArticleIdSS, Integer PurposeIdSS, Integer ContactIdSS, String DateFromSS, String DateToSS){
         try{
-            logger.info("ReqController.GetProjectFinsOperationList -> Project: " + FinsProjectId + " OperTypeSS: " + OperTypeSS + ", ContragentIdSS: " + ContragentIdSS + ", AmountFromSS: " + AmountFromSS + ", AmountToSS: " + AmountToSS + ", ArticleIdSS: " + ArticleIdSS + ", PurposeIdSS: " + PurposeIdSS + ", ContactIdSS: " + ContactIdSS);
+            logger.info("ReqController.GetProjectFinsOperationList -> Project: " + FinsProjectId + " OperTypeSS: " + OperTypeSS + ", ContragentIdSS: " + ContragentIdSS + ", AmountFromSS: " + AmountFromSS + ", AmountToSS: " + AmountToSS + ", ArticleIdSS: " + ArticleIdSS + ", PurposeIdSS: " + PurposeIdSS + ", ContactIdSS: " + ContactIdSS + ", DateFromSS: " + DateFromSS + ", DateToSS: " + DateToSS);
             //Получение логина пользователя
             String strUserLogin = GetUserLogin();
             Integer intProjectId = Integer.parseInt(FinsProjectId);
@@ -940,9 +946,11 @@ public class ReqController {
             Integer intLimit = intRowCount;
             Integer intOffset = RowCounter*intRowCount;
             List<AggrFinsdata> financedataList = financedataRepository.GetAllByProj(intProjectId,intLimit,intOffset);
-
-            //logger.info("ReqController.GetProjectFinsOperationList -> Size: " + financedataList.size());
-
+            DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            String strDateOperationDb = "";
+            Date dtDateOperationDb = null;
+            Date dtDateSSFrom = null;
+            Date dtDateSSTo = null;
 
             Float flAmountFromSS = null;
             Float flAmountToSS = null;
@@ -1003,6 +1011,36 @@ public class ReqController {
                         i1--;
                     }
                 }
+
+
+                //ogger.info("ReqController.GetProjectFinsOperationList -> DateSS: " + DateFromSS + " / " + financedataList.get(i1).getOperdate_user() + " / " + DateToSS);
+                try{
+                    strDateOperationDb = financedataList.get(i1).getOperdate_user();
+                    dtDateOperationDb = formatter.parse(strDateOperationDb);
+                    dtDateSSFrom = formatter.parse(DateFromSS);
+                    if(dtDateOperationDb.before(dtDateSSFrom)){
+                        //logger.info("ReqController.GetProjectFinsOperationList -> DateFrom: remove " + strDateOperationDb);
+                        financedataList.remove(i1);
+                        i1--;
+                    }
+                }catch (Exception ex_date_f){
+                    //logger.info("ReqController.GetProjectFinsOperationList -> DateFromSS_Error: " + ex_date_f);
+                }
+
+
+                try{
+                    strDateOperationDb = financedataList.get(i1).getOperdate_user();
+                    dtDateOperationDb = formatter.parse(strDateOperationDb);
+                    dtDateSSTo = formatter.parse(DateToSS);
+                    if(dtDateOperationDb.after(dtDateSSTo)){
+                        //logger.info("ReqController.GetProjectFinsOperationList -> DateTo: remove " + strDateOperationDb);
+                        financedataList.remove(i1);
+                        i1--;
+                    }
+                }catch (Exception ex_date_t){
+                    //logger.info("ReqController.GetProjectFinsOperationList -> DateToSS_Error: " + ex_date_t);
+                }
+
             }
 
 
