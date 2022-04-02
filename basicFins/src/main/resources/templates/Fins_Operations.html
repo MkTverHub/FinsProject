@@ -406,7 +406,8 @@
                                                                     <label>Тип операции</label>
                                                                     <div class="customize-input">
                                                                         <select class="custom-select form-control" id="operation_type_field_ss1" select_value="All">
-                                                                            <option selected="All">Все</option>
+                                                                            <option selected="All">Выберите значение</option>
+                                                                            <option value="all">Все операции</option>
                                                                             <option value="expense">Расход</option>
                                                                             <option value="transfer">Перевод</option>
                                                                             <option value="profit">Приход</option>
@@ -417,6 +418,46 @@
                                                         </div>
 
                                                         <div class="form-group">
+	                                                        <div class="row">
+	                                                            <div class="col-md-12">
+	                                                                <label>Дата</label>
+	                                                                <div class="row">
+	                                                                    <label class="text-right col-lg-4 align-self-center">От</label>
+	                                                                    <div class="col-lg-8 align-self-center mb-1">
+	                                                                        <input type="date" class="form-control" id="date_from_ss1">
+	                                                                    </div>
+	                                                                </div>
+	                                                                <div class="row">
+	                                                                    <label class="text-right col-lg-4 align-self-center">До</label>
+	                                                                    <div class="col-lg-8 align-self-center mb-1">
+	                                                                        <input type="date" class="form-control" id="date_to_ss1">
+	                                                                    </div>
+	                                                                </div>
+	                                                            </div>
+	                                                        </div>  
+	                                                    </div> 
+
+	                                                    <div class="form-group">
+		                                                    <div class="row">
+		                                                        <div class="col-md-12">
+		                                                            <label>Сумма</label>
+		                                                            <div class="row">
+		                                                                <label class="text-right col-lg-4 align-self-center">От</label>
+		                                                                <div class="col-lg-8 align-self-center mb-1">
+		                                                                    <input type="number" class="form-control" id="amount_from_ss1">
+		                                                                </div>
+		                                                            </div>
+		                                                            <div class="row">
+		                                                                <label class="text-right col-lg-4 align-self-center">До</label>
+		                                                                <div class="col-lg-8 align-self-center mb-1">
+		                                                                    <input type="number" class="form-control" id="amount_to_ss1">
+		                                                                </div>
+		                                                            </div>
+		                                                        </div>
+		                                                    </div>  
+		                                                </div> 
+
+		                                                <div class="form-group">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <label>Контрагенты</label>
@@ -431,44 +472,15 @@
 
                                                         <div class="form-group">
                                                             <div class="row">
-                                                                <label class="col-lg-3 align-self-center">Сумма от</label>
-                                                                <div class="col-lg-3 align-self-center">
-                                                                     <div class="row">
-                                                                         <div class="col-md-12">
-                                                                             <input type="text" class="form-control" id="amount_from_ss1">
-                                                                         </div>
-                                                                     </div>
+                                                                <div class="col-md-12">
+                                                                    <label>Сотрудник</label>
+                                                                    <div class="customize-input">
+                                                                        <select class="custom-select form-control" id="contact_ss1" select_value="0">
+                                                                            <!--<option selected="">Выбрать</option>-->
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
-                                                                <label class="col-lg-1 align-self-center">до</label>
-                                                                <div class="col-lg-3 align-self-center">
-                                                                     <div class="row">
-                                                                         <div class="col-md-12">
-                                                                             <input type="text" class="form-control" id="amount_to_ss1">
-                                                                         </div>
-                                                                     </div>
-                                                                </div>
-                                                            </div> 
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <label class="col-lg-3 align-self-center">Дата от</label>
-                                                                <div class="col-lg-3 align-self-center">
-                                                                     <div class="row">
-                                                                         <div class="col-md-12">
-                                                                             <input type="date" class="form-control" id="date_from_ss1">
-                                                                         </div>
-                                                                     </div>
-                                                                </div>
-                                                                <label class="col-lg-1 align-self-center">до</label>
-                                                                <div class="col-lg-3 align-self-center">
-                                                                     <div class="row">
-                                                                         <div class="col-md-12">
-                                                                             <input type="date" class="form-control" id="date_to_ss1">
-                                                                         </div>
-                                                                     </div>
-                                                                </div>
-                                                            </div> 
+                                                            </div>
                                                         </div>
 
                                                         <div class="form-group">
@@ -496,20 +508,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <label>Сотрудник</label>
-                                                                    <div class="customize-input">
-                                                                        <select class="custom-select form-control" id="contact_ss1" select_value="0">
-                                                                            <!--<option selected="">Выбрать</option>-->
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
                                                     </div>
                                                 </form>
 
