@@ -186,6 +186,18 @@ function BackFinsOperationRowGroup(){
     SetROForm();
 };
 
+//Событие нажатия на кнопку "Сброс" фильтра операций
+function ResetSS1(){
+    $('#operation_type_field_ss1 option:contains("Выберите значение")').prop('selected', true);
+    $('#article_ss1 option:contains("Выберите значение")').prop('selected', true);
+    $('#purpose_ss1 option:contains("Выберите значение")').prop('selected', true);
+    $('#contact_ss1 option:contains("Выберите значение")').prop('selected', true);
+    $("#amount_from_ss1").val("");
+    $("#amount_to_ss1").val("");
+    $("#date_from_ss1").val("");
+    $("#date_to_ss1").val("");
+}
+
 //Событие выбора значения выпадающего списка контрагента
 $(function(){
     $("#contr_agent_select_field").change( function(){
