@@ -196,6 +196,7 @@ function ResetSS1(){
     $("#amount_to_ss1").val("");
     $("#date_from_ss1").val("");
     $("#date_to_ss1").val("");
+    doAjaxGetActiveProjectContext();
 }
 
 //Событие выбора значения выпадающего списка контрагента
