@@ -6,6 +6,60 @@
     <!-- *************************************************************** -->
 
     <section class="left-menu" th:fragment="left_menu_sidebar_1">
+
+    <nav class="sidebar close-left-sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="webapp/images/left-sidebar/logo.png" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">BlueCase</span>
+                    <span class="profession">финансист</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon' ></i>
+                    <input type="search" placeholder="Поиск">
+                </li>
+                <ul class="menu-links">
+                    <li class="list-divider"></li>
+                    <li class="nav-small-cap">
+                        <span class="menu-list-title">Ваши проекты</span>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-cube-alt icon'></i>
+                            <span class="text nav-text">Проект 1</span>
+                        </a>
+                    </li>
+                    <li class="nav-link left-menu-selected-link">
+                        <a href="#">
+                            <i class='bx bx-cube-alt icon'></i>
+                            <span class="text nav-text">Проект 2</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="list-divider"></li>
+                <li class="fins-list-all-project">
+                    <a href="#">
+                        <i class='bx bxs-component icon'></i>
+                        <span class="text nav-text">Все проекты</span>
+                    </a>
+                </li>
+                <li class="list-divider"></li>
+            </div>
+        </div>
+    </nav>
+
+
      <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
             <!-- Sidebar navigation-->
@@ -31,5 +85,16 @@
         </div>
         <!-- End Sidebar scroll-->
     </section>
+
+    <script>
+        
+        const body = document.querySelector("body"),
+        sidebar = document.querySelector(".sidebar"),
+        toggle = document.querySelector(".toggle")
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    </script>
 
 </html>
