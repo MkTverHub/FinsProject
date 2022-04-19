@@ -631,7 +631,6 @@ button:focus {
 }
 
 :root {
-  --body-color: #E4E9F7;
   --sidebar-color: #FFF;
   --primary-color: #695CFE;
   --primary-color-light: #F6F5FF;
@@ -645,7 +644,6 @@ button:focus {
 
 body {
   height: 100vh;
-  background: var(--body-color);
 }
 
 .sidebar {

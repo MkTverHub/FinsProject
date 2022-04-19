@@ -14,4 +14,14 @@
 <!-- Page level custom scripts -->
 <script src="/framework/js/demo/datatables-demo.js"></script>
 
+<script>    
+    const body = document.querySelector("body"),
+    sidebar = document.querySelector(".sidebar"),
+    toggle = document.querySelector(".toggle")
+
+    toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    });
+</script>
+
 </html>
