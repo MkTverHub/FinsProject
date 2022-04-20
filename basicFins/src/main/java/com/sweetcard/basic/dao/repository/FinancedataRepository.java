@@ -25,8 +25,8 @@ public interface FinancedataRepository extends JpaRepository<AggrFinsdata, Integ
     //Выбрать все селектом по проекту
     @Query(value = "SELECT\n" +
             "              t1.id,t1.amount,t1.detail,t1.finscontragent,t1.fins_oper_type as finsopertype,t1.lock_flg as lockflg,\n" +
-            "              to_char(t1.oper_date, 'yyyy-mm-dd') as operdate,\n" +
-            "              to_char(t1.oper_date_user, 'yyyy-mm-dd') as operdate_user,\n" +
+            "              to_char(t1.oper_date, 'yyyy.mm.dd') as operdate,\n" +
+            "              to_char(t1.oper_date_user, 'yyyy.mm.dd') as operdate_user,\n" +
             "              t1.oper_login_user as oper_login_user,\n" +
             "              case when t1.fins_oper_type = 'expense' then t3.fins_acc else case when t1.fins_oper_type = 'profit' then t1.pay_acc_in else t1.pay_acc_in end end payaccin,\n" +
             "              case when t1.fins_oper_type = 'expense' then t2.name else case when t1.fins_oper_type = 'profit' then cnt_in.first_name else cnt_in.first_name end end payaccin_name,\n" +
