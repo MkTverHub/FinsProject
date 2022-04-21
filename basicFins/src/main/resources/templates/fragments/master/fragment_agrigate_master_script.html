@@ -16,12 +16,16 @@
 
 <script>    
     const body = document.querySelector("body"),
-    sidebar = document.querySelector(".sidebar"),
-    toggle = document.querySelector(".toggle")
+      sidebar = document.querySelector(".sidebar"),
+      toggle = document.querySelector(".toggle"),
+      searchBox =  document.querySelector(".search-box") 
 
     toggle.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
+        sidebar.classList.toggle("close-left-sidebar");
     });
+    searchBox.addEventListener("click", () => {
+       sidebar.classList.remove("close-left-sidebar"); 
+    })
 </script>
 
 </html>

@@ -140,7 +140,7 @@ button:focus {
     transition: 0.2s ease-in;
     background: #fafbfd;
     width: 100%;
-    margin-left: 260px;
+    /*margin-left: 260px;*/
 }
 
 .topbar .top-navbar .navbar-header .navbar-brand {
