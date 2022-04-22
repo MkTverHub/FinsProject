@@ -81,6 +81,11 @@ button:focus {
   margin-left: 260px;
 }
 
+.sidebar.close-left-sidebar ~ .page-wrap {
+  left: 88px;
+  width: calc(100% - 88px);
+}
+
 .page-wrap > .container {
   padding: 35px;
   min-height: calc(100vh - 210px); 
