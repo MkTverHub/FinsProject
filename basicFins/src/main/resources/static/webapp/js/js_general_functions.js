@@ -46,29 +46,49 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
             success: function (data) {
                 var strProjectListContext = "";
                 var obj = jQuery.parseJSON(data.text);
-                var strLiClass = 'left-menu-item finsproject_list_row_li';
+                //var strLiClass = 'left-menu-item finsproject_list_row_li';
+                var strLiClass = '';
                 var strLiContext = "";
                 $.each(obj, function (index, value) {
+                    if (value["id"].toString() == ActiveProjectId && PageName != "RoProject") {
+                        strLiClass = 'nav-link finsproject_list_row_li left-menu-selected-link';
+                    } else {
+                        strLiClass = 'nav-link finsproject_list_row_li';
+                    }
+
                     if (PageName == "RoProject") {
                         strLiContext = '<div class="finsproject_list_link_row">' + value["name"] + '</div>';
                     } else {
-                        strLiContext = '<a class="finsproject_list_link_row" href="/' + PageName + '?ProjectId=' + value["id"].toString() + '" projnum="' + value["id"].toString() + '">' + value["name"] + '</a>';
+                        strLiContext = '<li class="'+strLiClass+'"><a href="/' + PageName + '?ProjectId=' + value["id"].toString() + '" projnum="' + value["id"].toString() + '"><i class="bx bx-cube-alt icon"></i><span class="text nav-text">' + value["name"] + '</span></a>';
+
                     }
+                    /*
                     if (value["id"].toString() == ActiveProjectId && PageName != "RoProject") {
                         strLiClass = 'left-menu-item left-menu-selected-link finsproject_list_row';
                     } else {
                         strLiClass = 'left-menu-item finsproject_list_row_li finsproject_list_row';
                     }
+
                     strProjectListContext = strProjectListContext
                         + '<li id="' + value["id"].toString()
                         + '_rowid" class="' + strLiClass + '" projnum="' + value["id"].toString() + '">'
                         + strLiContext
                         + '</li>';
+
+                     */
+                    strProjectListContext = strProjectListContext + strLiContext;
                 });
+
+                /*
                 strProjectListContext = strProjectListContext
                     + '<li class="left-menu-item finsproject_list_row_li finsproject_list_row finsproject_list_row_addproject_btn">'
                     + '<a class="finsproject_list_link_row finsproject_list_link_row_addproject_btn" href="/Projects">Все проекты</a>'
                     + '</li>';
+                */
+                strProjectListContext =
+                    + '<li class="list-divider"></li><li class="nav-small-cap"><span class="menu-list-title">Ваши проекты</span></li>'
+                    + strProjectListContext;
+
                 $("#projectlistpanel").html(strProjectListContext);
 
                 //Сообщение если не выбран проект
