@@ -78,7 +78,8 @@ button:focus {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px; 
   padding-top: 80px;
-  margin-left: 260px;
+  left: 250px;
+  width: calc(100% - 250px);
 }
 
 .sidebar.close-left-sidebar ~ .page-wrap {
