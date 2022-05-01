@@ -912,3 +912,10 @@ body {
 }
 
 /*#######################*/
+
+.footer {
+  position: relative;
+  left: 250px;
+  width: calc(100% - 250px);
+  transition: var(--tran-05);
+}

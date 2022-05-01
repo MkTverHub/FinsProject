@@ -18,10 +18,19 @@
     const body = document.querySelector("body"),
       sidebar = document.querySelector(".sidebar"),
       toggle = document.querySelector(".toggle"),
-      searchBox =  document.querySelector(".search-box") 
+      searchBox =  document.querySelector(".search-box"),
+      footer = document.querySelector(".footer") 
 
     toggle.addEventListener("click", () => {
         sidebar.classList.toggle("close-left-sidebar");
+
+        if(sidebar.classList.contains("close-left-sidebar")){
+          footer.style.setProperty("left", '88px');
+          footer.style.setProperty("width", 'calc(100% - 88px)'); 
+        }else {
+          footer.style.setProperty("left", '250px');
+          footer.style.setProperty("width", 'calc(100% - 250px)');
+        }
     });
     searchBox.addEventListener("click", () => {
        sidebar.classList.remove("close-left-sidebar"); 
