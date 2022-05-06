@@ -15,10 +15,17 @@ function JsonToTableBody(strTableName,strIdName,arrFields,strJsonContext){
         var strBody = "";
         var strRow = "";
         var obj = $.parseJSON(strJsonContext);
+        var strFDN = "";
         $.each(obj, function (index, value) {
             strRow = "<tr class='" + strTableName + "_t_row_class' " + strTableName + "_row_id='" + value[strIdName] + "'>";
             for (var i = 0; i < arrFields.length; i++) {
-                strRow = strRow + "<th class='" + arrFields[i] + "_t_cell_class' value='" + value[arrFields[i]] + "'>" + value[arrFields[i]] + "</th>"
+                if(arrFields[i] == "id"){
+                    strFDN = arrFields[i] + "_t_cell_class f-d-n";
+                }else{
+                    strFDN = arrFields[i] + "_t_cell_class";
+                }
+
+                strRow = strRow + "<th class='" + strFDN + "' value='" + value[arrFields[i]] + "'>" + value[arrFields[i]] + "</th>"
             }
             strRow = strRow + "</tr>"
             strBody = strBody + strRow;
