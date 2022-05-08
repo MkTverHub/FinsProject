@@ -347,7 +347,7 @@ function JSONStringToContragentTable(JSONString) {
         if(value['email_addr'] == null){strContragenMail = 'null';} else {strContragenMail = value['email_addr'].toString();}
         if(value['type'] == null){strContragenType = 'null';} else {strContragenType = value['type'].toString();}
         strContragentTableContext = strContragentTableContext +
-            '<th class="cntr_id" value="' + strContragentId + '">' + strContragentId + '</th>' +
+            '<th class="cntr_id f-d-n" value="' + strContragentId + '">' + strContragentId + '</th>' +
             '<th class="cntr_name" value="' + strContragentName + '">' + strContragentName + '</th>' +
             '<th class="cntr_description" value="' + strContragenDescription + '">' + strContragenDescription + '</th>' +
             '<th class="cntr_phone_num" value="' + strContragenPhone + '">' + strContragenPhone + '</th>' +
