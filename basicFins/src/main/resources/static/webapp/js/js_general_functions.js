@@ -56,19 +56,21 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
                 var strLiClass = "";
                 var strLiContext = "";
                 $.each(obj, function (index, value) {
-
                     if (value["id"].toString() == ActiveProjectId && PageName != "RoProject") {
-                        strLiClass = 'nav-link finsproject_list_row_li left-menu-selected-link';
+                        if (PageName == "RoProject" || PageName=="FinsCompanyEditor" || PageName=="FinsCompany") {
+                            strLiClass = 'nav-link finsproject_list_row_li';
+                        }else{
+                            strLiClass = 'nav-link finsproject_list_row_li left-menu-selected-link';
+                        }
                     } else {
                         strLiClass = 'nav-link finsproject_list_row_li';
                     }
 
-                    if (PageName == "RoProject") {
+                    if (PageName == "RoProject" || PageName=="FinsCompanyEditor" || PageName=="FinsCompany") {
                         //strLiContext = '<div class="finsproject_list_link_row">' + value["name"] + '</div>';
                         strLiContext = '<li class="'+strLiClass+'"><i class="bx bx-cube-alt icon"></i><span class="text nav-text">' + value["name"] + '</span></a>';
                     } else {
                         strLiContext = '<li class="'+strLiClass+'"><a href="/' + PageName + '?ProjectId=' + value["id"].toString() + '" projnum="' + value["id"].toString() + '"><i class="bx bx-cube-alt icon"></i><span class="text nav-text">' + value["name"] + '</span></a>';
-
                     }
 
                     strProjectListContext = strProjectListContext + strLiContext;

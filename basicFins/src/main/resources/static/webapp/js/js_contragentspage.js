@@ -402,7 +402,7 @@ function JSONStringToContragentReqTable(JSONString) {
         if(value['email_addr'] == null){strReqEmail = '';}else{strReqEmail = value['email_addr'].toString();}
         if(value['web_site'] == null){strReqWebSite = '';}else{strReqWebSite = value['web_site'].toString();}
         if(value['card_num'] == null){strCardNumber = '';}else{strCardNumber = value['card_num'].toString();}
-        strContragentReqTableContext = strContragentReqTableContext + '<th class="cntr_req_id" value="' + strReqId + '">' + strReqId + '</th>' +
+        strContragentReqTableContext = strContragentReqTableContext + '<th class="cntr_req_id f-d-n" value="' + strReqId + '">' + strReqId + '</th>' +
             '<th class="cntr_req_main_flg f-d-n" value="' + strMainFlg + '">' + strMainFlg + '</th>' +
             '<th class="cntr_req_main_flg_ui" value="' + strMainFlg_UI + '">' + strMainFlg_UI + '</th>' +
             '<th class="cntr_req_name" value="' + strReqName + '">' + strReqName + '</th>' +

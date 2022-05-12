@@ -261,7 +261,7 @@ function JSONStringToCompanyTable(JSONString) {
         if(value['inn'] == null){strCompanyINN = 'null';} else {strCompanyINN = value['inn'].toString();}
         if(value['kpp'] == null){strCompanyKPP = 'null';} else {strCompanyKPP = value['kpp'].toString();}
         if(value['fins_acc'] == null){strCompanyFinsAcc = 'null';} else {strCompanyFinsAcc = value['fins_acc'].toString();}
-        strCompanyTableContext = strCompanyTableContext + '<th class="company_id" value="' + strCompanyId + '">' + strCompanyId + '</th>' + '<th class="company_name" value="' + strCompanyName + '">' + strCompanyName + '</th>' + '<th class="company_full_name" value="' + strCompanyFullName + '">' + strCompanyFullName + '</th>' + '<th class="company_inn" value="' + strCompanyINN + '">' + strCompanyINN + '</th>' + '<th class="company_kpp" value="' + strCompanyKPP + '">' + strCompanyKPP + '</th>' + '<th class="company_fins_acc" value="' + strCompanyFinsAcc + '">' + strCompanyFinsAcc + '</th>' + '</tr>';
+        strCompanyTableContext = strCompanyTableContext + '<th class="company_id f-d-n" value="' + strCompanyId + '">' + strCompanyId + '</th>' + '<th class="company_name" value="' + strCompanyName + '">' + strCompanyName + '</th>' + '<th class="company_full_name" value="' + strCompanyFullName + '">' + strCompanyFullName + '</th>' + '<th class="company_inn" value="' + strCompanyINN + '">' + strCompanyINN + '</th>' + '<th class="company_kpp" value="' + strCompanyKPP + '">' + strCompanyKPP + '</th>' + '<th class="company_fins_acc" value="' + strCompanyFinsAcc + '">' + strCompanyFinsAcc + '</th>' + '</tr>';
     });
     $("#company_table_body_id").html(strCompanyTableContext);
 };
@@ -283,7 +283,7 @@ function JSONStringToContactsTable(JSONString) {
         if(value['fins_acc'] == null){strContactFinsAcc = 'null';} else {strContactFinsAcc = value['fins_acc'].toString();}
         if(value['balance'] == null){strContactBalance = 'null';} else {strContactBalance = value['balance'].toString();}
         if(value['description'] == null){strContactDescriptione = 'null';} else {strContactDescriptione = value['description'].toString();}
-        strContactTableContext = strContactTableContext + '<th class="contact_id" value="' + strContactId + '">' + strContactId + '</th>' + '<th class="contact_first_name" value="' + strContactFirstName + '">' + strContactFirstName + '</th>' + '<th class="contact_fins_acc" value="' + strContactFinsAcc + '">' + strContactFinsAcc + '</th>' + '<th class="contact_balance" value="' + strContactBalance + '">' + strContactBalance + '</th>' + '<th class="contact_description" value="' + strContactDescriptione + '">' + strContactDescriptione + '</th>' + '</tr>';
+        strContactTableContext = strContactTableContext + '<th class="contact_id f-d-n" value="' + strContactId + '">' + strContactId + '</th>' + '<th class="contact_first_name" value="' + strContactFirstName + '">' + strContactFirstName + '</th>' + '<th class="contact_fins_acc" value="' + strContactFinsAcc + '">' + strContactFinsAcc + '</th>' + '<th class="contact_balance" value="' + strContactBalance + '">' + strContactBalance + '</th>' + '<th class="contact_description" value="' + strContactDescriptione + '">' + strContactDescriptione + '</th>' + '</tr>';
     });
 
     $("#contact_table_body_id").html(strContactTableContext);

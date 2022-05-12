@@ -347,7 +347,16 @@ $(function(){
 function SearchSpecification1() {
     var strSQLSpec = "";
     var strOperationType = $('#operation_type_field_ss1').attr('select_value');
-    doAjaxGetActiveProjectContext();
+    var strOperTypeSS =  $('#operation_type_field_ss1').attr("select_value");
+    var intContragentIdSS =  $('#contr_agent_select_field_ss1').attr("select_value");
+    var strAmountFromSS = $('#amount_from_ss1').val();
+    var strAmountToSS = $('#amount_to_ss1').val();
+    var intArticleIdSS = $('#article_ss1').attr("select_value");
+    var intPurposeIdSS = $('#purpose_ss1').attr("select_value");
+    var intContactIdSS = $('#contact_ss1').attr("select_value");
+    var strDateFromSS = $('#date_from_ss1').val();
+    var strDateToSS = $('#date_to_ss1').val();
+    doAjaxGetActiveProjectContext(strOperTypeSS,intContragentIdSS,strAmountFromSS,strAmountToSS,intArticleIdSS,intPurposeIdSS,intContactIdSS,strDateFromSS,strDateToSS);
 }
 
 
@@ -625,6 +634,20 @@ function SetROForm(){
     $('#arrivalbt').attr('disabled', true);
 }
 
+function getNowDate(){
+    var date = new Date(); // Or your date here
+    var strDay = date.getDate().toString();
+    var strMonth = date.getMonth() + 1
+    if(strDay.length == 1){
+        strDay = '0'+strDay;
+    }
+    if(strMonth.toString.length == 1){
+        strMonth = '0' + strMonth;
+    }
+    var strNow = strDay + '.' + strMonth + '.' +  date.getFullYear()
+    return strNow;
+}
+
 //Сделать форму not RO
 function UnSetROForm(){
     $('#fieldoperdateuserid').attr('readonly', false);
@@ -645,7 +668,7 @@ function UnSetROForm(){
 
 //-----------Ajax Functions------------
 //Ajax получение UserCache. Заполнение Контекста экрана в зависимости от активного проекта
-function doAjaxGetActiveProjectContext() {
+function doAjaxGetActiveProjectContext(OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS,DateFromSS,DateToSS) {
     SpinnerOn("doAjaxGetActiveProjectContext");
     try {
         $.ajax({
@@ -662,8 +685,9 @@ function doAjaxGetActiveProjectContext() {
                 var strActiveProjectId = obj.active_proj;
                 var strCount = $('#fins_operation_count_id').val();
                 var strCounter = $('#fins_operation_counter_id').val();
-                var strOperTypeSS =  $('#operation_type_field_ss1').attr("select_value");
-                var intContragentIdSS =  $('#contr_agent_select_field_ss1').attr("select_value");
+                /*
+                var strOperTypeSS = $('#operation_type_field_ss1').attr("select_value");
+                var intContragentIdSS = $('#contr_agent_select_field_ss1').attr("select_value");
                 var strAmountFromSS = $('#amount_from_ss1').val();
                 var strAmountToSS = $('#amount_to_ss1').val();
                 var intArticleIdSS = $('#article_ss1').attr("select_value");
@@ -671,6 +695,18 @@ function doAjaxGetActiveProjectContext() {
                 var intContactIdSS = $('#contact_ss1').attr("select_value");
                 var strDateFromSS = $('#date_from_ss1').val();
                 var strDateToSS = $('#date_to_ss1').val();
+                */
+
+                var strOperTypeSS = OperTypeSS;
+                var intContragentIdSS = ContragentIdSS;
+                var strAmountFromSS = AmountFromSS;
+                var strAmountToSS = AmountToSS;
+                var intArticleIdSS = ArticleIdSS;
+                var intPurposeIdSS = PurposeIdSS;
+                var intContactIdSS = ContactIdSS;
+                var strDateFromSS = DateFromSS;
+                var strDateToSS = DateToSS;
+
 
                 if(strCount=""){strCount="5";}
                 if(strCounter=""){strCounter="0";}
