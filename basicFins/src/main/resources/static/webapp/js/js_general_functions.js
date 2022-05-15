@@ -80,7 +80,7 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
                     '<li class="list-divider"></li><li class="nav-small-cap"><span class="menu-list-title">Ваши проекты</span></li>'
                     + strProjectListContext;
 
-                console.log(strProjectListContext);
+                //console.log(strProjectListContext);
                 $("#projectlistpanel").html(strProjectListContext);
 
                 //Сообщение если не выбран проект

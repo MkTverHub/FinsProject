@@ -11,6 +11,8 @@ function StartPage() {
     doAjaxGetPurposeList();
     SetROForm();//Сделать форму RO
 
+
+
 };
 
 
@@ -634,8 +636,9 @@ function SetROForm(){
     $('#arrivalbt').attr('disabled', true);
 }
 
-function getNowDate(){
+function getNowDate(MonthFilter){
     var date = new Date(); // Or your date here
+    date.setMonth(date.getMonth() - MonthFilter);
     var strDay = date.getDate().toString();
     var strMonth = date.getMonth() + 1
     if(strDay.length == 1){
@@ -644,7 +647,8 @@ function getNowDate(){
     if(strMonth.toString.length == 1){
         strMonth = '0' + strMonth;
     }
-    var strNow = strDay + '.' + strMonth + '.' +  date.getFullYear()
+    var strNow = strDay + '.' + strMonth + '.' +  date.getFullYear();
+
     return strNow;
 }
 
@@ -668,7 +672,7 @@ function UnSetROForm(){
 
 //-----------Ajax Functions------------
 //Ajax получение UserCache. Заполнение Контекста экрана в зависимости от активного проекта
-function doAjaxGetActiveProjectContext(OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS,DateFromSS,DateToSS) {
+function doAjaxGetActiveProjectContext() {
     SpinnerOn("doAjaxGetActiveProjectContext");
     try {
         $.ajax({
@@ -685,7 +689,7 @@ function doAjaxGetActiveProjectContext(OperTypeSS,ContragentIdSS,AmountFromSS,Am
                 var strActiveProjectId = obj.active_proj;
                 var strCount = $('#fins_operation_count_id').val();
                 var strCounter = $('#fins_operation_counter_id').val();
-                /*
+
                 var strOperTypeSS = $('#operation_type_field_ss1').attr("select_value");
                 var intContragentIdSS = $('#contr_agent_select_field_ss1').attr("select_value");
                 var strAmountFromSS = $('#amount_from_ss1').val();
@@ -695,17 +699,6 @@ function doAjaxGetActiveProjectContext(OperTypeSS,ContragentIdSS,AmountFromSS,Am
                 var intContactIdSS = $('#contact_ss1').attr("select_value");
                 var strDateFromSS = $('#date_from_ss1').val();
                 var strDateToSS = $('#date_to_ss1').val();
-                */
-
-                var strOperTypeSS = OperTypeSS;
-                var intContragentIdSS = ContragentIdSS;
-                var strAmountFromSS = AmountFromSS;
-                var strAmountToSS = AmountToSS;
-                var intArticleIdSS = ArticleIdSS;
-                var intPurposeIdSS = PurposeIdSS;
-                var intContactIdSS = ContactIdSS;
-                var strDateFromSS = DateFromSS;
-                var strDateToSS = DateToSS;
 
 
                 if(strCount=""){strCount="5";}
@@ -728,6 +721,7 @@ function doAjaxGetActiveProjectContext(OperTypeSS,ContragentIdSS,AmountFromSS,Am
 
 //Ajax получение списка операций по проекту
 function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS,DateFromSS,DateToSS) {
+    console.log("doAjaxGetProjectOperationList");
     SpinnerOn("doAjaxGetProjectOperationList");
     try {
         $.ajax({
