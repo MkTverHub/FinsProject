@@ -380,11 +380,16 @@
                                 </div>
                                 <div class="col-sm-3 col-md-3 mb-3">
                                     <div class="input-group">
-                                        <select class="custom-select" id="paymentacc_select_id_list">
-                                            <!--<option selected="">Сотрудник</option>-->
+                                        <select class="custom-select" id="paymentacc_select_id_list" select_value="">
+                                            <option value="def" elected="true">Выбрать знчение</option>
+                                            <option value="today">Сегодня</option>
+                                            <option value="yesterday">Вчера</option>
+                                            <option value="last7days">Последние 7 д</option>
+                                            <option value="last30days">Последние 30 д</option>
+                                            <option value="last3month">Последние 3 мес</option>
                                         </select>
                                         <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button">Показать</button>
+                                            <button onClick='SearchSpecification2()' class="btn btn-outline-secondary" type="button">Показать</button>
                                         </div>
                                     </div>
                                 </div>

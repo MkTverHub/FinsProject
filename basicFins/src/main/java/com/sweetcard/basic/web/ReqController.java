@@ -946,11 +946,24 @@ public class ReqController {
             Integer intLimit = intRowCount;
             Integer intOffset = RowCounter*intRowCount;
             List<AggrFinsdata> financedataList = financedataRepository.GetAllByProj(intProjectId,intLimit,intOffset);
-            DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            DateFormat formatter1 = new SimpleDateFormat("yyyy-mm-dd");
+            DateFormat formatter2 = new SimpleDateFormat("dd.mm.yyyy");
+            DateFormat formatterDD = new SimpleDateFormat("dd");
+            DateFormat formatterMM = new SimpleDateFormat("mm");
+            DateFormat formatterYYYY = new SimpleDateFormat("yyyy");
             String strDateOperationDb = "";
             Date dtDateOperationDb = null;
             Date dtDateSSFrom = null;
             Date dtDateSSTo = null;
+
+            Integer intDayDateSS = 0;
+            Integer intMonthDateSS = 0;
+            Integer intYearDateSS = 0;
+            Integer intDayDateOperation = 0;
+            Integer intMonthDateOperation = 0;
+            Integer intYearDateOperation = 0;
+
+            Boolean blRemoveFlgDt = false;
 
             Float flAmountFromSS = null;
             Float flAmountToSS = null;
@@ -968,77 +981,148 @@ public class ReqController {
             }catch (Exception ex_str_to_fl){
                 logger.info("ReqController.GetProjectFinsOperationList -> flAmountFromSS or flAmountToSS Error:" + ex_str_to_fl);
             }
-            for(int i1=0; i1 < financedataList.size(); i1++){
+            Integer intFinsDataListSize = financedataList.size();
+            for(int i1=0; i1 < intFinsDataListSize; i1++){
+                logger.info("ReqController.GetProjectFinsOperationList -> DateFromSS: " + DateFromSS + ", DateOperation: " + financedataList.get(i1).getOperdate_user() + ", DateToSS: " + DateToSS);
+
                 if(OperTypeSS.compareTo("All") != 0){
                     if(financedataList.get(i1).getFinsopertype().compareTo(OperTypeSS)!=0){
                         financedataList.remove(i1);
                         i1--;
+                        intFinsDataListSize = financedataList.size();
+                        //i1 = 0;
+                        logger.info("ReqController.GetProjectFinsOperationList -> OperTypeSS: remove " + OperTypeSS);
                     }
                 }
                 if(ContragentIdSS > 0){
                     if(financedataList.get(i1).getPayaccout_cnt_agnt_id() != ContragentIdSS && financedataList.get(i1).getPayaccin_cnt_agnt_id() != ContragentIdSS){
                         financedataList.remove(i1);
                         i1--;
+                        intFinsDataListSize = financedataList.size();
+                        //i1 = 0;
+                        logger.info("ReqController.GetProjectFinsOperationList -> ContragentIdSS: remove " + ContragentIdSS);
                     }
                 }
                 if(ArticleIdSS > 0){
                     if(financedataList.get(i1).getArticle_id() != ArticleIdSS){
                         financedataList.remove(i1);
                         i1--;
+                        intFinsDataListSize = financedataList.size();
+                        //i1 = 0;
+                        logger.info("ReqController.GetProjectFinsOperationList -> ArticleIdSS: remove " + ArticleIdSS);
                     }
                 }
                 if(PurposeIdSS > 0){
                     if(financedataList.get(i1).getPurpose_id() != PurposeIdSS){
                         financedataList.remove(i1);
                         i1--;
+                        intFinsDataListSize = financedataList.size();
+                        //i1 = 0;
+                        logger.info("ReqController.GetProjectFinsOperationList -> PurposeIdSS: remove " + PurposeIdSS);
                     }
                 }
                 if(ContactIdSS > 0){
                     if(financedataList.get(i1).getPayaccout_cnt_agnt_id() != ContactIdSS && financedataList.get(i1).getPayaccin_cnt_agnt_id() != ContactIdSS){
                         financedataList.remove(i1);
                         i1--;
+                        intFinsDataListSize = financedataList.size();
+                        //i1 = 0;
+                        logger.info("ReqController.GetProjectFinsOperationList -> ContactIdSS: remove " + ContactIdSS);
                     }
                 }
                 if(flAmountFromSS != null){
                     if(financedataList.get(i1).getAmount() < flAmountFromSS){
                         financedataList.remove(i1);
                         i1--;
+                        intFinsDataListSize = financedataList.size();
+                        logger.info("ReqController.GetProjectFinsOperationList -> flAmountFromSS: remove " + flAmountFromSS);
                     }
                 }
                 if(flAmountToSS != null){
                     if(financedataList.get(i1).getAmount() > flAmountToSS){
                         financedataList.remove(i1);
                         i1--;
+                        intFinsDataListSize = financedataList.size();
+                        logger.info("ReqController.GetProjectFinsOperationList -> flAmountToSS: remove " + flAmountToSS);
                     }
                 }
 
-
-                //ogger.info("ReqController.GetProjectFinsOperationList -> DateSS: " + DateFromSS + " / " + financedataList.get(i1).getOperdate_user() + " / " + DateToSS);
                 try{
-                    strDateOperationDb = financedataList.get(i1).getOperdate_user();
-                    dtDateOperationDb = formatter.parse(strDateOperationDb);
-                    dtDateSSFrom = formatter.parse(DateFromSS);
-                    if(dtDateOperationDb.before(dtDateSSFrom)){
-                        //logger.info("ReqController.GetProjectFinsOperationList -> DateFrom: remove " + strDateOperationDb);
-                        financedataList.remove(i1);
-                        i1--;
+                    if(DateFromSS.length()!=0 && DateToSS.length()==0) {
+                        blRemoveFlgDt = false;
+                        strDateOperationDb = financedataList.get(i1).getOperdate_user();
+
+                        intDayDateSS = Integer.parseInt(DateFromSS.substring(0,2));
+                        intMonthDateSS = Integer.parseInt(DateFromSS.substring(3,5));
+                        intYearDateSS = Integer.parseInt(DateFromSS.substring(6));
+                        intDayDateOperation = Integer.parseInt(strDateOperationDb.substring(0,2));
+                        intMonthDateOperation = Integer.parseInt(strDateOperationDb.substring(3,5));
+                        intYearDateOperation = Integer.parseInt(strDateOperationDb.substring(6));
+
+                        /*
+                        logger.info("ReqController.GetProjectFinsOperationList -> DateFrom: strDateOperationDb -> DateSS: " + intDayDateSS + "." + intMonthDateSS + "." + intYearDateSS);
+                        logger.info("ReqController.GetProjectFinsOperationList -> DateFrom: strDateOperationDb -> DateOperation: " + intDayDateOperation + "." + intMonthDateOperation + "." + intYearDateOperation);
+                        logger.info("ReqController.GetProjectFinsOperationList -> DateFrom: strDateOperationDb = " + strDateOperationDb + ", DateFromSS = " + DateFromSS);
+                        */
+
+                        if(blRemoveFlgDt == false && intYearDateOperation < intYearDateSS){
+                            blRemoveFlgDt = true;
+                        }else{
+                            if(blRemoveFlgDt == false && intMonthDateOperation < intMonthDateSS){
+                                blRemoveFlgDt = true;
+                            }else{
+                                if(blRemoveFlgDt == false && intDayDateOperation < intDayDateSS && intMonthDateOperation <= intMonthDateSS){
+                                    blRemoveFlgDt = true;
+                                }
+                            }
+                        }
+
+                        if(blRemoveFlgDt){
+                            logger.info("ReqController.GetProjectFinsOperationList -> DateFrom: remove " + strDateOperationDb);
+                            financedataList.remove(i1);
+                            i1--;
+                            intFinsDataListSize = financedataList.size();
+                        }
+
                     }
                 }catch (Exception ex_date_f){
-                    //logger.info("ReqController.GetProjectFinsOperationList -> DateFromSS_Error: " + ex_date_f);
+                    logger.info("ReqController.GetProjectFinsOperationList -> DateFromSS_Error: " + ex_date_f);
                 }
 
 
                 try{
-                    strDateOperationDb = financedataList.get(i1).getOperdate_user();
-                    dtDateOperationDb = formatter.parse(strDateOperationDb);
-                    dtDateSSTo = formatter.parse(DateToSS);
-                    if(dtDateOperationDb.after(dtDateSSTo)){
-                        //logger.info("ReqController.GetProjectFinsOperationList -> DateTo: remove " + strDateOperationDb);
-                        financedataList.remove(i1);
-                        i1--;
+                    if(DateToSS.length()!=0 && DateFromSS.length()==0) {
+                        blRemoveFlgDt = false;
+                        strDateOperationDb = financedataList.get(i1).getOperdate_user();
+
+                        intDayDateSS = Integer.parseInt(DateToSS.substring(0,2));
+                        intMonthDateSS = Integer.parseInt(DateToSS.substring(3,5));
+                        intYearDateSS = Integer.parseInt(DateToSS.substring(6));
+                        intDayDateOperation = Integer.parseInt(strDateOperationDb.substring(0,2));
+                        intMonthDateOperation = Integer.parseInt(strDateOperationDb.substring(3,5));
+                        intYearDateOperation = Integer.parseInt(strDateOperationDb.substring(6));
+
+                        if(blRemoveFlgDt == false && intYearDateOperation > intYearDateSS){
+                            blRemoveFlgDt = true;
+                        }else{
+                            if(blRemoveFlgDt == false && intMonthDateOperation > intMonthDateSS){
+                                blRemoveFlgDt = true;
+                            }else{
+                                if(blRemoveFlgDt == false && intDayDateOperation > intDayDateSS && intMonthDateOperation >= intMonthDateSS){
+                                    blRemoveFlgDt = true;
+                                }
+                            }
+                        }
+
+                        if(blRemoveFlgDt){
+                            logger.info("ReqController.GetProjectFinsOperationList -> DateTo: remove " + strDateOperationDb);
+                            financedataList.remove(i1);
+                            i1--;
+                            intFinsDataListSize = financedataList.size();
+                        }
                     }
                 }catch (Exception ex_date_t){
-                    //logger.info("ReqController.GetProjectFinsOperationList -> DateToSS_Error: " + ex_date_t);
+                    logger.info("ReqController.GetProjectFinsOperationList -> DateToSS_Error: " + ex_date_t);
                 }
 
             }

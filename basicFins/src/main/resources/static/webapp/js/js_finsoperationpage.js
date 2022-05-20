@@ -5,7 +5,8 @@ function StartPage() {
     $("#fins_operation_count_id").val("5");
     $("#fins_operation_counter_id").val("0");
     doAjaxGetUserCache("FinsOperations");//Получение списка проектов в левой панели
-    doAjaxGetActiveProjectContext();//Заполнение контекста экрана для активного проекта
+    console.log("StartPage -> doAjaxGetActiveProjectContext");
+    doAjaxGetActiveProjectContext("","","","","","","","","");//Заполнение контекста экрана для активного проекта
     doAjaxGetContragentsList();//Получение списка контрагентов
     doAjaxGetLovList();
     doAjaxGetPurposeList();
@@ -164,7 +165,7 @@ function NextFinsOperationRowGroup(){
         $("#fins_operation_count_id").val("5");
         $("#fins_operation_counter_id").val("0");
     }
-    doAjaxGetActiveProjectContext();
+    doAjaxGetActiveProjectContext("","","","","","","","","");
     ClearFinsForm ();
     SetROForm();
 };
@@ -183,7 +184,7 @@ function BackFinsOperationRowGroup(){
         $("#fins_operation_count_id").val("5");
         $("#fins_operation_counter_id").val("0");
     }
-    doAjaxGetActiveProjectContext();
+    doAjaxGetActiveProjectContext("","","","","","","","","");
     ClearFinsForm ();
     SetROForm();
 };
@@ -198,7 +199,7 @@ function ResetSS1(){
     $("#amount_to_ss1").val("");
     $("#date_from_ss1").val("");
     $("#date_to_ss1").val("");
-    doAjaxGetActiveProjectContext();
+    doAjaxGetActiveProjectContext("","","","","","","","","");
 }
 
 //Событие выбора значения выпадающего списка контрагента
@@ -300,6 +301,14 @@ $(function(){
     });
 });
 
+//Событие выбора значения выпадающего списка фильтра "Выбор по дате"
+$(function(){
+    $("#paymentacc_select_id_list").change( function(){
+        var strSelectValue = $(this).val();
+        $('#paymentacc_select_id_list').attr('select_value',strSelectValue);
+    });
+});
+
 //Событие Нажатия на "Приход"
 $(function(){
     $("#arrivalbt").on('click', function(){
@@ -361,7 +370,40 @@ function SearchSpecification1() {
     doAjaxGetActiveProjectContext(strOperTypeSS,intContragentIdSS,strAmountFromSS,strAmountToSS,intArticleIdSS,intPurposeIdSS,intContactIdSS,strDateFromSS,strDateToSS);
 }
 
+//Нажатие на кнопку поиска для фильтра выпадающего списка по датам
+function SearchSpecification2() {
+    console.log("SearchSpecification2");
+    var strFilterCase = $("#paymentacc_select_id_list").attr("select_value");
+    var strDateFrom = "";
+    switch (strFilterCase) {
+        case "today":
+            strDateFrom = getFilterDate("","0");
+            console.log("SearchSpecification2: case today -> " + strDateFrom);
+        break;
+        case "yesterday":
+            strDateFrom = getFilterDate("","1");
+            console.log("SearchSpecification2: case yesterday -> " + strDateFrom);
+        break;
+        case "last7days":
+            strDateFrom = getFilterDate("","7");
+            console.log("SearchSpecification2: case last7days -> " + strDateFrom);
+        break;
+        case "last30days":
+            strDateFrom = getFilterDate("","30");
+            console.log("SearchSpecification2: case last30days -> " + strDateFrom);
+        break;
+        case "last3month":
+            strDateFrom = getFilterDate("3","0");
+            console.log("SearchSpecification2: case last3month -> " + strDateFrom);
+        break;
+        default:
+            strDateFrom = "";
+            console.log("SearchSpecification2: case default");
+    }
 
+    doAjaxGetActiveProjectContext("","","","","","","",strDateFrom,"");
+
+}
 
 //------------Общие функции----------------------------------
 //Очистить форму финансовой операции
@@ -569,7 +611,7 @@ function JSONStringToContactFinsAccList(JSONString) {
     });
     $("#paymentaccoutid_list").html(strContactFinsAccListContext);
     $("#paymentaccinid_list").html(strContactFinsAccListContext);
-    $("#paymentacc_select_id_list").html(strContactFinsAccListContext);
+    //$("#paymentacc_select_id_list").html(strContactFinsAccListContext);
     $("#contact_ss1").html(strContactListContext);
 }
 
@@ -636,9 +678,11 @@ function SetROForm(){
     $('#arrivalbt').attr('disabled', true);
 }
 
-function getNowDate(MonthFilter){
+function getFilterDate(MonthFilter,DayFilter){
+    var intAddMonth = 0;
     var date = new Date(); // Or your date here
-    date.setMonth(date.getMonth() - MonthFilter);
+    if(MonthFilter != ""){date.setMonth(date.getMonth() - MonthFilter);}
+    if(DayFilter != ""){date.setDate(date.getDate()-DayFilter);}
     var strDay = date.getDate().toString();
     var strMonth = date.getMonth() + 1
     if(strDay.length == 1){
@@ -648,7 +692,7 @@ function getNowDate(MonthFilter){
         strMonth = '0' + strMonth;
     }
     var strNow = strDay + '.' + strMonth + '.' +  date.getFullYear();
-
+    //var strNow = date.getFullYear() + '-' + strMonth + '-' + strDay;
     return strNow;
 }
 
@@ -672,7 +716,8 @@ function UnSetROForm(){
 
 //-----------Ajax Functions------------
 //Ajax получение UserCache. Заполнение Контекста экрана в зависимости от активного проекта
-function doAjaxGetActiveProjectContext() {
+function doAjaxGetActiveProjectContext(strOperTypeSS,intContragentIdSS,strAmountFromSS,strAmountToSS,intArticleIdSS,intPurposeIdSS,intContactIdSS,strDateFromSS,strDateToSS) {
+    console.log("doAjaxGetActiveProjectContext");
     SpinnerOn("doAjaxGetActiveProjectContext");
     try {
         $.ajax({
@@ -689,7 +734,7 @@ function doAjaxGetActiveProjectContext() {
                 var strActiveProjectId = obj.active_proj;
                 var strCount = $('#fins_operation_count_id').val();
                 var strCounter = $('#fins_operation_counter_id').val();
-
+                /*
                 var strOperTypeSS = $('#operation_type_field_ss1').attr("select_value");
                 var intContragentIdSS = $('#contr_agent_select_field_ss1').attr("select_value");
                 var strAmountFromSS = $('#amount_from_ss1').val();
@@ -699,11 +744,9 @@ function doAjaxGetActiveProjectContext() {
                 var intContactIdSS = $('#contact_ss1').attr("select_value");
                 var strDateFromSS = $('#date_from_ss1').val();
                 var strDateToSS = $('#date_to_ss1').val();
-
-
-                if(strCount=""){strCount="5";}
-                if(strCounter=""){strCounter="0";}
-
+                */
+                if(strCount==""){strCount="5";}
+                if(strCounter==""){strCounter="0";}
                 doAjaxGetProjectOperationList(strActiveProjectId,strCount,strCounter,strOperTypeSS,intContragentIdSS,strAmountFromSS,strAmountToSS,intArticleIdSS,intPurposeIdSS,intContactIdSS,strDateFromSS,strDateToSS);
                 doAjaxGetProjectProfit();
                 doAjaxGetContactFinsAccProject(strActiveProjectId);
@@ -721,9 +764,17 @@ function doAjaxGetActiveProjectContext() {
 
 //Ajax получение списка операций по проекту
 function doAjaxGetProjectOperationList(ProjectNum,Count,Counter,OperTypeSS,ContragentIdSS,AmountFromSS,AmountToSS,ArticleIdSS,PurposeIdSS,ContactIdSS,DateFromSS,DateToSS) {
-    console.log("doAjaxGetProjectOperationList");
+    console.log("doAjaxGetProjectOperationList: " + ProjectNum + "," + Count + "," + OperTypeSS + "," + ContragentIdSS + "," + AmountFromSS + "," + AmountToSS + "," + ArticleIdSS + "," + PurposeIdSS + "," + ContactIdSS + "," + DateFromSS + "," + DateToSS);
+
+
     SpinnerOn("doAjaxGetProjectOperationList");
     try {
+        if(OperTypeSS == ""){OperTypeSS="All";}
+        if(ContragentIdSS == ""){ContragentIdSS = 0;}
+        if(ArticleIdSS == ""){ArticleIdSS = 0;}
+        if(PurposeIdSS == ""){PurposeIdSS = 0;}
+        if(ContactIdSS == ""){ContactIdSS = 0;}
+
         $.ajax({
             url: 'GetProjFinsOperList',
             type: 'GET',
@@ -803,7 +854,7 @@ function doAjaxFinsOperation() {
             }),
             success: function (data) {
                 console.log(data);
-                doAjaxGetActiveProjectContext();
+                doAjaxGetActiveProjectContext("","","","","","","","","");
                 SpinnerOff("doAjaxFinsOperation");
             }
         });
