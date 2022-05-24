@@ -3,7 +3,7 @@
 */
 function StartPage() {
     //doAjaxGetProjectListLeft();
-    doAjaxGetUserCache();
+    doAjaxGetUserCache("Fins_Account_Settings");
 }
 
 //-----------Ajax Functions------------

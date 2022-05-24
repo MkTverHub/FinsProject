@@ -2,7 +2,7 @@
     Created by Ivribin
 */
 function StartPage() {
-    doAjaxGetUserCache();
+    doAjaxGetUserCache("Fins_Account_Settings_Info");
     doAjaxGetUserInfo();
 }
 

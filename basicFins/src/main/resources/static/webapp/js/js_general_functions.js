@@ -57,7 +57,7 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
                 var strLiContext = "";
                 $.each(obj, function (index, value) {
                     if (value["id"].toString() == ActiveProjectId && PageName != "RoProject") {
-                        if (PageName == "RoProject" || PageName=="FinsCompanyEditor" || PageName=="FinsCompany") {
+                        if (PageName == "RoProject" || PageName=="FinsCompanyEditor" || PageName=="FinsCompany" || PageName=="Fins_Account_Settings" || PageName=="Fins_Account_Settings_Info") {
                             strLiClass = 'nav-link finsproject_list_row_li';
                         }else{
                             strLiClass = 'nav-link finsproject_list_row_li left-menu-selected-link';
@@ -66,7 +66,7 @@ function doAjaxGetProjectListLeft(PageName,ActiveProjectId) {
                         strLiClass = 'nav-link finsproject_list_row_li';
                     }
 
-                    if (PageName == "RoProject" || PageName=="FinsCompanyEditor" || PageName=="FinsCompany") {
+                    if (PageName == "RoProject" || PageName=="FinsCompanyEditor" || PageName=="FinsCompany" || PageName=="Fins_Account_Settings" || PageName=="Fins_Account_Settings_Info") {
                         //strLiContext = '<div class="finsproject_list_link_row">' + value["name"] + '</div>';
                         strLiContext = '<li class="'+strLiClass+'"><i class="bx bx-cube-alt icon"></i><span class="text nav-text">' + value["name"] + '</span></a>';
                     } else {
