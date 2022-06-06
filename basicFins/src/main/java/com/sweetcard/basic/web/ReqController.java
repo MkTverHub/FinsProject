@@ -811,7 +811,18 @@ public class ReqController {
     public @ResponseBody Response GetUserCache() {
         try{
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
+            List<Finsproject> finsprojectlist = finsprojectRepository.GetAllUserProjects(GetUserLogin());
+            String strCacheOperation = "default";
+
             if(usercache == null){
+                strCacheOperation = "insert";
+            }else{
+                if(finsprojectlist.size() == 0){
+                    strCacheOperation = "update";
+                }
+            }
+
+            if(strCacheOperation.compareTo("insert")==0 || strCacheOperation.compareTo("update")==0){
                 //Установка дефолтного проекта
                 Finsprojectform finsprojectform = new Finsprojectform();
                 finsprojectform.setFinsprojectname("Начало работы");
@@ -826,7 +837,7 @@ public class ReqController {
                 usercacheform.setActiveProject(intNewProjectId);
                 usercacheform.setUserId(intUserId);
                 usercacheform.setRole(strUserRole);
-                usercacheform.setUsercacheAction("insert");
+                usercacheform.setUsercacheAction(strCacheOperation);
                 usercacheJdbc.UsercacheAction(usercacheform);
                 usercache = usercacheRepository.GetUsercache(GetUserLogin());
                 logger.info("ReqController.GetUserCache -> New UserCache " + GetUserLogin() + " " + intNewProjectId + " " + strUserRole);

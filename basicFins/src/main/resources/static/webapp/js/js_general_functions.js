@@ -114,7 +114,7 @@ function doAjaxGetUserCache(PageName) {
             success: function (data) {
                 var obj = jQuery.parseJSON(data.text);
                 var strActiveProjectId = obj.active_proj;
-                //document.body.HashData = {ActiveProjectId:strActiveProjectId};
+                console.log("doAjaxGetUserCache -> strActiveProjectId: " + strActiveProjectId);
                 doAjaxGetProjectListLeft(PageName, strActiveProjectId);
                 SpinnerOff("doAjaxGetUserCache");
             }
