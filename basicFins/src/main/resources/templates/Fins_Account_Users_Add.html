@@ -39,12 +39,12 @@
         <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Пользователи</h3>
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Редактирование пользователей</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mt-2 p-0">
                                     <li class="breadcrumb-item text-muted active" aria-current="page">
-                                        <a href="#">Список пользователей</a>
+                                        <a href="#">Добавление и изменение пользователей</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -222,7 +222,8 @@
                                         <select id="sub_users_picklist" name="s"  class="form-control custom-select align-self-center">
                                             <!--Ajax-->
                                         </select>
-
+                                    </div>
+                                    <div class="form-group">
                                         <label class="align-self-center">Проекты:</label>
 
                                         <select id="project_picklist" name="s"  class="form-control custom-select align-self-center">
@@ -268,7 +269,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4 class="card-title">Список пользователей</h4>
-                                        <h6 class="card-subtitle">Полный список всех пользователей. Вы можете изменить или удалить нужную запись, достаточно кликнув по записи</h6>
+                                        <h6 class="card-subtitle">Полный список всех пользователей, которые имеют доступ к вашему личному кабинету. Вы можете изменить или удалить нужную запись, достаточно кликнув по ней</h6>
                                     </div>
                                 </div>
                                 
@@ -276,7 +277,7 @@
                                     <table class="table no-wrap table-hover">
                                         <thead> <!-- Заголовок таблицы -->
                                         <tr>
-                                            <th>Id</th>
+                                            <th>Идентификатор</th>
                                             <th>Почта</th>
                                             <th>Фамилия</th>
                                             <th>Имя</th>
@@ -285,17 +286,7 @@
                                             <th>Должность</th>
                                         </tr>
                                         </thead>
-                                        <!--<tbody>
-                                            <tr class="fincrowlink">
-                                                <th class="" value="1">1</th>
-                                                <th class="" value="ИП Иванов 2">ИП Иванов 2</th>
-                                                <th class="" value="Покупка комплекттующих">Покупка комплекттующих</th>
-                                                <th class="" value="89000000000">89000000000</th>
-                                                <th class="" value="mail@mail.ru">mail@mail.ru</th>
-                                                <th class="" value="Заказчик">Заказчик</th>
-                                                <th class="" value="Заказчик">Заказчик</th>
-                                            </tr>
-                                        </tbody>-->
+                                        
                                         <tbody id="sub_user_table_body">
                                             <!--Тело таблицы формируется скриптом при загрузки страницы, обращением ajax к контроллеру-->
                                         </tbody>
