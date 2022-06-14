@@ -137,9 +137,12 @@ function SpinnerOn(AjaxChainName) {
 function SpinnerOff(AjaxChainName) {
     $("#spinner_ajax_chain").removeClass(AjaxChainName);
     if($('#spinner_ajax_chain').attr('class').split(/\s+/).length == 1){
+
         $("#spinner_main_div").addClass('f-d-n');
     }
 };
+
+
 
 //========================================================
 //Валидация

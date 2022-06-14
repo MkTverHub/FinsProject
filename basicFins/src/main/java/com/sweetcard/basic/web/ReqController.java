@@ -826,7 +826,7 @@ public class ReqController {
                 //Установка дефолтного проекта
                 Finsprojectform finsprojectform = new Finsprojectform();
                 finsprojectform.setFinsprojectname("Начало работы");
-                finsprojectform.setFinsprojectdescription("Проект по уолчанию");
+                finsprojectform.setFinsprojectdescription("Системный проект");
                 Integer intNewProjectId = finsprojectJdbc.NewFinsProject(finsprojectform);
                 Integer intUserId = appUserRepository.GetUserIdbyEmail(GetUserLogin());
                 AppUser appUser = appUserRepository.GetUserByEmail(GetUserLogin());
@@ -1210,8 +1210,10 @@ public class ReqController {
     //Получить список LOV
     private Response GetLovListResponse(){
         try{
+            /*
             logger.info("ReqController.GetLovList + Задержка 4 сек для демонстрации спиннера");
             TimeUnit.SECONDS.sleep(2);//Демонстрация спиннера
+            */
             Usercache usercache = usercacheRepository.GetUsercache(GetUserLogin());
             lovJdbc.setActiveProjectId(usercache.active_proj);
             List<Lov> lovList = lovRepository.GetAllByProject(usercache.active_proj);
