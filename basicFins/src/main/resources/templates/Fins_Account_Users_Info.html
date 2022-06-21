@@ -74,8 +74,8 @@
 
                 <div class="row">
                     <!-- Плитки SubUsers-->
-                    <div class="col-12" th:each="c: ${sub_user_list}">
-                        <div th:replace="fragments\layouts\fragment_project_tile.html :: sub_user_fragment_1(fst_name=${c.firstName},lst_name=${c.lastName},mdl_name=${c.middleName},phone=${c.phone},mail=${c.email},position=${c.position})"></div>
+                    <div class="col-12" th:each="sub: ${SubUserList}">
+                        <div th:replace="fragments\layouts\fragment_project_tile.html :: sub_user_fragment_1(fst_name_sub=${sub.firstName},lst_name_sub=${sub.lastName},mdl_name_sub=${sub.middleName},phone_sub=${sub.phone},mail_sub=${sub.email},position_sub=${sub.position})"></div>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@
     window.onload = function(){ $("#spinner_main_div").addClass('f-d-n');}
     //Событие загрузки страницы
     $(document).ready(function(){
-        StartPage();
+        //StartPage();
     });
 </script>
 

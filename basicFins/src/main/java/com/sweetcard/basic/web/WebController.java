@@ -456,7 +456,7 @@ public class WebController {
             Usercache usercache = GetUsercache();
             List<AggrSubUser> aggrSubUserList = aggregateDataSubUser.GetSubUserList(usercache.user_id);
 
-            model.addAttribute("sub_user_list",aggrSubUserList);
+            model.addAttribute("SubUserList",aggrSubUserList);
             model.addAttribute("AccountMail",usercache.login);
             model.addAttribute("attrUserAdmFlg", "");
 

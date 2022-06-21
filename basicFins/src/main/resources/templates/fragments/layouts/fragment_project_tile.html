@@ -195,24 +195,26 @@
     </div>
 
 <!--ПЛИТКА ДЛЯ ЭКРАНА SubUsers-->
-<div class="col-12" th:fragment="sub_user_fragment_1(fst_name,lst_name,mdl_name,phone,mail,position)"><!-- Начало рендера нового блока с пользователем 1 -->
+<div class="col-12" th:fragment="sub_user_fragment_1(fst_name_sub,lst_name_sub,mdl_name_sub,phone_sub,mail_sub,position_sub)"><!-- Начало рендера нового блока с пользователем 1 -->
     <div class="row mb-5">
         <div class="col-md-12"><!-- Заголовок ФИО пользователя -->
-            <h3 class="card-title mb-3" th:utext="${fst_name}+' '+${lst_name}+' '+${mdl_name}"/>
+            <h3 class="card-title mb-3" th:utext="${fst_name_sub}+' '+${lst_name_sub}+' '+${mdl_name_sub}"/>
         </div>
         <div class="col-md-5"><!-- Левая часть с полями информации -->
             <div class="p-3 card border rounded pt-4 pb-4 mb-0">
                 <h4 class="card-title mb-0">Информация:</h4>
                 <div class="dropdown-divider"></div>
-                <p class="card-text">Имя: <span th:utext="${fst_name}"/></p>
-                <p class="card-text">Фамилия: <span th:utext="${lst_name}"/></p>
-                <p class="card-text">Отчество: <span th:utext="${mdl_name}"/></p>
-                <p class="card-text">Телефон: <span th:utext="${phone}"/></p>
-                <p class="card-text">Почта: <span th:utext="${mail}"/></p>
-                <p class="card-text">Должность: <span th:utext="${position}"/></p>
+                <p class="card-text">Имя: <span th:utext="${fst_name_sub}"/></p>
+                <p class="card-text">Фамилия: <span th:utext="${lst_name_sub}"/></p>
+                <p class="card-text">Отчество: <span th:utext="${mdl_name_sub}"/></p>
+                <p class="card-text">Телефон: <span th:utext="${phone_sub}"/></p>
+                <p class="card-text">Почта: <span th:utext="${mail_sub}"/></p>
+                <p class="card-text">Должность: <span th:utext="${position_sub}"/></p>
             </div>
         </div>
-        <div class="col-md-7"><!-- Правая часть с блоками информации -->
+        <!-- Правая часть с блоками информации -->
+        <!--
+        <div class="col-md-7">
             <div class="row">
                 <div class="col-md-6">
                     <div class="card border rounded">
@@ -285,6 +287,7 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 </div>
 
