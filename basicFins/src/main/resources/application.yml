@@ -6,14 +6,19 @@ server:
     port: 8080
 spring:
   datasource:
-    password: fadmin
-    username: fadmin
+
+    #Параметры сервера
+    #password: fadmin
+    #username: fadmin
+    #Параметры локалки
+    password: admin
+    username: admin
     url: jdbc:postgresql://localhost:5432/db_fins
   jpa:
     hibernate:
-      #ddl-auto: create-drop
+      ddl-auto: create-drop
       #ddl-auto: create
-      ddl-auto: none
+      #ddl-auto: none
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -21,11 +26,12 @@ spring:
     show-sql: true
 
   mail:
+    #Параметры сервера
     #host: localhost
     #port: 25
     #username: root
     #password: Etei9of3cah9
-
+    #Параметры локалки
     host: localhost
     port: 1025
     username: hello
@@ -42,3 +48,4 @@ spring:
           connectiontimeout: 5000
           timeout: 3000
           writetimeout: 5000
+
