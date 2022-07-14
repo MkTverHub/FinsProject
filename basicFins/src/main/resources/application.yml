@@ -2,8 +2,8 @@ server:
   error:
     include-message: always
     include-binding-errors: always
-  #port: 8081
-  port: 8080
+  port: 8081
+  #port: 8080
 spring:
   datasource:
     password: fadmin
@@ -22,15 +22,15 @@ spring:
 
   mail:
     #Параметры сервера
-    #host: localhost
-    #port: 25
-    #username: root
-    #password: Etei9of3cah9
-    #Параметры локалки
     host: localhost
-    port: 1025
-    username: hello
-    password: hello
+    port: 25
+    username: root
+    password: Etei9of3cah9
+    #Параметры локалки
+    #host: localhost
+    #port: 1025
+    #username: hello
+    #password: hello
 
     properties:
       mail:
