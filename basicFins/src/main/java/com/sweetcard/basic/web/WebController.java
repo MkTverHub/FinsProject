@@ -2,6 +2,7 @@ package com.sweetcard.basic.web;
 
 import com.sweetcard.basic.appuser.AppUser;
 import com.sweetcard.basic.appuser.AppUserRepository;
+import com.sweetcard.basic.core.FinsConfig;
 import com.sweetcard.basic.dao.jdbc.*;
 import com.sweetcard.basic.dao.repository.AggregateDataContragent;
 import com.sweetcard.basic.dao.entities.*;
@@ -14,6 +15,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -65,6 +67,8 @@ public class WebController {
     AppUserRepository appUserRepository;
     @Autowired
     AggregateDataSubUser aggregateDataSubUser;
+    @Autowired
+    FinsConfig finsConfig;
 
     //Здесь вход на app
     @GetMapping({"/", "/index","/Fins_Index"})
