@@ -71,10 +71,12 @@ public class WebController {
     FinsConfig finsConfig;
 
     //Здесь вход на app
-    @GetMapping({"/", "/index","/Fins_Index"})
+    //@GetMapping({"/", "/index","/Fins_Index"})
+    @GetMapping({"/","/index"})
     public String greeting(@RequestParam(name = "ProjectId", required = false, defaultValue = "no_value") String ProjectId, Model model)
     {
         try {
+            model.addAttribute("href1", "http://"+finsConfig.getPort()+"/FinsOperations");
             return "Fins_index";
         }catch (Exception ex){
             logger.info("WebController.Fins_Index -> ERROR:" + ex);
@@ -113,6 +115,7 @@ public class WebController {
         model.addAttribute("attrFieldClass", "form-control");
         model.addAttribute("attrFieldClassEx", "invalid-feedback");
         model.addAttribute("attrUserAdmFlg", "");
+        model.addAttribute("href1", "http://"+finsConfig.getPort()+"/login");
         return "UserRegistration";
     }
 

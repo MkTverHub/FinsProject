@@ -45,4 +45,5 @@ spring:
           writetimeout: 5000
 
 finsconfig:
-  port: 8081
+  #port: localhost:8080
+  port: 194.67.104.72:8081

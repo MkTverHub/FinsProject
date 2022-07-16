@@ -3,10 +3,12 @@ package com.sweetcard.basic.registration;
 import com.sweetcard.basic.appuser.AppUser;
 import com.sweetcard.basic.appuser.AppUserRole;
 import com.sweetcard.basic.appuser.AppUserService;
+import com.sweetcard.basic.core.FinsConfig;
 import com.sweetcard.basic.email.EmailSender;
 import com.sweetcard.basic.registration.token.ConfirmationToken;
 import com.sweetcard.basic.registration.token.ConfirmationTokenService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +17,8 @@ import java.time.LocalDateTime;
 @Service
 @AllArgsConstructor
 public class RegistrationService {
+    @Autowired
+    FinsConfig finsConfig;
 
     private final AppUserService appUserService;
     private final EmailValidator emailValidator;
@@ -64,7 +68,7 @@ public class RegistrationService {
                 )
         );
 
-        String link = "http://194.67.104.72:8081/api/v1/registration/confirm?token=" + token;
+        String link = "http://"+finsConfig+"/api/v1/registration/confirm?token=" + token;
         emailSender.send(
                 registrationForm.getEmail(),
                 buildEmail(registrationForm.getFirstName(), link));
