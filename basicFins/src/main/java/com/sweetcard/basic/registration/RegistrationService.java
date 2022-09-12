@@ -69,6 +69,7 @@ public class RegistrationService {
         );
 
         String link = "http://"+finsConfig.getPort()+"/api/v1/registration/confirm?token=" + token;
+
         emailSender.send(
                 registrationForm.getEmail(),
                 buildEmail(registrationForm.getFirstName(), link));
